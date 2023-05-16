@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [PageController::class, 'index']);
+Route::get('/download', [PageController::class, 'download']);
+Route::get('/certificate', [PageController::class, 'certificate']);
+Route::get('/curriculum', [PageController::class, 'curriculum']);
+Route::get('/gallery-details', [PageController::class, 'galleryDetails']);
