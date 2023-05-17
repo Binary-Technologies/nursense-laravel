@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -54,10 +54,32 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (/Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended('/admin/dashboard');
+        if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+            return redirect('/admin/dashboard');
         }
 
         return back()->withInput($request->only('email', 'remember'));
     }  
+
+    public function showUserLogin(){
+        return view('userlogin');
+    }
+
+    public function userLogin()
+    {
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (auth()->attempt($attributes)){
+            session()->regenerate();
+            
+            return redirect('/');
+        }
+        throw ValidationException::withMessages([
+        'email' => 'Your provided credentials not verified.'
+    ]);
+        
+    }
 }
