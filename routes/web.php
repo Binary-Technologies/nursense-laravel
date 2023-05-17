@@ -35,3 +35,4 @@ Route::get('/admin/dashboard',function(){
 
 Route::get('/userLogin',[LoginController::class,'showUserLogin']);
 Route::post('/userLogin',[LoginController::class,'userLogin']);
+Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
