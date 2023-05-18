@@ -6,7 +6,7 @@
         <div class="row" style="width: 1920px;">
 
             <div class="col-lg-2">
-                {{-- TODO: Side navbar --}}
+            {{-- TODO: Side navbar --}}
             </div>
 
             
