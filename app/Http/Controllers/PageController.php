@@ -33,7 +33,6 @@ class PageController extends Controller
         return view('pages.gallery-details');
     }
 
-    //
     public function guide(){
         return view('pages.guide');
     }
@@ -70,7 +69,7 @@ class PageController extends Controller
         return view('learning_details.blade');
     }
 
-    public function learning_details(){
-        return view('learning.blade');
-    }
+    // public function learning_details(){
+    //     return view('learning.blade');
+    // }
 }
