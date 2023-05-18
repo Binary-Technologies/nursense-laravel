@@ -42,3 +42,19 @@ Route::get('/download', [PageController::class, 'download']);
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/curriculum', [PageController::class, 'curriculum']);
 Route::get('/gallery-details', [PageController::class, 'galleryDetails']);
+
+Route::get('/guide', [PageController::class, 'guide.blade']);
+Route::get('/curriculum2', [PageController::class, 'curriculum2.blade']);
+Route::get('/front_slider', [PageController::class, 'front_slider.blade']);
+Route::get('/info_details', [PageController::class, 'info_details.blade']);
+Route::get('/info', [PageController::class, 'info.blade']);
+Route::get('/inquiry_activated', [PageController::class, 'inquiry_activated.blade']);
+Route::get('/inquiry_await', [PageController::class, 'inquiry_await.blade']);
+Route::get('/inquiry', [PageController::class, 'inquiry.blade']);
+Route::get('/learning_details', [PageController::class, 'learning_details.blade']);
+Route::get('/learning', [PageController::class, 'learning.blade']);
+Route::get('/guide', [PageController::class, 'guide.blade']);
+Route::get('/guide', [PageController::class, 'guide.blade']);
+Route::get('/guide', [PageController::class, 'guide.blade']);
+Route::get('/guide', [PageController::class, 'guide.blade']);
+
