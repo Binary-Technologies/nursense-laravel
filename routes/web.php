@@ -42,3 +42,4 @@ Route::get('/download', [PageController::class, 'download']);
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/curriculum', [PageController::class, 'curriculum']);
 Route::get('/gallery-details', [PageController::class, 'galleryDetails']);
+Route::get('/guide', [PageController::class, 'guide']);

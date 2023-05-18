@@ -32,4 +32,8 @@ class PageController extends Controller
     public function galleryDetails(){
         return view('pages.gallery-details');
     }
+
+    public function guide(){
+        return view('pages.guide');
+    }
 }
