@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,18 +44,34 @@ Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/curriculum', [PageController::class, 'curriculum']);
 Route::get('/gallery-details', [PageController::class, 'galleryDetails']);
 
-Route::get('/guide', [PageController::class, 'guide.blade']);
-Route::get('/curriculum2', [PageController::class, 'curriculum2.blade']);
-Route::get('/front_slider', [PageController::class, 'front_slider.blade']);
-Route::get('/info_details', [PageController::class, 'info_details.blade']);
-Route::get('/info', [PageController::class, 'info.blade']);
-Route::get('/inquiry_activated', [PageController::class, 'inquiry_activated.blade']);
-Route::get('/inquiry_await', [PageController::class, 'inquiry_await.blade']);
-Route::get('/inquiry', [PageController::class, 'inquiry.blade']);
-Route::get('/learning_details', [PageController::class, 'learning_details.blade']);
-Route::get('/learning', [PageController::class, 'learning.blade']);
-Route::get('/guide', [PageController::class, 'guide.blade']);
-Route::get('/guide', [PageController::class, 'guide.blade']);
-Route::get('/guide', [PageController::class, 'guide.blade']);
-Route::get('/guide', [PageController::class, 'guide.blade']);
+Route::get('/guide', [PageController::class, 'guide']);
+Route::get('/curriculum2', [PageController::class, 'curriculum2']);
+Route::get('/front_slider', [PageController::class, 'front_slider']);
+Route::get('/info_details', [PageController::class, 'info_details']);
+Route::get('/info', [PageController::class, 'info']);
+Route::get('/inquiry_activated', [PageController::class, 'inquiry_activated']);
+Route::get('/inquiry_await', [PageController::class, 'inquiry_await']);
+Route::get('/inquiry', [PageController::class, 'inquiry']);
+Route::get('/learning_details', [PageController::class, 'learning_details']);
+Route::get('/learning', [PageController::class, 'learning']);
+Route::get('/guide', [PageController::class, 'guide']);
 
+Route::prefix('/admin')->group(function () {
+    // DashBoard-----------------------------------------------------------------------------------------------
+    Route::get('/dashBoard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
+
+    // Instructor Acc Mng-----------------------------------------------------------------------------------------------
+    Route::get('/viewMemIns', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
+    Route::get('/insAccData', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
+    Route::get('/userReg', [AdminPageController::class, 'registerInstructor'])->name('userReg');
+    Route::get('/updateInstructor', [AdminPageController::class, 'updateInstructor'])->name('updateInstructor');
+
+    // Student Acc Mng-----------------------------------------------------------------------------------------------
+    Route::get('/viewMemStu', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
+    Route::get('/stuAccData', [AdminPageController::class, 'studentView'])->name('stuAccData');
+});
+
+// Utilities -----------------------------------------------------------------------------------------------
+Route::get('/clear', function () {
+    return \Artisan::call('optimize:clear');
+});
