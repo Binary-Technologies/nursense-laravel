@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//admin and user login routes and admin registration routes
 
 Auth::routes();
 
@@ -35,3 +38,6 @@ Route::get('/admin/dashboard',function(){
 
 Route::get('/userLogin',[LoginController::class,'showUserLogin']);
 Route::post('/userLogin',[LoginController::class,'userLogin']);
+
+Route::get('/userRegister',[HomeController::class,'showUserRegister'])->middleware('auth:admin');
+Route::post('/userRegistration',[HomeController::class,'userRegister'])->middleware('auth:admin');
