@@ -30,7 +30,6 @@ class HomeController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'pno' => ['required','unique:users'],
             'name' => ['required'],
-            'major' => ['required'],
             'password' =>  ['required', 'string', 'min:8', 'confirmed'],
             'dob' => ['required'],
             'gender' => ['required'],
@@ -74,7 +73,10 @@ class HomeController extends Controller
             'email' => $request['email'],
             'pno' => $request['pno'],
             'name' => $request['name'],
+            'uni_name'=>$request['uni_name'],
             'major' => $request['major'],
+            'scl_name'=>$request['scl_name'],
+            'dep_name'=>$request['dep_name'],
             'password' => Hash::make($request['password']),
             'dob' => $request['dob'],
             'gender' => $request['gender'],
@@ -106,7 +108,10 @@ class HomeController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->pno = $request->input('pno');
-        $user->major = $request->input('major');
+        $user->uni_id = $request->input('uni_id');
+        $user->major_id = $request->input('major_id');
+        $user->scl_id = $request->input('scl_id');
+        $user->dep_id = $request->input('dep_id');
         $user->active_status = $request->input('active_status');
         $user->dob = $request->input('dob');
         $user->occupation = $request->input('occupation');

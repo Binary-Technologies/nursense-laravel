@@ -25,3 +25,6 @@ Route::post('/Register-user',[HomeController::class,'userRegister']);
 Route::put('/users/update/{id}',[HomeController::class,'update']);
 Route::delete('/users/{id}',[HomeController::class,'destroy']);
 
+
+
+
