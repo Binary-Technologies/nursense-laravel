@@ -58,15 +58,19 @@ class PageController extends Controller
     }
 
     public function inquiry_await(){
-        return view('inquiry_await.blade');
+        return view('pages.inquiry_await');
     }
 
     public function inquiry(){
-        return view('inquiry.blade');
+        return view('pages.inquiry');
     }
 
     public function learning_details(){
-        return view('learning_details.blade');
+        return view('pages.learning_details');
+    }
+
+    public function userLogin(){
+        return view('pages.user-login');
     }
 
     // public function learning_details(){

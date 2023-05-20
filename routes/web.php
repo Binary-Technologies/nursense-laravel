@@ -18,10 +18,6 @@ use App\Http\Controllers\AdminPageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/admin',[LoginController::class,'showAdminLoginForm'])->name('admin.login-view');
@@ -35,7 +31,7 @@ Route::get('/admin/dashboard',function(){
     return view('home');
 })->middleware('auth:admin');
 
-Route::get('/userLogin',[LoginController::class,'showUserLogin']);
+Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
 Route::post('/userLogin',[LoginController::class,'userLogin']);
 Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
 Route::get('/', [PageController::class, 'index']);
@@ -54,7 +50,7 @@ Route::get('/inquiry_await', [PageController::class, 'inquiry_await']);
 Route::get('/inquiry', [PageController::class, 'inquiry']);
 Route::get('/learning_details', [PageController::class, 'learning_details']);
 Route::get('/learning', [PageController::class, 'learning']);
-Route::get('/guide', [PageController::class, 'guide']);
+Route::get('/login', [PageController::class, 'userLogin']);
 
 Route::prefix('/admin')->group(function () {
     // DashBoard-----------------------------------------------------------------------------------------------
