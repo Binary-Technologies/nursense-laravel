@@ -73,4 +73,84 @@ class PageController extends Controller
     public function learning_details(){
         return view('learning.blade');
     }
+
+    //
+
+    public function location(){
+        return view('location.blade');
+    }
+
+    public function muve_gallery(){
+        return view('muve_gallery.blade');
+    }
+
+    public function muve(){
+        return view('muve.blade');
+    }
+
+    public function myallocation(){
+        return view('myallocation.blade');
+    }
+
+    public function myassesment(){
+        return view('myassesment.blade');
+    }
+
+    public function mymanage(){
+        return view('mymanage.blade');
+    }
+
+    public function myprelearning(){
+        return view('myprelearning.blade');
+    }
+
+    //myprofile-contact..... has been left out
+
+    public function myprofile_dp_upload(){
+        return view('myprofile_dp_upload.blade');
+    }
+
+    //myprofile-email..... has been left out
+    //myprofile-passsword..... has been left out
+
+    public function myprofile(){
+        return view('myprofile.blade');
+    }
+
+    public function myreports(){
+        return view('myreports.blade');
+    }
+
+    public function mystudy(){
+        return view('mystudy.blade');
+    }
+
+    public function news_main_details(){
+        return view('news_main_details.blade');
+    }
+
+    public function news_main(){
+        return view('news_main.blade');
+    }
+
+    //notice ...... has been leftout
+
+    public function privacy_policy(){
+        return view('privacy_policy.blade');
+    }
+
+    public function quiz(){
+        return view('quiz.blade');
+    }
+
+    public function resources_details(){
+        return view('resources_details.blade');
+    }
+
+    public function resources(){
+        return view('resources.blade');
+    }
+    public function terms_conditions(){
+        return view('terms_conditions.blade');
+    }
 }
