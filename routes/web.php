@@ -30,7 +30,7 @@ Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin/dashboard',function(){
-    return view('home');
+    return view('pages.admin.dashboard');
 })->middleware('auth:admin');
 
 Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
@@ -58,8 +58,10 @@ Route::get('/learning', [PageController::class, 'learning']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
 Route::prefix('/admin')->group(function () {
+    Route::middleware('auth:admin')->group(function (){
+        Route::get('/dashBoard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
+    });
     // DashBoard-----------------------------------------------------------------------------------------------
-    Route::get('/dashBoard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
 
     // Instructor Acc Mng-----------------------------------------------------------------------------------------------
     Route::get('/viewMemIns', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
