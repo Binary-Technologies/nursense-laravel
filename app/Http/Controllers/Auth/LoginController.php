@@ -72,14 +72,84 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($attributes)){
-            session()->regenerate();
-            
-            return redirect('/');
-        }
         throw ValidationException::withMessages([
-        'email' => 'Your provided credentials not verified.'
-    ]);
+            'email' => 'Your provided credentials not verified.'
+        ]);
+
+        $data = array(
+            'username' => $email,
+            'password' => $password
+        );
+
+        $payload = json_encode($data);
+
+        // Set the endpoint URL
+        $url = 'https://api.example.com/login';
+
+        // Initialize cURL session
+        $ch = curl_init($url);
+
+        // Set the request method to POST
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+
+        // Set the request headers
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($payload)
+        ));
+
+        // Set the request payload
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+        // Set the option to receive the response as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Execute the request
+        $response = curl_exec($ch);
+
+        // Check for errors
+        if ($response === false) {
+            $error = curl_error($ch);
+            curl_close($ch);
+            return "cURL Error: " . $error;
+        }
+
+        // Close the cURL session
+        curl_close($ch);
+
+        // Process the response
+        $responseData = json_decode($response, true);
+
+        // Return the response data
+        return $responseData;
+
+        // if (auth()->attempt($attributes)){
+        //     session()->regenerate();
+            
+        //     return redirect('/');
+        // }
         
+    }
+
+    public function userApiLogin(){
+         // Process the response data
+        $responseData = json_decode($response, true);
+
+        // Check if the login was successful
+        if (isset($responseData['success']) && $responseData['success']) {
+            // Login successful
+            $token = $responseData['token'];
+            // Do something with the token (e.g., store it in a session)
+            session()->regenerate();
+
+            // Redirect to the home page or any other desired location
+            return redirect('/');
+        } else {
+            // Login failed
+            $error = isset($responseData['message']) ? $responseData['message'] : 'Login failed';
+
+            // Display the error message or handle it as needed
+            return redirect('/')->with('error', $error);
+        }
     }
 }
