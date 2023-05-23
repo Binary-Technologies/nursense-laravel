@@ -53,7 +53,7 @@ body {
 .btn,
 .form-control,
 .form-select {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 :root {
@@ -545,6 +545,30 @@ body {
     width: 100%;
 }
 
+.width-70 {
+    width: 70%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.width-20 {
+    width: 20%;
+}
+
+.width-10 {
+    width: 10%;
+}
+
 .max-w-100 {
     max-width: 100%;
 }
@@ -785,7 +809,7 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 332px;
+    width: 17%;
     height: 100vh;
     overflow-y: auto;
     background: var(--dark-blue1);
@@ -794,7 +818,7 @@ body {
 }
 
 .content {
-    margin-left: 340px;
+    margin-left: 18%;
     min-height: 100vh;
     background: #FFFFFF;
     transition: 0.5s;
@@ -806,11 +830,11 @@ body {
     }
 
     .sidebar.open {
-        margin-left: -332px;
+        margin-left: -17%;
     }
 
     .content {
-        width: calc(100% - 367px) !important;
+        width: calc(100% - 19%) !important;
     }
 
     .content.open {
@@ -825,11 +849,11 @@ body {
     }
 
     .sidebar.open {
-        margin-left: -300px;
+        margin-left: -17%;
     }
 
     .content {
-        width: calc(100% - 300px);
+        width: calc(100% - 19%);
     }
 
     .content.open {
@@ -840,7 +864,7 @@ body {
 
 @media (max-width: 991.98px) {
     .sidebar {
-        margin-left: -300px;
+        margin-left: -17%;
     }
 
     .sidebar.open {
@@ -868,7 +892,7 @@ body {
 
 .sidebar .navbar .navbar-nav .nav-link {
     color: #8C90C2;
-    font-size: 18px;
+    font-size: 20px;
     font-family: pretendard-medium;
     border-radius: 0 30px 30px 0;
     padding: 10px 20px;
@@ -896,8 +920,8 @@ body {
 
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
-    top: 0;
-    right: 15px;
+    top: 10px;
+    right: 16px;
     border: none;
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -912,7 +936,7 @@ body {
 
 .sidebar .navbar .dropdown-item {
     color: var(--light2);
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
     padding: 10px 10px 10px 52px;
     border-radius: 0;
@@ -1006,39 +1030,6 @@ body {
 }
 
 
-/* Testimonial */
-
-.progress .progress-bar {
-    width: 0px;
-    transition: 2s;
-}
-
-
-/* Testimonial */
-
-.testimonial-carousel .owl-dots {
-    margin-top: 24px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.testimonial-carousel .owl-dot {
-    position: relative;
-    display: inline-block;
-    margin: 0 5px;
-    width: 15px;
-    height: 15px;
-    border: 5px solid var(--primary);
-    border-radius: 15px;
-    transition: .5s;
-}
-
-.testimonial-carousel .owl-dot.active {
-    background: var(--dark);
-    border-color: var(--primary);
-}
-
 /* Custom DC */
 
 /* Login page */
@@ -1065,39 +1056,48 @@ body {
 .login-sub-ttl,
 .login-lbl {
     color: #090909;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
 }
 
 .login-btn {
     width: 100%;
     color: #9495A1;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
     background-color: #F3F4F8;
     border-color: #F3F4F8;
+    padding: 12px 0;
     transition: 0.3s all ease-in-out;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.login-btn:focus {
     color: #fff;
     background-color: #212880;
     border-color: #212880;
+    box-shadow: none;
 }
 
 /* Login page */
 
-.page-title-top {
+.page-title-top h5 {
     color: #090909;
-    font-size: 20px;
+    font-size: 22px;
     font-family: pretendard-bold;
     padding: 31px 0 16px;
+}
+
+.page-sub-title {
+    color: #090909;
+    font-size: 18px;
+    font-family: pretendard-medium;
 }
 
 .breadcrumb-text1,
 .breadcrumb-text2 {
     color: #616474;
-    font-size: 14px;
+    font-size: 16px;
     font-family: pretendard-medium;
 }
 
@@ -1116,11 +1116,16 @@ body {
     border-bottom: 2px solid #BABCDE;
 }
 
+.form-text-lbl,
 .form-text-d,
 .form-text-d option {
     color: #090909;
     font-size: 16px;
     font-family: pretendard-regular;
+}
+
+.form-text-lbl {
+    font-family: pretendard-medium;
 }
 
 .form-text-d option {
@@ -1132,13 +1137,17 @@ body {
 
 .form-text-l {
     color: #D2D3DA;
-    font-size: 16px !important;
+    font-size: 18px !important;
     font-family: pretendard-regular;
+}
+
+.fields-height1 {
+    height: 52px;
 }
 
 .view-search-i {
     position: absolute;
-    top: 12px;
+    top: 15px;
     right: -25px;
     z-index: 1000;
 }
@@ -1151,7 +1160,7 @@ body {
 .btn2,
 .btn3 {
     color: #9495A1;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
     background-color: #F3F4F8;
     width: 100%;
@@ -1188,7 +1197,7 @@ body {
 .list-count,
 .list-count-num {
     color: #9495A1;
-    font-size: 14px;
+    font-size: 16px;
     font-family: pretendard-medium;
     padding: 0 17px 0 2px;
 }
@@ -1210,7 +1219,7 @@ body {
 
 .table-th-text {
     color: #1B1D1F;
-    font-size: 14px;
+    font-size: 16px;
     font-family: pretendard-bold;
 }
 
@@ -1235,20 +1244,20 @@ body {
 
 .ttl-dp {
     color: #090909;
-    font-size: 24px;
+    font-size: 26px;
     font-family: pretendard-bold;
 }
 
 .ttl-dp2 {
     color: #9495A1;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-regular;
 }
 
 .btn4,
 .btn5 {
     color: #7479BD;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
     background-color: #fff;
     width: 35%;
@@ -1299,25 +1308,25 @@ body {
 
 .ttl-acc-blue {
     color: #212880;
-    font-size: 20px;
+    font-size: 22px;
     font-family: pretendard-bold;
 }
 
 .ttl-lbl1 {
     color: #9495A1;
-    font-size: 14px;
+    font-size: 16px;
     font-family: pretendard-medium;
 }
 
 .ttl-p1 {
     color: #090909;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
 }
 
 .ttl-lbl2 {
     color: #616474;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
 }
 
@@ -1327,7 +1336,7 @@ body {
 .tr-txt4,
 .tr-txt5 {
     color: #3941A2;
-    font-size: 14px;
+    font-size: 16px;
     font-family: pretendard-bold;
 }
 
@@ -1343,18 +1352,18 @@ body {
 }
 
 .tr-txt4 {
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-regular;
 }
 
 .tr-txt5 {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .tr-txt7,
 .tr-txt9 {
     color: #090909;
-    font-size: 32px;
+    font-size: 34px;
     font-family: pretendard-bold;
 }
 
@@ -1365,7 +1374,7 @@ body {
 .tr-txt6,
 .tr-txt8 {
     color: #767885;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-regular;
 }
 
@@ -1375,15 +1384,49 @@ body {
 
 .btn6 {
     color: #3941A2;
-    font-size: 16px;
+    font-size: 18px;
     font-family: pretendard-medium;
     background-color: #D7D9EC;
     border-radius: 6px;
     border-color: #D7D9EC;
     padding: 10px 24px;
+    transition: 0.3s all ease-in-out;
 }
 
+.btn6:hover {
+    background-color: #a0a3c4;
+    border-color: #a0a3c4;
+}
 
+.btn7 {
+    color: #FF625F;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    border: 1px solid #FF625F;
+    border-radius: 6px;
+    padding: 6px 26px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn7:hover {
+    background-color: #de4744;
+}
+
+.btn8 {
+    color: #fff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #212880;
+    border: 1px solid #212880;
+    border-radius: 6px;
+    padding: 10px 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn8:hover {
+    background-color: #3a409d;
+    border-color: #3a409d;
+}
 
 
 
@@ -1397,7 +1440,19 @@ body {
     width: 34px;
     height: 34px;
     text-align: center;
-    margin: 2px;
+    margin: 3px 4px;
+    transition: 0.3s all ease-in-out;
+}
+
+.page-link.pgln-custom.pagination_link_active,
+.page-link.pgln-custom:hover,
+.page-link.pgln-custom:focus {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #212880;
+    box-shadow: none;
 }
 
 .page-link.pgln-custom span {
@@ -1408,14 +1463,6 @@ body {
     color: #090909;
     font-size: 16px;
     font-family: pretendard-regular;
-}
-
-.page-link.pgln-custom.pagination_link_active {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    color: #fff;
-    background-color: #212880;
 }
 
 /* Pagination */

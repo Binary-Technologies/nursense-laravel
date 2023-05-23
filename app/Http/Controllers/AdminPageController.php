@@ -33,4 +33,8 @@ class AdminPageController extends Controller
     public function dashboard(){
         return view('pages.admin.adminLayout.dashboard');
     }
+
+    public function bannerDashboard(){
+        return view('pages.admin.banner.banner-dashboard');
+    }
 }

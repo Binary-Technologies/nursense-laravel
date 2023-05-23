@@ -72,8 +72,4 @@ class PageController extends Controller
     public function userLogin(){
         return view('pages.user-login');
     }
-
-    // public function learning_details(){
-    //     return view('learning.blade');
-    // }
 }
