@@ -72,4 +72,4 @@ Route::get('/quiz', [PageController::class, 'quiz.blade']);
 Route::get('/resources_details', [PageController::class, 'resources_details.blade']);
 Route::get('/resources', [PageController::class, 'resources.blade']);
 Route::get('/terms_conditions', [PageController::class, 'terms_conditions.blade']);
-
+Route::get('/user_manual', [PageController::class, 'user_manual.blade']);
