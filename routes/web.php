@@ -58,23 +58,26 @@ Route::get('/learning', [PageController::class, 'learning']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
 Route::prefix('/admin')->group(function () {
+    // DashBoard with Auth validation
     Route::middleware('auth:admin')->group(function (){
         Route::get('/dashBoard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
     });
-    // DashBoard-----------------------------------------------------------------------------------------------
 
-    // Instructor Acc Mng-----------------------------------------------------------------------------------------------
+    // Instructor Acc Mng
     Route::get('/viewMemIns', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
     Route::get('/insAccData', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
     Route::get('/userReg', [AdminPageController::class, 'registerInstructor'])->name('userReg');
     Route::get('/updateInstructor', [AdminPageController::class, 'updateInstructor'])->name('updateInstructor');
 
-    // Student Acc Mng-----------------------------------------------------------------------------------------------
+    // Student Acc Mng
     Route::get('/viewMemStu', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
     Route::get('/stuAccData', [AdminPageController::class, 'studentView'])->name('stuAccData');
+
+    // Banner Management
+    Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
 });
 
-// Utilities -----------------------------------------------------------------------------------------------
+// Utilities
 Route::get('/clear', function () {
     return \Artisan::call('optimize:clear');
 });
