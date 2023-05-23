@@ -56,6 +56,11 @@ body {
     font-size: 16px;
 }
 
+.btn:focus,
+.btn:hover {
+    box-shadow: none !important;
+}
+
 :root {
     --white: #fff;
     --primary: #009CFF;
@@ -555,6 +560,10 @@ body {
 
 .width-40 {
     width: 40%;
+}
+
+.width-44 {
+    width: 44%;
 }
 
 .width-30 {
@@ -1393,7 +1402,8 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn6:hover {
+.btn6:hover,
+.btn6:focus {
     background-color: #a0a3c4;
     border-color: #a0a3c4;
 }
@@ -1408,8 +1418,9 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn7:hover {
-    background-color: #de4744;
+.btn7:hover,
+.btn7:focus {
+    background-color: #f1e6e6;
 }
 
 .btn8 {
@@ -1423,10 +1434,99 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn8:hover {
+.btn8:hover,
+.btn8:focus {
     background-color: #3a409d;
     border-color: #3a409d;
 }
+
+/* Modal Customs */
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #090909;
+    font-size: 30px;
+    font-family: pretendard-bold;
+}
+
+.modal-inner-text,
+.modal-inner-text2,
+.modal-inner-text3 {
+    color: #767885;
+    font-size: 16px;
+    font-family: pretendard-regular;
+}
+
+.modal-inner-text2 {
+    color: #7479BD;
+    font-size: 18px;
+    padding-top: 7px;
+}
+
+.modal-inner-text3 {
+    color: #9495A1;
+    padding-top: 7px;
+}
+
+.img-up-box {
+    background-color: #F5F7FE;
+    border: 2px dashed #BABCDE;
+    border-radius: 12px;
+}
+
+.img-up-box-inner {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn9 {
+    color: #fff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #3941A2;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 14px 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn9:hover,
+.btn9:focus {
+    background-color: #3a409d;
+    border-color: #3a409d;
+}
+
+.btn10 {
+    width: 100%;
+    color: #9495A1;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #F3F4F8;
+    border: 1px solid #F3F4F8;
+    border-radius: 6px;
+    padding: 12px 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn10:hover,
+.btn10:focus {
+    background-color: #cacddb;
+    border-color: #cacddb;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* Modal Customs */
 
 
 

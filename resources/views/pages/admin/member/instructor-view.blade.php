@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-xl-3 item-flex-center pl-0 py-4">
                         <div class="btn5-outer">
-                            <a href="#" class="btn btn-secondary btn5">
+                            <a href="{{ route('insAccDataEdit') }}" class="btn btn5">
                                 수정
                             </a>
                         </div>
