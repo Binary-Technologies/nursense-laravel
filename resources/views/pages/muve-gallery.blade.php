@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row" style="width: 1920px;">
+        <div class="row">
 
             <div class="col-lg-2">
             {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10" style="width: 1396px; margin-left: -420px;">
+            <div class="col-lg-10">
 
                 <section class="page-title text-center pt30 pb30 mt-4" style="background-image: url(images/wrappers/2.jpg); height: 190px">
                     <div class="auto-container">
@@ -22,13 +21,13 @@
                     </div>
                 </section>
 
-                <div class="row my-5">
+                <div class="row" style="padding: 2%;">
                     <div class="col-md-2">
-                        <p class="pl-4 py-2" style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total 28</p>
-                    </div>
-                    <div class="col-md-6">
+                        <p class="py-2" style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total 28</p>
                     </div>
                     <div class="col-md-4">
+                    </div>
+                    <div class="col-md-6">
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                             <div class="input-group">
                                     <span><i class="fas fa-search home-search-i" area-hidden="true"></i></span>
@@ -38,11 +37,13 @@
                             <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="width: 118px; height: 40px; margin-left: 20px;">검색</button>
                         </form>
                     </div>
+                    
+                </div>
 
                     <div class="row">
                         <!--<div class="col-lg-1"></div>-->
                         <!-- 1 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
@@ -59,12 +60,11 @@
                                 <span class="br-right"></span>
                                 <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
                             </div>
-
                         </div>
                         <!-- 1 -->
 
                         <!-- 2 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/2.jpg" class="gallery_img"></a>
@@ -86,7 +86,7 @@
                         <!-- 2 -->
 
                         <!-- 3 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/3.jpg" class="gallery_img"></a>
@@ -108,7 +108,7 @@
                         <!-- 3 -->
 
                         <!-- 4 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/4.jpg" class="gallery_img"></a>
@@ -130,7 +130,7 @@
                         <!-- 4 -->
 
                         <!-- 5 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
@@ -157,7 +157,7 @@
                     <div class="row">
                         <!--<div class="col-lg-1"></div>-->
                         <!-- 1 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
@@ -179,7 +179,7 @@
                         <!-- 1 -->
 
                         <!-- 2 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/2.jpg" class="gallery_img"></a>
@@ -201,7 +201,7 @@
                         <!-- 2 -->
 
                         <!-- 3 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/3.jpg" class="gallery_img"></a>
@@ -223,7 +223,7 @@
                         <!-- 3 -->
 
                         <!-- 4 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/4.jpg" class="gallery_img"></a>
@@ -245,7 +245,7 @@
                         <!-- 4 -->
 
                         <!-- 5 -->
-                        <div class="col-lg-2 gallery_img_margin">
+                        <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
                                 <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
@@ -269,14 +269,13 @@
                         <!--<div class="col-lg-1"></div>-->
                     </div>
 
-                </div>
 
             </div>
            
 
         </div>
          
-<nav aria-label="Page navigation muve gallery" style="margin-left: 40%;">
+    <nav aria-label="Page navigation muve gallery" class="item-flex-center">
     <ul class="pagination">
     <li class="page-item">
       <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
@@ -298,6 +297,5 @@
   </ul>
 </nav>
         
-    </div>
 </section>
 @endsection

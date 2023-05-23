@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row row-width-1920">
+        <div class="row">
 
             <div class="col-lg-2">
-                {{-- TODO: Side navbar --}}
+            {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10 sec-width-1396">
+            <div class="col-lg-10">
 
                 <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-color: #E1E3F7;">
                     <div class="pl30">
@@ -148,6 +147,5 @@
 
             </div>
         </div>
-    </div>
 </section>
 @endsection

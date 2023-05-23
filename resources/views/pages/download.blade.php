@@ -2,14 +2,14 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row row-width-1920">
+        <div class="row">
 
             <div class="col-lg-2">
-                {{-- TODO: Side navbar --}}
+            {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10 sec-width-1396">
+            <div class="col-lg-10">
+
                 <!-- card -->
                 <div class="row item-flex-center pt200 pb200">
                     <div class="col-lg-6 shadow border-rad-5 download-box mb-3 px-5 py-4">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
                 <!-- card -->
+
             </div>
         </div>
-    </div>
 </section>
 @endsection

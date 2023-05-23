@@ -153,4 +153,6 @@ class PageController extends Controller
     public function terms_conditions(){
         return view('terms_conditions.blade');
     }
+
+    //user manual ...... has been left out
 }

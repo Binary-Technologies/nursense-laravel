@@ -21,39 +21,51 @@
 <section class="py-5">
     <div class="container pt-5">
         <div class="row">
+
+        //
+
             @forelse ($news as $newsItem)
+
                 <!-- Card -->
-            <div class="col-md-6 col-sm-12 shadow border-rad-5 py-4 px-4 mt-2 m5">
-                <div class="docu-details pb-2">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>News</h4>
+                <div class="col-md-6 col-sm-12 shadow border-rad-5 py-4 px-4 mt-2 m5">
+
+                    <div class="docu-details pb-2">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>News</h4>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a href="add_news.php"><i class="fas fa-plus"></i></a>
+                            </div>
                         </div>
-                        <div class="col-md-6 text-right">
-                            <a href="add_news.php"><i class="fas fa-plus"></i></a>
+                        <div class="row mt15">
+                            <div class="col-md-6">
+                                <h5>{{$main_news[0]->title}}</h5>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p>{{$main_news[0]->updated_at}}</p>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 text-justify">
+                                <p class="pt10">{{$main_news[0]->content}}</p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="row mt15">
-                        <div class="col-md-6">
-                            <h5>{{ $newsItem->title }}</h5>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <p>{{ $newsItem->updated_at }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-justify">
-                            <p class="pt10">{{ $newsItem->content }}</p>
-                        </div>
-                    </div>
+
+                    <input type="hidden" value="{{ $newsItem->id }}" id="newsId">
+                    <input type="hidden" value="{{ $newsItem->exposure }}" id="newsStatus">
+
                 </div>
-                <input type="hidden" value="{{ $newsItem->id }}" id="newsId">
-                <input type="hidden" value="{{ $newsItem->exposure }}" id="newsStatus">
-            </div>
                 <!-- Card -->
-            @empty
-            @endforelse
+
+                @empty
+                @endforelse
+
         </div>
     </div>
 </section>
+
 @endsection
