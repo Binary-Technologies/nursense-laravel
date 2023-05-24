@@ -22,7 +22,7 @@
     <div class="container pt-5">
         <div class="row">
 
-            <@forelse ($news as $newsItem)
+            @forelse ($news as $newsItem)
 
 
                 <!-- Card -->
@@ -40,22 +40,22 @@
                         </div>
                         <div class="row mt15">
                             <div class="col-md-6">
-                                <h5>{{$main_notice[0]->title}}</h5>
+                                <h5>{{$newsItem->title}}</h5>
                             </div>
                             <div class="col-md-6 text-right">
-                                <p>{{$main_notice[0]->updated_at}}</p>
+                                <p>{{$newsItem->updated_at}}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10">{{$main_notice[0]->content}}</p>
+                                <p class="pt10">{{$newsItem->content}}</p>
                             </div>
                         </div>
 
                     </div>
 
-                    <input type="hidden" value="{{ $notice->id }}" id="newsId">
-                    <input type="hidden" value="{{ $notice->exposure }}" id="newsStatus">
+                    <input type="hidden" value="{{ $newsItem->id }}" id="newsId">
+                    <input type="hidden" value="{{ $newsItem->exposure }}" id="newsStatus">
 
                 </div>
                 <!-- Card -->

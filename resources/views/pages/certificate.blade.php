@@ -22,7 +22,7 @@
     <div class="container pt-5">
         <div class="row">
 
-        //
+        
 
             @forelse ($news as $newsItem)
 
@@ -41,15 +41,15 @@
                         </div>
                         <div class="row mt15">
                             <div class="col-md-6">
-                                <h5>{{$main_news[0]->title}}</h5>
+                                <h5>{{ $newsItem->title }}</h5>
                             </div>
                             <div class="col-md-6 text-right">
-                                <p>{{$main_news[0]->updated_at}}</p>
+                                <p>{{ $newsItem->updated_at }}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10">{{$main_news[0]->content}}</p>
+                                <p class="pt10">{{$newsItem->content}}</p>
                             </div>
                         </div>
 

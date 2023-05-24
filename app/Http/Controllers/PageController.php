@@ -43,7 +43,7 @@ class PageController extends Controller
     }
 
     public function front_slider(){
-        return view('pages.front_slider');
+        return view('pages.front_slider'); //php echo
     }
 
     public function info_details(){
@@ -70,10 +70,9 @@ class PageController extends Controller
         return view('pages.learning_details');
     }
 
-    public function learning_details(){
+    public function learning(){
         return view('pages.learning');
     }
-
     //
 
     public function location(){
@@ -104,13 +103,11 @@ class PageController extends Controller
         return view('pages.myprelearning');
     }
 
-    //myprofile-contact..... has been left out
 
     public function myprofile_dp_upload(){
         return view('pages.myprofile_dp_upload');
     }
 
-    //myprofile-email..... has been left out
     //myprofile-passsword..... has been left out
 
     public function myprofile(){
@@ -155,6 +152,20 @@ class PageController extends Controller
     }
 
     public function user_manual(){
-        return view('pages.user_manual');
+        $news = News::where('exposure', 1)->get();
+        return view('pages.user_manual', compact('news'));
+    }
+
+    public function myprofile_contact_upload(){
+        return view('pages.myprofile_contact_upload');
+    }
+
+    public function myprofile_email_upload(){
+        return view('pages.my_profile_email_upload');
+    }
+
+    public function myprofile_password_upload(){
+        return view('pages.myprofile_password_upload');
     }
 }
+

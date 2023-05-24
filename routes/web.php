@@ -73,3 +73,7 @@ Route::get('/resources_details', [PageController::class, 'resources_details']);
 Route::get('/resources', [PageController::class, 'resources']);
 Route::get('/terms_conditions', [PageController::class, 'terms_conditions']);
 Route::get('/user_manual', [PageController::class, 'user_manual']);
+
+Route::get('/myprofile_contact_upload', [PageController::class, 'myprofile_contact_upload']);
+Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_upload']);
+Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
