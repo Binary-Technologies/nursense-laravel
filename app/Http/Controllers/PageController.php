@@ -42,7 +42,7 @@ class PageController extends Controller
     }
 
     public function front_slider(){
-        return view('pages.front_slider');
+        return view('pages.front_slider'); //php echo
     }
 
     public function info_details(){
@@ -58,98 +58,113 @@ class PageController extends Controller
     }
 
     public function inquiry_await(){
-        return view('inquiry_await.blade');
+        return view('pages.inquiry_await');
     }
 
     public function inquiry(){
-        return view('inquiry.blade');
+        return view('pages.inquiry');
     }
 
     public function learning_details(){
-        return view('learning_details.blade');
+        return view('pages.learning_details');
     }
 
-    public function learning_details(){
-        return view('learning.blade');
+    public function learning(){
+        return view('pages.learning');
     }
-
     //
 
     public function location(){
-        return view('location.blade');
+        return view('pages.location');
     }
 
     public function muve_gallery(){
-        return view('muve_gallery.blade');
+        return view('pages.muve_gallery');
     }
 
     public function muve(){
-        return view('muve.blade');
+        return view('pages.muve');
     }
 
     public function myallocation(){
-        return view('myallocation.blade');
+        return view('pages.myallocation');
     }
 
     public function myassesment(){
-        return view('myassesment.blade');
+        return view('pages.myassesment');
     }
 
     public function mymanage(){
-        return view('mymanage.blade');
+        return view('pages.mymanage');
     }
 
     public function myprelearning(){
-        return view('myprelearning.blade');
+        return view('pages.myprelearning');
     }
 
-    //myprofile-contact..... has been left out
 
     public function myprofile_dp_upload(){
-        return view('myprofile_dp_upload.blade');
+        return view('pages.myprofile_dp_upload');
     }
 
-    //myprofile-email..... has been left out
     //myprofile-passsword..... has been left out
 
     public function myprofile(){
-        return view('myprofile.blade');
+        return view('pages.myprofile');
     }
 
     public function myreports(){
-        return view('myreports.blade');
+        return view('pages.myreports');
     }
 
     public function mystudy(){
-        return view('mystudy.blade');
+        return view('pages.mystudy');
     }
 
     public function news_main_details(){
-        return view('news_main_details.blade');
+        return view('pages.news_main_details');
     }
 
     public function news_main(){
-        return view('news_main.blade');
+        return view('pages.news_main');
     }
 
     //notice ...... has been leftout
 
     public function privacy_policy(){
-        return view('privacy_policy.blade');
+        return view('pages.privacy_policy');
     }
 
     public function quiz(){
-        return view('quiz.blade');
+        return view('pages.quiz');
     }
 
     public function resources_details(){
-        return view('resources_details.blade');
+        return view('pages.resources_details');
     }
 
     public function resources(){
-        return view('resources.blade');
+        return view('pages.resources');
     }
     public function terms_conditions(){
-        return view('terms_conditions.blade');
+        return view('pages.terms_conditions');
+    }
+
+    public function user_manual(){
+        $news = News::where('exposure', 1)->get();
+        return view('pages.user_manual', compact('news'));
+    }
+
+    public function myprofile_contact_upload(){
+        return view('pages.myprofile_contact_upload');
+    }
+
+    public function myprofile_email_upload(){
+        return view('pages.my_profile_email_upload');
+    }
+
+    public function myprofile_password_upload(){
+        return view('pages.myprofile_password_upload');
     }
 }
+

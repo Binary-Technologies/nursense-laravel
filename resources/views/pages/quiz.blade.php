@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row row-width-1920">
+        <div class="row">
 
             <div class="col-lg-2">
             {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10 bg-quiz" style="width: 100%; margin-left: -390px; padding: 0px;">
+            <div class="col-lg-10 bg-quiz" style="width: 100%; padding: 0px;">
 
                 <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #212880);">
                     <div class="pl30">
@@ -21,12 +20,12 @@
                     </div>
                 </section>
 
-                <div class="container my-5">
+                <div class="my-5">
                     <div class="row item-flex-center">
 
                         <!-- Top card start -->
 
-                        <div class="col-lg-10 shadow border-t-custom-quiz border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-t-custom-quiz border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row py-4">
                                 <div class="col-md-12 item-flex-left curr-in-box">
                                     <p class="ttl-18">사전 학습 2 평가 등록 제목</p>
@@ -48,7 +47,7 @@
                         <!-- Top card end -->
 
                         <!-- card -->
-                        <div class="col-lg-10 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
                                     <div class="row my-2">
@@ -102,7 +101,7 @@
                         </div>
                         <!-- card -->
                         <!-- card -->
-                        <div class="col-lg-10 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
                                     <div class="row my-2">
@@ -156,7 +155,7 @@
                         </div>
                         <!-- card -->
                         <!-- card -->
-                        <div class="col-lg-10 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
                                     <div class="row my-2">
@@ -210,7 +209,7 @@
                         </div>
                         <!-- card -->
                         <!-- card -->
-                        <div class="col-lg-10 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
                                     <div class="row my-2">
@@ -264,7 +263,7 @@
                         </div>
                         <!-- card -->
                         <!-- card -->
-                        <div class="col-lg-10 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
                                     <div class="row my-2">
@@ -328,7 +327,7 @@
 
             </div>
         </div>
-    </div>
 </section>
+
 
 @endsection
