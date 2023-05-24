@@ -72,49 +72,84 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($attributes)){
-            session()->regenerate();
-            
-            return redirect('/');
-        }
         throw ValidationException::withMessages([
-        'email' => 'Your provided credentials not verified.'
-    ]);
+            'email' => 'Your provided credentials not verified.'
+        ]);
+
+        $data = array(
+            'username' => $email,
+            'password' => $password
+        );
+
+        $payload = json_encode($data);
+
+        // Set the endpoint URL
+        $url = 'https://api.example.com/login';
+
+        // Initialize cURL session
+        $ch = curl_init($url);
+
+        // Set the request method to POST
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+
+        // Set the request headers
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($payload)
+        ));
+
+        // Set the request payload
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+        // Set the option to receive the response as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Execute the request
+        $response = curl_exec($ch);
+
+        // Check for errors
+        if ($response === false) {
+            $error = curl_error($ch);
+            curl_close($ch);
+            return "cURL Error: " . $error;
+        }
+
+        // Close the cURL session
+        curl_close($ch);
+
+        // Process the response
+        $responseData = json_decode($response, true);
+
+        // Return the response data
+        return $responseData;
+
+        // if (auth()->attempt($attributes)){
+        //     session()->regenerate();
+            
+        //     return redirect('/');
+        // }
         
     }
 
     public function userApiLogin(){
-        define('NAVER_CLIENT_ID', '내어플리케이션 > 어플리케이션 정보 > Client ID');
-        define('NAVER_CLIENT_SECRET', '내어플리케이션 > 어플리케이션 정보 > Client Secret'); 
-        define('NAVER_CALLBACK_URL', 'http://test_lee.co.kr/callback.php');
-    
-        $naver_curl = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=".NAVER_CLIENT_ID."&client_secret=".NAVER_CLIENT_SECRET."&redirect_uri=".urlencode(NAVER_CALLBACK_URL)."&code=".$_GET['code'];
-        $is_post = false; 
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, $naver_curl); 
-        curl_setopt($ch, CURLOPT_POST, $is_post); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-        $response = curl_exec ($ch); 
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
-        curl_close ($ch); 
-        if($status_code == 200){ 
-            $responseArr = json_decode($response, true); 
-            
-        // 토큰값으로 네이버 회원정보 가져오기 
-            $headers = array( 'Content-Type: application/json', sprintf('Authorization: Bearer %s', $responseArr['access_token']) ); 
-            $is_post = false; 
-            $me_ch = curl_init(); 
-            curl_setopt($me_ch, CURLOPT_URL, "https://openapi.naver.com/v1/nid/me"); 
-            curl_setopt($me_ch, CURLOPT_POST, $is_post ); 
-            curl_setopt($me_ch, CURLOPT_HTTPHEADER, $headers); 
-            curl_setopt($me_ch, CURLOPT_RETURNTRANSFER, true); 
-            $res = curl_exec ($me_ch); 
-            curl_close ($me_ch); 
-            $res_data = json_decode($res , true); 
-            
-            if ($res_data ['response']['id']) { 
-            // 해당 아이디값을 정상적으로 가져온다면 디비에 해당 아이디로 회원가입 여부 확인 하여 회원 가입을 하였으면 자동 로그인 구현.;
-            }
+         // Process the response data
+        $responseData = json_decode($response, true);
+
+        // Check if the login was successful
+        if (isset($responseData['success']) && $responseData['success']) {
+            // Login successful
+            $token = $responseData['token'];
+            // Do something with the token (e.g., store it in a session)
+            session()->regenerate();
+
+            // Redirect to the home page or any other desired location
+            return redirect('/');
+        } else {
+            // Login failed
+            $error = isset($responseData['message']) ? $responseData['message'] : 'Login failed';
+
+            // Display the error message or handle it as needed
+            return redirect('/')->with('error', $error);
         }
     }
 }

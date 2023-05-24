@@ -88,4 +88,6 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('admin');
     }
+
+    
 }

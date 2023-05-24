@@ -166,5 +166,9 @@ class PageController extends Controller
     public function myprofile_password_upload(){
         return view('pages.myprofile_password_upload');
     }
+    
+    public function userLogin(){
+        return view('pages.user-login');
+    }
 }
 
