@@ -31,7 +31,7 @@
         <div class="row align-items-center clearfix">
           <div class="col-lg-6 col-md-8 col-sm-12 content-column">
             <div class="content-box">
-              <h5>Welcome To <?php echo SITE_NAME; ?></h5>
+              <h5>Welcome To Nursense</h5>
               <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis diam erat. Duis velit lectus, posuere a blandit sit amet, tempor at lorem.</h6>
               <!-- <div class="btn-box">
                 <a href="#" class="theme-btn style-one">Our services<i class="fas fa-angle-double-right"></i></a>
@@ -71,4 +71,5 @@
     </div>
   </div>
 </section>
+
 @endsection

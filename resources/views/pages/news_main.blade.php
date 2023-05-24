@@ -14,8 +14,8 @@
                     <div class="pl30">
                         <div class="content-box">
                             <div class="title" style="margin-top: 40px;">
-                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px; color: #3941A2;">공지사항</h2>
-                                <h5 class="text-left text-white" style="font-family: pretendard-regular; font-size: 14px; color: #3941A2;">중요한 안내사항을 한눈에 확인하세요.</h5>
+                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px; color: #3941A2;">소식</h2>
+                                <h5 class="text-left text-white" style="font-family: pretendard-regular; font-size: 14px; color: #3941A2;">새로운 소식을 한곳에서 확인하세요.</h5>
                             </div>
                         </div>
                     </div>
@@ -34,19 +34,19 @@
                             <div class="col-lg-4">
                             <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 15px;">
                                 <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.그들은 이...다.</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인에...</p>
+                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 ...</p>
                             </div>
                             </div>
                             <div class="col-lg-4">
                             <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 15px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어</p>
+                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어,</p>
                                 <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</p>
                             </div>
                             </div>
                             <div class="col-lg-4">
                             <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 15px;">
                                 <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 ...</p>
+                               <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 ...</p>
                             </div>
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">10</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -92,8 +92,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">9</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -102,8 +102,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">8</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -112,8 +112,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">7</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -122,8 +122,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">6</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -132,8 +132,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">5</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -142,8 +142,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">4</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -152,8 +152,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">3</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -162,8 +162,8 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">2</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
@@ -172,19 +172,18 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">1</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="info_details.php">
-                                        가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게
+                                    <a href="news_main_details.php">
+                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
                                     </a>
                                 </td>
                                 <td style="width: 20%">2023.02.11</td>
                                 <td style="width: 15%">300</td>
                             </tr>
-                            
                         </table>
                     </div>
                 </div>
             </div>
-            
+
 <nav aria-label="Page navigation muve gallery" style="margin-left: 50%;">
     <ul class="pagination">
     <li class="page-item">
@@ -206,8 +205,8 @@
     </li>
   </ul>
 </nav>
-
         </div>
     </div>
 </section>
+
 @endsection

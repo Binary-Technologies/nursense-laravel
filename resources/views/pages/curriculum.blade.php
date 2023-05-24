@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row row-width-1920">
+        <div class="row">
 
             <div class="col-lg-2">
-                {{-- TODO: Side navbar --}}
+            {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10 sec-width-1396">
+            <div class="col-lg-10">
 
                 <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #4A227B);">
                     <div class="pl30">
@@ -21,7 +20,7 @@
                     </div>
                 </section>
 
-                <div class="container cont-width-1396">
+                <div style="padding: 1%;">
 
                     <div class="row my-5 pr-0">
 
@@ -350,30 +349,33 @@
                         </div>
                     </div>
                     <!-- card -->
-                    <nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&lt;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
-                            <li class="page-item">
-                                <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&gt;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+
+
+<nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
+    <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
+        <span aria-hidden="true">&lt;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
+    <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
+    <li class="page-item">
+      <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                 </div>
+
             </div>
         </div>
-    </div>
 </section>
+
 @endsection

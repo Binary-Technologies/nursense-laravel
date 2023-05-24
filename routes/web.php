@@ -54,7 +54,30 @@ Route::get('/inquiry_await', [PageController::class, 'inquiry_await']);
 Route::get('/inquiry', [PageController::class, 'inquiry']);
 Route::get('/learning_details', [PageController::class, 'learning_details']);
 Route::get('/learning', [PageController::class, 'learning']);
-Route::get('/guide', [PageController::class, 'guide']);
+Route::get('/location', [PageController::class, 'location']);
+Route::get('/muve_gallery', [PageController::class, 'muve_gallery']);
+Route::get('/muve', [PageController::class, 'muve']);
+Route::get('/myallocation', [PageController::class, 'myallocation']);
+Route::get('/myassesment', [PageController::class, 'myassesment']);
+Route::get('/mymanage', [PageController::class, 'mymanage']);
+Route::get('/myprelearning', [PageController::class, 'myprelearning']);
+Route::get('/myprofile_dp_upload', [PageController::class, 'myprofile_dp_upload']);
+Route::get('/myprofile', [PageController::class, 'myprofile']);
+Route::get('/myreports', [PageController::class, 'myreports']);
+Route::get('/mystudy', [PageController::class, 'mystudy']);
+Route::get('/news_main_details', [PageController::class, 'news_main_details']);
+Route::get('/news_main', [PageController::class, 'news_main']);
+Route::get('/privacy_policy', [PageController::class, 'privacy_policy']);
+Route::get('/quiz', [PageController::class, 'quiz']);
+Route::get('/resources_details', [PageController::class, 'resources_details']);
+Route::get('/resources', [PageController::class, 'resources']);
+Route::get('/terms_conditions', [PageController::class, 'terms_conditions']);
+Route::get('/user_manual', [PageController::class, 'user_manual']);
+
+Route::get('/myprofile_contact_upload', [PageController::class, 'myprofile_contact_upload']);
+Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_upload']);
+Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
+Route::get('/login', [PageController::class, 'userLogin']);
 
 Route::prefix('/admin')->group(function () {
     // DashBoard-----------------------------------------------------------------------------------------------

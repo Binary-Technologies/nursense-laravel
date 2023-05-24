@@ -2,15 +2,14 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row" style="width: 1920px;">
+        <div class="row">
 
             <div class="col-lg-2">
             {{-- TODO: Side navbar --}}
             </div>
 
             
-            <div class="col-lg-10" style="width: 1396px; margin-left: -420px;">
+            <div class="col-lg-10">
 
                 <section class="page-title text-center pt30 pb30 mt-4" style="background-image: url(images/wrappers/2.jpg); height: 190px">
                     <div class="auto-container">
@@ -73,7 +72,7 @@
                     <table class="mt-5" style="width: 100%;">
                         <tr>
                             <td style="text-align: right;">
-                          <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff;color: #9495A1;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;">목록</button>
+                          <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff;color: #9495A1;padding: 10px 50px; margin-right: 2%;">목록</button>
                        </td>
                         </tr>
                     </table>
@@ -83,6 +82,5 @@
             </div>
 
         </div>
-    </div>
 </section>
 @endsection

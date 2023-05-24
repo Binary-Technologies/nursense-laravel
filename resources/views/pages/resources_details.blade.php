@@ -14,8 +14,8 @@
                     <div class="auto-container">
                         <div class="content-box">
                             <div class="title" style="margin-top: -40px; margin-left: -40px;">
-                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px;">공지사항</h2>
-                                <p class="text-left cl-w text-white" style="font-family: pretendard-regular; font-size: 14px;">중요한 안내사항을 한눈에 확인하세요.</p>
+                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px;">자료실</h2>
+                                <p class="text-left cl-w text-white" style="font-family: pretendard-regular; font-size: 14px;">필요한 자료를 한곳에서 확인하세요.</p>
                             </div>
                         </div>
                     </div>
@@ -26,9 +26,11 @@
                 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="info.php" class="ttl-20">정보마당</a></li>
+                            <li><a href="#" class="ttl-20">정보마당</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li class="ttl-20">공지사항</li>
+                            <li><a href="#" class="ttl-20">자료실</a></li>
+                            <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
+                            <li class="ttl-20">자료실 상세</li>
                         </ul>
                     </div>
                     
@@ -53,6 +55,15 @@
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
                                 <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center;">
+                                    첨부파일
+                                </td>
+                                <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
+                                    <img src="images/pdf.png">자료실.pdf<br>
+                                    <img src="images/pdf.png">새로운 소식.pdf
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
+                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center;">
                                     조회수
                                 </td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
@@ -70,7 +81,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: right; padding: 20px; ">
-                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="border-color: #1B3EA8; border-radius: 6px; background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;">목록</button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;">목록</button>
                                 </td>
                             </tr>
                     </table>
@@ -83,4 +94,5 @@
 
         </div>
 </section>
+
 @endsection

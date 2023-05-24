@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row row-width-1920">
+        <div class="row">
 
             <div class="col-lg-2">
             {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10 sec-width-1396">
+            <div class="col-lg-10">
 
                 <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #4A227B);">
                     <div class="pl30">
@@ -21,8 +20,8 @@
                     </div>
                 </section>
 
-                <div class="container cont-width-1396">
-                    <div class="row my-5 pr-0">
+                <div style="padding: 1%;">
+                    <div class="row pr-0">
 
                         <div class="col-md-8">
                         </div>
@@ -389,6 +388,5 @@
             </div>
 
         </div>
-    </div>
 </section>
 @endsection

@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="pt100 pb100">
-    <div class="container">
-        <div class="row" style="width: 1920px;">
+        <div class="row">
 
             <div class="col-lg-2">
             {{-- TODO: Side navbar --}}
             </div>
 
-            <div class="col-lg-10" style="width: 1396px; margin-left: -420px;">
+            <div class="col-lg-10" style="padding: 1%;">
 
                 <section class="page-title text-center pt30 pb30 mt-4" style="background-image: linear-gradient(to right, #212880 , #4A227B); height: 190px">
                     <div class="pl30">
@@ -214,6 +213,5 @@
 </nav>
             </div>
         </div>
-    </div>
 </section>
 @endsection

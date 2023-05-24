@@ -42,7 +42,7 @@ class PageController extends Controller
     }
 
     public function front_slider(){
-        return view('pages.front_slider');
+        return view('pages.front_slider'); //php echo
     }
 
     public function info_details(){
@@ -69,7 +69,106 @@ class PageController extends Controller
         return view('pages.learning_details');
     }
 
+    public function learning(){
+        return view('pages.learning');
+    }
+    //
+
+    public function location(){
+        return view('pages.location');
+    }
+
+    public function muve_gallery(){
+        return view('pages.muve_gallery');
+    }
+
+    public function muve(){
+        return view('pages.muve');
+    }
+
+    public function myallocation(){
+        return view('pages.myallocation');
+    }
+
+    public function myassesment(){
+        return view('pages.myassesment');
+    }
+
+    public function mymanage(){
+        return view('pages.mymanage');
+    }
+
+    public function myprelearning(){
+        return view('pages.myprelearning');
+    }
+
+
+    public function myprofile_dp_upload(){
+        return view('pages.myprofile_dp_upload');
+    }
+
+    //myprofile-passsword..... has been left out
+
+    public function myprofile(){
+        return view('pages.myprofile');
+    }
+
+    public function myreports(){
+        return view('pages.myreports');
+    }
+
+    public function mystudy(){
+        return view('pages.mystudy');
+    }
+
+    public function news_main_details(){
+        return view('pages.news_main_details');
+    }
+
+    public function news_main(){
+        return view('pages.news_main');
+    }
+
+    //notice ...... has been leftout
+
+    public function privacy_policy(){
+        return view('pages.privacy_policy');
+    }
+
+    public function quiz(){
+        return view('pages.quiz');
+    }
+
+    public function resources_details(){
+        return view('pages.resources_details');
+    }
+
+    public function resources(){
+        return view('pages.resources');
+    }
+    public function terms_conditions(){
+        return view('pages.terms_conditions');
+    }
+
+    public function user_manual(){
+        $news = News::where('exposure', 1)->get();
+        return view('pages.user_manual', compact('news'));
+    }
+
+    public function myprofile_contact_upload(){
+        return view('pages.myprofile_contact_upload');
+    }
+
+    public function myprofile_email_upload(){
+        return view('pages.my_profile_email_upload');
+    }
+
+    public function myprofile_password_upload(){
+        return view('pages.myprofile_password_upload');
+    }
+    
     public function userLogin(){
         return view('pages.user-login');
     }
 }
+

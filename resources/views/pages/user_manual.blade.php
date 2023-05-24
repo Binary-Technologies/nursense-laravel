@@ -6,12 +6,12 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title">
-                <h2>Completion Certificate</h2>
+                <h2>User's Manual</h2>
             </div>
             <ul class="bread-crumb clearfix">
                 <li><a href="index.php">Home</a></li>
                 <li class="text-center mr-2"><i class="fas fa-angle-right"></i></li>
-                <li>Completion Certificate</li>
+                <li>User's Manual</li>
             </ul>
         </div>
     </div>
@@ -22,9 +22,8 @@
     <div class="container pt-5">
         <div class="row">
 
-        
-
             @forelse ($news as $newsItem)
+
 
                 <!-- Card -->
                 <div class="col-md-6 col-sm-12 shadow border-rad-5 py-4 px-4 mt-2 m5">
@@ -41,10 +40,10 @@
                         </div>
                         <div class="row mt15">
                             <div class="col-md-6">
-                                <h5>{{ $newsItem->title }}</h5>
+                                <h5>{{$newsItem->title}}</h5>
                             </div>
                             <div class="col-md-6 text-right">
-                                <p>{{ $newsItem->updated_at }}</p>
+                                <p>{{$newsItem->updated_at}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -65,7 +64,6 @@
                 @endforelse
 
         </div>
-    </div>
 </section>
 
 @endsection
