@@ -32,10 +32,6 @@ class AdminPageController extends Controller
         return view('pages.admin.member.instructor-register');
     }
 
-    public function updateInstructor()
-    {
-        return view('pages.admin.member.instructor-update');
-    }
 
     public function studentDashboard()
     {

@@ -130,7 +130,6 @@
     </div>
 
     <!-- DP Upload modal with confirmation start -->
-
     <div class="modal fade" id="dpUploadModal" aria-hidden="true" aria-labelledby="dpUploadModalContent" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -168,8 +167,91 @@
             </div>
         </div>
     </div>
-
     <!-- DP Upload modal with confirmation end -->
+    <!-- DP Upload modal with confirmation uploading progress start -->
+    <div class="modal fade" id="dpUploadModalProgress" aria-hidden="true" aria-labelledby="dpUploadModalProgressContent" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center my-3" id="dpUploadModalProgressContent"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <h5 class="modal-title text-center mt-1 mb-5">프로필 이미지 등록</h5>
+                    <div class="item-flex-center position-rel profile-img-outer mt-1">
+                        <img src="{{ asset('assets/img/dp.png')}}" alt="dp">
+                    </div>
+                    <p class="modal-inner-text text-center mt-2 mb-3">미리보기</p>
+                    <div class="item-flex-center mt-4">
+                        <div class="width-70">
+                            <div class="img-up-box">
+                                <div class="img-up-box-inner">
+                                    <div class="bg-white-progress border-rad-10 px-4 py-2">
+                                        <div class="item-flex-align-center">
+                                            <p class="bg-white-progress-text my-3 ms-0 me-2">img-dp1.jpg</p>
+                                            <div class="progress my-3 mx-3">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="progress-percent my-3 ms-2 me-0">25%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="modal-inner-text3">*100mb이하의 jpg, png파일만 등록할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="item-flex-center my-4">
+                        <div class="width-70 my-2">
+                            <button class="btn btn10" data-bs-target="#dpUploadSaveModal" data-bs-toggle="modal">등록 저장</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DP Upload modal with confirmation uploading progress end -->
+    <!-- DP Upload modal with confirmation uploading progress start -->
+    <div class="modal fade" id="dpUploaded" aria-hidden="true" aria-labelledby="dpUploadedContent" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center my-3" id="dpUploadedContent"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <h5 class="modal-title text-center mt-1 mb-5">프로필 이미지 등록</h5>
+                    <div class="item-flex-center position-rel profile-img-outer mt-1">
+                        <img src="{{ asset('assets/img/face.png')}}" alt="dp">
+                    </div>
+                    <p class="modal-inner-text text-center mt-2 mb-3">미리보기</p>
+                    <div class="item-flex-center mt-4">
+                        <div class="width-70">
+                            <div class="img-up-box">
+                                <div class="img-up-box-inner">
+                                    <div class="bg-white-progress border-rad-10 px-4 py-2">
+                                        <div class="item-flex-align-center">
+                                            <p class="bg-white-progress-text my-3 ms-0 me-5">img-dp1.jpg</p>
+                                            <div class="my-3 mx-5">
+
+                                            </div>
+                                            <a href="#" class="btn-dp-uploaded position-rel underline1 my-3 ms-5 me-0">삭제</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="modal-inner-text3">*100mb이하의 jpg, png파일만 등록할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="item-flex-center my-4">
+                        <div class="width-70 my-2">
+                            <button class="btn btn10" data-bs-target="#dpUploadSaveModal" data-bs-toggle="modal">등록 저장</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DP Upload modal with confirmation uploading progress end -->
 
 
 </div>

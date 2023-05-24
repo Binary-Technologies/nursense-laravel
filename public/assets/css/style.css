@@ -1039,9 +1039,9 @@ body {
 }
 
 
-/* Custom DC */
+/* ============================================ Custom DC ============================================ */
 
-/* Login page */
+/* ------------------------------------------ Login page ------------------------------------------ */
 
 .left-side {
     width: 34.60%;
@@ -1088,8 +1088,9 @@ body {
     box-shadow: none;
 }
 
-/* Login page */
+/* ------------------------------------------ Login page ------------------------------------------ */
 
+/* ------------------------------------------ Management Modules ------------------------------------------ */
 .page-title-top h5 {
     color: #090909;
     font-size: 22px;
@@ -1232,7 +1233,7 @@ body {
     font-family: pretendard-bold;
 }
 
-/* Instructor Acc. Data */
+/* ------------------------------------------ Instructor Acc. Data ------------------------------------------ */
 
 .profile-img-outer img {
     width: 140px;
@@ -1292,6 +1293,7 @@ body {
 }
 
 .title-border-t::before,
+.title-border-t2::before,
 .title-border-t-clr1::before {
     content: "";
     position: absolute;
@@ -1299,6 +1301,10 @@ body {
     top: -12px;
     left: 0;
     width: 40px;
+}
+
+.title-border-t2::before {
+    left: 12px;
 }
 
 .title-border-t-clr1::before {
@@ -1526,8 +1532,112 @@ body {
     border-top: none;
 }
 
+.bg-white-progress {
+    width: 84%;
+    background-color: #fff;
+}
+
+.progress {
+    width: 50%;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #032f98 !important;
+    transition: width .6s ease;
+}
+
+.bg-white-progress-text,
+.progress-percent {
+    color: #090909;
+    font-size: 18px;
+    font-family: pretendard-regular;
+}
+
+.progress-percent {
+    color: #3941A2;
+}
+
+.btn-dp-uploaded {
+    color: #7479BD;
+    font-size: 18px;
+    font-family: pretendard-medium;
+}
+
+.underline1::after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 34px;
+    height: 1px;
+    border-bottom: 1px solid #7479BD;
+}
+
 /* Modal Customs */
 
+.nav-tabs .nav-link {
+    color: #616474;
+    font-size: 18px;
+    font-family: pretendard-regular;
+    margin-bottom: -1px;
+    background-color: #F3F4F8;
+    border: 1px solid transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 8px 100px;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #212880;
+    border-color: transparent;
+    padding: 8px 100px;
+}
+
+.title-text1 {
+    color: #404252;
+    font-size: 18px;
+    font-family: pretendard-medium;
+}
+
+.title-text2 {
+    color: #090909;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.text-blue1 {
+    color: #3941A2;
+}
+
+.btn11 {
+    color: #9495A1;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #F3F4F8;
+    border: 1px solid #F3F4F8;
+    border-radius: 6px;
+    padding: 10px 44px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn11:hover,
+.btn11:focus {
+    background-color: #cacddb;
+    border-color: #cacddb;
+}
+
+
+/* ------------------------------------------ Management Modules ------------------------------------------ */
 
 
 

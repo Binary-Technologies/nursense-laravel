@@ -34,6 +34,7 @@
                         $current_page == 'insAccData' ||
                         $current_page == 'insAccDataEdit' ||
                         $current_page == 'insAccDataEditDp' ||
+                        $current_page == 'insReg' ||
                         $current_page == 'viewMemStu' ||
                         $current_page == 'stuAccData'
                     ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
@@ -50,6 +51,8 @@
                         $show_class = "show";
                     } else if ($current_page == 'insAccDataEditDp') {
                         $show_class = "show";
+                    } else if ($current_page == 'insReg') {
+                        $show_class = "show";
                     } else if ($current_page == 'viewMemStu') {
                         $show_class = "show";
                     } else if ($current_page == 'stuAccData') {
@@ -65,7 +68,8 @@
                             $current_page == 'viewMemIns' ||
                             $current_page == 'insAccData' ||
                             $current_page == 'insAccDataEdit' ||
-                            $current_page == 'insAccDataEditDp'
+                            $current_page == 'insAccDataEditDp' ||
+                            $current_page == 'insReg'
                         ) : ?>active show <?php endif; ?>">
                             회원 관리
                         </a>
