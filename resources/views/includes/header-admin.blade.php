@@ -32,6 +32,9 @@
                     <?php if (
                         $current_page == 'viewMemIns' ||
                         $current_page == 'insAccData' ||
+                        $current_page == 'insAccDataEdit' ||
+                        $current_page == 'insAccDataEditDp' ||
+                        $current_page == 'insReg' ||
                         $current_page == 'viewMemStu' ||
                         $current_page == 'stuAccData'
                     ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
@@ -44,6 +47,12 @@
                         $show_class = "show";
                     } else if ($current_page == 'insAccData') {
                         $show_class = "show";
+                    } else if ($current_page == 'insAccDataEdit') {
+                        $show_class = "show";
+                    } else if ($current_page == 'insAccDataEditDp') {
+                        $show_class = "show";
+                    } else if ($current_page == 'insReg') {
+                        $show_class = "show";
                     } else if ($current_page == 'viewMemStu') {
                         $show_class = "show";
                     } else if ($current_page == 'stuAccData') {
@@ -54,15 +63,75 @@
                     ?>
 
                     <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
-                        <a href="{{ url('viewMemIns') }}" class="dropdown-item <?php if ($current_page == 'viewMemIns' || $current_page == 'insAccData') : ?>active show <?php endif; ?>">
+                        <a href="{{ url('admin/viewMemIns') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'viewMemIns' ||
+                            $current_page == 'insAccData' ||
+                            $current_page == 'insAccDataEdit' ||
+                            $current_page == 'insAccDataEditDp' ||
+                            $current_page == 'insReg'
+                        ) : ?>active show <?php endif; ?>">
                             회원 관리
                         </a>
-                        <a href="{{ url('viewMemStu') }}" class="dropdown-item <?php if ($current_page == 'viewMemStu' || $current_page == 'stuAccData') : ?>active show <?php endif; ?>">
+                        <a href="{{ url('admin/viewMemStu') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'viewMemStu' ||
+                            $current_page == 'stuAccData'
+                        ) : ?>active show <?php endif; ?>">
                             학생 계정 관리
                         </a>
                     </div>
 
                 </div>
+
+                <a href="{{ url('admin/bannerDash') }}" class="nav-item nav-link <?php if ($current_page == 'bannerDash') : ?> active <?php endif; ?>">
+                    배너 관리
+                </a>
+
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle 
+                    <?php if (
+                        $current_page == '' ||
+                        $current_page == '' ||
+                        $current_page == '' ||
+                        $current_page == ''
+                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
+                        컨텐츠 관리
+                    </a>
+
+                    <?php
+                    $show_class = "";
+                    if ($current_page == '') {
+                        $show_class = "show";
+                    } else if ($current_page == '') {
+                        $show_class = "show";
+                    } else if ($current_page == '') {
+                        $show_class = "show";
+                    } else if ($current_page == '') {
+                        $show_class = "show";
+                    } else {
+                        $show_class = "";
+                    }
+                    ?>
+
+                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+                        <a href="{{ url('admin/') }}" class="dropdown-item <?php if ($current_page == '' || $current_page == '') : ?>active show <?php endif; ?>">
+                            공지사항 관리
+                        </a>
+                        <a href="{{ url('admin/') }}" class="dropdown-item <?php if ($current_page == '' || $current_page == '') : ?>active show <?php endif; ?>">
+                            소식 관리
+                        </a>
+                        <a href="{{ url('admin/') }}" class="dropdown-item <?php if ($current_page == '' || $current_page == '') : ?>active show <?php endif; ?>">
+                            오시는 길 관리
+                        </a>
+                        <a href="{{ url('admin/') }}" class="dropdown-item <?php if ($current_page == '' || $current_page == '') : ?>active show <?php endif; ?>">
+                            자료실 관리
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
 
         </nav>

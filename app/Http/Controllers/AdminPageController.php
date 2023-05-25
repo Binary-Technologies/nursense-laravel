@@ -26,8 +26,23 @@ class AdminPageController extends Controller
         return view('pages.admin.member.student-dashboard');
     }
 
-    public function studentView(){
+    public function viewStudent(){
         return view('pages.admin.member.student-view');
+    }
+
+    public function viewStudentEdit()
+    {
+        return view('pages.admin.member.student-view-edit');
+    }
+
+    public function viewStudentEditDp()
+    {
+        return view('pages.admin.member.student-view-edit-dp');
+    }
+
+    public function registerStudent()
+    {
+        return view('pages.admin.member.student-register');
     }
 
     public function dashboard(){

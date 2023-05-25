@@ -56,6 +56,11 @@ body {
     font-size: 16px;
 }
 
+.btn:focus,
+.btn:hover {
+    box-shadow: none !important;
+}
+
 :root {
     --white: #fff;
     --primary: #009CFF;
@@ -557,6 +562,10 @@ body {
     width: 40%;
 }
 
+.width-44 {
+    width: 44%;
+}
+
 .width-30 {
     width: 30%;
 }
@@ -915,8 +924,8 @@ body {
     background: var(--dark-blue1);
 }
 
-.sidebar .navbar .navbar-nav .nav-link:hover i,
-.sidebar .navbar .navbar-nav .nav-link.active i {}
+/* .sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {} */
 
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
@@ -1030,9 +1039,9 @@ body {
 }
 
 
-/* Custom DC */
+/* ============================================ Custom DC ============================================ */
 
-/* Login page */
+/* ------------------------------------------ Login page ------------------------------------------ */
 
 .left-side {
     width: 34.60%;
@@ -1079,8 +1088,9 @@ body {
     box-shadow: none;
 }
 
-/* Login page */
+/* ------------------------------------------ Login page ------------------------------------------ */
 
+/* ------------------------------------------ Management Modules ------------------------------------------ */
 .page-title-top h5 {
     color: #090909;
     font-size: 22px;
@@ -1223,7 +1233,30 @@ body {
     font-family: pretendard-bold;
 }
 
-/* Instructor Acc. Data */
+.dash-text1 {
+    color: #616474;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.btn-dash1 {
+    color: #3941A2;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #fff;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 10px 44px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-dash1:hover,
+.btn-dash1:focus {
+    background-color: #cacddb;
+    border-color: #212879;
+}
+
+/* ------------------------------------------ Instructor Acc. Data ------------------------------------------ */
 
 .profile-img-outer img {
     width: 140px;
@@ -1283,6 +1316,7 @@ body {
 }
 
 .title-border-t::before,
+.title-border-t2::before,
 .title-border-t-clr1::before {
     content: "";
     position: absolute;
@@ -1290,6 +1324,10 @@ body {
     top: -12px;
     left: 0;
     width: 40px;
+}
+
+.title-border-t2::before {
+    left: 12px;
 }
 
 .title-border-t-clr1::before {
@@ -1393,7 +1431,8 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn6:hover {
+.btn6:hover,
+.btn6:focus {
     background-color: #a0a3c4;
     border-color: #a0a3c4;
 }
@@ -1408,8 +1447,9 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn7:hover {
-    background-color: #de4744;
+.btn7:hover,
+.btn7:focus {
+    background-color: #f1e6e6;
 }
 
 .btn8 {
@@ -1423,11 +1463,268 @@ body {
     transition: 0.3s all ease-in-out;
 }
 
-.btn8:hover {
+.btn8:hover,
+.btn8:focus {
     background-color: #3a409d;
     border-color: #3a409d;
 }
 
+/* ----------------------------------------------- Modal Customs Start --------------------------------------------------- */
+
+/* ------------------ Alert Modals Start ----------------------- */
+
+.alert-title {
+    color: #090909;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.alert-text {
+    color: #767885;
+    font-size: 16px;
+    font-family: pretendard-regular;
+}
+
+.alert-text2 {
+    color: #090909;
+    font-size: 20px;
+    font-family: pretendard-regular;
+}
+
+.btn-alert1 {
+    color: #3941A2;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #D7D9EC;
+    border: 1px solid #D7D9EC;
+    border-radius: 6px;
+    padding: 10px 88px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-alert1:hover,
+.btn-alert1:focus {
+    background-color: #9397ba;
+    border-color: #9397ba;
+}
+
+.btn-alert2,
+.btn-alert3 {
+    color: #fff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #3941A2;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 10px 88px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-alert3 {
+    padding: 10px 180px;
+}
+
+.btn-alert2:hover,
+.btn-alert2:focus,
+.btn-alert3:hover,
+.btn-alert3:focus {
+    background-color: var(--dark-blue2);
+    border-color: var(--dark-blue2);
+}
+
+/* ------------------ Alert Modals End ----------------------- */
+
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #090909;
+    font-size: 30px;
+    font-family: pretendard-bold;
+}
+
+.modal-inner-text,
+.modal-inner-text2,
+.modal-inner-text3 {
+    color: #767885;
+    font-size: 16px;
+    font-family: pretendard-regular;
+}
+
+.modal-inner-text2 {
+    color: #7479BD;
+    font-size: 18px;
+    padding-top: 7px;
+}
+
+.modal-inner-text3 {
+    color: #9495A1;
+    padding-top: 7px;
+}
+
+.img-up-box {
+    background-color: #F5F7FE;
+    border: 2px dashed #BABCDE;
+    border-radius: 12px;
+}
+
+.img-up-box-inner {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn9 {
+    color: #fff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #3941A2;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 14px 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn9:hover,
+.btn9:focus {
+    background-color: #3a409d;
+    border-color: #3a409d;
+}
+
+.btn10 {
+    width: 100%;
+    color: #9495A1;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #F3F4F8;
+    border: 1px solid #F3F4F8;
+    border-radius: 6px;
+    padding: 12px 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn10:hover,
+.btn10:focus {
+    background-color: #cacddb;
+    border-color: #cacddb;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.bg-white-progress {
+    width: 84%;
+    background-color: #fff;
+}
+
+.progress {
+    width: 50%;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #032f98 !important;
+    transition: width .6s ease;
+}
+
+.bg-white-progress-text,
+.progress-percent {
+    color: #090909;
+    font-size: 18px;
+    font-family: pretendard-regular;
+}
+
+.progress-percent {
+    color: #3941A2;
+}
+
+.btn-dp-uploaded {
+    color: #7479BD;
+    font-size: 18px;
+    font-family: pretendard-medium;
+}
+
+.underline1::after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 34px;
+    height: 1px;
+    border-bottom: 1px solid #7479BD;
+}
+
+/* --------------------------------- Modal Customs End --------------------------------- */
+
+.nav-tabs .nav-link {
+    color: #616474;
+    font-size: 18px;
+    font-family: pretendard-regular;
+    margin-bottom: -1px;
+    background-color: #F3F4F8;
+    border: 1px solid transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 8px 100px;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #212880;
+    border-color: transparent;
+    padding: 8px 100px;
+}
+
+.title-text1 {
+    color: #404252;
+    font-size: 18px;
+    font-family: pretendard-medium;
+}
+
+.title-text2 {
+    color: #090909;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.text-blue1 {
+    color: #3941A2;
+}
+
+.btn11 {
+    color: #9495A1;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #F3F4F8;
+    border: 1px solid #F3F4F8;
+    border-radius: 6px;
+    padding: 10px 44px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn11:hover,
+.btn11:focus {
+    background-color: #cacddb;
+    border-color: #cacddb;
+}
+
+
+/* ------------------------------------------ Management Modules ------------------------------------------ */
 
 
 
