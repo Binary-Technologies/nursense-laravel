@@ -69,7 +69,10 @@ Route::prefix('/admin')->group(function () {
 
     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
     Route::get('/viewMemStu', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
-    Route::get('/stuAccData', [AdminPageController::class, 'studentView'])->name('stuAccData');
+    Route::get('/stuAccData', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
+    Route::get('/stuAccDataEdit', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
+    Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
+    Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');

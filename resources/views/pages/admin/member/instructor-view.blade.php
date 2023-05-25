@@ -21,9 +21,7 @@
 
 <!-- Instructor Account Management Start -->
 <div class="container-fluid px-0">
-
     <div class="rounded pt-4">
-
         <div class="row my-5">
 
             <div class="col-xl-3">
@@ -301,9 +299,8 @@
             </div>
 
         </div>
-
     </div>
-
 </div>
 <!-- Instructor Account Management End -->
+
 @endsection

@@ -924,8 +924,8 @@ body {
     background: var(--dark-blue1);
 }
 
-.sidebar .navbar .navbar-nav .nav-link:hover i,
-.sidebar .navbar .navbar-nav .nav-link.active i {}
+/* .sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {} */
 
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
@@ -1233,6 +1233,29 @@ body {
     font-family: pretendard-bold;
 }
 
+.dash-text1 {
+    color: #616474;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.btn-dash1 {
+    color: #3941A2;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #fff;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 10px 44px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-dash1:hover,
+.btn-dash1:focus {
+    background-color: #cacddb;
+    border-color: #212879;
+}
+
 /* ------------------------------------------ Instructor Acc. Data ------------------------------------------ */
 
 .profile-img-outer img {
@@ -1446,7 +1469,71 @@ body {
     border-color: #3a409d;
 }
 
-/* Modal Customs */
+/* ----------------------------------------------- Modal Customs Start --------------------------------------------------- */
+
+/* ------------------ Alert Modals Start ----------------------- */
+
+.alert-title {
+    color: #090909;
+    font-size: 26px;
+    font-family: pretendard-bold;
+}
+
+.alert-text {
+    color: #767885;
+    font-size: 16px;
+    font-family: pretendard-regular;
+}
+
+.alert-text2 {
+    color: #090909;
+    font-size: 20px;
+    font-family: pretendard-regular;
+}
+
+.btn-alert1 {
+    color: #3941A2;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #D7D9EC;
+    border: 1px solid #D7D9EC;
+    border-radius: 6px;
+    padding: 10px 88px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-alert1:hover,
+.btn-alert1:focus {
+    background-color: #9397ba;
+    border-color: #9397ba;
+}
+
+.btn-alert2,
+.btn-alert3 {
+    color: #fff;
+    font-size: 18px;
+    font-family: pretendard-medium;
+    background-color: #3941A2;
+    border: 1px solid #3941A2;
+    border-radius: 6px;
+    padding: 10px 88px;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-alert3 {
+    padding: 10px 180px;
+}
+
+.btn-alert2:hover,
+.btn-alert2:focus,
+.btn-alert3:hover,
+.btn-alert3:focus {
+    background-color: var(--dark-blue2);
+    border-color: var(--dark-blue2);
+}
+
+/* ------------------ Alert Modals End ----------------------- */
+
 .modal-content {
     border-radius: 12px;
 }
@@ -1580,7 +1667,7 @@ body {
     border-bottom: 1px solid #7479BD;
 }
 
-/* Modal Customs */
+/* --------------------------------- Modal Customs End --------------------------------- */
 
 .nav-tabs .nav-link {
     color: #616474;

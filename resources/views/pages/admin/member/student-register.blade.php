@@ -5,7 +5,7 @@
     <div class="page-title-top">
         <div class="rounded">
             <div class="d-flex align-items-center justify-content-between">
-                <h5 class="text-center mb-0">교수자 계정 관리</h5>
+                <h5 class="text-center mb-0">학생 계정 등록</h5>
             </div>
         </div>
     </div>
@@ -13,13 +13,13 @@
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
             <li class="breadcrumb-item breadcrumb-text1">회원 관리</li>
-            <li class="breadcrumb-item breadcrumb-text1">교수자 계정 관리</li>
-            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">교수자 계정 등록</li>
+            <li class="breadcrumb-item breadcrumb-text1">학생 계정 관리</li>
+            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학생 계정 등록</li>
         </ol>
     </nav>
 </div>
 
-<!-- Instructor Account Management Start -->
+<!-- Student Account Management Start -->
 <div class="container-fluid px-0">
 
     <div class="rounded pt-4">
@@ -152,25 +152,25 @@
                                     <!-- Name -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="name">이름</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="name" id="name" placeholder="이름을 입력하세요." aria-describedby="Instructor Name">
+                                        <input type="text" class="form-control form-text-d fields-height1" name="name" id="name" placeholder="이름을 입력하세요." aria-describedby="Student Name">
                                     </div>
 
                                     <!-- Mobile -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
-                                        <input type="phone" class="form-control form-text-d fields-height1" name="mobile" id="mobile" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Mobile">
+                                        <input type="phone" class="form-control form-text-d fields-height1" name="mobile" id="mobile" placeholder="학번을 입력하세요." aria-describedby="Student Mobile">
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="email">이메일</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Instructor Email">
+                                        <input type="text" class="form-control form-text-d fields-height1" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Student Email">
                                     </div>
 
                                     <!-- Job -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="job">직종</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="job" id="job" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Job">
+                                        <input type="text" class="form-control form-text-d fields-height1" name="job" id="job" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Student Job">
                                     </div>
 
                                 </div>
@@ -321,5 +321,5 @@
 
 
 </div>
-<!-- Instructor Account Management End -->
+<!-- Student Account Management End -->
 @endsection
