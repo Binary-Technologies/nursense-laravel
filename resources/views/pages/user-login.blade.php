@@ -1,7 +1,9 @@
+
 @extends('layouts.app')
 
 @section('content')
-<section class="py-5">
+
+  <section class="py-5">
     <div class="container py-5">
       <div class="row item-flex-center py-5">
   
@@ -16,16 +18,16 @@
           <div class="docu-details item-flex-center">
   
             {{-- {{ Form::open(array('url' => 'userLogin', 'method' => 'post')) }} --}}
-            <form method="post" action="/userLogin" autocomplete="off" class="col-md-12 mx-2 my-2">
+            <form method="POST" action="{{ route('admin.login') }}" autocomplete="off" class="col-md-12 mx-2 my-2">
               @csrf
               <div class="form-group input-group-sm">
                 <label for="uname"><small>아이디</small></label>
-                <input type="text" name='uname' id='uname' class="form-control" placeholder="아이디를 입력하세요." aria-describedby="Uname" required>
+                <input type="email" name='email' id='email' class="form-control" placeholder="아이디를 입력하세요." aria-describedby="Uname" required>
               </div>
   
               <div class="form-group input-group-sm">
                 <label for="pass"><small>비밀번호</small></label>
-                <input type="password" name='pass' id='pass' class="form-control" placeholder="비밀번호를 입력하세요." required>
+                <input type="password" name='password' id='password' class="form-control" placeholder="비밀번호를 입력하세요." required>
               </div>
   
               <div id="msg" class="alert-danger bg-transparent py-2">

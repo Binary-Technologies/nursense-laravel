@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -62,5 +63,44 @@ class DatabaseSeeder extends Seeder
             'exposure' => 1,
             'views' => 0,
         ]);
+
+        DB::table('users')->insert([
+            
+                  "inst_id"=> "inst0001",
+                  "std_id"=> null,
+                  "name"=> "instructor",
+                  "email"=> "instructor@gmail.com",
+                  "email_verified_at"=> null,
+                  "pno"=> "0718640050",
+                  "uni_id"=> 1,
+                  "major_id"=> 1,
+                  "active_status"=> null,
+                  "dob"=> null,
+                  "occupation"=> "Software Engineer",
+                  "gender"=> "male",
+                  "grade"=> 1,
+                  "resident_reg"=> 0001,
+                  "password"=> Hash::make(12345678),
+               
+        ]);
+        DB::table('users')->insert([
+            
+            "inst_id"=> null,
+            "std_id"=>"std0001",
+            "name"=> "student",
+            "email"=> "student@gmail.com",
+            "email_verified_at"=> null,
+            "pno"=> "0741443733",
+            "uni_id"=> 1,
+            "major_id"=> 1,
+            "active_status"=> null,
+            "dob"=> null,
+            "occupation"=> "Software Engineer",
+            "gender"=> "male",
+            "grade"=> 1,
+            "resident_reg"=> 0001,
+            "password"=> Hash::make(12345678),
+         
+  ]);
     }
 }

@@ -16,7 +16,9 @@
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h3 class="text-center mb-3">User Registration</h3>
         </div>
-
+        <form method="POST" action="/userRegistration">
+                    
+            @csrf
         <div class="row">
 
             <div class="col-lg-6 col-md-6 col-sm-12">

@@ -61,6 +61,12 @@ class HomeController extends Controller
             'message' => 'User account deleted successfully'
         ]);
     }
+
+    public function showUserRegister()
+    {
+        return view('components.userRegister');
+    }
+
     
     protected function userRegister(Request $request)
     {
@@ -73,10 +79,10 @@ class HomeController extends Controller
             'email' => $request['email'],
             'pno' => $request['pno'],
             'name' => $request['name'],
-            'uni_name'=>$request['uni_name'],
-            'major' => $request['major'],
-            'scl_name'=>$request['scl_name'],
-            'dep_name'=>$request['dep_name'],
+            'uni_id'=>$request['uni_id'],
+            'major_id' => $request['major_id'],
+            'scl_id'=>$request['scl_id'],
+            'dep_id'=>$request['dep_id'],
             'password' => Hash::make($request['password']),
             'dob' => $request['dob'],
             'gender' => $request['gender'],

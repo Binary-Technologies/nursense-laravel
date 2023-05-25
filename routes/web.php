@@ -98,6 +98,9 @@ Route::prefix('/admin')->group(function () {
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
+
+    Route::get('/stuAccData', [AdminPageController::class, 'studentView'])->name('stuAccData');
+
 });
 
 // Utilities

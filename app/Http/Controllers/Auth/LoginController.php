@@ -51,11 +51,11 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
         ]);
 
         if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect('/admin/dashboard');
+            return redirect('/admin/dashBoard');
         }
 
         return back()->withInput($request->only('email', 'remember'));
@@ -72,10 +72,8 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        throw ValidationException::withMessages([
-            'email' => 'Your provided credentials not verified.'
-        ]);
-
+        
+/*
         $data = array(
             'username' => $email,
             'password' => $password
@@ -121,13 +119,16 @@ class LoginController extends Controller
         $responseData = json_decode($response, true);
 
         // Return the response data
-        return $responseData;
+        return $responseData;*/
 
-        // if (auth()->attempt($attributes)){
-        //     session()->regenerate();
+         if (auth()->attempt($attributes)){
+             session()->regenerate();
             
-        //     return redirect('/');
-        // }
+             return redirect('/');
+         }
+         throw ValidationException::withMessages([
+            'email' => 'Your provided credentials not verified.'
+        ]);
         
     }
 
