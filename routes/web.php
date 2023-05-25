@@ -22,29 +22,25 @@ use App\Http\Controllers\AdminPageController;
 
 Auth::routes();
 
+Route::get('/', [PageController::class, 'index']);
+
 Route::get('/admin',[LoginController::class,'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin',[LoginController::class,'adminLogin'])->name('admin.login');
 
 Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin/dashboard',function(){
-    return view('pages.admin.dashboard');
-})->middleware('auth:admin');
-
-Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
-Route::post('/userLogin',[LoginController::class,'userLogin']);
-
 Route::get('/userRegister',[HomeController::class,'showUserRegister'])->middleware('auth:admin');
 Route::post('/userRegistration',[HomeController::class,'userRegister'])->middleware('auth:admin');
 Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
-Route::get('/', [PageController::class, 'index']);
+Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
+Route::post('/userLogin',[LoginController::class,'userLogin']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/download', [PageController::class, 'download']);
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/curriculum', [PageController::class, 'curriculum']);
 Route::get('/gallery-details', [PageController::class, 'galleryDetails']);
-
 Route::get('/guide', [PageController::class, 'guide']);
 Route::get('/curriculum2', [PageController::class, 'curriculum2']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
@@ -74,7 +70,6 @@ Route::get('/resources_details', [PageController::class, 'resources_details']);
 Route::get('/resources', [PageController::class, 'resources']);
 Route::get('/terms_conditions', [PageController::class, 'terms_conditions']);
 Route::get('/user_manual', [PageController::class, 'user_manual']);
-
 Route::get('/myprofile_contact_upload', [PageController::class, 'myprofile_contact_upload']);
 Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_upload']);
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
@@ -83,7 +78,7 @@ Route::get('/login', [PageController::class, 'userLogin']);
 Route::prefix('/admin')->group(function () {
     // DashBoard with Auth validation
     Route::middleware('auth:admin')->group(function (){
-        Route::get('/dashBoard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
+        Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
     });
 
      // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
