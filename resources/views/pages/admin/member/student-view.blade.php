@@ -19,9 +19,11 @@
     </nav>
 </div>
 
-<!-- Student Account Management Start -->
+<!-- Instructor Account Management Start -->
 <div class="container-fluid px-0">
+
     <div class="rounded pt-4">
+
         <div class="row my-5">
 
             <div class="col-xl-3">
@@ -62,7 +64,7 @@
                     </div>
                     <div class="col-xl-3 item-flex-center pl-0 py-4">
                         <div class="btn5-outer">
-                            <a href="{{ route('stuAccDataEdit') }}" class="btn btn-secondary btn5">
+                            <a href="#" class="btn btn-secondary btn5">
                                 수정
                             </a>
                         </div>
@@ -338,8 +340,9 @@
             </div>
 
         </div>
-    </div>
-</div>
-<!-- Student Account Management End -->
 
+    </div>
+
+</div>
+<!-- Instructor Account Management End -->
 @endsection
