@@ -209,7 +209,7 @@
                                 </div>
                                 <!-- row2 -->
 
-                                <div class="row my-4">
+                                <div class="row mt-4 mb-5">
                                     <div class="item-flex-end">
                                         <a href="#" class="btn btn11">
                                             계정 등록

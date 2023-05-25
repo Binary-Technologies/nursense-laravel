@@ -6,27 +6,41 @@ use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
 {
-    public function instructorDashboard(){
+    // Member Management Start -------------------------------------------------------------------
+    // Instructor Mng. Start
+    public function instructorDashboard()
+    {
         return view('pages.admin.member.instructor-dashboard');
     }
 
-    public function viewInstructor(){
+    public function viewInstructor()
+    {
         return view('pages.admin.member.instructor-view');
     }
 
-    public function registerInstructor(){
+    public function viewInstructorEdit()
+    {
+        return view('pages.admin.member.instructor-view-edit');
+    }
+
+    public function viewInstructorEditDp()
+    {
+        return view('pages.admin.member.instructor-view-edit-dp');
+    }
+
+    public function registerInstructor()
+    {
         return view('pages.admin.member.instructor-register');
     }
 
-    public function updateInstructor(){
-        return view('pages.admin.member.instructor-update');
-    }
-
-    public function studentDashboard(){
+    // Student Mng. Start
+    public function studentDashboard()
+    {
         return view('pages.admin.member.student-dashboard');
     }
 
-    public function viewStudent(){
+    public function viewStudent()
+    {
         return view('pages.admin.member.student-view');
     }
 
@@ -44,12 +58,39 @@ class AdminPageController extends Controller
     {
         return view('pages.admin.member.student-register');
     }
+    // Member Management End -------------------------------------------------------------------
 
-    public function dashboard(){
-        return view('pages.admin.adminLayout.dashboard');
-    }
 
-    public function bannerDashboard(){
+    // Banner Mangement Start --------------------------------------------------------------------
+
+    public function bannerDashboard()
+    {
         return view('pages.admin.banner.banner-dashboard');
     }
+    public function bannerAdd()
+    {
+        return view('pages.admin.banner.banner-add');
+    }
+    public function bannerAddAttachFileReg()
+    {
+        return view('pages.admin.banner.banner-add-att-file-reg');
+    }
+    public function bannerDetailsView()
+    {
+        return view('pages.admin.banner.banner-details');
+    }
+    public function bannerModify()
+    {
+        return view('pages.admin.banner.banner-modification');
+    }
+
+    // Banner Mangement End --------------------------------------------------------------------
+
+
+    // DashBoard Start ---------------------------------------------------------------------------
+    public function dashboard()
+    {
+        return view('pages.admin.adminLayout.dashboard');
+    }
+    // DashBoard End ---------------------------------------------------------------------------
 }

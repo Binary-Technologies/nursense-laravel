@@ -36,7 +36,10 @@
                         $current_page == 'insAccDataEditDp' ||
                         $current_page == 'insReg' ||
                         $current_page == 'viewMemStu' ||
-                        $current_page == 'stuAccData'
+                        $current_page == 'stuAccData' ||
+                        $current_page == 'stuAccDataEdit' ||
+                        $current_page == 'stuAccDataEditDp' ||
+                        $current_page == 'stuReg'
                     ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
                         회원 관리
                     </a>
@@ -57,6 +60,12 @@
                         $show_class = "show";
                     } else if ($current_page == 'stuAccData') {
                         $show_class = "show";
+                    } else if ($current_page == 'stuAccDataEdit') {
+                        $show_class = "show";
+                    } else if ($current_page == 'stuAccDataEditDp') {
+                        $show_class = "show";
+                    } else if ($current_page == 'stuReg') {
+                        $show_class = "show";
                     } else {
                         $show_class = "";
                     }
@@ -76,7 +85,10 @@
                         <a href="{{ url('admin/viewMemStu') }}" class="dropdown-item 
                         <?php if (
                             $current_page == 'viewMemStu' ||
-                            $current_page == 'stuAccData'
+                            $current_page == 'stuAccData' ||
+                            $current_page == 'stuAccDataEdit' ||
+                            $current_page == 'stuAccDataEditDp' ||
+                            $current_page == 'stuReg'
                         ) : ?>active show <?php endif; ?>">
                             학생 계정 관리
                         </a>
@@ -84,7 +96,14 @@
 
                 </div>
 
-                <a href="{{ url('admin/bannerDash') }}" class="nav-item nav-link <?php if ($current_page == 'bannerDash') : ?> active <?php endif; ?>">
+                <a href="{{ url('admin/bannerDash') }}" class="nav-item nav-link 
+                <?php if (
+                    $current_page == 'bannerDash' ||
+                    $current_page == 'bannerAdd' ||
+                    $current_page == 'bannerAddAttFilereg' ||
+                    $current_page == 'bannerDetails' ||
+                    $current_page == 'bannerUpdate'
+                ) : ?> active <?php endif; ?>">
                     배너 관리
                 </a>
 

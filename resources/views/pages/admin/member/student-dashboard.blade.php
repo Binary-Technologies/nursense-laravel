@@ -234,7 +234,7 @@
                         <th scope="col" class="table-th-text">번호</th>
                         <th scope="col" class="table-th-text">이름</th>
                         <th scope="col" class="table-th-text">아이디</th>
-                        <th scope="col" class="table-th-text">계정 상태</th>
+                        <th scope="col" class="table-th-text">활동 상태</th>
                         <th scope="col" class="table-th-text">학교</th>
                         <th scope="col" class="table-th-text">학과</th>
                         <th scope="col" class="table-th-text">휴대폰 번호</th>

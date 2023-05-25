@@ -12,18 +12,17 @@
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <!-- <li class="breadcrumb-item breadcrumb-text1"></li> -->
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">배너 관리</li>
         </ol>
     </nav>
 </div>
 
-<!-- Instructor Account Management Start -->
+<!-- Banner Account Management Start -->
 <div class="container-fluid px-0">
 
     <div class="rounded pt-4">
 
-        <form method="post" id="instructor-filter-form" action="#">
+        <form method="post" id="Banner-filter-form" action="#">
 
             <!-- Table Section -->
             <div class="row mb-4">
@@ -57,8 +56,8 @@
                 </div>
 
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-                    <a href="{{ route('insAccData') }}" class="btn btn-secondary btn3">
-                        배너 추가 등록
+                    <a href="{{ route('bannerAdd') }}" class="btn btn-secondary btn3">
+                        배너 추가
                     </a>
                 </div>
 
@@ -134,32 +133,112 @@
             </tbody>
         </table>
 
-    </div>
+        <!-- Show when click related button -->
+        <div class="d-none">
+            <table class="table align-middle table-hover">
+                <thead class="thead-light text-center">
+                    <tr class="table-head-1">
+                        <th scope="col" class="table-th-text">번호</th>
+                        <th scope="col" class="table-th-text">배너명</th>
+                        <th scope="col" class="table-th-text">배너 이미지</th>
+                        <th scope="col" class="table-th-text">배너 노출</th>
+                        <th scope="col" class="table-th-text">배너 노출 순서</th>
+                        <th scope="col" class="table-th-text">등록일</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="item-flex-center mt-5">
+                <div class="text-center mt-5">
+                    <p class="dash-text1 mt-5">검색어와 일치한 내용이 없습니다.</p>
+                    <div class="item-flex-align-center">
+                        <button class="btn btn-dash1 mt-2">돌아가기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Show when click related button -->
 
-    <div class="item-flex-end">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&lt;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
-                <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
-                <li class="page-item">
-                    <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
-                        <span aria-hidden="true">&gt;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </div>
 
 </div>
-<!-- Instructor Account Management End -->
+
+<div class="item-flex-end">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
+            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
+            <li class="page-item">
+                <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Confirmation Alert Modal -->
+<div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="confirmationModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <h5 class="alert-title text-center mt-1 mb-4">임시 계정 발송</h5>
+                <p class="alert-text text-center mt-2 mb-5">
+                    선택한 회원에게 임시 계정 발송을<br>
+                    진행하시겠습니까?
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                    </div>
+                    <div class="mx-1">
+                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">발송</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirmation Alert Modal -->
+<!-- Completion Alert Modal -->
+<div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    임시 계정 발송을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
+</div>
+<!-- Banner Account Management End -->
+
 @endsection
