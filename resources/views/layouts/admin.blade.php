@@ -59,6 +59,7 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+    @yield('scripts')
 
 </body>
 
