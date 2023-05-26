@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -152,25 +155,34 @@
                                     <!-- Name -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="name">이름</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="name" id="name" placeholder="이름을 입력하세요." aria-describedby="Instructor Name">
+                                        <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('name') }}" name="name" id="name" placeholder="이름을 입력하세요." aria-describedby="Instructor Name" required>
+                                        
                                     </div>
 
                                     <!-- Mobile -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
-                                        <input type="phone" class="form-control form-text-d fields-height1" name="mobile" id="mobile" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Mobile">
+                                        <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Mobile" required>
+                                        @if ($errors->has('pno'))
+                                            <div class="alert alert-danger">{{ $errors->first('mobile') }}</div>
+                                        @endif
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="email">이메일</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Instructor Email">
+                                        <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('email') }}" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Instructor Email" required>
+                                        @if ($errors->has('email'))
+                                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                                        @endif
+                                        
                                     </div>
 
                                     <!-- Job -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="job">직종</label>
-                                        <input type="text" class="form-control form-text-d fields-height1" name="job" id="job" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Job">
+                                        <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('job') }}" name="job" id="job" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Job">
+                                   
                                     </div>
 
                                 </div>

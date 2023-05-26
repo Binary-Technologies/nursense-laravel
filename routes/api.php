@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,5 @@ Route::get('/User-details',[HomeController::class,'showUser']);
 Route::post('/Register-user',[HomeController::class,'userRegister']);
 Route::put('/users/update/{id}',[HomeController::class,'update']);
 Route::delete('/users/{id}',[HomeController::class,'destroy']);
-
-
 
 

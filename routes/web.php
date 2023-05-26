@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,10 +102,10 @@ Route::prefix('/admin')->group(function () {
 });
 
 // Instructor Registration form
-Route::post('/Register-instructor',[AdminPageController::class,'instructorRegister'])->name('instructorReg');
+Route::post('/Register-instructor',[UserController::class,'instructorRegister'])->name('instructorReg');
 
 // Student Registration form
-Route::post('/Register-student',[AdminPageController::class,'studentRegister'])->name('studentReg');
+Route::post('/Register-student',[UserController::class,'studentRegister'])->name('studentReg');
 
 
 // Utilities
