@@ -72,7 +72,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$users->count()}}
                     </span>
                 </div>
 
@@ -92,7 +92,7 @@
                         Total
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$users->count()}}
                     </span>
                 </div>
 
@@ -122,104 +122,31 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($users as $user)
+    
                 <tr>
                     <td scope="row">
                         <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
                     </td>
-                    <td>70</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->inst_id}}</td>
+                    <td>
+                        @if($user->active_status == 1)Active 
+
+                        @else Not Active
+                        
+                        @endif
+                    
                     </td>
-                    <td>72</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
+                    <td>{{$user->uni_id}}</td>
+                    <td>{{$user->major_id}}</td>
+                    <td>{{$user->pno}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->created_at->format('Y-m-d')}}</td>
                 </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
-                    </td>
-                    <td>73</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
-                    </td>
-                    <td>74</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
-                    </td>
-                    <td>75</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
-                    </td>
-                    <td>76</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
-                    </td>
-                    <td>77</td>
-                    <td>김지연</td>
-                    <td>rlawldus11</td>
-                    <td>학습 가능</td>
-                    <td>경북대학교</td>
-                    <td>간호학과</td>
-                    <td>01012345678</td>
-                    <td>kimjiyeon@naver.com</td>
-                    <td>2023.01.23</td>
-                </tr>
+                @endforeach
+                
             </tbody>
         </table>
 

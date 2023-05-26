@@ -30,8 +30,8 @@ Route::post('/admin',[LoginController::class,'adminLogin'])->name('admin.login')
 Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
 
-Route::get('/userRegister',[HomeController::class,'showUserRegister'])->middleware('auth:admin');
-Route::post('/userRegistration',[HomeController::class,'userRegister'])->middleware('auth:admin');
+//Route::get('/userRegister',[HomeController::class,'showUserRegister'])->middleware('auth:admin');
+//Route::post('/userRegistration',[HomeController::class,'userRegister']);
 Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
 Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
 Route::post('/userLogin',[LoginController::class,'userLogin']);
@@ -99,6 +99,13 @@ Route::prefix('/admin')->group(function () {
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
 
 });
+
+// Instructor Registration form
+Route::post('/Register-instructor',[AdminPageController::class,'instructorRegister'])->name('instructorReg');
+
+// Student Registration form
+Route::post('/Register-student',[AdminPageController::class,'studentRegister'])->name('studentReg');
+
 
 // Utilities
 Route::get('/clear', function () {

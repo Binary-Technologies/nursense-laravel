@@ -141,8 +141,8 @@
                                 </p>
                             </div>
 
-                            <form method="post" id="insProfEdit" class="" action="#">
-
+                            <form method="post" id="insProfEdit" class="" action="/Register-student">
+                                @csrf
                                 <!-- row1 -->
                                 <div class="row mt-1 mb-2">
                                     <h4 class="ttl-acc-blue position-rel title-border-t2">필수 정보 입력</h4>
@@ -211,9 +211,11 @@
 
                                 <div class="row my-4">
                                     <div class="item-flex-end">
-                                        <a href="#" class="btn btn11">
+                                        
+                                        <button type="submit" class="btn btn11">  계정 등록 </button>
+                                        <!---<a href="#" class="btn btn11">
                                             계정 등록
-                                        </a>
+                                        </a> --->
                                     </div>
                                 </div>
 

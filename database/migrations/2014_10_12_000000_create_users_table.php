@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('inst_id')->unique()->nullable();
             $table->string('std_id')->unique()->nullable();
+            $table->enum('role', ['instructor', 'student']);
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -28,12 +29,12 @@ class CreateUsersTable extends Migration
             $table->boolean('active_status')->nullable();
             $table->date('dob')->nullable();
             $table->string('occupation')->nullable();
-            $table->string('gender');
+            $table->string('gender')->nullable();
             $table->boolean('completion_status')->nullable();
             $table->string('grade')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->integer('resident_reg');
+            $table->integer('resident_reg')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('password');
             $table->rememberToken();
