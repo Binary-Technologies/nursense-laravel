@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,8 @@ Route::get('/myprofile_contact_upload', [PageController::class, 'myprofile_conta
 Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_upload']);
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
+
+Route::post('/login', [UserController::class, 'loginAPI']);
 
 Route::prefix('/admin')->group(function () {
     // DashBoard with Auth validation
