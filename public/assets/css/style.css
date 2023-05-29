@@ -76,6 +76,18 @@ body {
 
 }
 
+.table tr td,
+.table tr td .td-a-custom {
+    color: #1B1D1F;
+    font-size: 16px;
+    font-family: pretendard-regular;
+    padding: 20px 10px;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
 /* Spacing Start */
 
 .m0 {
@@ -1122,6 +1134,7 @@ body {
 }
 
 .breadcrumb-text1,
+.breadcrumb-text1 a,
 .breadcrumb-text2 {
     color: #616474;
     font-size: 16px;
@@ -1849,6 +1862,8 @@ body {
     background-color: #cacddb;
     border-color: var(--dark-blue2);
 }
+
+
 
 
 /* ------------------------------------------ Management Modules ------------------------------------------ */

@@ -12,9 +12,9 @@
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item breadcrumb-text1">회원 관리</li>
-            <!-- <li class="breadcrumb-item breadcrumb-text1"><a href="{{ url('dashBoard') }}">Dashboard</a></li> -->
-            <!-- <li class="breadcrumb-item"><i class="fas fa-angle-right"></i></li> -->
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/studentDash') }}">회원 관리</a>
+            </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학생 계정 관리</li>
         </ol>
     </nav>

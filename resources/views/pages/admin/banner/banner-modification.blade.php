@@ -12,14 +12,18 @@
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item breadcrumb-text1">배너 관리</li>
-            <li class="breadcrumb-item breadcrumb-text1">배너 상세</li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/bannerDash') }}">배너 관리</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/bannerDetails') }}">배너 상세</a>
+            </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">배너 수정</li>
         </ol>
     </nav>
 </div>
 
-<!-- Banner Account Management Start -->
+<!-- Banner Management Start -->
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -214,6 +218,6 @@
 <!-- Delete Completion Alert Modal -->
 
 </div>
-<!-- Banner Account Management End -->
+<!-- Banner Management End -->
 
 @endsection

@@ -87,6 +87,31 @@ class AdminPageController extends Controller
     // Banner Mangement End --------------------------------------------------------------------
 
 
+    // Notice Manegement Start ------------------------------------------------------------------
+
+    public function noticeDashboard()
+    {
+        return view('pages.admin.notice.notice-dashboard');
+    }
+    public function noticeRegistration()
+    {
+        return view('pages.admin.notice.notice-register');
+    }
+    public function noticeDetailsView()
+    {
+        return view('pages.admin.notice.notice-details');
+    }
+    public function noticeModify()
+    {
+        return view('pages.admin.notice.notice-modification');
+    }
+
+    // Notice Manegement End ------------------------------------------------------------------
+
+
+
+
+
     // DashBoard Start ---------------------------------------------------------------------------
     public function dashboard()
     {

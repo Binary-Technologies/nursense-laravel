@@ -12,9 +12,15 @@
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item breadcrumb-text1">회원 관리</li>
-            <li class="breadcrumb-item breadcrumb-text1">교수자 계정 관리</li>
-            <li class="breadcrumb-item breadcrumb-text1">교수자 계정 상세</li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/instructorDash') }}">회원 관리</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/instructorDash') }}">교수자 계정 관리</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/insAccData') }}">교수자 계정 상세</a>
+            </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">교수자 계정 수정</li>
         </ol>
     </nav>
