@@ -47,6 +47,24 @@ class UserController extends Controller
         }
     }
 
+    public function instructorUpdate(Request $request, $inst_id)
+    {
+        $user = User::findOrFail($inst_id);
+        validator($request->all())->validate();
+        //$this->validator($request->all())->validate();
+        $user->name = $request->input('name');
+        $user->pno = $request->input('mobile');
+        $user->uni_id = $request->input('university');
+        $user->major_id = $request->input('major');
+        $user->email = $request->input('email');
+        $user->resident_reg = $request->input('res-reg-num1');
+        $user->occupation = $request->input('job');
+        
+        $user->save();
+
+        return redirect('/admin/viewMemIns')->with('success', 'Instructor account has been Updated.');
+    }
+
     //Student registration
     public function studentRegister(Request $request)
     {
@@ -72,5 +90,24 @@ class UserController extends Controller
             session()->flash('success','Student account has been added.');
             return redirect('/admin/stuReg');
         }
+    }
+    public function studentUpdate(Request $request, $std_id)
+    {
+        $user = User::findOrFail($std_id);
+        validator($request->all())->validate();
+        //$this->validator($request->all())->validate();
+        $user->name = $request->input('name');
+        $user->pno = $request->input('mobile');
+        $user->uni_id = $request->input('university');
+        $user->major_id = $request->input('major');
+        $user->grade = $request->input('year');
+        $user->std_id = $request->input('stu-id');
+        $user->email = $request->input('email');
+        $user->resident_reg = $request->input('res-reg-num1');
+        $user->occupation = $request->input('job');
+        
+        $user->save();
+
+        return redirect('/admin/viewMemStu')->with('success', 'Student account has been Updated.');
     }
 }

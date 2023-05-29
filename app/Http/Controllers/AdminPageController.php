@@ -17,8 +17,10 @@ class AdminPageController extends Controller
         ]);
     }
 
-    public function viewInstructor(){
-        return view('pages.admin.member.instructor-view');
+    public function viewInstructor(User $user){
+        return view('pages.admin.member.instructor-view',[
+            'user' => $user,
+        ]);
     }
 
     public function registerInstructor(){
@@ -29,6 +31,13 @@ class AdminPageController extends Controller
         return view('pages.admin.member.instructor-update');
     }
 
+    public function viewInstructorEdit(User $user)
+    {
+        return view('pages.admin.member.instructor-view-edit',[
+            'user' => $user,
+        ]);
+    }
+
     public function studentDashboard(){
         $users = User::where('role', 'student')->get();
         return view('pages.admin.member.student-dashboard',[
@@ -36,13 +45,17 @@ class AdminPageController extends Controller
         ]);
     }
 
-    public function viewStudent(){
-        return view('pages.admin.member.student-view');
+    public function viewStudent(User $user){
+        return view('pages.admin.member.student-view',[
+            'user' => $user,
+        ]);
     }
 
-    public function viewStudentEdit()
+    public function viewStudentEdit(User $user)
     {
-        return view('pages.admin.member.student-view-edit');
+        return view('pages.admin.member.student-view-edit',[
+            'user' => $user,
+        ]);
     }
 
     public function viewStudentEditDp()

@@ -84,15 +84,15 @@ Route::prefix('/admin')->group(function () {
 
      // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
      Route::get('/viewMemIns', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
-     Route::get('/insAccData', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
-     Route::get('/insAccDataEdit', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
+     Route::get('/insAccData/{user:inst_id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
+     Route::get('/insAccDataEdit/{user:inst_id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
      Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
      Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
  
      // Member Management - Student Mng-----------------------------------------------------------------------------------------------
      Route::get('/viewMemStu', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
-     Route::get('/stuAccData', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
-     Route::get('/stuAccDataEdit', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
+     Route::get('/stuAccData/{user:std_id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
+     Route::get('/stuAccDataEdit/{user:std_id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
      Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
      Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
 
@@ -101,11 +101,13 @@ Route::prefix('/admin')->group(function () {
 
 });
 
-// Instructor Registration form
+// Instructor  form
 Route::post('/Register-instructor',[UserController::class,'instructorRegister'])->name('instructorReg');
+Route::post('/Update-instructor/{user:inst_id}',[UserController::class,'instructorUpdate'])->name('instructorUpdate');
 
-// Student Registration form
+// Student  form
 Route::post('/Register-student',[UserController::class,'studentRegister'])->name('studentReg');
+Route::post('/Update-student/{user:std_id}',[UserController::class,'studentUpdate'])->name('studentUpdate');
 
 
 // Utilities

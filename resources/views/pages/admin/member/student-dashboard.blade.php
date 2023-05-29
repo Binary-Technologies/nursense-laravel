@@ -59,7 +59,7 @@
                     <input type="text" class="form-control form-text-l search-bar-custom" name="search1" id="search1" placeholder="이름, 아이디를 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <a href="{{ route('stuAccData') }}" class="btn btn-secondary btn1">
+                    <a href="#" class="btn btn-secondary btn1">
                         검색
                     </a>
                 </div>
@@ -128,8 +128,8 @@
                         <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
                     </td>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->inst_id}}</td>
+                    <td><a href="{{ route('stuAccData', ['user' => $user->std_id]) }}">{{$user->name}}</a> </td>
+                    <td>{{$user->std_id}}</td>
                     <td>
                         @if($user->active_status == 1)Learnable 
 

@@ -51,25 +51,27 @@
         <div class="row my-5">
             <div class="col-xl-12">
 
-                <form method="post" id="insProfEdit" class="" action="#">
+                <form method="post" id="insProfEdit" class="" action="{{ route('instructorUpdate', ['user' => $user->inst_id]) }}">
+                   
+                   @csrf
                     <div class="row">
 
                         <!-- Name -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="name">* 이름</label>
-                            <input type="text" class="form-control form-text-d fields-height1" name="name" id="name" placeholder="홍길동" aria-describedby="Instructor Name">
+                            <input type="text" value="{{$user->name}}" class="form-control form-text-d fields-height1" name="name" id="name" placeholder="홍길동" aria-describedby="Instructor Name">
                         </div>
 
                         <!-- Mobile -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="mobile">* 휴대폰 번호</label>
-                            <input type="phone" class="form-control form-text-d fields-height1" name="mobile" id="mobile" placeholder="01012345678" aria-describedby="Instructor Mobile">
+                            <input type="phone" value="{{$user->pno}}" class="form-control form-text-d fields-height1" name="mobile" id="mobile" placeholder="01012345678" aria-describedby="Instructor Mobile">
                         </div>
 
                         <!-- University Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="university">학교</label>
-                            <select class="form-select form-text-d fields-height1" name="university" id="university" aria-label="University Selection">
+                            <select class="form-select form-text-d fields-height1" value="{{$user->uni_id}}"  name="university" id="university" aria-label="University Selection">
                                 <option value="1" selected>경북대학교</option>
                                 <option value="2">가톨릭상지대학교</option>
                                 <option value="3">경북과학대학교</option>
@@ -81,7 +83,7 @@
                         <!-- Major Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="major">학과</label>
-                            <select class="form-select form-text-d fields-height1" name="major" id="major" aria-label="Major Selection">
+                            <select class="form-select form-text-d fields-height1" value="{{$user->major_id}}"  name="major" id="major" aria-label="Major Selection">
                                 <option value="1" selected>간호학과</option>
                                 <option value="2">방사선과</option>
                                 <option value="3">임상병리과</option>
@@ -93,14 +95,14 @@
                         <!-- Email -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="email">* 이메일</label>
-                            <input type="text" class="form-control form-text-d fields-height1" name="email" id="email" placeholder="ghdrlfehd@gmail.com" aria-describedby="Instructor Email">
+                            <input type="text" value="{{$user->email}}"  class="form-control form-text-d fields-height1" name="email" id="email" placeholder="ghdrlfehd@gmail.com" aria-describedby="Instructor Email">
                         </div>
 
                         <!-- Resident Registration Number -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="resRegNum">주민번호</label>
                             <div class="item-flex-align-center width-70">
-                                <input type="text" class="form-control form-text-d fields-height1 me-2" name="res-reg-num1" id="resRegNum1" placeholder="670206" aria-describedby="Instructor Resident Registration Number1">
+                                <input type="text" value="{{$user->resident_reg}}" class="form-control form-text-d fields-height1 me-2" name="res-reg-num1" id="resRegNum1" placeholder="670206" aria-describedby="Instructor Resident Registration Number1">
                                 <span class="form-text-d fields-height1 item-flex-align-center">-</span>
                                 <input type="text" class="form-control form-text-d fields-height1 width-10 mx-2" name="res-reg-num2" id="resRegNum2" placeholder="1" aria-describedby="Instructor Resident Registration Number2">
                                 <span class="form-text-d fields-height1 item-flex-align-center"><strong>&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</strong></span>
@@ -110,16 +112,20 @@
                         <!-- Job -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="job">* 직종</label>
-                            <input type="text" class="form-control form-text-d fields-height1" name="job" id="job" placeholder="간호사" aria-describedby="Instructor Job">
+                            <input type="text" value="{{$user->occupation}}"  class="form-control form-text-d fields-height1" name="job" id="job" placeholder="간호사" aria-describedby="Instructor Job">
                         </div>
 
 
                     </div>
                     <div class="row my-3">
                         <div class="item-flex-end">
-                            <a href="#confirmationModal" class="btn btn8" data-bs-toggle="modal">
+
+                            <button type="submit" class="btn btn8">
                                 수정 완료
-                            </a>
+                            </button>
+                        <!---    <a href="#confirmationModal" class="btn btn8" data-bs-toggle="modal">
+                                수정 완료
+                            </a>  --->
                         </div>
                     </div>
                 </form>

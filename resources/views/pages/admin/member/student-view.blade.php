@@ -41,7 +41,7 @@
                     <div class="ttl-dp2 item-flex-center pb15">
                         <span>ID</span>
                         <span class="mx-2">&#x2022;</span>
-                        <span>abc123490</span>
+                        <span>{{$user->std_id}}</span>
                     </div>
                     <div class="item-flex-center">
                         <a href="#" class="btn btn-secondary btn4">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-xl-3 item-flex-center pl-0 py-4">
                         <div class="btn5-outer">
-                            <a href="{{ route('stuAccDataEdit') }}" class="btn btn-secondary btn5">
+                            <a href="{{ route('stuAccDataEdit',['user' => $user->std_id]) }}" class="btn btn-secondary btn5">
                                 수정
                             </a>
                         </div>
@@ -73,11 +73,11 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학교</label>
-                                <p class="ttl-p1">경북대학교</p>
+                                <p class="ttl-p1">{{$user->scl_id}}</p>
                             </div>
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학과</label>
-                                <p class="ttl-p1">간호학과</p>
+                                <p class="ttl-p1">{{$user->dep_id}}</p>
                             </div>
                             <div class="col-xl-12">
                                 <div class="border-b-cus2"></div>
@@ -86,11 +86,11 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학년</label>
-                                <p class="ttl-p1">3학년</p>
+                                <p class="ttl-p1">{{$user->grade}} Grade</p>
                             </div>
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학번</label>
-                                <p class="ttl-p1">12345678</p>
+                                <p class="ttl-p1">{{$user->std_id}}</p>
                             </div>
                             <div class="col-xl-12">
                                 <div class="border-b-cus2"></div>
@@ -99,11 +99,11 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">휴대폰 번호</label>
-                                <p class="ttl-p1">01012345678</p>
+                                <p class="ttl-p1">{{$user->pno}}</p>
                             </div>
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">이메일</label>
-                                <p class="ttl-p1">abc@naver.com</p>
+                                <p class="ttl-p1">{{$user->email}}</p>
                             </div>
                             <div class="col-xl-12">
                                 <div class="border-b-cus2"></div>
@@ -112,7 +112,7 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">직종</label>
-                                <p class="ttl-p1">간호사</p>
+                                <p class="ttl-p1">{{$user->occupation}}</p>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                             <div class="col-xl-11 bg-color-2 border-rad-10">
                                 <div class="row">
                                     <div class="col-xl-6">
-                                        <p class="ttl-p1 pt-3">Abc123490</p>
+                                        <p class="ttl-p1 pt-3">{{$user->std_id}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -160,11 +160,15 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">활동 상태</label>
-                                <p class="ttl-p1">학습 가능</p>
+                                <p class="ttl-p1">@if($user->completion_status == 1)Learnable 
+
+                                    @else Not Learnable
+                                    
+                                    @endif</p>
                             </div>
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">계정 등록일</label>
-                                <p class="ttl-p1">2023.01.23</p>
+                                <p class="ttl-p1">{{$user->created_at->format('Y-m-d')}}</p>
                             </div>
                         </div>
                     </div>
