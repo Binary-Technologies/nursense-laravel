@@ -163,7 +163,7 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
                                         <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Mobile" required>
-                                        @if ($errors->has('pno'))
+                                        @if ($errors->has('mobile'))
                                             <div class="alert alert-danger">{{ $errors->first('mobile') }}</div>
                                         @endif
                                     </div>

@@ -162,7 +162,7 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
                                         <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="학번을 입력하세요." aria-describedby="Student Mobile">
-                                        @if ($errors->has('pno'))
+                                        @if ($errors->has('mobile'))
                                             <div class="alert alert-danger">{{ $errors->first('mobile') }}</div>
                                         @endif
                                     </div>
