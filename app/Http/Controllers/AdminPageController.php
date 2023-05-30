@@ -23,9 +23,11 @@ class AdminPageController extends Controller
         ]);
     }
 
-    public function viewInstructorEdit()
+    public function viewInstructorEdit(User $user)
     {
-        return view('pages.admin.member.instructor-view-edit');
+        return view('pages.admin.member.instructor-view-edit',[
+            'user' => $user,
+        ]);
     }
 
     public function viewInstructorEditDp()

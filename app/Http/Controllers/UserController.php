@@ -61,7 +61,7 @@ class UserController extends Controller
         
         $user->save();
 
-        return redirect('/admin/viewMemIns')->with('success', 'Instructor account has been Updated.');
+        return redirect('/admin/instructorDash')->with('success', 'Instructor account has been Updated.');
     }
 
     //Student registration
@@ -90,9 +90,9 @@ class UserController extends Controller
             return redirect('/admin/stuReg');
         }
     }
-    public function studentUpdate(Request $request, $std_id)
+    public function studentUpdate(Request $request, $id)
     {
-        $user = User::findOrFail($std_id);
+        $user = User::findOrFail($id);
         validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
@@ -106,7 +106,7 @@ class UserController extends Controller
         
         $user->save();
 
-        return redirect('/admin/viewMemStu')->with('success', 'Student account has been Updated.');
+        return redirect('/admin/studentDash')->with('success', 'Student account has been Updated.');
     }
 
     public function loginAPI(){

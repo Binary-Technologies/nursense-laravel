@@ -57,7 +57,7 @@
         <div class="row my-5">
             <div class="col-xl-12">
 
-                <form method="post" id="insProfEdit" class="" action="{{ route('studentUpdate', ['user' => $user->std_id]) }}">
+                <form method="post" id="insProfEdit" class="" action="{{ route('studentUpdate', ['user' => $user->id]) }}">
                     @csrf
                     
                     <div class="row">

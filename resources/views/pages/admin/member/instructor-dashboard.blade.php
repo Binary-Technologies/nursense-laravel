@@ -131,7 +131,7 @@
                         <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
                     </td>
                     <td>{{$user->id}}</td>
-                    <td><a href="{{ route('insAccData', ['user' => $user->inst_id]) }}">{{$user->name}}</a> </td>
+                    <td><a href="{{ route('insAccData', ['user' => $user->id]) }}">{{$user->name}}</a> </td>
                     <td>{{$user->inst_id}}</td>
                     <td>
                         @if($user->active_status == 1)Active 

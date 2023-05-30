@@ -128,7 +128,7 @@
                         <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
                     </td>
                     <td>{{$user->id}}</td>
-                    <td><a href="{{ route('stuAccData', ['user' => $user->std_id]) }}">{{$user->name}}</a> </td>
+                    <td><a href="{{ route('stuAccData', ['user' => $user->id]) }}">{{$user->name}}</a> </td>
                     <td>{{$user->std_id}}</td>
                     <td>
                         @if($user->active_status == 1)Learnable 

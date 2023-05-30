@@ -61,8 +61,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $primaryKey = 'inst_id';
-    public $incrementing = false;
+    protected $primaryKey = 'id';
 
     protected static function boot()
     {

@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-xl-3 item-flex-center pl-0 py-4">
                         <div class="btn5-outer">
-                            <a href="{{ route('insAccDataEdit',['user' => $user->inst_id]) }}" class="btn btn5">
+                            <a href="{{ route('insAccDataEdit',['user' => $user->id]) }}" class="btn btn5">
                                 수정
                             </a>
                         </div>
