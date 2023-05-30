@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /*protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data,[
             'inst_id' =>['unique:users'],
@@ -18,7 +18,7 @@ class UserController extends Controller
             'pno' => ['required','unique:users'],
             'name' => ['required'],
         ]);
-    }*/
+    }
 
     //Instructor registration
     public function instructorRegister(Request $request)
@@ -51,7 +51,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($inst_id);
         validator($request->all())->validate();
-        //$this->validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
         $user->uni_id = $request->input('university');
@@ -95,7 +94,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($std_id);
         validator($request->all())->validate();
-        //$this->validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
         $user->uni_id = $request->input('university');
