@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
-@if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
+@include('includes.messages')
+
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -162,18 +161,14 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
                                         <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="학번을 입력하세요." aria-describedby="Student Mobile">
-                                        @if ($errors->has('mobile'))
-                                            <div class="alert alert-danger">{{ $errors->first('mobile') }}</div>
-                                        @endif
+                                        
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="email">이메일</label>
                                         <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('email') }}" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Student Email">
-                                        @if ($errors->has('email'))
-                                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
-                                        @endif
+                                        
                                     </div>
 
                                     <!-- Job -->

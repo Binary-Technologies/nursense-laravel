@@ -1,13 +1,11 @@
-@if (count($errors)>0)
-    @foreach ($errors as $error)
-        {{$error}}
-    @endforeach
-@endif
-
 @if (session('success'))
-    <h1>{{session('success')}}</h1>
+    <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-@if (session('error'))
-    <h1>{{session('error')}}</h1>
+@if ($errors->has('mobile'))
+<div class="alert alert-danger">{{ $errors->first('mobile') }}</div>
+@endif
+
+@if ($errors->has('email'))
+<div class="alert alert-danger">{{ $errors->first('email') }}</div>
 @endif
