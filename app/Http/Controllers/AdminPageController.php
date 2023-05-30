@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,7 +79,10 @@ class AdminPageController extends Controller
 
     public function bannerDashboard()
     {
-        return view('pages.admin.banner.banner-dashboard');
+        $banners = Banner::all();
+        return view('pages.admin.banner.banner-dashboard',[
+            'banners' => $banners,
+        ]);
     }
     public function bannerAdd()
     {
@@ -88,9 +92,11 @@ class AdminPageController extends Controller
     {
         return view('pages.admin.banner.banner-add-att-file-reg');
     }
-    public function bannerDetailsView()
+    public function bannerDetailsView(Banner $banner)
     {
-        return view('pages.admin.banner.banner-details');
+        return view('pages.admin.banner.banner-details',[
+            'banner' => $banner,
+        ]);
     }
     public function bannerModify()
     {
