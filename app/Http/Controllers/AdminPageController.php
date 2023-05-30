@@ -9,23 +9,28 @@ use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
 {
-    public function instructorDashboard(){
+    // Member Management End -------------------------------------------------------------------
+
+    // Instructor Mng. Start --------------------------------------------------------------
+    public function instructorDashboard()
+    {
         $users = User::where('role', 'instructor')->get();
 
-        return view('pages.admin.member.instructor-dashboard',[
+        return view('pages.admin.member.instructor-dashboard', [
             'users' => $users,
         ]);
     }
 
-    public function viewInstructor(User $user){
-        return view('pages.admin.member.instructor-view',[
+    public function viewInstructor(User $user)
+    {
+        return view('pages.admin.member.instructor-view', [
             'user' => $user,
         ]);
     }
 
     public function viewInstructorEdit(User $user)
     {
-        return view('pages.admin.member.instructor-view-edit',[
+        return view('pages.admin.member.instructor-view-edit', [
             'user' => $user,
         ]);
     }
@@ -40,24 +45,25 @@ class AdminPageController extends Controller
         return view('pages.admin.member.instructor-register');
     }
 
-    // Student Mng. Start
-
-    public function studentDashboard(){
+    // Student Mng. Start --------------------------------------------------------------
+    public function studentDashboard()
+    {
         $users = User::where('role', 'student')->get();
-        return view('pages.admin.member.student-dashboard',[
+        return view('pages.admin.member.student-dashboard', [
             'users' => $users,
         ]);
     }
 
-    public function viewStudent(User $user){
-        return view('pages.admin.member.student-view',[
+    public function viewStudent(User $user)
+    {
+        return view('pages.admin.member.student-view', [
             'user' => $user,
         ]);
     }
 
     public function viewStudentEdit(User $user)
     {
-        return view('pages.admin.member.student-view-edit',[
+        return view('pages.admin.member.student-view-edit', [
             'user' => $user,
         ]);
     }
@@ -121,6 +127,47 @@ class AdminPageController extends Controller
 
     // Notice Manegement End ------------------------------------------------------------------
 
+
+    // News Manegement Start ------------------------------------------------------------------
+
+    public function newsDashboard()
+    {
+        return view('pages.admin.news.news-dashboard');
+    }
+    public function newsRegistration()
+    {
+        return view('pages.admin.news.news-register');
+    }
+    public function newsDetailsView()
+    {
+        return view('pages.admin.news.news-details');
+    }
+    public function newsModify()
+    {
+        return view('pages.admin.news.news-modification');
+    }
+
+    // News Manegement End ------------------------------------------------------------------
+
+
+    // Direction Manegement Start ------------------------------------------------------------------
+
+    public function directionDashboard()
+    {
+    }
+    public function directionRegistration()
+    {
+    }
+    public function directionDetailsView()
+    {
+        return view('pages.admin.direction.direction-details');
+    }
+    public function directionModify()
+    {
+        return view('pages.admin.direction.direction-modification');
+    }
+
+    // Direction Manegement End ------------------------------------------------------------------
 
 
 

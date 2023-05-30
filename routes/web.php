@@ -54,9 +54,9 @@ Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login
 Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register', [RegisterController::class, 'createAdmin'])->name('admin.register');
 
-Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
-Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
-Route::post('/userLogin',[LoginController::class,'userLogin']);
+Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
+Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('user.login');
+Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
@@ -79,19 +79,19 @@ Route::get('/login', [PageController::class, 'userLogin']);
 Route::post('/login', [UserController::class, 'loginAPI']);
 
 Route::prefix('/admin')->group(function () {
-     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
-     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
-     Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
-     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
-     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
-     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
- 
-     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
-     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
-     Route::get('/stuAccData/{user:id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
-     Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
-     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
-     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
+    // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
+    Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
+    Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
+    Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
+    Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
+    Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
+
+    // Member Management - Student Mng-----------------------------------------------------------------------------------------------
+    Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('studentDash');
+    Route::get('/stuAccData/{user:id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
+    Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
+    Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
+    Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
@@ -105,15 +105,25 @@ Route::prefix('/admin')->group(function () {
     Route::get('/noticeReg', [AdminPageController::class, 'noticeRegistration'])->name('noticeReg');
     Route::get('/noticeDetails', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
+
+    // News Management
+    Route::get('/newsDash', [AdminPageController::class, 'newsDashboard'])->name('newsDash');
+    Route::get('/newsReg', [AdminPageController::class, 'newsRegistration'])->name('newsReg');
+    Route::get('/newsDetails', [AdminPageController::class, 'newsDetailsView'])->name('newsDetails');
+    Route::get('/newsUpdate', [AdminPageController::class, 'newsModify'])->name('newsUpdate');
+
+    // Direction Management
+    Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
+    Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
 });
 
 // Instructor  form
-Route::post('/Register-instructor',[UserController::class,'instructorRegister'])->name('instructorReg');
-Route::post('/Update-instructor/{user:id}',[UserController::class,'instructorUpdate'])->name('instructorUpdate');
+Route::post('/Register-instructor', [UserController::class, 'instructorRegister'])->name('instructorReg');
+Route::post('/Update-instructor/{user:id}', [UserController::class, 'instructorUpdate'])->name('instructorUpdate');
 
 // Student  form
-Route::post('/Register-student',[UserController::class,'studentRegister'])->name('studentReg');
-Route::post('/Update-student/{user:id}',[UserController::class,'studentUpdate'])->name('studentUpdate');
+Route::post('/Register-student', [UserController::class, 'studentRegister'])->name('studentReg');
+Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
 
 // Utilities

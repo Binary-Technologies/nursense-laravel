@@ -107,77 +107,47 @@
                     배너 관리
                 </a>
 
-                <div class="nav-item dropdown">
+                <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
 
-                    <a href="#" class="nav-link dropdown-toggle 
-                    <?php if (
-                        $current_page == 'noticeDash' ||
-                        $current_page == 'noticeReg' ||
-                        $current_page == 'noticeDetails' ||
-                        $current_page == 'noticeUpdate' ||
-                        $current_page == ''
-                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
-                        컨텐츠 관리
-                    </a>
-
-                    <?php
-                    $show_class = "";
-                    if ($current_page == 'noticeDash') {
-                        $show_class = "show";
-                    } else if ($current_page == 'noticeReg') {
-                        $show_class = "show";
-                    } else if ($current_page == 'noticeDetails') {
-                        $show_class = "show";
-                    } else if ($current_page == 'noticeUpdate') {
-                        $show_class = "show";
-                    } else if ($current_page == '') {
-                        $show_class = "show";
-                    } else {
-                        $show_class = "";
-                    }
-                    ?>
-
-                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
-
-                        <!-- Notice Management -->
-                        <a href="{{ url('admin/noticeDash') }}" class="dropdown-item 
+                    <!-- Notice Management -->
+                    <a href="{{ url('admin/noticeDash') }}" class="dropdown-item 
                         <?php if (
                             $current_page == 'noticeDash' ||
                             $current_page == 'noticeReg' ||
                             $current_page == 'noticeDetails' ||
                             $current_page == 'noticeUpdate'
                         ) : ?>active show <?php endif; ?>">
-                            공지사항 관리
-                        </a>
+                        공지사항 관리
+                    </a>
 
-                        <!-- News Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
+                    <!-- News Management -->
+                    <a href="{{ url('admin/newsDash') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'newsDash' ||
+                            $current_page == 'newsReg' ||
+                            $current_page == 'newsDetails' ||
+                            $current_page == 'newsUpdate'
+                        ) : ?>active show <?php endif; ?>">
+                        소식 관리
+                    </a>
+
+                    <!-- Direction Management -->
+                    <a href="{{ url('admin/directionDetails') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'directionDetails' ||
+                            $current_page == 'directionUpdate'
+                        ) : ?>active show <?php endif; ?>">
+                        오시는 길 관리
+                    </a>
+
+                    <!-- Resource Management -->
+                    <a href="{{ url('admin/') }}" class="dropdown-item 
                         <?php if (
                             $current_page == '' ||
                             $current_page == ''
                         ) : ?>active show <?php endif; ?>">
-                            소식 관리
-                        </a>
-
-                        <!-- Direction Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
-                        <?php if (
-                            $current_page == '' ||
-                            $current_page == ''
-                        ) : ?>active show <?php endif; ?>">
-                            오시는 길 관리
-                        </a>
-
-                        <!-- Resource Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
-                        <?php if (
-                            $current_page == '' ||
-                            $current_page == ''
-                        ) : ?>active show <?php endif; ?>">
-                            자료실 관리
-                        </a>
-
-                    </div>
+                        자료실 관리
+                    </a>
 
                 </div>
 

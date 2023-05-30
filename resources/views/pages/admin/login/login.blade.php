@@ -28,7 +28,7 @@
                             <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요.">
                         </div>
                         <div class="col-12 mt-4">
-                            <a href="{{ route('viewMemIns') }}" id="loginBtn" class="btn login-btn mt-2">로그인</a>
+                            <a href="{{ route('instructorDash') }}" id="loginBtn" class="btn login-btn mt-2">로그인</a>
                         </div>
 
                     </form>
