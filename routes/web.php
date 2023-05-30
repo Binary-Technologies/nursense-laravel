@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,11 @@ Auth::routes();
 
 Route::get('/', [PageController::class, 'index']);
 
-Route::get('/admin',[LoginController::class,'showAdminLoginForm'])->name('admin.login-view');
-Route::post('/admin',[LoginController::class,'adminLogin'])->name('admin.login');
+Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
+Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login');
 
-Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
-Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
+Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm'])->name('admin.register-view');
+Route::post('/admin/register', [RegisterController::class, 'createAdmin'])->name('admin.register');
 
 Route::get('/userLoginAPI',[LoginController::class,'userApiLogin']);
 Route::get('/userLogin',[LoginController::class,'showUserLogin'])->name('user.login');
@@ -74,21 +75,18 @@ Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_u
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
-Route::prefix('/admin')->group(function () {
-    // DashBoard with Auth validation
-    Route::middleware('auth:admin')->group(function (){
-        Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashBoard');
-    });
+Route::post('/login', [UserController::class, 'loginAPI']);
 
+Route::prefix('/admin')->group(function () {
      // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
-     Route::get('/viewMemIns', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
+     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
      Route::get('/insAccData/{user:inst_id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
      Route::get('/insAccDataEdit/{user:inst_id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
      Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
      Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
  
      // Member Management - Student Mng-----------------------------------------------------------------------------------------------
-     Route::get('/viewMemStu', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
+     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('viewMemStu');
      Route::get('/stuAccData/{user:std_id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
      Route::get('/stuAccDataEdit/{user:std_id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
      Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
@@ -96,7 +94,16 @@ Route::prefix('/admin')->group(function () {
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
+    Route::get('/bannerAdd', [AdminPageController::class, 'bannerAdd'])->name('bannerAdd');
+    Route::get('/bannerAddAttFilereg', [AdminPageController::class, 'bannerAddAttachFileReg'])->name('bannerAddAttFilereg');
+    Route::get('/bannerDetails', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
+    Route::get('/bannerUpdate', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
 
+    // Notice Management
+    Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
+    Route::get('/noticeReg', [AdminPageController::class, 'noticeRegistration'])->name('noticeReg');
+    Route::get('/noticeDetails', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
+    Route::get('/noticeUpdate', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
 });
 
 // Instructor  form
@@ -110,5 +117,5 @@ Route::post('/Update-student/{user:std_id}',[UserController::class,'studentUpdat
 
 // Utilities
 Route::get('/clear', function () {
-    return \Artisan::call('optimize:clear');
+    return Artisan::call('optimize:clear');
 });

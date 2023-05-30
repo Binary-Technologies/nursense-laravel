@@ -108,4 +108,22 @@ class UserController extends Controller
 
         return redirect('/admin/viewMemStu')->with('success', 'Student account has been Updated.');
     }
+
+    public function loginAPI(){
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        if(auth()->attempt($attributes)){
+            return response()->json([
+                'message' => 'Logged in successfully'
+            ]);
+        }
+        //auth failed
+        return response()->json([
+            'message' => 'Your provided credentials not verified.'
+        ]);
+    
+    }
 }

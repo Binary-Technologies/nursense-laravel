@@ -14,8 +14,12 @@
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item breadcrumb-text1">회원 관리</li>
-            <li class="breadcrumb-item breadcrumb-text1">학생 계정 관리</li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/studentDash') }}">회원 관리</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/studentDash') }}">학생 계정 관리</a>
+            </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학생 계정 등록</li>
         </ol>
     </nav>
@@ -213,7 +217,7 @@
                                 </div>
                                 <!-- row2 -->
 
-                                <div class="row my-4">
+                                <div class="row mt-4 mb-5">
                                     <div class="item-flex-end">
                                         
                                         <button type="submit" class="btn btn11">  계정 등록 </button>
