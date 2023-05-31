@@ -77,11 +77,21 @@ body {
 }
 
 .table tr td,
-.table tr td .td-a-custom {
+.table tr td .td-a-custom,
+.table tr td .i-color-1 {
     color: #1B1D1F;
     font-size: 16px;
     font-family: pretendard-regular;
     padding: 20px 10px;
+}
+
+.table tr td .td-a-custom {
+    /* text-decoration: underline; */
+}
+
+.table tr td .i-color-1 {
+    color: #9495A1;
+    padding: 0;
 }
 
 .text-justify {
@@ -1267,6 +1277,7 @@ body {
 .view-file-i {
     top: 17px;
     right: 230px;
+    color: #9495A1;
 }
 
 .search-bar-custom {

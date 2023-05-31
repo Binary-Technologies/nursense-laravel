@@ -179,6 +179,32 @@ class AdminPageController extends Controller
     // Direction Manegement End ------------------------------------------------------------------
 
 
+    // Resource Manegement Start ------------------------------------------------------------------
+
+    public function resourceDashboard()
+    {
+        return view('pages.admin.resource.resource-dashboard');
+    }
+    public function resourceRegistration()
+    {
+        return view('pages.admin.resource.resource-register');
+    }
+    public function resourceAttFileRegistration()
+    {
+        return view('pages.admin.resource.resource-att-file-register');
+    }
+    public function resourceDetailsView()
+    {
+        return view('pages.admin.resource.resource-details');
+    }
+    public function resourceModify()
+    {
+        return view('pages.admin.resource.resource-modification');
+    }
+
+    // Resource Manegement End ------------------------------------------------------------------
+
+
 
 
     // DashBoard Start ---------------------------------------------------------------------------

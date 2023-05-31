@@ -114,6 +114,13 @@ Route::prefix('/admin')->group(function () {
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
     Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
+
+    // Resource Management
+    Route::get('/resourceDash', [AdminPageController::class, 'resourceDashboard'])->name('resourceDash');
+    Route::get('/resourceReg', [AdminPageController::class, 'resourceRegistration'])->name('resourceReg');
+    Route::get('/resourceAttFileReg', [AdminPageController::class, 'resourceAttFileRegistration'])->name('resourceAttFileReg');
+    Route::get('/resourceDetails', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
+    Route::get('/resourceUpdate', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
 });
 
 // Instructor  form
