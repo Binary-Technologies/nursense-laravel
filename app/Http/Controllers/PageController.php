@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Notice;
+use Illuminate\Support\Arr;
 
 class PageController extends Controller
 {
     public function index(){
+        $banners = Banner::where('status', 0)->get();;
         $news = News::where('exposure', 1)->get();
         $notices = Notice::where('exposure', 1)->get();
         $main_news = News::where('main_exposure', 1)->get();
         $main_notice = Notice::where('main_exposure', 1)->get();
-        return view('pages.home', compact('news', 'notices', 'main_news', 'main_notice'));
+        return view('pages.home', compact('news', 'notices', 'main_news', 'main_notice', 'banners'));
     }
 
     public function download(){

@@ -17,18 +17,19 @@
                     <span>해당 페이지는 관리자 계정만 접속 가능합니다.</span>
                 </div>
                 <div class="login-form-box">
-                    <form method="post" id="loginForm" class="login-form" action="#">
-
+                    <form method="post" id="loginForm" class="login-form" action="/userLogin">
+@csrf
                         <div class="mb-4">
                             <label for="uName" class="form-label login-lbl">아이디</label>
-                            <input type="text" class="form-control" name="uname" id="uName" placeholder="아이디를 입력하세요.">
+                            <input type="text" class="form-control" name="email" id="uName" placeholder="아이디를 입력하세요.">
                         </div>
                         <div class="mb-4">
                             <label for="password" class="form-label login-lbl">비밀번호</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요.">
                         </div>
+
                         <div class="col-12 mt-4">
-                            <a href="{{ route('instructorDash') }}" id="loginBtn" class="btn login-btn mt-2">로그인</a>
+                           <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
                         </div>
 
                     </form>

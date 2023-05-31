@@ -31,7 +31,7 @@
                     <td colspan="8" class="table-td-text3">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                노출
+                                {{$banner->name}}
                             </label>
                         </div>
                     </td>
@@ -41,7 +41,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                책방 그루잠 소록소록 예그리나 예그리나예
+                                {{$banner->title}}
                             </label>
                         </div>
                     </td>
@@ -51,7 +51,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 pe-5">
-                                책방 그루잠 소록소록 예그리나 다솜 책방 그루잠 소록소록 예그리나 다솜 책방 그루잠 소록소록 예그리나 다솜 책방 책방 그루잠 소록소록 책방 그루잠 소록소록 예그리나 다솜 책방 그루잠 소록소록 예그리나
+                                {{$banner->content}}
                             </label>
                         </div>
                     </td>
@@ -61,7 +61,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                http://wmscompany.co.kr/
+                                {{$banner->link}}
                             </label>
                         </div>
                     </td>
@@ -71,7 +71,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                1
+                                {{$banner->sequence}}
                             </label>
                         </div>
                     </td>
@@ -80,7 +80,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">이미지 파일</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="item-flex-align-start ps-4">
-                            <img src="{{asset('assets/img/banner-img.png')}}" alt="#">
+                            <img src="{{ Storage::url($banner->image) }}" height="200px">
                         </div>
                     </td>
                 </tr>
@@ -89,7 +89,12 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                노출
+                                @if($banner->status == 0)노출
+
+                        @else 미노출
+                        
+                        @endif
+
                             </label>
                         </div>
                     </td>
@@ -103,7 +108,7 @@
             <a href="#deleteConfirmationModal" class="btn btn14" data-bs-toggle="modal">
                 삭제
             </a>
-            <a href="{{ route('bannerUpdate') }}" class="btn btn13 ms-3">
+            <a href="{{ route('bannerUpdate', ['banner' => $banner->id]) }}" class="btn btn13 ms-3">
                 수정
             </a>
         </div>
@@ -128,10 +133,16 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                        <a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}">
+                            <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                        </a>
+                        
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        <form action="{{ route('bannerDelete', ['banner' => $banner->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -139,29 +150,7 @@
     </div>
 </div>
 <!-- Delete Confirmation Alert Modal -->
-<!-- Delete Completion Alert Modal -->
-<div class="modal fade" id="deleteCompletionModal" aria-hidden="true" aria-labelledby="deleteCompletionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    배너 삭제를 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete Completion Alert Modal -->
 
 </div>
 <!-- Banner Management End -->
