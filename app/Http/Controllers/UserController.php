@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -92,7 +93,7 @@ class UserController extends Controller
     }
     public function studentUpdate(Request $request, $id)
     {
-         $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
         validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
@@ -110,20 +111,20 @@ class UserController extends Controller
     }
 
     public function loginAPI(Request $request){
-        $attributes = request()->validate([
+        $credentials = $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
         
-        if(auth()->attempt($attributes)){
+        if (Auth::attempt($request->only(['email','password']))) {
+            $customer = User::where('email', $request->email)->first();
+            $token = $customer->createToken('customer-token')->plainTextToken;
+            return response()->json(['token' => $token], 200);
+        }
+        else{
             return response()->json([
-                'message' => 'Logged in successfully'
+                'message' => 'Your provided credentials not verified.'
             ]);
         }
-        //auth failed
-        return response()->json([
-            'message' => 'Your provided credentials not verified.'
-        ]);
-    
     }
 }
