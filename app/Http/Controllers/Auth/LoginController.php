@@ -55,7 +55,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect('/admin/dashboard');
+            return redirect('/admin/instructorDash');
         }
 
         return back()->withInput($request->only('email', 'remember'));
@@ -65,69 +65,20 @@ class LoginController extends Controller
         return view('userlogin');
     }
 
-    public function userLogin()
+    public function userLogin(Request $request)
     {
-        $attributes = request()->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-
-        
-/*
-        $data = array(
-            'username' => $email,
-            'password' => $password
-        );
-
-        $payload = json_encode($data);
-
-        // Set the endpoint URL
-        $url = 'https://api.example.com/login';
-
-        // Initialize cURL session
-        $ch = curl_init($url);
-
-        // Set the request method to POST
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-
-        // Set the request headers
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($payload)
-        ));
-
-        // Set the request payload
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-
-        // Set the option to receive the response as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // Execute the request
-        $response = curl_exec($ch);
-
-        // Check for errors
-        if ($response === false) {
-            $error = curl_error($ch);
-            curl_close($ch);
-            return "cURL Error: " . $error;
+        if (Auth::guard('web')->attempt($request->only(['email','password']), $request->get('remember'))) {
+           
+            return redirect('/');
         }
 
-        // Close the cURL session
-        curl_close($ch);
-
-        // Process the response
-        $responseData = json_decode($response, true);
-
-        // Return the response data
-        return $responseData;*/
-
-         if (auth()->attempt($attributes)){
-             session()->regenerate();
-            
-             return redirect('/');
-         }
-         throw ValidationException::withMessages([
-            'email' => 'Your provided credentials not verified.'
+        
+        return back()->withErrors([
+            'email' => 'Invalid credentials.',
         ]);
         
     }

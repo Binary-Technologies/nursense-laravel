@@ -86,7 +86,8 @@ class AdminPageController extends Controller
     }
     public function bannerAdd()
     {
-        return view('pages.admin.banner.banner-add');
+        $existingValues = Banner::pluck('sequence')->toArray();
+        return view('pages.admin.banner.banner-add', compact('existingValues'));
     }
     public function bannerAddAttachFileReg()
     {
@@ -98,13 +99,15 @@ class AdminPageController extends Controller
             'banner' => $banner,
         ]);
     }
-    public function bannerModify()
+    public function bannerModify($id)
     {
-        return view('pages.admin.banner.banner-modification');
+        $banner = Banner::findOrFail($id);
+        return view('pages.admin.banner.banner-modification',[
+            'banner' => $banner,
+        ]);
     }
 
     // Banner Mangement End --------------------------------------------------------------------
-
 
     // Notice Manegement Start ------------------------------------------------------------------
 

@@ -20,8 +20,8 @@ class CreateBannersTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->string('link');
-            $table->string('sequence');
-            $table->string('image');
+            $table->integer('sequence')->unique()->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

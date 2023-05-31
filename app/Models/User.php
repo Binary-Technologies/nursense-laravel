@@ -95,8 +95,8 @@ class User extends Authenticatable
 
             }
 
-            $password = Str::random(8); // Generate a random password of 8 characters
-            $user->password = $password;
+            $password = '12345678'; // Generate a random password of 8 characters
+            $user->password = Hash::make($password);
         });
     }
 }

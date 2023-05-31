@@ -93,7 +93,7 @@
                 @foreach ($banners as $banner)
                 <tr>
                     <td>{{$banner->id}}</td>
-                    <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">[Nursense]{{$banner->name}}</a></td>
+                    <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">{{$banner->name}}</a></td>
                     <td>
                         <img src="{{ Storage::url($banner->image) }}" height="200px">
             
@@ -220,6 +220,31 @@
 </div>
 <!-- Completion Alert Modal -->
 
+    <!-- Delete Completion Alert Modal -->
+    <div class="modal" tabindex="-1" style="display: {{ session('banner delete') ? 'block' : 'none'}}">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p class="alert-text2 text-center mt-2 mb-5">
+                        배너 삭제를 완료하였습니다.
+                    </p>
+
+                    <div class="item-flex-center my-2">
+                        <div class="mx-1">
+                            <a href="{{route('bannerDash')}}">
+                                <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Completion Alert Modal -->
 </div>
 <!-- Banner Management End -->
 

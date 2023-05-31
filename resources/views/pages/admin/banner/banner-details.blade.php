@@ -108,7 +108,7 @@
             <a href="#deleteConfirmationModal" class="btn btn14" data-bs-toggle="modal">
                 삭제
             </a>
-            <a href="{{ route('bannerUpdate') }}" class="btn btn13 ms-3">
+            <a href="{{ route('bannerUpdate', ['banner' => $banner->id]) }}" class="btn btn13 ms-3">
                 수정
             </a>
         </div>
@@ -133,10 +133,16 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                        <a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}">
+                            <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                        </a>
+                        
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        <form action="{{ route('bannerDelete', ['banner' => $banner->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -144,29 +150,7 @@
     </div>
 </div>
 <!-- Delete Confirmation Alert Modal -->
-<!-- Delete Completion Alert Modal -->
-<div class="modal fade" id="deleteCompletionModal" aria-hidden="true" aria-labelledby="deleteCompletionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    배너 삭제를 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete Completion Alert Modal -->
 
 </div>
 <!-- Banner Management End -->

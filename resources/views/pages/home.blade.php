@@ -30,7 +30,12 @@
             <span><img src="images/arrow2.png" class="arrow_btn"></span>
         </div>
         <div class="col-lg-9">
-            <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
+            @foreach ($banners as $banner)
+            
+            <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 546px; border-radius: 16px;">
+            @endforeach
+            
+           <!-- <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>  -->
             <img src="images/msg.png" class="arrow_btn" style="width: 60px; float: right; margin-top: 480px; margin-right: 15px;"/>
         </div>
     </div>

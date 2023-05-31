@@ -34,3 +34,11 @@
 @if ($errors->has('link'))
 <div class="alert alert-danger">{{ $errors->first('link') }}</div>
 @endif
+
+@if ($errors->has('sequence'))
+<div class="alert alert-danger">{{ $errors->first('sequence') }}</div>
+@endif
+
+@if ($errors->has('flexRadioDefault'))
+<div class="alert alert-danger">{{ $errors->first('flexRadioDefault') }}</div>
+@endif

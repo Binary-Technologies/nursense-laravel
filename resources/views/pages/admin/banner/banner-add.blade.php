@@ -82,9 +82,9 @@
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
                             <select class="form-select" name="sequence" id="sequence" aria-label="Sequence Select">
                                 <option value="0" selected>순서를 선택하세요.</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="1"{{ in_array(1, $existingValues) ? 'disabled' : '' }}>1</option>
+                                <option value="2"{{ in_array(2, $existingValues) ? 'disabled' : '' }}>2</option>
+                                <option value="3"{{ in_array(3, $existingValues) ? 'disabled' : '' }}>3</option>
                             </select>
                         </div>
                     </td>
