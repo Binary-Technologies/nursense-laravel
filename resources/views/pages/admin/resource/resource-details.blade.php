@@ -44,11 +44,11 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <div>
-                                <div class="item-flex-center mb-1">
+                                <div class="item-flex-start mb-1">
                                     <span class="i-color-1"><i class='far fa-file-alt'></i></span>
                                     <span class="ms-2">자료123.pdf</span>
                                 </div>
-                                <div class="item-flex-center">
+                                <div class="item-flex-start">
                                     <span class="i-color-1"><i class='far fa-file-alt'></i></span>
                                     <span class="ms-2">자료123456.pdf</span>
                                 </div>

@@ -106,7 +106,7 @@
 
                                     <input type="file" class="form-control val-text file-up-bar-custom" name="image" id="file1" aria-describedby="File Up">
                                 </div>
-                                <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
+                                <!-- <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a> -->
                             </div>
                         </td>
                     </tr>

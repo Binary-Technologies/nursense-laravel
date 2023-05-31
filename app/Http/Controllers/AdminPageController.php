@@ -86,7 +86,7 @@ class AdminPageController extends Controller
     public function bannerDashboard()
     {
         $banners = Banner::all();
-        return view('pages.admin.banner.banner-dashboard',[
+        return view('pages.admin.banner.banner-dashboard', [
             'banners' => $banners,
         ]);
     }
@@ -101,14 +101,14 @@ class AdminPageController extends Controller
     }
     public function bannerDetailsView(Banner $banner)
     {
-        return view('pages.admin.banner.banner-details',[
+        return view('pages.admin.banner.banner-details', [
             'banner' => $banner,
         ]);
     }
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
-        return view('pages.admin.banner.banner-modification',[
+        return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
         ]);
     }
@@ -204,6 +204,27 @@ class AdminPageController extends Controller
 
     // Resource Manegement End ------------------------------------------------------------------
 
+
+    // Inquiry Manegement Start ------------------------------------------------------------------
+
+    public function inquiryDashboard()
+    {
+        return view('pages.admin.inquiry.inquiry-dashboard');
+    }
+    public function inquiryRegistration()
+    {
+        return view('pages.admin.inquiry.inquiry-register');
+    }
+    public function inquiryDetailsView()
+    {
+        return view('pages.admin.inquiry.inquiry-details');
+    }
+    public function inquiryModify()
+    {
+        return view('pages.admin.inquiry.inquiry-modification');
+    }
+
+    // Inquiry Manegement End ------------------------------------------------------------------
 
 
 

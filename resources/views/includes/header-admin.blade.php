@@ -216,6 +216,16 @@
 
                 </div>
 
+                <a href="{{ url('admin/inquiryDash') }}" class="nav-item nav-link 
+                <?php if (
+                    $current_page == 'inquiryDash' ||
+                    $current_page == 'inquiryReg' ||
+                    $current_page == 'inquiryDetails' ||
+                    $current_page == 'inquiryUpdate'
+                ) : ?> active <?php endif; ?>">
+                    1:1문의 관리
+                </a>
+
             </div>
 
         </nav>

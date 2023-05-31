@@ -121,6 +121,12 @@ Route::prefix('/admin')->group(function () {
     Route::get('/resourceAttFileReg', [AdminPageController::class, 'resourceAttFileRegistration'])->name('resourceAttFileReg');
     Route::get('/resourceDetails', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
     Route::get('/resourceUpdate', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+
+    // Inquiry Management
+    Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
+    Route::get('/inquiryReg', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
+    Route::get('/inquiryDetails', [AdminPageController::class, 'inquiryDetailsView'])->name('inquiryDetails');
+    Route::get('/inquiryUpdate', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
 });
 
 // Instructor  form
@@ -132,9 +138,9 @@ Route::post('/Register-student', [UserController::class, 'studentRegister'])->na
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
 //Banner form
-Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
-Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
-Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
+Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
+Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
+Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
 
 // Utilities
