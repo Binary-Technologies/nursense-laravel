@@ -76,8 +76,6 @@ Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_u
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
-Route::post('/login', [UserController::class, 'loginAPI']);
-
 Route::prefix('/admin')->group(function () {
      // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
      Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('viewMemIns');
