@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Route::post('/Register-user',[HomeController::class,'userRegister']);
 Route::put('/users/update/{id}',[HomeController::class,'update']);
 Route::delete('/users/{id}',[HomeController::class,'destroy']);
 
+Route::post('/login', [UserController::class, 'loginAPI']);
 

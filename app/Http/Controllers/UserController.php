@@ -109,7 +109,7 @@ class UserController extends Controller
         return redirect('/admin/studentDash')->with('success', 'Student account has been Updated.');
     }
 
-    public function loginAPI(){
+    public function loginAPI(Request $request){
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required'
