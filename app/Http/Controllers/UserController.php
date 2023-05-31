@@ -92,7 +92,7 @@ class UserController extends Controller
     }
     public function studentUpdate(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+         $user = User::findOrFail($id);
         validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');

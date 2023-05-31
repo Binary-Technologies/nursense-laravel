@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -96,8 +97,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
     Route::get('/bannerAdd', [AdminPageController::class, 'bannerAdd'])->name('bannerAdd');
     Route::get('/bannerAddAttFilereg', [AdminPageController::class, 'bannerAddAttachFileReg'])->name('bannerAddAttFilereg');
-    Route::get('/bannerDetails', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
-    Route::get('/bannerUpdate', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
+    Route::get('/bannerDetails/{banner:id}', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
+    Route::get('/bannerUpdate/{banner:id}', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
 
     // Notice Management
     Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
@@ -113,6 +114,11 @@ Route::post('/Update-instructor/{user:id}',[UserController::class,'instructorUpd
 // Student  form
 Route::post('/Register-student',[UserController::class,'studentRegister'])->name('studentReg');
 Route::post('/Update-student/{user:id}',[UserController::class,'studentUpdate'])->name('studentUpdate');
+
+//Banner form
+Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
+Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
+Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
 
 // Utilities

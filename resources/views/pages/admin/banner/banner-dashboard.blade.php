@@ -66,7 +66,7 @@
                         Total
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$banners->count()}}
                     </span>
                 </div>
 
@@ -90,46 +90,28 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($banners as $banner)
                 <tr>
-                    <td>70</td>
-                    <td><a href="{{ url('admin/bannerDetails') }}" class="td-a-custom">[Nursense] 메인 홍보 배너</a></td>
+                    <td>{{$banner->id}}</td>
+                    <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">{{$banner->name}}</a></td>
                     <td>
-                        <img src="{{ asset('assets/img/banner-img.png') }}">
+                        <img src="{{ Storage::url($banner->image) }}" height="200px">
+            
                     </td>
-                    <td>노출</td>
-                    <td>1</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>69</td>
-                    <td><a href="{{ url('admin/bannerDetails') }}" class="td-a-custom">[Nursense] 메인 홍보 배너</a></td>
                     <td>
-                        <img src="{{ asset('assets/img/banner-img.png') }}">
-                    </td>
-                    <td>노출</td>
-                    <td>2</td>
-                    <td>2023.01.23</td>
+                        @if($banner->status == 0)노출
+
+                        @else 미노출
+                        
+                        @endif
+
+                        </td>
+                    <td>{{$banner->sequence}}</td>
+                    <td>{{$banner->created_at->format('Y-m-d')}}</td>
                 </tr>
-                <tr>
-                    <td>68</td>
-                    <td><a href="{{ url('admin/bannerDetails') }}" class="td-a-custom">[Nursense] 메인 홍보 배너</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/banner-img.png') }}">
-                    </td>
-                    <td>노출</td>
-                    <td>3</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>67</td>
-                    <td><a href="{{ url('admin/bannerDetails') }}" class="td-a-custom">[Nursense] 메인 홍보 배너</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/banner-img.png') }}">
-                    </td>
-                    <td>노출</td>
-                    <td>4</td>
-                    <td>2023.01.23</td>
-                </tr>
+                @endforeach
+                
+                
             </tbody>
         </table>
 
@@ -238,6 +220,31 @@
 </div>
 <!-- Completion Alert Modal -->
 
+    <!-- Delete Completion Alert Modal -->
+    <div class="modal" tabindex="-1" style="display: {{ session('banner delete') ? 'block' : 'none'}}">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p class="alert-text2 text-center mt-2 mb-5">
+                        배너 삭제를 완료하였습니다.
+                    </p>
+
+                    <div class="item-flex-center my-2">
+                        <div class="mx-1">
+                            <a href="{{route('bannerDash')}}">
+                                <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Completion Alert Modal -->
 </div>
 <!-- Banner Management End -->
 
