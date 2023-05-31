@@ -134,3 +134,6 @@ Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'banner
 Route::get('/clear', function () {
     return Artisan::call('optimize:clear');
 });
+Route::get('/link', function () {
+    return Artisan::call('storage:link');
+});
