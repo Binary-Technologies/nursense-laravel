@@ -91,15 +91,17 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <button type="submit" class="btn btn11">등록 완료</button>
-            <!-- <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
-                수정 완료
-            </a> -->
+            <div class="item-flex-end">
+                <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
+                    수정 완료
+                </a>
+            </div>
+
+            
         </div>
     </div>
 
 </div>
-</form>
 
 <!-- Confirmation Alert Modal -->
 <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
@@ -120,7 +122,10 @@
                         <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+                        <button type="submit" class="btn btn11">등록 완료</button>
+                        <!-- <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
+                            수정 완료
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -128,31 +133,10 @@
     </div>
 </div>
 <!-- Confirmation Alert Modal -->
-<!-- Completion Alert Modal -->
-<div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 수정을 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Completion Alert Modal -->
 
 </div>
+</form>
 <!-- Notice Management End -->
 
 @endsection
