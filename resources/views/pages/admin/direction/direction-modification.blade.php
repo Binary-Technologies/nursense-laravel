@@ -24,6 +24,8 @@
 </div>
 
 <!-- Direction Management Start -->
+<form action="/direction/directionUpdate/{{$direction->id}}" method="post">
+    @csrf
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -33,7 +35,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 주소</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="address" id="address" placeholder="대구광역시 동구 동대구로 465 405호 406호 스케일업허브대시" value="" aria-describedby="Address Input">
+                            <input type="text" class="form-control val-text" name="address" id="address" value="{{$direction->address}}" aria-describedby="Address Input">
                         </div>
                     </td>
                 </tr>
@@ -41,7 +43,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 교통편</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="transportation" id="transportation" placeholder="동대구역 2번출구에서 757m" value="" aria-describedby="Transportation Input">
+                            <input type="text" class="form-control val-text" name="transportation" id="transportation" value="{{$direction->transportation}}" aria-describedby="Transportation Input">
                         </div>
                     </td>
                 </tr>
@@ -49,7 +51,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 전화번호</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="mobile" id="mobile" placeholder="01012345678" value="" aria-describedby="Mobile Input">
+                            <input type="text" class="form-control val-text" name="mobile" id="mobile" value="{{$direction->mobile}}" aria-describedby="Mobile Input">
                         </div>
                     </td>
                 </tr>
@@ -66,7 +68,6 @@
     </div>
 
 </div>
-
 
 <!-- Confirmation Alert Modal -->
 <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
@@ -87,7 +88,7 @@
                         <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+                        <button type="submit" class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
                     </div>
                 </div>
             </div>
@@ -95,31 +96,12 @@
     </div>
 </div>
 <!-- Confirmation Alert Modal -->
-<!-- Completion Alert Modal -->
-<div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 수정을 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Completion Alert Modal -->
+
 
 </div>
+</form>
+
 <!-- Direction Management End -->
 
 @endsection

@@ -16,6 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        DB::table('directions')->insert([
+            'address' => '대구광역시 동구 동대구로 465 405호 406호 스케일업허브대시',
+            'transportation' => '동대구역 2번출구에서 757m',
+            'mobile' => '01012345678'
+        ]);
+
         DB::table('news')->insert([
             'title' => '2023년도 하반기 교육과정 업데이트 안내',
             'content' => '안녕하세요, 디지털스마트교육센터입니다. 디지털스마트교육센터 상반기 교육과정 업데이트가 2023년 5월 29일(월)에 진행됩니다. 자세한 업데이트 사항은 아래 내용을 확인해 주시기 바랍니다.',

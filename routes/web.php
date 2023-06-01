@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -113,7 +114,7 @@ Route::prefix('/admin')->group(function () {
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
-    Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
+    Route::get('/directionUpdate/{direction:id}', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
 });
 
 // Instructor  form
@@ -128,6 +129,9 @@ Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'
 Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
 Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
 Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
+
+//Directions form
+Route::post('/direction/directionUpdate/{direction:id}',[DirectionController::class, 'directionUpdate']);
 
 
 // Utilities
