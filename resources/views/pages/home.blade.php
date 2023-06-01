@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Page Title -->
-<section class="page-title text-center" style="background-image: url(images/wrappers/2.jpg); height: 305px; margin-left: 1px; margin-right: 1px; width: 1918px;">
-    <div class="auto-container">
-        <div class="content-box">
-            <div class="title">
-                <h2 style="font-size: 40px; font-family: pretendard-bold; margin-top: -50px;">Multi-User Virtual Environments</h2>
-                <a href="muve.php"><p style="font-family: pretendard-medium; font-size: 26px; color: #FFF;">자세히 보기 &nbsp;<img src="images/arrow_right.png" style="width: 26px; height: 26px; margin-top: -8px;"></p></a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Page Title -->
-
 <!-- banner-section -->
 <section class="banner-section" style="background-color: #F4F5FA; height:720px;">
     <div class="row" style="margin-left: 90px; margin-top: 90px;">

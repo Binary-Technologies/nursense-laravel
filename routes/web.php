@@ -144,6 +144,15 @@ Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'banne
 
 
 // Utilities
-Route::get('/clear', function () {
+Route::get('/util/clear', function () {
     return Artisan::call('optimize:clear');
+});
+Route::get('/util/link', function () {
+    return Artisan::call('storage:link');
+});
+Route::get('/util/migrate', function () {
+    return Artisan::call('migrate');
+});
+Route::get('/util/seed', function () {
+    return Artisan::call('db:seed');
 });
