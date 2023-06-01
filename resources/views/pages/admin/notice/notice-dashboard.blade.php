@@ -225,6 +225,59 @@
 </div>
 <!-- Delete Complete Alert Modal -->
 
+
+<!-- Registration Complete Alert Modal -->
+<div class="modal" tabindex="-1"  style="display: {{ session('notice added') ? 'block' : 'none'}}" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="regCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 등록이 완료되었습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('noticeDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration Complete Alert Modal -->
+
+<!-- Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('notice update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('noticeDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
 </div>
 <!-- Notice Management End -->
 

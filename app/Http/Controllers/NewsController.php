@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notice;
+use App\Models\News;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class NoticeController extends Controller
+class NewsController extends Controller
 {
-    public function noticeRegister(Request $request)
+    public function newsRegister(Request $request)
     {
         $validate = Validator::make($request->all(), [
             'flexRadioDefault' => 'required',
@@ -25,7 +26,7 @@ class NoticeController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
         } else {
-            Notice::create([
+            News::create([
                 
                 'title' => $title,            
                 'content' => $content,
@@ -33,18 +34,18 @@ class NoticeController extends Controller
                 'exposure'=> $exposure,
 
             ]);
-        return redirect('/admin/noticeDash')->with('notice added', 'Notice has been added.');
+        return redirect('/admin/newsDash')->with('news added', 'News has been added.');
         }   
     }
 
-    public function noticeDelete($id)
+    public function newsDelete($id)
     {
-        $notice = Notice::findOrFail($id);
+        $notice = News::findOrFail($id);
         $notice->delete();
-        return redirect('/admin/noticeDash')->with('notice delete','notice deleted successfully');
+        return redirect('/admin/newsDash')->with('news delete','News deleted successfully');
     }
 
-    public function noticeUpdate(Request $request, $id)
+    public function newsUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
             'flexRadioDefault' => 'required',
@@ -53,7 +54,7 @@ class NoticeController extends Controller
             'contents' => 'required',
         ]);
     
-        $data = Notice::findOrFail($id);
+        $data = News::findOrFail($id);
         $data->main_exposure = $request->input('flexRadioDefault');
         $data->exposure = $request->input('flexRadioDefault2');
         $data->title = $request->input('title');
@@ -64,7 +65,7 @@ class NoticeController extends Controller
         } else {
             $data->save();
             
-            return redirect('/admin/noticeDash')->with('notice update','Notice updated successfully');
+            return redirect('/admin/newsDash')->with('news update','News updated successfully');
    
         }
     }

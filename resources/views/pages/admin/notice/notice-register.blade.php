@@ -149,29 +149,6 @@
 </div>
 <!-- Card Exposure Impossible Alert Modal -->
 
-<!-- Registration Complete Alert Modal -->
-<div class="modal fade" id="regCompletionModal" aria-hidden="true" aria-labelledby="regCompletionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="regCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 등록이 완료되었습니다.
-                </p>
-
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#noticeAddExitModal" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Registration Complete Alert Modal -->
 
 <!-- Notice Add Exit Alert Modal -->
 <div class="modal fade" id="noticeAddExitModal" aria-hidden="true" aria-labelledby="noticeAddExitModalContent" tabindex="-1">
@@ -202,6 +179,8 @@
 <!-- Notice Add Exit Alert Modal -->
 
 </div>
+</form>
+
 <!-- Notice Management End -->
 
 @endsection
