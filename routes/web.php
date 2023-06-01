@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -108,8 +109,8 @@ Route::prefix('/admin')->group(function () {
     // News Management
     Route::get('/newsDash', [AdminPageController::class, 'newsDashboard'])->name('newsDash');
     Route::get('/newsReg', [AdminPageController::class, 'newsRegistration'])->name('newsReg');
-    Route::get('/newsDetails', [AdminPageController::class, 'newsDetailsView'])->name('newsDetails');
-    Route::get('/newsUpdate', [AdminPageController::class, 'newsModify'])->name('newsUpdate');
+    Route::get('/newsDetails/{news:id}', [AdminPageController::class, 'newsDetailsView'])->name('newsDetails');
+    Route::get('/newsUpdate/{news:id}', [AdminPageController::class, 'newsModify'])->name('newsUpdate');
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
@@ -128,6 +129,11 @@ Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'
 Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
 Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
 Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
+
+//News form
+Route::post('/newsReg',[NewsController::class, 'newsRegister']);
+Route::post('/news/newsDelete/{news:id}',[NewsController::class, 'newsDelete'])->name('newsDelete');
+Route::put('/news/newsUpdate/{news:id}',[NewsController::class, 'newsUpdate']);
 
 
 // Utilities

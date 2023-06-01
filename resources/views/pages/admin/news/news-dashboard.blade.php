@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+
+@include('includes.messages')
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -54,7 +56,8 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        
+                        {{$newses->count()}}
                     </span>
                 </div>
 
@@ -93,38 +96,26 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($newses as $news)
                 <tr>
-                    <td>10</td>
-                    <td><a href="{{ url('admin/newsDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
+                    <td>{{$news->id}}</td>
+                    <td><a href="{{ url('admin/newsDetails', ['news' => $news->id])  }}" class="td-a-custom">{{$news->title}}</a></td>
+                    <td>{{$news->views}}</td>
+                    <td> @if($news->main_exposure == 0)노출
+
+                        @else 미노출
+                        
+                        @endif
+                    </td>
+                    <td>@if($news->exposure == 0)노출
+
+                        @else 미노출
+                        
+                        @endif</td>
+                    <td>{{$news->created_at->format('Y-m-d')}}</td>
                 </tr>
-                <tr>
-                    <td>9</td>
-                    <td><a href="{{ url('admin/newsDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td><a href="{{ url('admin/newsDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td><a href="{{ url('admin/newsDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
+                @endforeach
+                
             </tbody>
         </table>
 
@@ -207,6 +198,85 @@
     </div>
 </div>
 <!-- Completion Alert Modal -->
+
+<!-- Delete Complete Alert Modal -->
+<div class="modal" tabindex="-1"  style="display: {{ session('news delete') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 삭제를 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('newsDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Complete Alert Modal -->
+
+<!-- Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('news update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('newsDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
+<!-- Registration Complete Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('news added') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="regCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 등록이 완료되었습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('newsDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration Complete Alert Modal -->
+
 
 </div>
 <!-- News Management End -->

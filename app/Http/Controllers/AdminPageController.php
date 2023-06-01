@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\News;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -141,19 +142,28 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        return view('pages.admin.news.news-dashboard');
+        $newses = News::orderByDesc('id')->get();;
+        return view('pages.admin.news.news-dashboard',[
+            'newses' => $newses,
+        ]);
     }
     public function newsRegistration()
     {
         return view('pages.admin.news.news-register');
     }
-    public function newsDetailsView()
+    public function newsDetailsView($id)
     {
-        return view('pages.admin.news.news-details');
+        $news = News::findOrFail($id);
+        return view('pages.admin.news.news-details',[
+            'news' => $news,
+        ]);
     }
-    public function newsModify()
+    public function newsModify($id)
     {
-        return view('pages.admin.news.news-modification');
+        $news = News::findOrFail($id);
+        return view('pages.admin.news.news-modification',[
+            'news' => $news,
+        ]);
     }
 
     // News Manegement End ------------------------------------------------------------------
