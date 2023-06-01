@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -113,19 +114,28 @@ class AdminPageController extends Controller
 
     public function noticeDashboard()
     {
-        return view('pages.admin.notice.notice-dashboard');
+        $notices = Notice::orderByDesc('id')->get();;
+        return view('pages.admin.notice.notice-dashboard',[
+            'notices' => $notices,
+        ]);
     }
     public function noticeRegistration()
     {
         return view('pages.admin.notice.notice-register');
     }
-    public function noticeDetailsView()
+    public function noticeDetailsView($id)
     {
-        return view('pages.admin.notice.notice-details');
+        $notice = Notice::findOrFail($id);
+        return view('pages.admin.notice.notice-details',[
+            'notice' => $notice,
+        ]);
     }
-    public function noticeModify()
+    public function noticeModify($id)
     {
-        return view('pages.admin.notice.notice-modification');
+        $notice = Notice::findOrFail($id);
+        return view('pages.admin.notice.notice-modification',[
+            'notice' => $notice,
+        ]);
     }
 
     // Notice Manegement End ------------------------------------------------------------------

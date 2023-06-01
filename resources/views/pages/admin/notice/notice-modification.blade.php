@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@include('includes.messages')
+
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -27,6 +29,9 @@
 </div>
 
 <!-- Notice Management Start -->
+<form action="/notice/noticeUpdate/{{$notice->id}}" method="post" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -36,11 +41,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">메인 페이지 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" {{ old('flexRadioDefault', $notice->main_exposure) === 0 ? 'checked' : '' }}  id="flexRadioDefault1" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ old('flexRadioDefault', $notice->main_exposure) === 1 ? 'checked' : '' }}  id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -51,11 +56,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" id="flexRadioDefault3" checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="0" {{ old('flexRadioDefault2', $notice->exposure) === 0 ? 'checked' : '' }}  id="flexRadioDefault3" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault3">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" id="flexRadioDefault4">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="1" {{ old('flexRadioDefault2', $notice->exposure) === 1 ? 'checked' : '' }}  id="flexRadioDefault4">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault4">
                                 미노출
                             </label>
@@ -66,7 +71,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="notice-title" id="noticeName" placeholder="제목을 입력하세요." value="" aria-describedby="Notice Title Input">
+                            <input type="text" class="form-control val-text" name="title" id="noticeName" value="{{ old('title', $notice->title) }}" aria-describedby="Notice Title Input">
                         </div>
                     </td>
                 </tr>
@@ -75,7 +80,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="item-flex-start width-50 ml30 my-3">
-                            <textarea class="form-control val-text" name="contents" id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
+                            <textarea class="form-control val-text" name="contents" id="contents" aria-describedby="Contents Input" rows="2"> {{ old('contents', $notice->content) }}</textarea>
                         </div>
                     </td>
                 </tr>
@@ -86,14 +91,15 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
+            <button type="submit" class="btn btn11">등록 완료</button>
+            <!-- <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
                 수정 완료
-            </a>
+            </a> -->
         </div>
     </div>
 
 </div>
-
+</form>
 
 <!-- Confirmation Alert Modal -->
 <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
