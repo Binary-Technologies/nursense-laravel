@@ -154,13 +154,16 @@ class AdminPageController extends Controller
     public function newsDetailsView($id)
     {
         $news = News::findOrFail($id);
+        $news->increment('views');
+        $news->save();
         return view('pages.admin.news.news-details',[
             'news' => $news,
         ]);
     }
     public function newsModify($id)
     {
-        $news = News::findOrFail($id);
+        $news = News::findOrFail($id);   
+        
         return view('pages.admin.news.news-modification',[
             'news' => $news,
         ]);
