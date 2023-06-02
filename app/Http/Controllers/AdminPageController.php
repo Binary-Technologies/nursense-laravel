@@ -121,9 +121,13 @@ class AdminPageController extends Controller
     }
     public function noticeRegistration()
     {
-        $notices = Notice::all();
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.notice.notice-register',[
-            'notices' => $notices,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
     public function noticeDetailsView($id)

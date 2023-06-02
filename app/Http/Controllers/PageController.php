@@ -11,11 +11,11 @@ use Illuminate\Support\Arr;
 class PageController extends Controller
 {
     public function index(){
-        $banners = Banner::where('status', 0)->get();;
-        $news = News::where('exposure', 1)->get();
-        $notices = Notice::where('exposure', 1)->get();
-        $main_news = News::where('main_exposure', 1)->get();
-        $main_notice = Notice::where('main_exposure', 1)->get();
+        $banners = Banner::where('status', 0)->get();
+        $news = News::where('exposure', 0)->orderBy('id', 'desc')->get();
+        $notices = Notice::where('exposure', 0)->orderBy('id', 'desc')->get();
+        $main_news = News::where('main_exposure', 0)->orderBy('id', 'desc')->get();
+        $main_notice = Notice::where('main_exposure', 0)->orderBy('id', 'desc')->get();
         return view('pages.home', compact('news', 'notices', 'main_news', 'main_notice', 'banners'));
     }
 
