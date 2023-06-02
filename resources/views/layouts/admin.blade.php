@@ -38,7 +38,7 @@
 
     <!-- ckeditor cdn -->
     <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
-    
+
 </head>
 
 <body>
@@ -62,7 +62,7 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-
+    @yield('scripts')
 </body>
 
 </html>

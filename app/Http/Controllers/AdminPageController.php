@@ -149,7 +149,14 @@ class AdminPageController extends Controller
     }
     public function newsRegistration()
     {
-        return view('pages.admin.news.news-register');
+        $main_exposure = News::pluck('main_exposure')->toArray();
+        $exposure = News::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.news.news-register', [
+            'main_exposure' => $main_exposure,
+            'count' => $count,
+        ]);
     }
     public function newsDetailsView($id)
     {

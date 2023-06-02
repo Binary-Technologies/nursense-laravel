@@ -143,3 +143,5 @@ Route::get('/clear', function () {
 Route::get('/link', function () {
     return Artisan::call('storage:link');
 });
+
+Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
