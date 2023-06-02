@@ -121,7 +121,10 @@ class AdminPageController extends Controller
     }
     public function noticeRegistration()
     {
-        return view('pages.admin.notice.notice-register');
+        $notices = Notice::all();
+        return view('pages.admin.notice.notice-register',[
+            'notices' => $notices,
+        ]);
     }
     public function noticeDetailsView($id)
     {

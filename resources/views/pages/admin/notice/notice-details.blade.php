@@ -94,7 +94,8 @@
                         <div class="ps-4 pe-5">
                             <div class="lbl-y2 mb-2">
                                 <p class="text-justify">
-                                    {{$notice->content}}
+                                    {!! html_entity_decode($notice->content) !!}
+                                    
                                 </p>
                                
                             </div>

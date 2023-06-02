@@ -183,4 +183,13 @@
 
 <!-- Notice Management End -->
 
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#contents' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+    </script>
+
 @endsection
+
