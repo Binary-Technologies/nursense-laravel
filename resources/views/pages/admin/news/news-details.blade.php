@@ -67,8 +67,8 @@
                         <div class="ps-4 pe-5">
                             <div class="lbl-y2 mb-2">
                                 <p class="text-justify">
-                                
-                                    {{$news->content}}
+                                    {!! html_entity_decode($news->content) !!}
+                                    
                                 </p>
                                 
                             </div>
