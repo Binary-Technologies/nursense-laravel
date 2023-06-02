@@ -57,7 +57,7 @@
                     </span>
                     <span class="list-count-num">
                         
-                        {{$newses->count()}}
+                        {{$news->count()}}
                     </span>
                 </div>
 
@@ -96,23 +96,18 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach ($newses as $news)
+                @foreach ($news as $newsItem)
                 <tr>
-                    <td>{{$news->id}}</td>
-                    <td><a href="{{ url('admin/newsDetails', ['news' => $news->id])  }}" class="td-a-custom">{{$news->title}}</a></td>
-                    <td>{{$news->views}}</td>
-                    <td> @if($news->main_exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
+                    <td>{{$newsItem->id}}</td>
+                    <td><a href="{{ url('admin/newsDetails', ['news' => $newsItem->id])  }}" class="td-a-custom">{{$newsItem->title}}</a></td>
+                    <td>{{$newsItem->views}}</td>
+                    <td>
+                        {{$newsItem->main_exposure == 0 ? '노출' : '미노출'}}
                     </td>
-                    <td>@if($news->exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif</td>
-                    <td>{{$news->created_at->format('Y-m-d')}}</td>
+                    <td>
+                        {{$newsItem->exposure == 0 ? '노출' : '미노출'}}
+                    </td>
+                    <td>{{$newsItem->created_at->format('Y-m-d')}}</td>
                 </tr>
                 @endforeach
                 

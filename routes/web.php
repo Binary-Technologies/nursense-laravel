@@ -111,6 +111,10 @@ Route::prefix('/admin')->group(function () {
     Route::get('/newsReg', [AdminPageController::class, 'newsRegistration'])->name('newsReg');
     Route::get('/newsDetails/{news:id}', [AdminPageController::class, 'newsDetailsView'])->name('newsDetails');
     Route::get('/newsUpdate/{news:id}', [AdminPageController::class, 'newsModify'])->name('newsUpdate');
+    Route::post('/newsReg',[NewsController::class, 'newsRegister']);
+    Route::post('/news/newsDelete/{news:id}',[NewsController::class, 'newsDelete'])->name('newsDelete');
+    Route::put('/news/newsUpdate/{news:id}',[NewsController::class, 'newsUpdate']);
+
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
@@ -129,12 +133,6 @@ Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'
 Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
 Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
 Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
-
-//News form
-Route::post('/newsReg',[NewsController::class, 'newsRegister']);
-Route::post('/news/newsDelete/{news:id}',[NewsController::class, 'newsDelete'])->name('newsDelete');
-Route::put('/news/newsUpdate/{news:id}',[NewsController::class, 'newsUpdate']);
-
 
 // Utilities
 Route::get('/clear', function () {

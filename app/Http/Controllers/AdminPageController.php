@@ -142,9 +142,9 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        $newses = News::orderByDesc('id')->get();;
+        $news = News::orderByDesc('id')->get();;
         return view('pages.admin.news.news-dashboard',[
-            'newses' => $newses,
+            'news' => $news,
         ]);
     }
     public function newsRegistration()

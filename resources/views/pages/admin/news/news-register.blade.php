@@ -24,7 +24,7 @@
 </div>
 
 <!-- News Management Start -->
-<form action="/newsReg" method="post">
+<form action="/admin/newsReg" method="post">
     @csrf
 <div class="container-fluid px-0">
 
@@ -114,7 +114,7 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <a href="/admin/newsDash" class="btn btn-alert3">
+                        <a href="/admin/newsReg" class="btn btn-alert3">
                             확인
                         </a>
                     </div>
@@ -142,7 +142,7 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <a href="/admin/newsDash" class="btn btn-alert3">
+                        <a href="/admin/newsReg" class="btn btn-alert3">
                             확인
                         </a>
                     </div>

@@ -18,21 +18,13 @@ class NewsController extends Controller
             'contents' => 'required',
         ]);
 
-        $title = $request->input('title');
-        $content = $request->input('contents');
-        $main_exposure = $request->input('flexRadioDefault');       
-        $exposure = $request->input('flexRadioDefault2'); 
-              
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
-            News::create([
-                
-                'title' => $title,            
-                'content' => $content,
-                'main_exposure' => $main_exposure,
-                'exposure'=> $exposure,
-
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
+            News::create([               
+                'title' => $request->input('title'),            
+                'content' => $request->input('content'),
+                'main_exposure' => $request->input('main_exposure'),
+                'exposure'=> $request->input('exposure'),
             ]);
         return redirect('/admin/newsDash')->with('news added', 'News has been added.');
         }   
@@ -40,8 +32,8 @@ class NewsController extends Controller
 
     public function newsDelete($id)
     {
-        $notice = News::findOrFail($id);
-        $notice->delete();
+        $news = News::findOrFail($id);
+        $news->delete();
         return redirect('/admin/newsDash')->with('news delete','News deleted successfully');
     }
 
@@ -54,49 +46,45 @@ class NewsController extends Controller
             'contents' => 'required',
         ]);
     
-        $data = News::findOrFail($id);
-        $data->main_exposure = $request->input('flexRadioDefault');
-        $data->exposure = $request->input('flexRadioDefault2');
-        $data->title = $request->input('title');
-        $data->content = $request->input('contents');
-    
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
+            $data = News::findOrFail($id);
+            $data->main_exposure = $request->input('flexRadioDefault');
+            $data->exposure = $request->input('flexRadioDefault2');
+            $data->title = $request->input('title');
+            $data->content = $request->input('contents');   
             $data->save();
-            
             return redirect('/admin/newsDash')->with('news update','News updated successfully');
-   
         }
     }
 
     public function upload(Request $request)
-{
-    if($request->hasFile('upload')) {
-        //get filename with extension
-        $filenamewithextension = $request->file('upload')->getClientOriginalName();
-   
-        //get filename without extension
-        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-   
-        //get file extension
-        $extension = $request->file('upload')->getClientOriginalExtension();
-   
-        //filename to store
-        $filenametostore = $filename.'_'.time().'.'.$extension;
-   
-        //Upload File
-        $request->file('upload')->storeAs('public/CKeditorUploads', $filenametostore);
- 
-        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-        $url = asset('storage/uploads/'.$filenametostore); 
-        $msg = 'Image successfully uploaded'; 
-        $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-          
-        // Render HTML output 
-        @header('Content-type: text/html; charset=utf-8'); 
-        echo $re;
+    {
+        if($request->hasFile('upload')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+    
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+    
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+    
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+    
+            //Upload File
+            $request->file('upload')->storeAs('public/CKeditorUploads', $filenametostore);
+    
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/uploads/'.$filenametostore); 
+            $msg = 'Image successfully uploaded'; 
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+            
+            // Render HTML output 
+            @header('Content-type: text/html; charset=utf-8'); 
+            echo $re;
+        }
     }
-}
 
 }

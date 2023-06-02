@@ -68,13 +68,9 @@
                             <div class="lbl-y2 mb-2">
                                 <p class="text-justify">
                                     {!! html_entity_decode($news->content) !!}
-                                    
                                 </p>
                                 
                             </div>
-                           <!--  <div class="item-flex-center">
-                                <img src="{{asset('assets/img/banner-img.png')}}" class="width-100" alt="#">
-                            </div>  -->
                         </div>
                     </td>
                 </tr>
@@ -83,11 +79,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                @if($news->main_exposure == 0)노출
-
-                                @else 미노출
-                                
-                                @endif
+                                {{$news->main_exposure == 0 ? '노출' : '미노출'}}
                             </label>
                         </div>
                     </td>
@@ -97,11 +89,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                @if($news->exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
+                                {{$news->exposure == 0 ? '노출' : '미노출'}}
                             </label>
                         </div>
                     </td>

@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+
 @include('includes.messages')
+
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -28,7 +30,7 @@
 </div>
 
 <!-- News Management Start -->
-<form action="/news/newsUpdate/{{$news->id}}" method="post" enctype="multipart/form-data">
+<form action="/admin/news/newsUpdate/{{$news->id}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="container-fluid px-0">
@@ -122,9 +124,6 @@
                     </div>
                     <div class="mx-1">
                         <button type="submit" class="btn btn-alert2">수정</button>
-                        <!--- <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">
-                            수정
-                        </button>  -->
                     </div>
                 </div>
             </div>

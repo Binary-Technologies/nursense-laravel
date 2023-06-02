@@ -14,8 +14,8 @@ class PageController extends Controller
         $banners = Banner::where('status', 0)->get();;
         $news = News::where('exposure', 0)->orderBy('id', 'desc')->get();
         $notices = Notice::where('exposure', 0)->orderBy('id', 'desc')->get();
-        $main_news = News::where('main_exposure', 0)->orderBy('id', 'desc')->get();
-        $main_notice = Notice::where('main_exposure', 0)->orderBy('id', 'desc')->get();
+        $main_news = News::where('main_exposure', 0)->get();
+        $main_notice = Notice::where('main_exposure', 0)->get();
         return view('pages.home', compact('news', 'notices', 'main_news', 'main_notice', 'banners'));
     }
 
