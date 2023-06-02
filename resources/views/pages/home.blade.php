@@ -56,7 +56,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{$main_notice[0]->content}}</p>
+                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{$main_notice[0]->content}}
+                                
+                                    {!! html_entity_decode($main_notice[0]->content) !!}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -107,7 +110,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{$main_news[0]->content}}</p>
+                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{!! html_entity_decode($main_news[0]->content) !!}</p>
                             </div>
                         </div>
                     </div>
