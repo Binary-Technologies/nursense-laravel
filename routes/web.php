@@ -99,6 +99,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/bannerAddAttFilereg', [AdminPageController::class, 'bannerAddAttachFileReg'])->name('bannerAddAttFilereg');
     Route::get('/bannerDetails/{banner:id}', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
     Route::get('/bannerUpdate/{banner:id}', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
+    Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
+    Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
+    Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
     // Notice Management
     Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
@@ -129,10 +132,6 @@ Route::post('/Update-instructor/{user:id}', [UserController::class, 'instructorU
 Route::post('/Register-student', [UserController::class, 'studentRegister'])->name('studentReg');
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
-//Banner form
-Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
-Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
-Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
 // Utilities
 Route::get('/clear', function () {

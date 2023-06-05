@@ -22,7 +22,7 @@
 </div>
 
 <!-- Banner Management Start -->
-<form action="/banner/bannerRegister" method="post" enctype="multipart/form-data">
+<form action="/admin/banner/bannerRegister" method="post" enctype="multipart/form-data">
     @csrf
 <div class="container-fluid px-0">
 

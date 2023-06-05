@@ -99,13 +99,8 @@
             
                     </td>
                     <td>
-                        @if($banner->status == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
-
-                        </td>
+                        {{$banner->status == 0 ? '노출' : '미노출'}}
+                    </td>
                     <td>{{$banner->sequence}}</td>
                     <td>{{$banner->created_at->format('Y-m-d')}}</td>
                 </tr>

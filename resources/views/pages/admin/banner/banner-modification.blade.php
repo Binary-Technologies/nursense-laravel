@@ -26,7 +26,7 @@
 </div>
 
 <!-- Banner Management Start -->
-<form action="/banner/bannerUpdate/{{$banner->id}}" method="post" enctype="multipart/form-data">
+<form action="/admin/banner/bannerUpdate/{{$banner->id}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="container-fluid px-0">
@@ -38,11 +38,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">배너 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" {{ old('flexRadioDefault', $banner->status) === '0' ? 'checked' : '' }} id="flexRadioDefault1">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" {{ old('flexRadioDefault', $banner->status) === 0 ? 'checked' : '' }} id="flexRadioDefault1">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ old('flexRadioDefault', $banner->status) === '1' ? 'checked' : '' }} id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ old('flexRadioDefault', $banner->status) === 1 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -86,9 +86,9 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
                             <select class="form-select val-text" name="sequence" id="sequence" aria-label="Sequence Select">
-                                <option value="1" {{ old('sequence', $banner->sequence) === '1' ? 'selected' : '' }} selected>1</option>
-                                <option value="2" {{ old('sequence', $banner->sequence) === '2' ? 'selected' : '' }} selected>2</option>
-                                <option value="3" {{ old('sequence', $banner->sequence) === '3' ? 'selected' : '' }} selected>3</option>
+                                <option value="1" {{ old('sequence', $banner->sequence) === 1 ? 'selected' : '' }} >1</option>
+                                <option value="2" {{ old('sequence', $banner->sequence) === 2 ? 'selected' : '' }} >2</option>
+                                <option value="3" {{ old('sequence', $banner->sequence) === 3 ? 'selected' : '' }} >3</option>
                             </select>
                         </div>
                     </td>

@@ -20,12 +20,6 @@ class BannerController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $name = $request->input('name');
-        $title = $request->input('title');
-        $content = $request->input('contents');
-        $link = $request->input('link');
-        $sequence = $request->input('sequence');
-    
         // Store the image
         $imagePath = null;
         if ($request->hasFile('image')) {
@@ -33,16 +27,15 @@ class BannerController extends Controller
             $imagePath = $image->store('public/banner');
         }
 
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
             Banner::create([
                 'status' => $request['flexRadioDefault'],
-                'name' => $name,
-                'title' => $title,            
-                'content' => $content,
-                'link' => $link,
-                'sequence' => $sequence,
+                'name' => $request->input('name'),
+                'title' => $request->input('title'),            
+                'content' => $request->input('content'),
+                'link' => $request->input('link'),
+                'sequence' => $request->input('sequence'),
                 'image' => $imagePath,
             ]);
         return redirect('/admin/bannerDash')->with('success', 'Banner has been added.');
@@ -67,12 +60,7 @@ class BannerController extends Controller
         ]);
     
         $data = Banner::findOrFail($id);
-        $data->status = $request->input('flexRadioDefault');
-        $data->name = $request->input('name');
-        $data->title = $request->input('title');
-        $data->content = $request->input('contents');
-        $data->link = $request->input('link');
-        $data->sequence = $request->input('sequence');
+        
 
         if ($request->hasFile('image')) {
             // Delete the old avatar file if it exists
@@ -84,9 +72,14 @@ class BannerController extends Controller
             $data->image = $imagePath;
         }
     
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
+            $data->status = $request->input('flexRadioDefault');
+            $data->name = $request->input('name');
+            $data->title = $request->input('title');
+            $data->content = $request->input('contents');
+            $data->link = $request->input('link');
+            $data->sequence = $request->input('sequence');
             $data->save();
             
             return redirect('/admin/bannerDash')->with('success','Banner updated successfully');

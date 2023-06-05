@@ -22,9 +22,9 @@ class NewsController extends Controller
         else {
             News::create([               
                 'title' => $request->input('title'),            
-                'content' => $request->input('content'),
-                'main_exposure' => $request->input('main_exposure'),
-                'exposure'=> $request->input('exposure'),
+                'content' => $request->input('contents'),
+                'main_exposure' => $request->input('flexRadioDefault'),
+                'exposure'=> $request->input('flexRadioDefault2'),
             ]);
         return redirect('/admin/newsDash')->with('news added', 'News has been added.');
         }   
