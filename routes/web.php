@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -119,8 +120,13 @@ Route::prefix('/admin')->group(function () {
     Route::get('/resourceDash', [AdminPageController::class, 'resourceDashboard'])->name('resourceDash');
     Route::get('/resourceReg', [AdminPageController::class, 'resourceRegistration'])->name('resourceReg');
     Route::get('/resourceAttFileReg', [AdminPageController::class, 'resourceAttFileRegistration'])->name('resourceAttFileReg');
-    Route::get('/resourceDetails', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
-    Route::get('/resourceUpdate', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+    Route::get('/resourceDetails/{resource:id}', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
+    Route::get('/resourceUpdate/{resource:id}', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+    Route::post('/resourceRegister', [ResourceController::class, 'resourceAdd'])->name('resourceAdd');
+    Route::post('/resourceDelete/{resource:id}', [ResourceController::class, 'resourceDelete'])->name('resourceDelete');
+    Route::put('/resourceUpdate/{resource:id}', [ResourceController::class, 'resourceUpdate']);
+
+
 
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');

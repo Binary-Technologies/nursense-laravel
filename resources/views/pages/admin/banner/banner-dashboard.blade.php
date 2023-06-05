@@ -101,7 +101,7 @@
                     <td>
                         @if($banner->status == 0)노출
 
-                        @else 미노출
+                        @else 
                         
                         @endif
 

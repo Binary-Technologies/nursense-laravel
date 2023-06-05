@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@include('includes.messages')
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -24,6 +25,8 @@
 </div>
 
 <!-- Resource Management Start -->
+<form action="/admin/resourceRegister" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+    @csrf
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -33,11 +36,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" onchange="exposureChange()"  checked>
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" value="0" name="flexRadioDefault" {{ $count>=5 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -48,17 +51,18 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="resource-title" id="resourceName" placeholder="제목을 입력하세요." value="" aria-describedby="Resource Title Input">
+                            <input type="text" class="form-control val-text" name="title" id="resourceName" placeholder="제목을 입력하세요." value="" aria-describedby="Resource Title Input" required>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 첨부파일</td>
+                    <td scope="row" class="table-td-text1 bg-td height-52" >* 첨부파일</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <a href="#" class="btn btn9">
+                            <input type="file" class="btn btn9" name="files[]" multiple required>
+                            <!--- <a href="#" class="btn btn9">
                                 첨부파일 등록
-                            </a>
+                            </a> -->
                         </div>
                     </td>
                 </tr>
@@ -67,7 +71,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="item-flex-start width-50 ml30 my-3">
-                            <textarea class="form-control val-text" name="contents" id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
+                            <textarea class="form-control val-text" name="contents" required id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
                         </div>
                     </td>
                 </tr>
@@ -78,17 +82,19 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="{{ route('resourceAttFileReg') }}" class="btn btn11">
+            <button type="submit" class="btn btn11">
                 등록 완료
-            </a>
+            </button>
+            
         </div>
     </div>
 
 </div>
 
+</form>
 
 <!-- Card Exposure Impossible Alert Modal -->
-<div class="modal fade" id="" aria-hidden="true" aria-labelledby="" tabindex="-1">
+<div class="modal" style="display:none;"  id="cardExposure" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,7 +110,9 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        <a href="/admin/resourceReg" class="btn btn-alert3">
+                            확인
+                        </a>
                     </div>
                 </div>
             </div>
@@ -167,5 +175,15 @@
 
 </div>
 <!-- Resource Management End -->
+
+<script>
+    function exposureChange() {
+            var exposure =  {{$count}};
+
+            if (exposure >=5) {
+                document.getElementById('cardExposure').style.display = "block";
+            }
+        }
+</script>
 
 @endsection

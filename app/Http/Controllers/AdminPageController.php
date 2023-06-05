@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Resource;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -183,23 +184,32 @@ class AdminPageController extends Controller
 
     public function resourceDashboard()
     {
-        return view('pages.admin.resource.resource-dashboard');
+        $resources = Resource::orderBy('id','desc')->get();
+        return view('pages.admin.resource.resource-dashboard',compact('resources'));
     }
     public function resourceRegistration()
     {
-        return view('pages.admin.resource.resource-register');
+        $exposure = Resource::pluck('status')->toArray();
+        $value = 1;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.resource.resource-register',[
+            'count' => $count,
+        ]);
     }
     public function resourceAttFileRegistration()
     {
         return view('pages.admin.resource.resource-att-file-register');
     }
-    public function resourceDetailsView()
+    public function resourceDetailsView(Resource $resource)
     {
-        return view('pages.admin.resource.resource-details');
+        return view('pages.admin.resource.resource-details',[
+            'resource' => $resource,
+        ]);
     }
-    public function resourceModify()
+    public function resourceModify($id)
     {
-        return view('pages.admin.resource.resource-modification');
+        $resource  = Resource::findOrFail($id);
+        return view('pages.admin.resource.resource-modification',compact('resource'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
