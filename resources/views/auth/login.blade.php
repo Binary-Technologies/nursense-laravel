@@ -70,7 +70,6 @@
                                 <div class="col-12 mt-4">
 
                                   <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
-                                    <!---<a href="{{ route('viewMemIns') }}" id="loginBtn" class="btn login-btn mt-2">로그인</a> --->
                                 </div>
 
                             </form>

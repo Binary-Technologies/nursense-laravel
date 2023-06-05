@@ -10,6 +10,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -106,6 +107,11 @@ Route::prefix('/admin')->group(function () {
     // Notice Management
     Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
     Route::get('/noticeReg', [AdminPageController::class, 'noticeRegistration'])->name('noticeReg');
+    Route::get('/noticeDetails/{notice:id}', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
+    Route::get('/noticeUpdate/{notice:id}', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
+    Route::post('/noticeReg',[NoticeController::class, 'noticeRegister']);
+    Route::post('/notice/noticeDelete/{notice:id}',[NoticeController::class, 'noticeDelete'])->name('noticeDelete');
+    Route::put('/notice/noticeUpdate/{notice:id}',[NoticeController::class, 'noticeUpdate']);
     Route::get('/noticeDetails', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
 
@@ -122,6 +128,19 @@ Route::prefix('/admin')->group(function () {
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
     Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
+
+    // Resource Management
+    Route::get('/resourceDash', [AdminPageController::class, 'resourceDashboard'])->name('resourceDash');
+    Route::get('/resourceReg', [AdminPageController::class, 'resourceRegistration'])->name('resourceReg');
+    Route::get('/resourceAttFileReg', [AdminPageController::class, 'resourceAttFileRegistration'])->name('resourceAttFileReg');
+    Route::get('/resourceDetails', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
+    Route::get('/resourceUpdate', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+
+    // Inquiry Management
+    Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
+    Route::get('/inquiryReg', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
+    Route::get('/inquiryDetails', [AdminPageController::class, 'inquiryDetailsView'])->name('inquiryDetails');
+    Route::get('/inquiryUpdate', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
 });
 
 // Instructor  form
@@ -132,13 +151,28 @@ Route::post('/Update-instructor/{user:id}', [UserController::class, 'instructorU
 Route::post('/Register-student', [UserController::class, 'studentRegister'])->name('studentReg');
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
+//Banner form
+Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
+Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
+Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
+
+//Notice form
+
+
+
 
 // Utilities
-Route::get('/clear', function () {
+Route::get('/util/clear', function () {
     return Artisan::call('optimize:clear');
 });
-Route::get('/link', function () {
+Route::get('/util/link', function () {
     return Artisan::call('storage:link');
 });
 
 Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
+Route::get('/util/migrate', function () {
+    return Artisan::call('migrate');
+});
+Route::get('/util/seed', function () {
+    return Artisan::call('db:seed');
+});

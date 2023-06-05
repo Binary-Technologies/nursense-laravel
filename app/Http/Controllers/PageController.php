@@ -11,7 +11,7 @@ use Illuminate\Support\Arr;
 class PageController extends Controller
 {
     public function index(){
-        $banners = Banner::where('status', 0)->get();;
+        $banners = Banner::where('status', 0)->get();
         $news = News::where('exposure', 0)->orderBy('id', 'desc')->get();
         $notices = Notice::where('exposure', 0)->orderBy('id', 'desc')->get();
         $main_news = News::where('main_exposure', 0)->get();

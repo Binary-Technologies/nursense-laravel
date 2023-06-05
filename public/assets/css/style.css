@@ -77,11 +77,21 @@ body {
 }
 
 .table tr td,
-.table tr td .td-a-custom {
+.table tr td .td-a-custom,
+.table tr td .i-color-1 {
     color: #1B1D1F;
     font-size: 16px;
     font-family: pretendard-regular;
-    padding: 20px 10px;
+    padding: 16px 10px;
+}
+
+.table tr td .td-a-custom {
+    /* text-decoration: underline; */
+}
+
+.table tr td .i-color-1 {
+    color: #9495A1;
+    padding: 0;
 }
 
 .text-justify {
@@ -1227,6 +1237,12 @@ body {
     font-family: pretendard-regular;
 }
 
+.table-td-text4 {
+    color: #FF625F;
+    font-size: 16px;
+    font-family: pretendard-regular;
+}
+
 .form-text-lbl,
 .form-text-d,
 .form-text-d option {
@@ -1267,6 +1283,7 @@ body {
 .view-file-i {
     top: 17px;
     right: 230px;
+    color: #9495A1;
 }
 
 .search-bar-custom {
@@ -1286,6 +1303,7 @@ body {
     background-color: #F3F4F8;
     width: 100%;
     border-color: #F3F4F8;
+    border-radius: 6px;
     transition: 0.3s all ease-in-out;
 }
 
@@ -1298,6 +1316,10 @@ body {
     color: #fff;
     background-color: #3941A2;
     border-color: #3941A2;
+}
+
+.btn3-1 {
+    padding: 12px 10px;
 }
 
 .btn1:hover,
@@ -1413,6 +1435,10 @@ body {
     color: #3941A2;
     width: 100%;
     border-color: #3941A2;
+}
+
+.btn5-1 {
+    padding: 12px 10px;
 }
 
 .btn4:hover,

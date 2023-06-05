@@ -19,15 +19,14 @@ class NewsController extends Controller
         ]);
 
         if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
-        else {
-            News::create([               
-                'title' => $request->input('title'),            
-                'content' => $request->input('contents'),
-                'main_exposure' => $request->input('flexRadioDefault'),
-                'exposure'=> $request->input('flexRadioDefault2'),
-            ]);
+        
+        News::create([               
+            'title' => $request->input('title'),            
+            'content' => $request->input('contents'),
+            'main_exposure' => $request->input('flexRadioDefault'),
+            'exposure'=> $request->input('flexRadioDefault2'),
+        ]);
         return redirect('/admin/newsDash')->with('news added', 'News has been added.');
-        }   
     }
 
     public function newsDelete($id)

@@ -1,13 +1,11 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
-@include('includes.messages')
-
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
             <div class="d-flex align-items-center justify-content-between">
-                <h5 class="text-center mb-0">공지사항 관리</h5>
+                <h5 class="text-center mb-0">자료실 관리</h5>
             </div>
         </div>
     </div>
@@ -15,24 +13,24 @@
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/noticeDash') }}">컨텐츠 관리</a>
+                <a href="{{ url('admin/resourceDash') }}">컨텐츠 관리</a>
             </li>
-            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">공지사항 관리</li>
+            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">자료실 관리</li>
         </ol>
     </nav>
 </div>
 
-<!-- Notice Management Start -->
+<!-- Resource Management Start -->
 <div class="container-fluid px-0">
 
     <div class="rounded pt-4">
 
-        <form method="post" id="notice-filter-form" action="#">
+        <form method="post" id="resource-filter-form" action="#">
 
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="expose-notice" id="exposeNotice" aria-label="Whether to Expose Notice">
+                    <select class="form-select form-text-d" name="expose-resource" id="exposeResource" aria-label="Whether to Expose Resource">
                         <option value="1" selected>전체</option>
                         <option value="2">노출</option>
                         <option value="3">미노출</option>
@@ -40,7 +38,7 @@
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-notice" id="searchNotice" placeholder="제목을 입력하세요." aria-label="Search">
+                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-resource" id="searchResource" placeholder="제목을 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <a href="#" class="btn btn-secondary btn1">
@@ -56,13 +54,13 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$notices->count()}}
+                        70
                     </span>
                 </div>
 
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-                    <a href="{{ route('noticeReg') }}" class="btn btn-secondary btn3">
-                        공지사항 등록
+                    <a href="{{ route('resourceReg') }}" class="btn btn-secondary btn3">
+                        자료실 등록
                     </a>
                 </div>
 
@@ -88,27 +86,77 @@
                 <tr class="table-head-1">
                     <th scope="col" class="table-th-text">번호</th>
                     <th scope="col" class="table-th-text">제목</th>
+                    <th scope="col" class="table-th-text">첨부파일</th>
                     <th scope="col" class="table-th-text">조회수</th>
-                    <th scope="col" class="table-th-text">메인 페이지 노출</th>
                     <th scope="col" class="table-th-text">카드 노출</th>
                     <th scope="col" class="table-th-text">등록일</th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach ($notices as $notice)
                 <tr>
-                    <td>{{$notice->id}}</td>
-                    <td><a href="{{ url('admin/noticeDetails', ['notice' => $notice->id])  }}" class="td-a-custom">{{$notice->title}}</a></td>
-                    <td>{{$notice->views}}</td>
-                    <td> 
-                        {{$notice->main_exposure == 0 ? '노출' : '미노출'}}
-                    </td>
+                    <td>10</td>
+                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
                     <td>
-                        {{$notice->exposure == 0 ? '노출' : '미노출'}}
-                    <td>{{$notice->created_at->format('Y-m-d')}}</td>
+                        <div class="item-flex-center">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                    </td>
+                    <td>700</td>
+                    <td>노출</td>
+                    <td>2023.01.23</td>
                 </tr>
-                @endforeach
-                
+                <tr>
+                    <td>9</td>
+                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
+                    <td>
+                        <div class="item-flex-center mb-1">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                        <div class="item-flex-center">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                    </td>
+                    <td>700</td>
+                    <td>미노출</td>
+                    <td>2023.01.23</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
+                    <td>
+                        <div class="item-flex-center mb-1">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                        <div class="item-flex-center mb-1">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                        <div class="item-flex-center">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                    </td>
+                    <td>700</td>
+                    <td>미노출</td>
+                    <td>2023.01.23</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
+                    <td>
+                        <div class="item-flex-center">
+                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                            <span class="ms-2">자료.pdf</span>
+                        </div>
+                    </td>
+                    <td>700</td>
+                    <td>노출</td>
+                    <td>2023.01.23</td>
+                </tr>
             </tbody>
         </table>
 
@@ -192,87 +240,7 @@
 </div>
 <!-- Completion Alert Modal -->
 
-<!-- Delete Complete Alert Modal -->
-<div class="modal" tabindex="-1" style="display: {{ session('notice delete') ? 'block' : 'none'}}">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 삭제를 완료하였습니다.
-                </p>
-
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <a href="{{route('noticeDash')}}">
-                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- Delete Complete Alert Modal -->
-
-
-<!-- Registration Complete Alert Modal -->
-<div class="modal" tabindex="-1"  style="display: {{ session('notice added') ? 'block' : 'none'}}" >
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="regCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 등록이 완료되었습니다.
-                </p>
-
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <a href="{{route('noticeDash')}}">
-                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Registration Complete Alert Modal -->
-
-<!-- Completion Alert Modal -->
-<div class="modal" tabindex="-1" style="display: {{ session('notice update') ? 'block' : 'none'}}">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    공지사항 수정을 완료하였습니다.
-                </p>
-
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <a href="{{route('noticeDash')}}">
-                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Completion Alert Modal -->
-
-</div>
-<!-- Notice Management End -->
+<!-- Resource Management End -->
 
 @endsection

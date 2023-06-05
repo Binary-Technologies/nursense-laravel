@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\News;
+use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +88,7 @@ class AdminPageController extends Controller
     public function bannerDashboard()
     {
         $banners = Banner::all();
-        return view('pages.admin.banner.banner-dashboard',[
+        return view('pages.admin.banner.banner-dashboard', [
             'banners' => $banners,
         ]);
     }
@@ -102,14 +103,14 @@ class AdminPageController extends Controller
     }
     public function bannerDetailsView(Banner $banner)
     {
-        return view('pages.admin.banner.banner-details',[
+        return view('pages.admin.banner.banner-details', [
             'banner' => $banner,
         ]);
     }
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
-        return view('pages.admin.banner.banner-modification',[
+        return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
         ]);
     }
@@ -120,19 +121,37 @@ class AdminPageController extends Controller
 
     public function noticeDashboard()
     {
-        return view('pages.admin.notice.notice-dashboard');
+        $notices = Notice::orderByDesc('id')->get();;
+        return view('pages.admin.notice.notice-dashboard',[
+            'notices' => $notices,
+        ]);
     }
     public function noticeRegistration()
     {
-        return view('pages.admin.notice.notice-register');
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.notice.notice-register',[
+            'main_exposure' => $main_exposure,
+            'count' => $count,
+        ]);
     }
-    public function noticeDetailsView()
+    public function noticeDetailsView($id)
     {
-        return view('pages.admin.notice.notice-details');
+        $notice = Notice::findOrFail($id);
+        $notice->increment('views');
+        $notice->save();
+        return view('pages.admin.notice.notice-details',[
+            'notice' => $notice,
+        ]);
     }
-    public function noticeModify()
+    public function noticeModify($id)
     {
-        return view('pages.admin.notice.notice-modification');
+        $notice = Notice::findOrFail($id);
+        return view('pages.admin.notice.notice-modification',[
+            'notice' => $notice,
+        ]);
     }
 
     // Notice Manegement End ------------------------------------------------------------------
@@ -198,6 +217,53 @@ class AdminPageController extends Controller
 
     // Direction Manegement End ------------------------------------------------------------------
 
+
+    // Resource Manegement Start ------------------------------------------------------------------
+
+    public function resourceDashboard()
+    {
+        return view('pages.admin.resource.resource-dashboard');
+    }
+    public function resourceRegistration()
+    {
+        return view('pages.admin.resource.resource-register');
+    }
+    public function resourceAttFileRegistration()
+    {
+        return view('pages.admin.resource.resource-att-file-register');
+    }
+    public function resourceDetailsView()
+    {
+        return view('pages.admin.resource.resource-details');
+    }
+    public function resourceModify()
+    {
+        return view('pages.admin.resource.resource-modification');
+    }
+
+    // Resource Manegement End ------------------------------------------------------------------
+
+
+    // Inquiry Manegement Start ------------------------------------------------------------------
+
+    public function inquiryDashboard()
+    {
+        return view('pages.admin.inquiry.inquiry-dashboard');
+    }
+    public function inquiryRegistration()
+    {
+        return view('pages.admin.inquiry.inquiry-register');
+    }
+    public function inquiryDetailsView()
+    {
+        return view('pages.admin.inquiry.inquiry-details');
+    }
+    public function inquiryModify()
+    {
+        return view('pages.admin.inquiry.inquiry-modification');
+    }
+
+    // Inquiry Manegement End ------------------------------------------------------------------
 
 
 

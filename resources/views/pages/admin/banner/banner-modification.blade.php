@@ -102,29 +102,28 @@
 
                                 @if ($banner->image)
                                     <img src="{{ Storage::url($banner->image) }}" alt="Avatar" width="100">
-                                @endif
-                                </div>
-                                <input type="file" class="form-control val-text file-up-bar-custom" name="image" id="file1" aria-describedby="File Up">
-                            <!---
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
-                            -->
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                                    @endif
 
-    <div class="row mt-4 mb-5">
-        <div class="item-flex-end">
-            <button type="submit" class="btn btn11">등록 완료</button>
-            <!--- <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
+                                    <input type="file" class="form-control val-text file-up-bar-custom" name="image" id="file1" aria-describedby="File Up">
+                                </div>
+                                <!-- <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a> -->
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4 mb-5">
+            <div class="item-flex-end">
+                <button type="submit" class="btn btn11">등록 완료</button>
+                <!--- <a href="#confirmationModal" class="btn btn9" data-bs-toggle="modal">
                 등록 완료
             </a> -->
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </form>
 <!-- Confirmation Alert Modal -->
 <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">

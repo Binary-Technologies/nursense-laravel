@@ -74,7 +74,10 @@
                     </div>
                     <div class="col-md-3">
                         <div class="cat-li py-3 item-flex-right">
-                            <p class="pt-2 mb-0" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;">{{ $notice->updated_at }}</p>
+                            <p class="pt-2 mb-0" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;">
+                                {{ $notice->updated_at }}
+                
+                            </p>
                         </div>
                     </div>
 
