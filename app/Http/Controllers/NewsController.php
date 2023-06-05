@@ -45,16 +45,15 @@ class NewsController extends Controller
             'contents' => 'required',
         ]);
     
-        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
-        else {
-            $data = News::findOrFail($id);
-            $data->main_exposure = $request->input('flexRadioDefault');
-            $data->exposure = $request->input('flexRadioDefault2');
-            $data->title = $request->input('title');
-            $data->content = $request->input('contents');   
-            $data->save();
-            return redirect('/admin/newsDash')->with('news update','News updated successfully');
-        }
+        if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
+        
+        $data = News::findOrFail($id);
+        $data->main_exposure = $request->input('flexRadioDefault');
+        $data->exposure = $request->input('flexRadioDefault2');
+        $data->title = $request->input('title');
+        $data->content = $request->input('contents');   
+        $data->save();
+        return redirect('/admin/newsDash')->with('news update','News updated successfully');
     }
 
     public function upload(Request $request)

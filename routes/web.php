@@ -151,15 +151,7 @@ Route::post('/Update-instructor/{user:id}', [UserController::class, 'instructorU
 Route::post('/Register-student', [UserController::class, 'studentRegister'])->name('studentReg');
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
-//Banner form
-Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
-Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
-Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
-
-//Notice form
-
-
-
+Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
 
 // Utilities
 Route::get('/util/clear', function () {
@@ -168,8 +160,6 @@ Route::get('/util/clear', function () {
 Route::get('/util/link', function () {
     return Artisan::call('storage:link');
 });
-
-Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
 Route::get('/util/migrate', function () {
     return Artisan::call('migrate');
 });

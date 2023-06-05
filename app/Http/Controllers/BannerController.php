@@ -27,19 +27,18 @@ class BannerController extends Controller
             $imagePath = $image->store('public/banner');
         }
 
-        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
-        else {
-            Banner::create([
-                'status' => $request['flexRadioDefault'],
-                'name' => $request->input('name'),
-                'title' => $request->input('title'),            
-                'content' => $request->input('content'),
-                'link' => $request->input('link'),
-                'sequence' => $request->input('sequence'),
-                'image' => $imagePath,
-            ]);
+        if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
+        
+        Banner::create([
+            'status' => $request['flexRadioDefault'],
+            'name' => $request->input('name'),
+            'title' => $request->input('title'),            
+            'content' => $request->input('content'),
+            'link' => $request->input('link'),
+            'sequence' => $request->input('sequence'),
+            'image' => $imagePath,
+        ]);
         return redirect('/admin/bannerDash')->with('success', 'Banner has been added.');
-        }   
     }
 
     public function bannerDelete($id)
