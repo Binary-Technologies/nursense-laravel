@@ -79,7 +79,7 @@
 
 
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="file"  class="btn btn9" name="files[]" required  placeholder="첨부파일 등록" id="" multiple>
+                            <input type="file"  class="btn btn9" name="files[]"   placeholder="첨부파일 등록" id="" multiple>
                             
                         </div>
                     </td>
