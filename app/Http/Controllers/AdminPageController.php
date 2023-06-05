@@ -11,23 +11,28 @@ use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
 {
-    public function instructorDashboard(){
+    // Member Management End -------------------------------------------------------------------
+
+    // Instructor Mng. Start --------------------------------------------------------------
+    public function instructorDashboard()
+    {
         $users = User::where('role', 'instructor')->get();
 
-        return view('pages.admin.member.instructor-dashboard',[
+        return view('pages.admin.member.instructor-dashboard', [
             'users' => $users,
         ]);
     }
 
-    public function viewInstructor(User $user){
-        return view('pages.admin.member.instructor-view',[
+    public function viewInstructor(User $user)
+    {
+        return view('pages.admin.member.instructor-view', [
             'user' => $user,
         ]);
     }
 
     public function viewInstructorEdit(User $user)
     {
-        return view('pages.admin.member.instructor-view-edit',[
+        return view('pages.admin.member.instructor-view-edit', [
             'user' => $user,
         ]);
     }
@@ -42,24 +47,25 @@ class AdminPageController extends Controller
         return view('pages.admin.member.instructor-register');
     }
 
-    // Student Mng. Start
-
-    public function studentDashboard(){
+    // Student Mng. Start --------------------------------------------------------------
+    public function studentDashboard()
+    {
         $users = User::where('role', 'student')->get();
-        return view('pages.admin.member.student-dashboard',[
+        return view('pages.admin.member.student-dashboard', [
             'users' => $users,
         ]);
     }
 
-    public function viewStudent(User $user){
-        return view('pages.admin.member.student-view',[
+    public function viewStudent(User $user)
+    {
+        return view('pages.admin.member.student-view', [
             'user' => $user,
         ]);
     }
 
     public function viewStudentEdit(User $user)
     {
-        return view('pages.admin.member.student-view-edit',[
+        return view('pages.admin.member.student-view-edit', [
             'user' => $user,
         ]);
     }
@@ -81,7 +87,7 @@ class AdminPageController extends Controller
     public function bannerDashboard()
     {
         $banners = Banner::all();
-        return view('pages.admin.banner.banner-dashboard',[
+        return view('pages.admin.banner.banner-dashboard', [
             'banners' => $banners,
         ]);
     }
@@ -96,14 +102,14 @@ class AdminPageController extends Controller
     }
     public function bannerDetailsView(Banner $banner)
     {
-        return view('pages.admin.banner.banner-details',[
+        return view('pages.admin.banner.banner-details', [
             'banner' => $banner,
         ]);
     }
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
-        return view('pages.admin.banner.banner-modification',[
+        return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
         ]);
     }
@@ -150,6 +156,94 @@ class AdminPageController extends Controller
     // Notice Manegement End ------------------------------------------------------------------
 
 
+    // News Manegement Start ------------------------------------------------------------------
+
+    public function newsDashboard()
+    {
+        return view('pages.admin.news.news-dashboard');
+    }
+    public function newsRegistration()
+    {
+        return view('pages.admin.news.news-register');
+    }
+    public function newsDetailsView()
+    {
+        return view('pages.admin.news.news-details');
+    }
+    public function newsModify()
+    {
+        return view('pages.admin.news.news-modification');
+    }
+
+    // News Manegement End ------------------------------------------------------------------
+
+
+    // Direction Manegement Start ------------------------------------------------------------------
+
+    public function directionDashboard()
+    {
+    }
+    public function directionRegistration()
+    {
+    }
+    public function directionDetailsView()
+    {
+        return view('pages.admin.direction.direction-details');
+    }
+    public function directionModify()
+    {
+        return view('pages.admin.direction.direction-modification');
+    }
+
+    // Direction Manegement End ------------------------------------------------------------------
+
+
+    // Resource Manegement Start ------------------------------------------------------------------
+
+    public function resourceDashboard()
+    {
+        return view('pages.admin.resource.resource-dashboard');
+    }
+    public function resourceRegistration()
+    {
+        return view('pages.admin.resource.resource-register');
+    }
+    public function resourceAttFileRegistration()
+    {
+        return view('pages.admin.resource.resource-att-file-register');
+    }
+    public function resourceDetailsView()
+    {
+        return view('pages.admin.resource.resource-details');
+    }
+    public function resourceModify()
+    {
+        return view('pages.admin.resource.resource-modification');
+    }
+
+    // Resource Manegement End ------------------------------------------------------------------
+
+
+    // Inquiry Manegement Start ------------------------------------------------------------------
+
+    public function inquiryDashboard()
+    {
+        return view('pages.admin.inquiry.inquiry-dashboard');
+    }
+    public function inquiryRegistration()
+    {
+        return view('pages.admin.inquiry.inquiry-register');
+    }
+    public function inquiryDetailsView()
+    {
+        return view('pages.admin.inquiry.inquiry-details');
+    }
+    public function inquiryModify()
+    {
+        return view('pages.admin.inquiry.inquiry-modification');
+    }
+
+    // Inquiry Manegement End ------------------------------------------------------------------
 
 
 

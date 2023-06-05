@@ -1,19 +1,77 @@
 <footer class="footer-sec">
 
-    <nav class="navbar navbar-expand-lg bg-light w-100" style="width: 1920px; background-color: #F3F4F8;">
-        <!-- <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
+    <nav class="navbar navbar-expand-lg bg-light w-100" style="background-color: #F3F4F8; padding-left: 5%;">
         <div class="collapse navbar-collapse container" id="navbarNavDropdown">
-            <ul class="navbar-nav" style=" margin-left: -300px;">
-                
+            <ul class="navbar-nav">
+                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
+                                            explode('/', Request::url())[3] == 'info' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/info">
+                        <span class="footer_font">회사소개</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
+                                            explode('/', Request::url())[3] == 'terms_conditions' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/terms_conditions">
+                        <span class="footer_font">이용약관</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
+                                            explode('/', Request::url())[3] == 'privacy_policy' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/privacy_policy">
+                        <span class="footer_font">개인정보처리방침</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
+                                            explode('/', Request::url())[3] == 'info' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/info">
+                        <span class="footer_font">공지사항</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
+                                            explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/quiz">
+                        <span class="footer_font">사용자매뉴얼</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
+                                            explode('/', Request::url())[4] == 'inquiry' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/inquiry">
+                        <span class="footer_font">1:1문의</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
+                                            explode('/', Request::url())[3] == 'mystudy' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/mystudy">
+                        <span class="footer_font">수료증출력</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
+                                            explode('/', Request::url())[4] == 'location' ? 'active' : ''
+                                        : ''}}">
+                    <a class="nav-link px-3" href="/location">
+                        <span class="footer_font">찾아오시는길</span>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container pt-5" style="margin-left: 100px;">
-
+    <div class="container pt-5">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-12 pb-3">
                 <div class="footer-brand pl-2">
@@ -22,7 +80,6 @@
             </div>
             <div class="col-lg-10 col-md-8 col-sm-12">
                 <div class="f_widget ab f_about_widget">
-                    <!-- <img src="images/logo3.png" alt=""> -->
                     <div class="f_title">
                         <h3 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">(주) 더블엠소셜컴퍼니</h3>
                     </div>
@@ -32,10 +89,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="footer-bar">
-            <p class="copyright text-center"><span></span> © 2023. All Rights Reserved.</p>
-        </div> -->
-
     </div>
 </footer>

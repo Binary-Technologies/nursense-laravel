@@ -115,7 +115,17 @@
                         $current_page == 'noticeReg' ||
                         $current_page == 'noticeDetails' ||
                         $current_page == 'noticeUpdate' ||
-                        $current_page == ''
+                        $current_page == 'newsDash' ||
+                        $current_page == 'newsReg' ||
+                        $current_page == 'newsDetails' ||
+                        $current_page == 'newsUpdate' ||
+                        $current_page == 'directionDetails' ||
+                        $current_page == 'directionUpdate' ||
+                        $current_page == 'resourceDash' ||
+                        $current_page == 'resourceReg' ||
+                        $current_page == 'resourceAttFileReg' ||
+                        $current_page == 'resourceDetails' ||
+                        $current_page == 'resourceUpdate'
                     ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
                         컨텐츠 관리
                     </a>
@@ -130,7 +140,27 @@
                         $show_class = "show";
                     } else if ($current_page == 'noticeUpdate') {
                         $show_class = "show";
-                    } else if ($current_page == '') {
+                    } else if ($current_page == 'newsDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'newsReg') {
+                        $show_class = "show";
+                    } else if ($current_page == 'newsDetails') {
+                        $show_class = "show";
+                    } else if ($current_page == 'newsUpdate') {
+                        $show_class = "show";
+                    } else if ($current_page == 'directionDetails') {
+                        $show_class = "show";
+                    } else if ($current_page == 'directionUpdate') {
+                        $show_class = "show";
+                    } else if ($current_page == 'resourceDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'resourceReg') {
+                        $show_class = "show";
+                    } else if ($current_page == 'resourceAttFileReg') {
+                        $show_class = "show";
+                    } else if ($current_page == 'resourceDetails') {
+                        $show_class = "show";
+                    } else if ($current_page == 'resourceUpdate') {
                         $show_class = "show";
                     } else {
                         $show_class = "";
@@ -151,28 +181,33 @@
                         </a>
 
                         <!-- News Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
+                        <a href="{{ url('admin/newsDash') }}" class="dropdown-item 
                         <?php if (
-                            $current_page == '' ||
-                            $current_page == ''
+                            $current_page == 'newsDash' ||
+                            $current_page == 'newsReg' ||
+                            $current_page == 'newsDetails' ||
+                            $current_page == 'newsUpdate'
                         ) : ?>active show <?php endif; ?>">
                             소식 관리
                         </a>
 
                         <!-- Direction Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
+                        <a href="{{ url('admin/directionDetails') }}" class="dropdown-item 
                         <?php if (
-                            $current_page == '' ||
-                            $current_page == ''
+                            $current_page == 'directionDetails' ||
+                            $current_page == 'directionUpdate'
                         ) : ?>active show <?php endif; ?>">
                             오시는 길 관리
                         </a>
 
                         <!-- Resource Management -->
-                        <a href="{{ url('admin/') }}" class="dropdown-item 
+                        <a href="{{ url('admin/resourceDash') }}" class="dropdown-item 
                         <?php if (
-                            $current_page == '' ||
-                            $current_page == ''
+                            $current_page == 'resourceDash' ||
+                            $current_page == 'resourceReg' ||
+                            $current_page == 'resourceAttFileReg' ||
+                            $current_page == 'resourceDetails' ||
+                            $current_page == 'resourceUpdate'
                         ) : ?>active show <?php endif; ?>">
                             자료실 관리
                         </a>
@@ -180,6 +215,16 @@
                     </div>
 
                 </div>
+
+                <a href="{{ url('admin/inquiryDash') }}" class="nav-item nav-link 
+                <?php if (
+                    $current_page == 'inquiryDash' ||
+                    $current_page == 'inquiryReg' ||
+                    $current_page == 'inquiryDetails' ||
+                    $current_page == 'inquiryUpdate'
+                ) : ?> active <?php endif; ?>">
+                    1:1문의 관리
+                </a>
 
             </div>
 

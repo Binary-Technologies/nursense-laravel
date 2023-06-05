@@ -29,10 +29,7 @@
                         </div>
 
                         <div class="col-12 mt-4">
-                           <!-- <a href="{{ route('viewMemIns') }}" id="loginBtn" class="btn login-btn mt-2">로그인</a> -->
-
                            <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
-                        
                         </div>
 
                     </form>
