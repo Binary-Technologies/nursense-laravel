@@ -106,6 +106,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/noticeReg', [AdminPageController::class, 'noticeRegistration'])->name('noticeReg');
     Route::get('/noticeDetails/{notice:id}', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate/{notice:id}', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
+    Route::post('/noticeReg',[NoticeController::class, 'noticeRegister']);
+    Route::post('/notice/noticeDelete/{notice:id}',[NoticeController::class, 'noticeDelete'])->name('noticeDelete');
+    Route::put('/notice/noticeUpdate/{notice:id}',[NoticeController::class, 'noticeUpdate']);
 });
 
 // Instructor  form
@@ -122,9 +125,7 @@ Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerU
 Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
 //Notice form
-Route::post('/noticeReg',[NoticeController::class, 'noticeRegister']);
-Route::post('/notice/noticeDelete/{notice:id}',[NoticeController::class, 'noticeDelete'])->name('noticeDelete');
-Route::put('/notice/noticeUpdate/{notice:id}',[NoticeController::class, 'noticeUpdate']);
+
 
 
 

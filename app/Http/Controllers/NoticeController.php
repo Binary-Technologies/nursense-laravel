@@ -16,21 +16,15 @@ class NoticeController extends Controller
             'title' => 'required',
             'contents' => 'required',
         ]);
-
-        $title = $request->input('title');
-        $content = $request->input('contents');
-        $main_exposure = $request->input('flexRadioDefault');       
-        $exposure = $request->input('flexRadioDefault2'); 
               
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
             Notice::create([
                 
-                'title' => $title,            
-                'content' => $content,
-                'main_exposure' => $main_exposure,
-                'exposure'=> $exposure,
+                'title' => $request->input('title'),            
+                'content' => $request->input('contents'),
+                'main_exposure' => $request->input('flexRadioDefault'),
+                'exposure'=> $request->input('flexRadioDefault2'),
 
             ]);
         return redirect('/admin/noticeDash')->with('notice added', 'Notice has been added.');
@@ -53,19 +47,16 @@ class NoticeController extends Controller
             'contents' => 'required',
         ]);
     
-        $data = Notice::findOrFail($id);
-        $data->main_exposure = $request->input('flexRadioDefault');
-        $data->exposure = $request->input('flexRadioDefault2');
-        $data->title = $request->input('title');
-        $data->content = $request->input('contents');
-    
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
+            $data = Notice::findOrFail($id);
+            $data->main_exposure = $request->input('flexRadioDefault');
+            $data->exposure = $request->input('flexRadioDefault2');
+            $data->title = $request->input('title');
+            $data->content = $request->input('contents');
             $data->save();
             
             return redirect('/admin/noticeDash')->with('notice update','Notice updated successfully');
-   
         }
     }
 }

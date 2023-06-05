@@ -100,17 +100,11 @@
                     <td>{{$notice->id}}</td>
                     <td><a href="{{ url('admin/noticeDetails', ['notice' => $notice->id])  }}" class="td-a-custom">{{$notice->title}}</a></td>
                     <td>{{$notice->views}}</td>
-                    <td> @if($notice->main_exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
+                    <td> 
+                        {{$notice->main_exposure == 0 ? '노출' : '미노출'}}
                     </td>
-                    <td>@if($notice->exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif</td>
+                    <td>
+                        {{$notice->exposure == 0 ? '노출' : '미노출'}}
                     <td>{{$notice->created_at->format('Y-m-d')}}</td>
                 </tr>
                 @endforeach

@@ -29,7 +29,7 @@
 </div>
 
 <!-- Notice Management Start -->
-<form action="/notice/noticeUpdate/{{$notice->id}}" method="post" enctype="multipart/form-data">
+<form action="/admin/notice/noticeUpdate/{{$notice->id}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="container-fluid px-0">

@@ -33,12 +33,7 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">메인 페이지 노출</td>
                     <td colspan="8" class="table-td-text3">
                         <div class="height-52 item-flex-align-start ps-4">
-                            <label class="lbl-y2">
-                                @if($notice->main_exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
+                            <label class="lbl-y2">{{$notice->main_exposure == 0 ? '노출' : '미노출'}}
                             </label>
                         </div>
                     </td>
@@ -48,11 +43,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                                @if($notice->exposure == 0)노출
-
-                        @else 미노출
-                        
-                        @endif
+                                {{$notice->exposure == 0 ? '노출' : '미노출'}}
                             </label>
                         </div>
                     </td>

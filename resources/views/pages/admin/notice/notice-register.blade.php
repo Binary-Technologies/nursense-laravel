@@ -24,7 +24,7 @@
 </div>
 
 <!-- Notice Management Start -->
-<form action="/noticeReg" method="post">
+<form action="/admin/noticeReg" method="post">
     @csrf
 <div class="container-fluid px-0">
 
@@ -208,12 +208,6 @@
             } );
             </script>
 
-        <script>
-            CKEDITOR.replace( 'contents', {
-                filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-                filebrowserUploadMethod: 'form'
-            });
-        </script>
         <script type="text/javascript">
             
             function exposureChange() {
