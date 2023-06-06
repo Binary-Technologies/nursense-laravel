@@ -33,7 +33,7 @@ class BannerController extends Controller
             'status' => $request['flexRadioDefault'],
             'name' => $request->input('name'),
             'title' => $request->input('title'),            
-            'content' => $request->input('content'),
+            'content' => $request->input('contents'),
             'link' => $request->input('link'),
             'sequence' => $request->input('sequence'),
             'image' => $imagePath,
