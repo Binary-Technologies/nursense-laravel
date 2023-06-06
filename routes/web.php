@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UserController;
@@ -138,9 +139,11 @@ Route::prefix('/admin')->group(function () {
 
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
-    Route::get('/inquiryReg', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
-    Route::get('/inquiryDetails', [AdminPageController::class, 'inquiryDetailsView'])->name('inquiryDetails');
-    Route::get('/inquiryUpdate', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
+    Route::get('/inquiryReg/{inquiry:id}', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
+    Route::get('/inquiryDetails/{inquiry:id}', [AdminPageController::class, 'inquiryDetailsView'])->name('inquiryDetails');
+    Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
+    Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryReg']);
+    Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
 });
 
 // Instructor  form

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Inquiry;
 use App\Models\News;
 use App\Models\Notice;
 use App\Models\User;
@@ -248,19 +249,23 @@ class AdminPageController extends Controller
 
     public function inquiryDashboard()
     {
-        return view('pages.admin.inquiry.inquiry-dashboard');
+        $inquiries = Inquiry::all();
+        return view('pages.admin.inquiry.inquiry-dashboard',compact('inquiries'));
     }
-    public function inquiryRegistration()
+    public function inquiryRegistration($id)
     {
-        return view('pages.admin.inquiry.inquiry-register');
+        $inquiry = Inquiry::findOrFail($id);
+        return view('pages.admin.inquiry.inquiry-register',compact('inquiry'));
     }
-    public function inquiryDetailsView()
+    public function inquiryDetailsView($id)
     {
-        return view('pages.admin.inquiry.inquiry-details');
+        $inquiry = Inquiry::findOrFail($id);
+        return view('pages.admin.inquiry.inquiry-details',compact('inquiry'));
     }
-    public function inquiryModify()
+    public function inquiryModify($id)
     {
-        return view('pages.admin.inquiry.inquiry-modification');
+        $inquiry = Inquiry::findOrFail($id);
+        return view('pages.admin.inquiry.inquiry-modification',compact('inquiry'));
     }
 
     // Inquiry Manegement End ------------------------------------------------------------------

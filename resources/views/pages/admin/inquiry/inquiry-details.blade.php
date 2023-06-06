@@ -32,7 +32,7 @@
                     <td colspan="5" class="table-td-text2 width-40">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                김이나
+                                {{$inquiry->writerName}}
                             </label>
                         </div>
                     </td>
@@ -40,7 +40,7 @@
                     <td colspan="4" class="table-td-text2 width-40">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                2022.04.28
+                                {{$inquiry->created_at}}
                             </label>
                         </div>
                     </td>
@@ -50,7 +50,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                제목제목제목
+                                {{$inquiry->title}}
                             </label>
                         </div>
                     </td>
@@ -60,9 +60,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 my-2">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다.<br>
-                                들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다.<br>
-                                가지에 실로 고행을 소리다.이것은 우리의 전인 것이다.
+                                {{$inquiry->inquiryDetail}}
                             </label>
                         </div>
                     </td>
@@ -78,7 +76,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                2022.04.28
+                                {{$inquiry->updated_at}}
                             </label>
                         </div>
                     </td>
@@ -88,9 +86,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 my-2">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다.<br>
-                                들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다.<br>
-                                가지에 실로 고행을 소리다.이것은 우리의 전인 것이다.
+                                {{$inquiry->answer}}
                             </label>
                         </div>
                     </td>
@@ -102,7 +98,7 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="{{ route('inquiryUpdate') }}" class="btn btn13">
+            <a href="{{ route('inquiryUpdate', ['inquiry' => $inquiry->id]) }}" class="btn btn13">
                 답변 수정
             </a>
         </div>

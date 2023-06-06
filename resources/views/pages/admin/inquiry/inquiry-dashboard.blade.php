@@ -53,7 +53,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$inquiries->count()}}
                     </span>
                 </div>
 
@@ -82,81 +82,43 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($inquiries as $inquiry)
+                   
                 <tr>
-                    <td>70</td>
-                    <td>제목제목제목제목제목제목제목제목</td>
-                    <td>민경애</td>
-                    <td>2023.01.31</td>
-                    <td><span class="table-td-text4">답변 대기</span></td>
+                    <td>{{$inquiry->id}}</td>
+                    <td>{{$inquiry->title}}</td>
+                    <td>{{$inquiry->writerName}}</td>
+                    <td>{{$inquiry->created_at}}</td>
                     <td>
+                        @if ($inquiry->status == 0)
+                        <span class="table-td-text4">답변 대기</span>
+                        @else
+                        답변 완료
+                        @endif
+                        
+                    <td>
+                        @if ($inquiry->status == 0)
                         <div class="height-52 item-flex-center">
-                            <a href="{{ route('inquiryReg') }}" class="btn btn3 btn3-1">
+                            <a href="{{ route('inquiryReg', ['inquiry' => $inquiry->id]) }}" class="btn btn3 btn3-1">
                                 자료실 등록
                             </a>
                         </div>
-                    </td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>69</td>
-                    <td>제목제제목제제목제제목제제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제...</td>
-                    <td>하소진</td>
-                    <td>2023.01.31</td>
-                    <td><span class="table-td-text4">답변 대기</span></td>
-                    <td>
+                        @else
                         <div class="height-52 item-flex-center">
-                            <a href="{{ route('inquiryReg') }}" class="btn btn3 btn3-1">
-                                자료실 등록
-                            </a>
-                        </div>
-                    </td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>68</td>
-                    <td><a href="{{ route('inquiryDetails') }}" class="td-a-custom">제목제목제목제목제목제목제목제목</a></td>
-                    <td>조수현</td>
-                    <td>2023.01.31</td>
-                    <td>답변 완료</td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('inquiryDetails') }}" class="btn btn5 btn5-1">
+                            <a href="{{ route('inquiryDetails', ['inquiry' => $inquiry->id])}}" class="btn btn5 btn5-1">
                                 답변 보기
                             </a>
                         </div>
+                        @endif
                     </td>
-                    <td>2023.01.30</td>
-                </tr>
-                <tr>
-                    <td>67</td>
-                    <td><a href="{{ route('inquiryDetails') }}" class="td-a-custom">제목제목제목제목제목제목제목제목</a></td>
-                    <td>조수현</td>
-                    <td>2023.01.31</td>
-                    <td>답변 완료</td>
                     <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('inquiryDetails') }}" class="btn btn5 btn5-1">
-                                답변 보기
-                            </a>
-                        </div>
+                        {{$inquiry->status == 0 ? '-' : $inquiry->updated_at}}
+                    
                     </td>
-                    <td>2023.01.30</td>
                 </tr>
-                <tr>
-                    <td>66</td>
-                    <td><a href="{{ route('inquiryDetails') }}" class="td-a-custom">제목제목제목제목제목제목제목제목</a></td>
-                    <td>조수현</td>
-                    <td>2023.01.31</td>
-                    <td>답변 완료</td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('inquiryDetails') }}" class="btn btn5 btn5-1">
-                                답변 보기
-                            </a>
-                        </div>
-                    </td>
-                    <td>2023.01.30</td>
-                </tr>
+                @endforeach
+
+                
             </tbody>
         </table>
 
@@ -232,6 +194,33 @@
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
                         <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
+<!-- update Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('Inquiry updated') ? 'block' : 'none'}} ">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    답변 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('inquiryDash')}}"  class="btn btn-alert3"  >
+                            확인
+                        </a>
+                        
                     </div>
                 </div>
             </div>
