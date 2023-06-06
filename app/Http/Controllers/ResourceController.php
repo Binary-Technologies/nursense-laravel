@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resource;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,34 +19,46 @@ class ResourceController extends Controller
             'files.*' => 'mimes:jpeg,png,pdf|max:2048',
         ]);
         
-        $filePaths = [];
 
         if ($request->hasFile('files')) {
+            $resource = new Resource();
+            $filePaths = [];
+            $resource->status = $request->input('exposureStatus');
+            $resource->title = $request->input('title');
+            $resource->details = $request->input('contents');
+            $resource->path = json_encode($filePaths);
+
+            $resource->save();
+
+            $id = $resource->id;
             foreach ($request->file('files') as $file) {
                 if ($file->isValid()) {
-                    $path = $file->store('public/files');
+                    $name = $file->getClientOriginalName();
+                    $path = $file->storeAs('public/files/resources/'.$id,$name);
                     $filePaths[] = $path;
                 }
             }
+            $resource->path =$filePaths;
+            $resource->save();
+
         }
 
         if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
-        
-        $resource = new Resource();
-        $resource->status = $request->input('flexRadioDefault');
-        $resource->title = $request->input('title');
-        $resource->details = $request->input('contents');
-        $resource->path = json_encode($filePaths);
-
-        $resource->save();
-        
+     
         return redirect('admin/resourceDash')->with('success', 'Resources has been uploaded Successfully');
     
     }
-    public function resourceDelete($id)
+    public function resourceDelete(Request $request,$id)
     {
         $resource = Resource::findOrFail($id);
+        /*
+            foreach (json_decode($resource->path) as $filePath) {
+                Storage::delete($resource->$filePath);
+
+            } */
+        Storage::deleteDirectory('public/files/resources/'.$id);
         $resource->delete();
+
         return redirect('/admin/resourceDash')->with('resource delete','Resource deleted successfully');
     }
 
@@ -53,27 +66,27 @@ class ResourceController extends Controller
     {
         
         $data = Resource::findOrFail($id);
-        $data->status = $request->input('flexRadioDefault');
-        $data->title = $request->input('title');
-        $data->details = $request->input('contents');
-
+        
         if ($request->hasFile('files')) {
             $filePaths = [];
-
-            foreach ($request->file('files') as $file) {
-                if ($file->isValid()) {
-                    $path = $file->store('public/files');
-                    $filePaths[] = $path;
-                }
-            }
-
             if ($data->path && is_array(json_decode($data->path))) {
                 foreach (json_decode($data->path) as $filePath) {
                     Storage::delete($filePath);
                 }
             }
+            foreach ($request->file('files') as $file) {
+                if ($file->isValid()) {
+                    $name = $file->getClientOriginalName();
+                    $path = $file->storeAs('public/files/resources/'.$id,$name);
+                    $filePaths[] = $path;
+                }
+            }
+            
             $data->path = json_encode($filePaths);
         }
+            $data->status = $request->input('exposureStatus');
+            $data->title = $request->input('title');
+            $data->details = $request->input('contents');
 
             $data->save();
 

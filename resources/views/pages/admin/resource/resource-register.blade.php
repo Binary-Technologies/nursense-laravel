@@ -36,11 +36,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" onchange="exposureChange()"  checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" value="1" name="exposureStatus" id="flexRadioDefault1" onchange="exposureChange()"  checked>
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" value="0" name="flexRadioDefault" {{ $count>=5 ? 'checked' : '' }} id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" value="0" name="exposureStatus" {{ $count>=5 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>

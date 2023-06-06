@@ -108,7 +108,7 @@
                                 <li>
                                 <span class="i-color-1"><i class='far fa-file-alt'></i></span>
                                     <span class="ms-2">
-                                    <a href="{{ Storage::url($filePath) }}" target="_blank">{{ basename($resource->title) }}</a>
+                                    <a href="{{ Storage::url($filePath) }}" target="_blank">{{ basename($filePath) }}</a>
                                 </span>
                             </li>
                                 @endforeach

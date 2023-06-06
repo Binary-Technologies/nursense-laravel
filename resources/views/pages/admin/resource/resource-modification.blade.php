@@ -40,11 +40,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault"  value="1" {{ old('flexRadioDefault', $resource->status) === 1 ? 'checked' : '' }}  id="flexRadioDefault1" >
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus"  value="1" {{ old('flexRadioDefault', $resource->status) === 1 ? 'checked' : '' }}  id="flexRadioDefault1" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault"  value="0" {{ old('flexRadioDefault', $resource->status) === 0 ? 'checked' : '' }}  id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus"  value="0" {{ old('flexRadioDefault', $resource->status) === 0 ? 'checked' : '' }}  id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -68,7 +68,7 @@
                             <div class="height-52">
                                 <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
 
-                                <a href="{{ Storage::url($filePath) }}" class="form-control val-text file-up-bar-custom" target="_blank">{{ basename($resource->title) }}</a>
+                                <a href="{{ Storage::url($filePath) }}" class="form-control val-text file-up-bar-custom" target="_blank">{{ basename($filePath) }}</a>
 
                                 
                             </div>

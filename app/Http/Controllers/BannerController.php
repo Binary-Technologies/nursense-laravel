@@ -37,7 +37,7 @@ class BannerController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         } else {
             Banner::create([
-                'status' => $request['flexRadioDefault'],
+                'status' => $request['exposureStatus'],
                 'name' => $name,
                 'title' => $title,            
                 'content' => $content,
@@ -52,6 +52,7 @@ class BannerController extends Controller
     public function bannerDelete($id)
     {
         $banner = Banner::findOrFail($id);
+        Storage::delete($banner->image);
         $banner->delete();
         return redirect('/admin/bannerDash')->with('banner delete','Banner deleted successfully');
     }
@@ -67,7 +68,7 @@ class BannerController extends Controller
         ]);
     
         $data = Banner::findOrFail($id);
-        $data->status = $request->input('flexRadioDefault');
+        $data->status = $request->input('exposureStatus');
         $data->name = $request->input('name');
         $data->title = $request->input('title');
         $data->content = $request->input('contents');

@@ -48,7 +48,7 @@ Route::get('/info/inquiry_await', [PageController::class, 'inquiry_await']);
 Route::get('/info/news_main', [PageController::class, 'news_main']);
 Route::get('/info/news_main_details', [PageController::class, 'news_main_details']);
 Route::get('/info/resources', [PageController::class, 'resources']);
-Route::get('/info/resources_details', [PageController::class, 'resources_details']);
+Route::get('/info/resources_details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
@@ -99,6 +99,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/bannerAddAttFilereg', [AdminPageController::class, 'bannerAddAttachFileReg'])->name('bannerAddAttFilereg');
     Route::get('/bannerDetails/{banner:id}', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
     Route::get('/bannerUpdate/{banner:id}', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
+    Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
+    Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
+    Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
     // Notice Management
     Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
@@ -126,8 +129,6 @@ Route::prefix('/admin')->group(function () {
     Route::post('/resourceDelete/{resource:id}', [ResourceController::class, 'resourceDelete'])->name('resourceDelete');
     Route::put('/resourceUpdate/{resource:id}', [ResourceController::class, 'resourceUpdate']);
 
-
-
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
     Route::get('/inquiryReg', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
@@ -143,10 +144,6 @@ Route::post('/Update-instructor/{user:id}', [UserController::class, 'instructorU
 Route::post('/Register-student', [UserController::class, 'studentRegister'])->name('studentReg');
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
-//Banner form
-Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
-Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
-Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
 
 // Utilities
