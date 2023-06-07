@@ -19,32 +19,28 @@ class ResourceController extends Controller
             'files.*' => 'mimes:jpeg,png,pdf|max:2048',
         ]);
         
-
-        if ($request->hasFile('files')) {
-            $resource = new Resource();
-            $filePaths = [];
-            $resource->status = $request->input('exposureStatus');
-            $resource->title = $request->input('title');
-            $resource->details = $request->input('contents');
-            $resource->path = json_encode($filePaths);
-
-            $resource->save();
-
-            $id = $resource->id;
-            foreach ($request->file('files') as $file) {
-                if ($file->isValid()) {
-                    $name = $file->getClientOriginalName();
-                    $path = $file->storeAs('public/files/resources/'.$id,$name);
-                    $filePaths[] = $path;
-                }
-            }
-            $resource->path =$filePaths;
-            $resource->save();
-
-        }
-
         if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
-     
+
+        $resource = new Resource();
+        $filePaths = [];
+        $resource->status = $request->input('exposureStatus');
+        $resource->title = $request->input('title');
+        $resource->details = $request->input('contents');
+        $resource->path = json_encode($filePaths);
+
+        $resource->save();
+
+        $id = $resource->id;
+        foreach ($request->file('files') as $file) {
+            if ($file->isValid()) {
+                $name = $file->getClientOriginalName();
+                $path = $file->storeAs('public/files/resources/'.$id,$name);
+                $filePaths[] = $path;
+            }
+        }
+        $resource->path =$filePaths;
+        $resource->save();
+   
         return redirect('admin/resourceDash')->with('success', 'Resources has been uploaded Successfully');
     
     }
@@ -64,6 +60,14 @@ class ResourceController extends Controller
 
     public function resourceUpdate(Request $request, $id )
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'contents' => 'required',
+            'files' => 'required',
+            'files.*' => 'mimes:jpeg,png,pdf|max:2048',
+        ]);
+        
+        if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
         
         $data = Resource::findOrFail($id);
         

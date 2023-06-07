@@ -189,9 +189,7 @@ class AdminPageController extends Controller
     }
     public function resourceRegistration()
     {
-        $exposure = Resource::pluck('status')->toArray();
-        $value = 1;
-        $count = array_count_values($exposure)[$value];
+        $count = Resource::where('status',1)->count();
         return view('pages.admin.resource.resource-register',[
             'count' => $count,
         ]);

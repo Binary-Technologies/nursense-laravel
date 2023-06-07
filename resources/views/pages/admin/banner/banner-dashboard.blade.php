@@ -96,16 +96,10 @@
                     <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">{{$banner->name}}</a></td>
                     <td>
                         <img src="{{ Storage::url($banner->image) }}" height="200px">
-            
                     </td>
                     <td>
-                        @if($banner->status == 0)노출
-
-                        @else 
-                        
-                        @endif
-
-                        </td>
+                        {{$banner->status == 0 ? '노출' : '미노출' }}
+                    </td>
                     <td>{{$banner->sequence}}</td>
                     <td>{{$banner->created_at->format('Y-m-d')}}</td>
                 </tr>

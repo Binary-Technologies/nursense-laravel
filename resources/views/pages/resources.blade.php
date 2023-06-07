@@ -89,7 +89,6 @@
                                 <th style="width: 15%">조회 수</th>
                             </tr>
                             @foreach ($resources as $resource)
-                               
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">{{$resource->id}}</td>
                                 <td style="width: 55%; text-align: left;">
@@ -101,18 +100,21 @@
                                     <ul>
                                         @foreach(json_decode($resource->path) as $filePath)
                                         <li>
-                                        <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                                            <span class="ms-2">
-                                            <a href="{{ Storage::url($filePath) }}" target="_blank">{{ basename($filePath) }}</a>
-                                        </span>
-                                    </li>
+                                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                <span class="ms-2">
+                                                <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                    {{ basename($filePath) }}
+                                                </a>
+                                            </span>
+                                        </li>
                                         @endforeach
                                     </ul>
                                 </td>
-                                <td style="width: 15%">{{$resource->created_at->format('Y-m-d')}}</td>
+                                <td style="width: 15%">
+                                    {{$resource->created_at->format('Y-m-d')}}
+                                </td>
                                 <td style="width: 15%">{{$resource->views}}</td>
                             </tr>
-                             
                             @endforeach
                         </table>
                     </div>

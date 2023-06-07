@@ -62,29 +62,22 @@
                 <tr>
                     <td scope="row" class="table-td-text1 bg-td height-52">* 첨부파일</td>
                     <td colspan="8" class="table-td-text2">
-                        
                         @foreach(json_decode($resource->path) as $filePath)
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
-
-                                <a href="{{ Storage::url($filePath) }}" class="form-control val-text file-up-bar-custom" target="_blank">{{ basename($filePath) }}</a>
-
-                                
+                            <div class="height-52 item-flex-start ml30 my-3">
+                                <div class="height-52">
+                                    <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
+                                    <a href="{{ Storage::url($filePath) }}" class="form-control val-text file-up-bar-custom" target="_blank">
+                                        {{ basename($filePath) }}
+                                    </a>  
+                                </div>
+                                <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
                             </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
-                        </div>
-                        
                         @endforeach
-
-
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
                             <input type="file"  class="btn btn9" name="files[]"   placeholder="첨부파일 등록" id="" multiple>
-                            
                         </div>
                     </td>
                 </tr>
-
                 <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
                     <td colspan="8" class="table-td-text2">
@@ -95,7 +88,6 @@
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>

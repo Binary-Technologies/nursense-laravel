@@ -20,29 +20,21 @@ class BannerController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $name = $request->input('name');
-        $title = $request->input('title');
-        $content = $request->input('contents');
-        $link = $request->input('link');
-        $sequence = $request->input('sequence');
-    
-        // Store the image
         $imagePath = null;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imagePath = $image->store('public/banner');
         }
 
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        else {
             Banner::create([
                 'status' => $request['exposureStatus'],
-                'name' => $name,
-                'title' => $title,            
-                'content' => $content,
-                'link' => $link,
-                'sequence' => $sequence,
+                'name' => $request->input('name'),
+                'title' => $request->input('title'),            
+                'content' => $request->input('contents'),
+                'link' => $request->input('link'),
+                'sequence' => $request->input('sequence'),
                 'image' => $imagePath,
             ]);
         return redirect('/admin/bannerDash')->with('success', 'Banner has been added.');
@@ -68,26 +60,27 @@ class BannerController extends Controller
         ]);
     
         $data = Banner::findOrFail($id);
-        $data->status = $request->input('exposureStatus');
-        $data->name = $request->input('name');
-        $data->title = $request->input('title');
-        $data->content = $request->input('contents');
-        $data->link = $request->input('link');
-        $data->sequence = $request->input('sequence');
+    
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        
+        else {
 
-        if ($request->hasFile('image')) {
-            // Delete the old avatar file if it exists
-            if ($data->image) {
-                Storage::delete($data->image);
+            if ($request->hasFile('image')) {
+                // Delete the old avatar file if it exists
+                if ($data->image) {
+                    Storage::delete($data->image);
+                }
+        
+                $imagePath = $request->file('image')->store('public/banner');
+                $data->image = $imagePath;
             }
-    
-            $imagePath = $request->file('image')->store('public/banner');
-            $data->image = $imagePath;
-        }
-    
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
+
+            $data->status = $request->input('exposureStatus');
+            $data->name = $request->input('name');
+            $data->title = $request->input('title');
+            $data->content = $request->input('contents');
+            $data->link = $request->input('link');
+            $data->sequence = $request->input('sequence');
             $data->save();
             
             return redirect('/admin/bannerDash')->with('success','Banner updated successfully');

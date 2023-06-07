@@ -93,40 +93,34 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                
-
                     @foreach ($resources as $resource)
                     <tr>  
-                    
-                    <td>{{$resource->id}}</td>
-                    <td><a href="{{ route('resourceDetails', ['resource' => $resource->id]) }}" class="td-a-custom">{{$resource->title}}</a></td>
-                    <td>
-                        <div class="item-flex-center">
-                            
-                            <ul>
-                                @foreach(json_decode($resource->path) as $filePath)
-                                <li>
-                                <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                                    <span class="ms-2">
-                                    <a href="{{ Storage::url($filePath) }}" target="_blank">{{ basename($filePath) }}</a>
-                                </span>
-                            </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </td>
-                    <td>{{$resource->details}}</td>
-                    <td>{{$resource->status == 1 ? '노출' : '미노출'}}</td>
-                    <td>{{$resource->created_at->format('Y-m-d')}}</td>
-                </tr>
+                        <td>{{$resource->id}}</td>
+                        <td><a href="{{ route('resourceDetails', ['resource' => $resource->id]) }}" class="td-a-custom">{{$resource->title}}</a></td>
+                        <td>
+                            <div class="item-flex-center">
+                                <ul>
+                                    @foreach(json_decode($resource->path) as $filePath)
+                                    <li>
+                                        <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                        <span class="ms-2">
+                                            <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                {{ basename($filePath) }}
+                                            </a>
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{{$resource->details}}</td>
+                        <td>{{$resource->status == 1 ? '노출' : '미노출'}}</td>
+                        <td>{{$resource->created_at->format('Y-m-d')}}</td>
+                    </tr>
                     @endforeach
-                
-                
             </tbody>
         </table>
-
     </div>
-
 </div>
 
 <div class="item-flex-end">
