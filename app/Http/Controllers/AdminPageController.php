@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Resource;
+use App\Models\News;
+use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -120,19 +122,37 @@ class AdminPageController extends Controller
 
     public function noticeDashboard()
     {
-        return view('pages.admin.notice.notice-dashboard');
+        $notices = Notice::orderByDesc('id')->get();;
+        return view('pages.admin.notice.notice-dashboard',[
+            'notices' => $notices,
+        ]);
     }
     public function noticeRegistration()
     {
-        return view('pages.admin.notice.notice-register');
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.notice.notice-register',[
+            'main_exposure' => $main_exposure,
+            'count' => $count,
+        ]);
     }
-    public function noticeDetailsView()
+    public function noticeDetailsView($id)
     {
-        return view('pages.admin.notice.notice-details');
+        $notice = Notice::findOrFail($id);
+        $notice->increment('views');
+        $notice->save();
+        return view('pages.admin.notice.notice-details',[
+            'notice' => $notice,
+        ]);
     }
-    public function noticeModify()
+    public function noticeModify($id)
     {
-        return view('pages.admin.notice.notice-modification');
+        $notice = Notice::findOrFail($id);
+        return view('pages.admin.notice.notice-modification',[
+            'notice' => $notice,
+        ]);
     }
 
     // Notice Manegement End ------------------------------------------------------------------
@@ -142,19 +162,38 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        return view('pages.admin.news.news-dashboard');
+        $news = News::orderByDesc('id')->get();;
+        return view('pages.admin.news.news-dashboard',[
+            'news' => $news,
+        ]);
     }
     public function newsRegistration()
     {
-        return view('pages.admin.news.news-register');
+        $main_exposure = News::pluck('main_exposure')->toArray();
+        $exposure = News::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.news.news-register', [
+            'main_exposure' => $main_exposure,
+            'count' => $count,
+        ]);
     }
-    public function newsDetailsView()
+    public function newsDetailsView($id)
     {
-        return view('pages.admin.news.news-details');
+        $news = News::findOrFail($id);
+        $news->increment('views');
+        $news->save();
+        return view('pages.admin.news.news-details',[
+            'news' => $news,
+        ]);
     }
-    public function newsModify()
+    public function newsModify($id)
     {
-        return view('pages.admin.news.news-modification');
+        $news = News::findOrFail($id);   
+        
+        return view('pages.admin.news.news-modification',[
+            'news' => $news,
+        ]);
     }
 
     // News Manegement End ------------------------------------------------------------------

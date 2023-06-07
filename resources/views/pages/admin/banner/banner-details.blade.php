@@ -89,8 +89,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4">
                             <label class="lbl-y2">
-                               {{$banner->status == 0 ? '노출' : '미노출' }}
-
+                                {{$banner->status == 0 ? '노출' : '미노출'}}
                             </label>
                         </div>
                     </td>

@@ -22,6 +22,7 @@ class BannerController extends Controller
 
         if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
 
+        // Store the image
         $imagePath = null;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
