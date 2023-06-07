@@ -70,7 +70,10 @@ class ResourceController extends Controller
         if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
         
         $data = Resource::findOrFail($id);
-        
+        $data->status = $request->input('exposureStatus');
+        $data->title = $request->input('title');
+        $data->details = $request->input('contents');
+
         if ($request->hasFile('files')) {
             $filePaths = [];
             if ($data->path && is_array(json_decode($data->path))) {
@@ -88,10 +91,7 @@ class ResourceController extends Controller
             
             $data->path = json_encode($filePaths);
         }
-            $data->status = $request->input('exposureStatus');
-            $data->title = $request->input('title');
-            $data->details = $request->input('contents');
-
+            
             $data->save();
 
             return redirect('/admin/resourceDash')->with('resource update','Resource updated successfully');
