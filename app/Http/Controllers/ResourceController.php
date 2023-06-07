@@ -19,7 +19,7 @@ class ResourceController extends Controller
             'files.*' => 'mimes:jpeg,png,pdf|max:2048',
         ]);
         
-        if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
+        if ($validator->fails()) return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
 
         $resource = new Resource();
         $filePaths = [];
@@ -67,7 +67,7 @@ class ResourceController extends Controller
             'files.*' => 'mimes:jpeg,png,pdf|max:2048',
         ]);
         
-        if ($validator->fails())return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
+        if ($validator->fails()) return redirect('/admin/resourceReg')->withErrors($validator)->withInput();
         
         $data = Resource::findOrFail($id);
         $data->status = $request->input('exposureStatus');
@@ -81,6 +81,7 @@ class ResourceController extends Controller
                     Storage::delete($filePath);
                 }
             }
+
             foreach ($request->file('files') as $file) {
                 if ($file->isValid()) {
                     $name = $file->getClientOriginalName();
@@ -92,10 +93,7 @@ class ResourceController extends Controller
             $data->path = json_encode($filePaths);
         }
             
-            $data->save();
-
-            return redirect('/admin/resourceDash')->with('resource update','Resource updated successfully');
-   
-        
+        $data->save();
+        return redirect('/admin/resourceDash')->with('resource update','Resource updated successfully');
     }
 }

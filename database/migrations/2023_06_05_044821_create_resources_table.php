@@ -18,8 +18,8 @@ class CreateResourcesTable extends Migration
             $table->integer('status');
             $table->string('title');
             $table->string('path')->nullable();
-            $table->string('views')->default('0');
-            $table->string('details');
+            $table->integer('views')->default(0);
+            $table->text('details');
             $table->timestamps();
         });
     }

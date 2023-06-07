@@ -19,11 +19,8 @@
 
 <!-- Banner Management Start -->
 <div class="container-fluid px-0">
-
     <div class="rounded pt-4">
-
         <form method="post" id="Banner-filter-form" action="#">
-
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -69,15 +66,11 @@
                         {{$banners->count()}}
                     </span>
                 </div>
-
             </div>
-
         </form>
-
     </div>
 
     <div class="table-responsive mb-3">
-
         <table class="table align-middle table-hover">
             <thead class="thead-light text-center">
                 <tr class="table-head-1">
@@ -104,8 +97,6 @@
                     <td>{{$banner->created_at->format('Y-m-d')}}</td>
                 </tr>
                 @endforeach
-                
-                
             </tbody>
         </table>
 
@@ -133,9 +124,7 @@
             </div>
         </div>
         <!-- Show when click related button -->
-
     </div>
-
 </div>
 
 <div class="item-flex-end">
