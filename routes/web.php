@@ -47,6 +47,8 @@ Route::get('/info/details', [PageController::class, 'info_details']);
 Route::get('/info/inquiry', [PageController::class, 'inquiry']);
 Route::get('/info/inquiry_activated', [PageController::class, 'inquiry_activated']);
 Route::get('/info/inquiry_await', [PageController::class, 'inquiry_await']);
+Route::post('/info/inquiry/register',[InquiryController::class,'inquiryRegister']);
+Route::delete('/delete/inquiry',[InquiryController::class,'delete']);
 Route::get('/info/news_main', [PageController::class, 'news_main']);
 Route::get('/info/news_main_details', [PageController::class, 'news_main_details']);
 Route::get('/info/resources', [PageController::class, 'resources']);
@@ -142,7 +144,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/inquiryReg/{inquiry:id}', [AdminPageController::class, 'inquiryRegistration'])->name('inquiryReg');
     Route::get('/inquiryDetails/{inquiry:id}', [AdminPageController::class, 'inquiryDetailsView'])->name('inquiryDetails');
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
-    Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryReg']);
+    Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
 });
 

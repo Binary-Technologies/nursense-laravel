@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Inquiry;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Notice;
@@ -65,7 +66,8 @@ class PageController extends Controller
     }
 
     public function inquiry(){
-        return view('pages.inquiry');
+        $inquiries = Inquiry::all();
+        return view('pages.inquiry',compact('inquiries'));
     }
 
     public function learning_details(){

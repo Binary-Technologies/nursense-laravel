@@ -58,137 +58,53 @@
 
                 </div>
 
-                <div class="row" style="font-size: 14px;">
-                    <div class="col-lg-12 border-rad-5 mt-2 px-4">
-                         <table style="width: 100%; text-align: center; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                            <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                               <th style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></th>
-                                <th style="width: 5%; padding: 20px;">번호</th>
-                                <th style="width: 65%">제목</th>
-                                <th style="width: 10%">등록 일</th>
-                                <th style="width: 15%">답변 상태</th>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">10</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">9</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">8</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">7</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">6</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">5</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">4</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">3</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">2</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></td>
-                                <td style="width: 5%; padding: 20px;">1</td>
-                                <td style="width: 65%; text-align: left;">
-                                    <a href="inquiry_await.php">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 10%">2023.02.11</td>
-                                <td style="width: 15%">답변 대기</td>
-                            </tr>
-                        </table>
+                <form action="/delete/inquiry" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <div class="row" style="font-size: 14px;">
+                        <div class="col-lg-12 border-rad-5 mt-2 px-4">
+                            <table style="width: 100%; text-align: center; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
+                                <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
+                                <th style="width: 5%; padding: 10px;"><input type="checkbox" style="width: 24px; height: 24px;"/></th>
+                                    <th style="width: 5%; padding: 20px;">번호</th>
+                                    <th style="width: 65%">제목</th>
+                                    <th style="width: 10%">등록 일</th>
+                                    <th style="width: 15%">답변 상태</th>
+                                </tr>
+
+                                @foreach ($inquiries as $inquiry)
+                                    
+                                <tr style="border-bottom: #ccc solid thin;">
+                                    <td style="width: 5%; padding: 10px;"><input name="ids[]" value="{{$inquiry->id}}" type="checkbox" style="width: 24px; height: 24px;"/></td>
+                                    <td style="width: 5%; padding: 20px;">{{$inquiry->id}}</td>
+                                    <td style="width: 65%; text-align: left;">
+                                        <a href="inquiry_await.php">
+                                        {{$inquiry->title}}
+                                        </a>
+                                    </td>
+                                    <td style="width: 10%">{{$inquiry->created_at}}</td>
+                                    <td style="width: 15%">
+                                        @if ($inquiry->status == 0)
+                                            <span class="table-td-text4">답변 대기</span>
+                                        @else
+                                            답변 완료
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                                
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div style="margin-top: 10px; float: left; margin-left: 20px;">
-    <a href="inquiry_activated.php">
-        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #212880;color: #FFFFFF; width: 118px; height: 40px; margin-right: 10px; border-radius: 8px;">문의 등록</button>
-    </a>
-    <a href="inquiry_activated.php">
-        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1; width: 118px; height: 40px; border: none; border-radius: 8px;">삭제</button>
-    </a>
-                </div>
+                    <div style="margin-top: 10px; float: left; margin-left: 20px;">
+                        <a href="/info/inquiry_activated" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #212880;color: #FFFFFF; width: 118px; height: 40px; margin-right: 10px; border-radius: 8px;">
+                            문의 등록
+                        </a>
+                        
+                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1; width: 118px; height: 40px; border: none; border-radius: 8px;">삭제</button>
+                        
+                    </div>
+                </form>
                 
 <nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
     <ul class="pagination">

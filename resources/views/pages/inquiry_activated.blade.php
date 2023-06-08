@@ -33,31 +33,34 @@
                     
                     <div class="row my-4" style="width: 100%;">
                     <div class="col-lg-12">
-                    <table style="width: 100%;">
-                        <tr>
-                            <td style="padding-left: 15px; text-align: left;"><b>제목</b></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="padding-left: 15px; text-align: left;" colspan="2">
-                                <input type="text" style="background: #FFFFFF; border: 1px solid #D2D3DA; border-radius: 6px;opacity: 1; width: 100%; height: 60px;" placeholder="제목을 입력하세요.">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding-left: 15px; text-align: left;"><b>내용</b></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="padding-left: 15px; padding-top: 50px; text-align: left;" colspan="2">
-                                <textarea style=" border: 1px solid #D2D3DA; border-radius: 6px; text-align: left; font-family: pretendard-regular; color: #D2D3DA; opacity: 1; width: 100%; height: 380px;" placeholder="제목을 입력하세요."></textarea>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td colspan="2" style="text-align: right; padding: 20px; ">
-                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8; color: #9495A1; border-color: #F3F4F8; border-radius: 6px; padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;" >문의 등록</button>
-                                </td>
-                            </tr>
-                    </table>
+                        <form action="/info/inquiry/register" method="post">
+                            @csrf
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding-left: 15px; text-align: left;"><b>제목</b></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 15px; text-align: left;" colspan="2">
+                                        <input  name="title" type="text" style="background: #FFFFFF; border: 1px solid #D2D3DA; border-radius: 6px;opacity: 1; width: 100%; height: 60px;" placeholder="제목을 입력하세요.">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 15px; text-align: left;"><b>내용</b></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 15px; padding-top: 50px; text-align: left;" colspan="2">
+                                        <textarea name="content" style=" border: 1px solid #D2D3DA; border-radius: 6px; text-align: left; font-family: pretendard-regular; color: #D2D3DA; opacity: 1; width: 100%; height: 380px;" placeholder="제목을 입력하세요."></textarea>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: right; padding: 20px; ">
+                                            <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8; color: #9495A1; border-color: #F3F4F8; border-radius: 6px; padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;" >문의 등록</button>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </form>
                     </div>
                     </div>
                     

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class InquiryController extends Controller
 {
-    public function inquiryReg(Request $request, $id)
+    public function inquiryAnswerReg(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
             'contents' => 'required',
@@ -35,5 +35,34 @@ class InquiryController extends Controller
         $data->save();
         
         return redirect('/admin/inquiryDash')->with('Inquiry updated','Inquiry updated successfully');
+    }
+
+    public function inquiryRegister(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+        if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
+        
+        Inquiry::create([
+            'title' => $request->input('title'),
+            'inquiryDetail' => $request->input('content'),
+            'writerName' => 'Dilshan Muditha',
+        ]);
+        
+        return redirect('/info/inquiry')->with('Inquiry added','Inquiry added successfully');   
+    }
+
+    public function delete(Request $request)
+    {
+        $ids = $request->input('ids');
+
+        if (!empty($ids)) {
+            Inquiry::whereIn('id', $ids)->delete();
+        }
+
+        return redirect()->back()->with('success', 'Selected rows deleted successfully.');
+
     }
 }
