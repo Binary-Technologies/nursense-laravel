@@ -40,7 +40,7 @@
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" value="0" name="exposureStatus" {{ $count>=5 ? 'checked' : '' }} id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" value="0" name="exposureStatus" {{ $count>=3 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -180,7 +180,7 @@
     function exposureChange() {
             var exposure =  {{$count}};
 
-            if (exposure >=5) {
+            if (exposure >=3) {
                 document.getElementById('cardExposure').style.display = "block";
             }
         }

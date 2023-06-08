@@ -33,29 +33,37 @@
                     <div class="col-lg-11">
                         
                         <div class="row">
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.그들은...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 ...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png"  style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
-                            </div>
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
-                            </div>
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 ...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
+                            @foreach ($resources as $resource)
+                                @if ($resource->status === 1)
+                                    
+                                
+                                <div class="col-lg-4">
+                                <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
+                                    <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">
+                                        {{$resource->title}}
+                                    </p>
+                                    <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">
+                                        {{$resource->details}}
+                                    
+                                    </p>
+                                    
+                                        <ul>
+                                            @foreach(json_decode($resource->path) as $filePath)
+                                            <li>
+                                                <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                    <span class="ms-2">
+                                                    <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                        {{ basename($filePath) }}
+                                                    </a>
+                                                </span>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                </div>
+                                </div>
+                                @endif
+                            @endforeach
+                            
                             </div>
                         </div>
                     </div>
