@@ -15,20 +15,14 @@ class DirectionController extends Controller
             'transportation' => 'required',
             'mobile' => 'required',
         ]);
-    
+        
+        if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
         $data = Direction::findOrFail($id);
         $data->address = $request->input('address');
         $data->transportation = $request->input('transportation');
         $data->mobile = $request->input('mobile');
-
-    
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
-        } else {
-            $data->save();
-            
-            return redirect('/admin/directionDetails')->with('direction update','Direction updated successfully');
-   
-        }
+        $data->save();
+        
+        return redirect('/admin/directionDetails')->with('direction update','Direction updated successfully');
     }
 }
