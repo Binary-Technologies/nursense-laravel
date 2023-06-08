@@ -62,7 +62,14 @@ class InquiryController extends Controller
             Inquiry::whereIn('id', $ids)->delete();
         }
 
-        return redirect()->back()->with('success', 'Selected rows deleted successfully.');
+        return redirect()->back()->with('inquiry delete', 'Selected rows deleted successfully.');
 
+    }
+
+    public function deleteInquiry($id)
+    {
+        $inquiry = Inquiry::findOrFail($id);
+        $inquiry->delete();
+        return redirect('/info/inquiry')->with('inquiry delete', 'deleted successfully.');
     }
 }

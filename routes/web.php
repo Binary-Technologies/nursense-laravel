@@ -44,13 +44,14 @@ Route::get('/curriculum/quiz', [PageController::class, 'quiz']);
 
 Route::get('/info', [PageController::class, 'info']);
 Route::get('/info/details', [PageController::class, 'info_details']);
-Route::get('/info/inquiry', [PageController::class, 'inquiry']);
+Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry_activated', [PageController::class, 'inquiry_activated']);
-Route::get('/info/inquiry_await', [PageController::class, 'inquiry_await']);
+Route::get('/info/inquiry_await/{inquiry:id}', [PageController::class, 'inquiry_await']);
 Route::post('/info/inquiry/register',[InquiryController::class,'inquiryRegister']);
 Route::delete('/delete/inquiry',[InquiryController::class,'delete']);
+Route::delete('/delete/inquiry/{inquiry:id}',[InquiryController::class,'deleteInquiry']);
 Route::get('/info/news_main', [PageController::class, 'news_main']);
-Route::get('/info/news_main_details', [PageController::class, 'news_main_details']);
+Route::get('/info/news_main_details/{news:id}', [PageController::class, 'news_main_details']);
 Route::get('/info/resources', [PageController::class, 'resources']);
 Route::get('/info/resources_details', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);

@@ -61,8 +61,9 @@ class PageController extends Controller
         return view('pages.inquiry_activated');
     }
 
-    public function inquiry_await(){
-        return view('pages.inquiry_await');
+    public function inquiry_await($id){
+        $inquiry = Inquiry::findOrFail($id);
+        return view('pages.inquiry_await',compact('inquiry'));
     }
 
     public function inquiry(){
@@ -126,12 +127,16 @@ class PageController extends Controller
         return view('pages.mystudy');
     }
 
-    public function news_main_details(){
-        return view('pages.news_main_details');
+    public function news_main_details($id){
+        $news = News::findOrFail($id);
+        $news->increment('views');
+        $news->save();
+        return view('pages.news_main_details',compact('news'));
     }
 
     public function news_main(){
-        return view('pages.news_main');
+        $news = News::orderByDesc('id')->get();
+        return view('pages.news_main',compact('news'));
     }
 
     //notice ...... has been leftout

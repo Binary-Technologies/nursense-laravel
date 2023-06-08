@@ -40,7 +40,7 @@
                                     제목
                                 </td>
                                 <td style="width: 90%; padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                    가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
+                                    {{$news->title}}
                                 </td>
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
@@ -48,7 +48,7 @@
                                     등록일
                                 </td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                    2023.02.11
+                                    {{$news->created_at->format('Y-m-d')}}
                                 </td>
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
@@ -56,7 +56,8 @@
                                     조회수
                                 </td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                    300
+                                    {{$news->views}}
+                                    
                                 </td>
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
@@ -64,13 +65,16 @@
                                     내용
                                 </td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                    따뜻한 풀밭에 커다란 살 노래하며 남는 위하여서, 뼈 말이다. 위하여, 그들의 가지에 이 남는 가슴에 굳세게 쓸쓸하랴? 같이, 대중을 낙원을 얼음이 공자는 심장의 철환하였는가? 황금시대의 청춘이 우리는 철환하였는가? 인생에 두기 장식하는 그와 구할 곳이 창공에 듣는다. 행복스럽고 별과 찾아다녀도, 동력은 생생하며, 얼마나 것이다. 전인 노래하며 있는 있으랴? 청춘 간에 가장 구하지 돋고, 같은 꽃이 그들을 칼이다. 행복스럽고 같으며, 보내는 피고 이상의 이상 새 쓸쓸하랴? 그들은 위하여 불어 무엇을 찾아 뭇 일월과 이상은 아니더면, 봄바람이다. 실로 무엇을 얼마나 자신과 못하다 말이다. 지혜는 위하여, 희망의 보는 칼이다. 꽃이 가진 되는 살았으며, 설레는 하는 노년에게서 만물은 이것이다. 피가 곳으로 밝은 스며들어 붙잡아 천지는 이성은 피는 뜨고, 약동하다. 청춘을 그것을 않는 없는 들어 희망의 위하여 용기가 이것이다. 창공에 보는 피고, 싶이 주는 주며, 커다란 속에 듣는다. 속에서 원질이 품었기 사막이다. 살 그들은 수 못할 많이 만물은 말이다. 것은 뼈 이상을 황금시대를 고동을 산야에 있으랴? 일월과 그들은 바로 힘있다. 그들의 얼마나 같은 끓는 같지 두손을 품으며, 사막이다. 따뜻한 충분히 목숨을 피가 위하여, 아름다우냐? 얼음과 따뜻한 풀밭에 가지에 열락의 트고, 가진 뜨거운지라, 것이다. 곳으로 그들은 풀이 가장 몸이 끓는 아니더면, 교향악이다. 천고에 붙잡아 할지라도 피에 것이다. 있음으로써 찬미를 사랑의 인도하겠다는 날카로우나 기쁘며, 황금시대다. 이상, 할지니, 얼마나 안고, 쓸쓸하랴? 예가 작고 같이, 방지하는 어디 것이다. 동산에는 피부가 속에 얼마나 위하여 대중을 사랑의 있으랴? 무한한 못하다 물방아 자신과 부패뿐이다.
-                                    <img src="images/id1.png" style="width: 100%; height: 250px;">
+                                    {!! html_entity_decode($news->content) !!}
+
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: right; padding: 20px; ">
-                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;">목록</button>
+                                    <a href="/info/news_main" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;">
+                                        목록
+                                    </a>
+                                    
                                 </td>
                             </tr>
                     </table>

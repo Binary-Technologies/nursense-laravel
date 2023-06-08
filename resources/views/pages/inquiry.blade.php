@@ -78,8 +78,8 @@
                                     <td style="width: 5%; padding: 10px;"><input name="ids[]" value="{{$inquiry->id}}" type="checkbox" style="width: 24px; height: 24px;"/></td>
                                     <td style="width: 5%; padding: 20px;">{{$inquiry->id}}</td>
                                     <td style="width: 65%; text-align: left;">
-                                        <a href="inquiry_await.php">
-                                        {{$inquiry->title}}
+                                        <a href="/info/inquiry_await/{{$inquiry->id}}">
+                                            {{$inquiry->title}}
                                         </a>
                                     </td>
                                     <td style="width: 10%">{{$inquiry->created_at}}</td>
@@ -100,10 +100,42 @@
                         <a href="/info/inquiry_activated" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #212880;color: #FFFFFF; width: 118px; height: 40px; margin-right: 10px; border-radius: 8px;">
                             문의 등록
                         </a>
-                        
-                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1; width: 118px; height: 40px; border: none; border-radius: 8px;">삭제</button>
-                        
+                        <a href="#confirmationModal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #F3F4F8;color: #9495A1; width: 118px; height: 40px; border: none; border-radius: 8px;" data-bs-toggle="modal">
+                            삭제
+                        </a>
                     </div>
+
+                    
+                    <!-- Delete Confirmation Alert Modal -->
+                    <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center my-3" id="confirmationModalContent"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body pt-0">
+                                    <h5 class="alert-title text-center mt-1 mb-4">공지사항 삭제</h5>
+                                    <p class="alert-text text-center mt-2 mb-5">
+                                        해당 공지사항을 삭제하시겠습니까?
+                                    </p>
+                    
+                                    <div class="item-flex-center my-2">
+                                        <div class="mx-1">
+                                            <a href="{{ route('inquiry') }}">
+                                                <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                                            </a>
+                                        </div>
+                                        <div class="mx-1">
+                                                <button type="submit" class="btn btn-alert2">삭제</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Delete Confirmation Alert Modal -->
+
                 </form>
                 
 <nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
@@ -130,4 +162,31 @@
             </div>
         </div>
 </section>
+
+
+<!-- Delete Complete Alert Modal -->
+<div class="modal" tabindex="-1"  style="display: {{ session('inquiry delete') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 삭제를 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('inquiry')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Complete Alert Modal -->
 @endsection

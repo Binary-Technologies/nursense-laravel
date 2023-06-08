@@ -122,7 +122,7 @@ class AdminPageController extends Controller
 
     public function noticeDashboard()
     {
-        $notices = Notice::orderByDesc('id')->get();;
+        $notices = Notice::orderByDesc('id')->get();
         return view('pages.admin.notice.notice-dashboard',[
             'notices' => $notices,
         ]);
@@ -181,8 +181,6 @@ class AdminPageController extends Controller
     public function newsDetailsView($id)
     {
         $news = News::findOrFail($id);
-        $news->increment('views');
-        $news->save();
         return view('pages.admin.news.news-details',[
             'news' => $news,
         ]);
