@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@include('includes.messages')
+
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -54,7 +56,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$notices->count()}}
                     </span>
                 </div>
 
@@ -93,38 +95,20 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($notices as $notice)
                 <tr>
-                    <td>10</td>
-                    <td><a href="{{ url('admin/noticeDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
+                    <td>{{$notice->id}}</td>
+                    <td><a href="{{ url('admin/noticeDetails', ['notice' => $notice->id])  }}" class="td-a-custom">{{$notice->title}}</a></td>
+                    <td>{{$notice->views}}</td>
+                    <td> 
+                        {{$notice->main_exposure == 0 ? '노출' : '미노출'}}
+                    </td>
+                    <td>
+                        {{$notice->exposure == 0 ? '노출' : '미노출'}}
+                    <td>{{$notice->created_at->format('Y-m-d')}}</td>
                 </tr>
-                <tr>
-                    <td>9</td>
-                    <td><a href="{{ url('admin/noticeDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td><a href="{{ url('admin/noticeDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td><a href="{{ url('admin/noticeDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
+                @endforeach
+                
             </tbody>
         </table>
 
@@ -200,6 +184,86 @@
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
                         <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
+<!-- Delete Complete Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('notice delete') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 삭제를 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('noticeDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Complete Alert Modal -->
+
+
+<!-- Registration Complete Alert Modal -->
+<div class="modal" tabindex="-1"  style="display: {{ session('notice added') ? 'block' : 'none'}}" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="regCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 등록이 완료되었습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('noticeDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration Complete Alert Modal -->
+
+<!-- Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('notice update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    공지사항 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('noticeDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
                     </div>
                 </div>
             </div>

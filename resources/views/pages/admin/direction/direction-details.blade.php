@@ -49,7 +49,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">전화번호</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">

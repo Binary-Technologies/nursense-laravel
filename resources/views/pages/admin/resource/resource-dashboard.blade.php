@@ -5,26 +5,32 @@
     <div class="page-title-top">
         <div class="rounded">
             <div class="d-flex align-items-center justify-content-between">
-                <h5 class="text-center mb-0">배너 관리</h5>
+                <h5 class="text-center mb-0">자료실 관리</h5>
             </div>
         </div>
     </div>
 
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">배너 관리</li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/resourceDash') }}">컨텐츠 관리</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">자료실 관리</li>
         </ol>
     </nav>
 </div>
 
-<!-- Banner Management Start -->
+<!-- Resource Management Start -->
 <div class="container-fluid px-0">
+
     <div class="rounded pt-4">
-        <form method="post" id="Banner-filter-form" action="#">
+
+        <form method="post" id="resource-filter-form" action="#">
+
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="expose-banner" id="exposeBanner" aria-label="Whether to Expose Banner">
+                    <select class="form-select form-text-d" name="expose-resource" id="exposeResource" aria-label="Whether to Expose Resource">
                         <option value="1" selected>전체</option>
                         <option value="2">노출</option>
                         <option value="3">미노출</option>
@@ -32,7 +38,7 @@
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-banner" id="searchBanner" placeholder="배너명을 입력하세요." aria-label="Search">
+                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-resource" id="searchResource" placeholder="제목을 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <a href="#" class="btn btn-secondary btn1">
@@ -48,13 +54,13 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$banners->count()}}
+                        {{$resources->count()}}
                     </span>
                 </div>
 
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-                    <a href="{{ route('bannerAdd') }}" class="btn btn-secondary btn3">
-                        배너 추가
+                    <a href="{{ route('resourceReg') }}" class="btn btn-secondary btn3">
+                        자료실 등록
                     </a>
                 </div>
 
@@ -66,64 +72,54 @@
                         70
                     </span>
                 </div>
+
             </div>
+
         </form>
+
     </div>
 
     <div class="table-responsive mb-3">
+
         <table class="table align-middle table-hover">
             <thead class="thead-light text-center">
                 <tr class="table-head-1">
                     <th scope="col" class="table-th-text">번호</th>
-                    <th scope="col" class="table-th-text">배너명</th>
-                    <th scope="col" class="table-th-text">배너 이미지</th>
-                    <th scope="col" class="table-th-text">배너 노출</th>
-                    <th scope="col" class="table-th-text">배너 노출 순서</th>
+                    <th scope="col" class="table-th-text">제목</th>
+                    <th scope="col" class="table-th-text">첨부파일</th>
+                    <th scope="col" class="table-th-text">조회수</th>
+                    <th scope="col" class="table-th-text">카드 노출</th>
                     <th scope="col" class="table-th-text">등록일</th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach ($banners as $banner)
-                <tr>
-                    <td>{{$banner->id}}</td>
-                    <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">{{$banner->name}}</a></td>
-                    <td>
-                        <img src="{{ Storage::url($banner->image) }}" height="200px">
-                    </td>
-                    <td>
-                        {{$banner->status == 0 ? '노출' : '미노출' }}
-                    </td>
-                    <td>{{$banner->sequence}}</td>
-                    <td>{{$banner->created_at->format('Y-m-d')}}</td>
-                </tr>
-                @endforeach
+                    @foreach ($resources as $resource)
+                    <tr>  
+                        <td>{{$resource->id}}</td>
+                        <td><a href="{{ route('resourceDetails', ['resource' => $resource->id]) }}" class="td-a-custom">{{$resource->title}}</a></td>
+                        <td>
+                            <div class="item-flex-center">
+                                <ul>
+                                    @foreach(json_decode($resource->path) as $filePath)
+                                    <li>
+                                        <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                        <span class="ms-2">
+                                            <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                {{ basename($filePath) }}
+                                            </a>
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{{$resource->details}}</td>
+                        <td>{{$resource->status == 1 ? '노출' : '미노출'}}</td>
+                        <td>{{$resource->created_at->format('Y-m-d')}}</td>
+                    </tr>
+                    @endforeach
             </tbody>
         </table>
-
-        <!-- Show when click related button -->
-        <div class="d-none">
-            <table class="table align-middle table-hover">
-                <thead class="thead-light text-center">
-                    <tr class="table-head-1">
-                        <th scope="col" class="table-th-text">번호</th>
-                        <th scope="col" class="table-th-text">배너명</th>
-                        <th scope="col" class="table-th-text">배너 이미지</th>
-                        <th scope="col" class="table-th-text">배너 노출</th>
-                        <th scope="col" class="table-th-text">배너 노출 순서</th>
-                        <th scope="col" class="table-th-text">등록일</th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="item-flex-center mt-5">
-                <div class="text-center mt-5">
-                    <p class="dash-text1 mt-5">검색어와 일치한 내용이 없습니다.</p>
-                    <div class="item-flex-align-center">
-                        <button class="btn btn-dash1 mt-2">돌아가기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Show when click related button -->
     </div>
 </div>
 
@@ -203,8 +199,11 @@
 </div>
 <!-- Completion Alert Modal -->
 
+</div>
+<!-- Resource Management End -->
+
     <!-- Delete Completion Alert Modal -->
-    <div class="modal" tabindex="-1" style="display: {{ session('banner delete') ? 'block' : 'none'}}">
+    <div class="modal" tabindex="-1" style="display: {{ session('resource delete') ? 'block' : 'none'}}">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -213,14 +212,15 @@
                 </div>
                 <div class="modal-body pt-0">
                     <p class="alert-text2 text-center mt-2 mb-5">
-                        배너 삭제를 완료하였습니다.
+                        자료실 삭제를 완료하였습니다.
                     </p>
-
+    
                     <div class="item-flex-center my-2">
                         <div class="mx-1">
-                            <a href="{{route('bannerDash')}}">
+                            <a href="{{route('resourceDash')}}">
                                 <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
                             </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -228,7 +228,31 @@
         </div>
     </div>
     <!-- Delete Completion Alert Modal -->
+
+    <!-- UpdateCompletion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('resource update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    자료실 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('resourceDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- Banner Management End -->
+<!-- Completion Alert Modal -->
 
 @endsection

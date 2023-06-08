@@ -31,7 +31,7 @@
     <div class="table-responsive pt-4 mb-3">
         <table class="table align-middle table-hover">
             <tbody class="text-center">
-                <tr>
+                <tr class="table-head-2">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 주소</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
@@ -47,7 +47,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 전화번호</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
