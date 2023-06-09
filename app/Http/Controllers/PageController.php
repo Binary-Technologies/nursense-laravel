@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Notice;
 use App\Models\Resource;
+use App\Models\Direction;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -82,7 +83,8 @@ class PageController extends Controller
     //
 
     public function location(){
-        return view('pages.location');
+        $location = Direction::first();
+        return view('pages.location',compact('location'));
     }
 
     public function muve_gallery(){

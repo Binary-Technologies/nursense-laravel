@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-lg-2">
-            {{-- TODO: Side navbar --}}
+                @include('includes.sidenav-info')
             </div>
 
             <div class="col-lg-10">

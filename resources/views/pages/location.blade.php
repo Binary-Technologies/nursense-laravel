@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-lg-2">
-            {{-- TODO: Side navbar --}}
+                @include('includes.sidenav-info')
             </div>
 
             <div class="col-lg-10" style="padding: 1%;">
@@ -30,13 +30,13 @@
                     <div class="col-md-4">
                         <hr/>
                         <h4  style="font-family: pretendard-bold; font-size: 16px; color: #212880;">주소</h4>
-                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">대구광역시 동구 동대구로 465 대구스케일업허브 405·406호</p>
+                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$location->address}}</p>
                         <hr/>
                         <h4  style="font-family: pretendard-bold; font-size: 16px; color: #212880;">교통편</h4>
-                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">동대구역 2번출구에서 757m</p>
+                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$location->transportation}}</p>
                         <hr/>
                         <h4  style="font-family: pretendard-bold; font-size: 16px; color: #212880;">연락처</h4>
-                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">010 – 9436 - 5543</p>
+                        <p style="font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$location->mobile}}</p>
                     </div>
 
                 </div>

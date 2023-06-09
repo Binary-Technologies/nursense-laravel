@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-lg-2">
-            {{-- TODO: Side navbar --}}
+                @include('includes.sidenav-info')
             </div>
 
            
@@ -100,7 +100,7 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">{{$resource->id}}</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="/info/resources_details/{{$resource->id}}">
+                                    <a href="/info/resources/details/{{$resource->id}}">
                                         {{$resource->title}}
                                     </a>
                                 </td>

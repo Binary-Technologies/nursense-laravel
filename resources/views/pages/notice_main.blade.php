@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-lg-2">
-            {{-- TODO: Side navbar --}}
+                @include('includes.sidenav-info')
             </div>
 
             <div class="col-lg-10" style="padding: 1%;">
@@ -76,7 +76,7 @@
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 10%; padding: 20px;">{{$notice->id}}</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="/info/notice_main_details/{{$notice->id}}">
+                                    <a href="/info/notice/details/{{$notice->id}}">
                                         {{$notice->title}}
                                     </a>
                                 </td>

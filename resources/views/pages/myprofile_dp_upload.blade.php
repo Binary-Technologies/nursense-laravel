@@ -5,7 +5,7 @@
         <div class="row row-width-1920">
 
             <div class="col-lg-2">
-            {{-- TODO: Side navbar --}}
+                @include('includes.sidenav-info')
             </div>
 
             <div class="col-lg-10" style="padding: 1%;">

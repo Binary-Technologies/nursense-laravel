@@ -32,32 +32,30 @@ Auth::routes();
 
 Route::get('/', [PageController::class, 'index']);
 
-Route::get('/muve', [PageController::class, 'muve']);
+Route::get('/muve/muve', [PageController::class, 'muve']);
 Route::get('/muve/gallery', [PageController::class, 'muve_gallery']);
 Route::get('/muve/gallery-details', [PageController::class, 'galleryDetails']);
 
-Route::get('/curriculum', [PageController::class, 'curriculum']);
+Route::get('/curriculum/curriculum', [PageController::class, 'curriculum']);
 Route::get('/curriculum/guide', [PageController::class, 'guide']);
-Route::get('/curriculum/curriculum2', [PageController::class, 'curriculum2']);
+Route::get('/curriculum/curr', [PageController::class, 'curriculum2']);
 Route::get('/curriculum/download', [PageController::class, 'download']);
 Route::get('/curriculum/learning', [PageController::class, 'learning']);
-Route::get('/curriculum/learning_details', [PageController::class, 'learning_details']);
-Route::get('/curriculum/quiz', [PageController::class, 'quiz']);
+Route::get('/curriculum/learning/details', [PageController::class, 'learning_details']);
+Route::get('/curriculum/curr/quiz', [PageController::class, 'quiz']);
 
-Route::get('/info', [PageController::class, 'info']);
-Route::get('/info/details', [PageController::class, 'info_details']);
 Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry/register', [PageController::class, 'inquiry_activated']);
 Route::get('/info/inquiry/details/{inquiry:id}', [PageController::class, 'inquiry_await']);
 Route::post('/info/inquiry/register',[InquiryController::class,'inquiryRegister']);
 Route::delete('/delete/inquiry',[InquiryController::class,'delete']);
 Route::delete('/delete/inquiry/{inquiry:id}',[InquiryController::class,'deleteInquiry']);
-Route::get('/info/news_main', [PageController::class, 'news_main']);
-Route::get('/info/news_main_details/{news:id}', [PageController::class, 'news_main_details']);
-Route::get('/info/notice_main', [PageController::class, 'notice_main']);
-Route::get('/info/notice_main_details/{notice:id}', [PageController::class, 'notice_main_details']);
+Route::get('/info/news', [PageController::class, 'news_main']);
+Route::get('/info/news/details/{news:id}', [PageController::class, 'news_main_details']);
+Route::get('/info/notice', [PageController::class, 'notice_main']);
+Route::get('/info/notice/details/{notice:id}', [PageController::class, 'notice_main_details']);
 Route::get('/info/resources', [PageController::class, 'resources']);
-Route::get('/info/resources_details/{resource:id}', [PageController::class, 'resources_details']);
+Route::get('/info/resources/details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

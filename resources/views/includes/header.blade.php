@@ -14,17 +14,17 @@
 					<li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
 											explode('/', Request::url())[3] == 'muve' ? 'active' : ''
 											: ''}}">
-						<a class="nav-link px-3" href="/muve">MUVE소개<span class="sr-only">(current)</span></a>
+						<a class="nav-link px-3" href="/muve/muve">MUVE소개<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
 											explode('/', Request::url())[3] == 'curriculum' ? 'active' : ''
 											: ''}}">
-						<a class="nav-link px-3" href="/curriculum">교육과정<span class="sr-only">(current)</span></a>
+						<a class="nav-link px-3" href="/curriculum/curriculum">교육과정<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
 											explode('/', Request::url())[3] == 'info' ? 'active' : ''
 											: ''}}">
-						<a class="nav-link px-3" href="/info">정보마당<span class="sr-only">(current)</span></a>
+						<a class="nav-link px-3" href="/info/notice">정보마당<span class="sr-only">(current)</span></a>
 					</li>
 					<div class="right-nav-block">
 						<div class="item-flex-center">
