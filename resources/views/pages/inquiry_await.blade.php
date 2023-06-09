@@ -126,7 +126,7 @@
                     
                                     <div class="item-flex-center my-2">
                                         <div class="mx-1">
-                                            <a href="/info/inquiry_await/{{$inquiry->id}}" class="btn btn-alert1">
+                                            <a href="/info/inquiry/details/{{$inquiry->id}}" class="btn btn-alert1">
                                                 취소
                                             </a>
                                         </div>

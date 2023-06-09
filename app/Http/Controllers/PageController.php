@@ -141,6 +141,17 @@ class PageController extends Controller
     }
 
     //notice ...... has been leftout
+    public function notice_main_details($id){
+        $notice = Notice::findOrFail($id);
+        $notice->increment('views');
+        $notice->save();
+        return view('pages.notice_main_details',compact('notice'));
+    }
+
+    public function notice_main(){
+        $notices = Notice::orderByDesc('id')->get();
+        return view('pages.notice_main',compact('notices'));
+    }
 
     public function privacy_policy(){
         return view('pages.privacy_policy');

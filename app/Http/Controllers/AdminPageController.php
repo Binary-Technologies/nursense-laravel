@@ -143,8 +143,6 @@ class AdminPageController extends Controller
     public function noticeDetailsView($id)
     {
         $notice = Notice::findOrFail($id);
-        $notice->increment('views');
-        $notice->save();
         return view('pages.admin.notice.notice-details',[
             'notice' => $notice,
         ]);
