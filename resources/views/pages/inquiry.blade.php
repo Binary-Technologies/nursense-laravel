@@ -78,7 +78,7 @@
                                     <td style="width: 5%; padding: 10px;"><input name="ids[]" value="{{$inquiry->id}}" type="checkbox" style="width: 24px; height: 24px;"/></td>
                                     <td style="width: 5%; padding: 20px;">{{$inquiry->id}}</td>
                                     <td style="width: 65%; text-align: left;">
-                                        <a href="/info/inquiry_await/{{$inquiry->id}}">
+                                        <a href="/info/inquiry/details/{{$inquiry->id}}">
                                             {{$inquiry->title}}
                                         </a>
                                     </td>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 10px; float: left; margin-left: 20px;">
-                        <a href="/info/inquiry_activated" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #212880;color: #FFFFFF; width: 118px; height: 40px; margin-right: 10px; border-radius: 8px;">
+                        <a href="/info/inquiry/register" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #212880;color: #FFFFFF; width: 118px; height: 40px; margin-right: 10px; border-radius: 8px;">
                             문의 등록
                         </a>
                         <a href="#confirmationModal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #F3F4F8;color: #9495A1; width: 118px; height: 40px; border: none; border-radius: 8px;" data-bs-toggle="modal">

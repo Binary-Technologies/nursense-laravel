@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-lg-4">
                             <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어</p>
+                                <p style="font-family: prete ndard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어</p>
                                 <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인...</p>
                                 <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
                                     <img src="images/pdf.png" style="width: 18px; height: 18px;"> 자료실.pdf</p>
