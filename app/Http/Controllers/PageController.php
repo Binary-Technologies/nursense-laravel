@@ -7,6 +7,7 @@ use App\Models\Inquiry;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Notice;
+use App\Models\Resource;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -149,12 +150,16 @@ class PageController extends Controller
         return view('pages.quiz');
     }
 
-    public function resources_details(){
-        return view('pages.resources_details');
+    public function resources_details($id){
+        $resource = Resource::findOrFail($id);
+        $resource->increment('views');
+        $resource->save();
+        return view('pages.resources_details',compact('resource'));
     }
 
     public function resources(){
-        return view('pages.resources');
+        $resources = Resource::orderBy('id','desc')->get();
+        return view('pages.resources',compact('resources'));
     }
     public function terms_conditions(){
         return view('pages.terms_conditions');

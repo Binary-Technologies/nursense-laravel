@@ -19,11 +19,8 @@
 
 <!-- Banner Management Start -->
 <div class="container-fluid px-0">
-
     <div class="rounded pt-4">
-
         <form method="post" id="Banner-filter-form" action="#">
-
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -69,15 +66,11 @@
                         70
                     </span>
                 </div>
-
             </div>
-
         </form>
-
     </div>
 
     <div class="table-responsive mb-3">
-
         <table class="table align-middle table-hover">
             <thead class="thead-light text-center">
                 <tr class="table-head-1">
@@ -96,17 +89,14 @@
                     <td><a href="{{ route('bannerDetails', ['banner' => $banner->id]) }}" class="td-a-custom">{{$banner->name}}</a></td>
                     <td>
                         <img src="{{ Storage::url($banner->image) }}" height="200px">
-            
                     </td>
                     <td>
-                        {{$banner->status == 0 ? '노출' : '미노출'}}
+                        {{$banner->status == 0 ? '노출' : '미노출' }}
                     </td>
                     <td>{{$banner->sequence}}</td>
                     <td>{{$banner->created_at->format('Y-m-d')}}</td>
                 </tr>
                 @endforeach
-                
-                
             </tbody>
         </table>
 
@@ -134,9 +124,7 @@
             </div>
         </div>
         <!-- Show when click related button -->
-
     </div>
-
 </div>
 
 <div class="item-flex-end">

@@ -10,6 +10,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\DirectionController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UserController;
@@ -53,7 +55,7 @@ Route::delete('/delete/inquiry/{inquiry:id}',[InquiryController::class,'deleteIn
 Route::get('/info/news_main', [PageController::class, 'news_main']);
 Route::get('/info/news_main_details/{news:id}', [PageController::class, 'news_main_details']);
 Route::get('/info/resources', [PageController::class, 'resources']);
-Route::get('/info/resources_details', [PageController::class, 'resources_details']);
+Route::get('/info/resources_details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
@@ -104,9 +106,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/bannerAddAttFilereg', [AdminPageController::class, 'bannerAddAttachFileReg'])->name('bannerAddAttFilereg');
     Route::get('/bannerDetails/{banner:id}', [AdminPageController::class, 'bannerDetailsView'])->name('bannerDetails');
     Route::get('/bannerUpdate/{banner:id}', [AdminPageController::class, 'bannerModify'])->name('bannerUpdate');
-    Route::post('/banner/bannerRegister',[BannerController::class, 'bannerRegister']);
-    Route::put('/banner/bannerUpdate/{banner:id}',[BannerController::class, 'bannerUpdate']);
-    Route::post('/banner/bannerDelete/{banner:id}',[BannerController::class, 'bannerDelete'])->name('bannerDelete');
+    Route::post('/banner/bannerRegister', [BannerController::class, 'bannerRegister']);
+    Route::put('/banner/bannerUpdate/{banner:id}', [BannerController::class, 'bannerUpdate']);
+    Route::post('/banner/bannerDelete/{banner:id}', [BannerController::class, 'bannerDelete'])->name('bannerDelete');
 
     // Notice Management
     Route::get('/noticeDash', [AdminPageController::class, 'noticeDashboard'])->name('noticeDash');
@@ -131,14 +133,18 @@ Route::prefix('/admin')->group(function () {
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
+    Route::get('/directionUpdate/{direction:id}', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
     Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
 
     // Resource Management
     Route::get('/resourceDash', [AdminPageController::class, 'resourceDashboard'])->name('resourceDash');
     Route::get('/resourceReg', [AdminPageController::class, 'resourceRegistration'])->name('resourceReg');
     Route::get('/resourceAttFileReg', [AdminPageController::class, 'resourceAttFileRegistration'])->name('resourceAttFileReg');
-    Route::get('/resourceDetails', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
-    Route::get('/resourceUpdate', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+    Route::get('/resourceDetails/{resource:id}', [AdminPageController::class, 'resourceDetailsView'])->name('resourceDetails');
+    Route::get('/resourceUpdate/{resource:id}', [AdminPageController::class, 'resourceModify'])->name('resourceUpdate');
+    Route::post('/resourceRegister', [ResourceController::class, 'resourceAdd'])->name('resourceAdd');
+    Route::post('/resourceDelete/{resource:id}', [ResourceController::class, 'resourceDelete'])->name('resourceDelete');
+    Route::put('/resourceUpdate/{resource:id}', [ResourceController::class, 'resourceUpdate']);
 
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
@@ -158,6 +164,7 @@ Route::post('/Register-student', [UserController::class, 'studentRegister'])->na
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
 Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
+Route::post('/direction/directionUpdate/{direction:id}',[DirectionController::class, 'directionUpdate']);
 
 // Utilities
 Route::get('/util/clear', function () {

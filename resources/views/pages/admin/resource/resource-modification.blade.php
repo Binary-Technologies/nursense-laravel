@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@include('includes.messages')
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">
@@ -27,6 +28,9 @@
 </div>
 
 <!-- Resource Management Start -->
+<form action="/admin/resourceUpdate/{{$resource->id}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -36,11 +40,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus"  value="1" {{ old('flexRadioDefault', $resource->status) === 1 ? 'checked' : '' }}  id="flexRadioDefault1" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus"  value="0" {{ old('flexRadioDefault', $resource->status) === 0 ? 'checked' : '' }}  id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -51,51 +55,39 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="resource-title" id="resourceName" placeholder="가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다." value="" aria-describedby="Resource Title Input">
+                            <input type="text" class="form-control val-text" name="title" required id="resourceName" value="{{ old('name', $resource->title) }}" aria-describedby="Resource Title Input">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row" class="table-td-text1 bg-td height-52">* 첨부파일</td>
                     <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
-                                <input type="text" class="form-control val-text file-up-bar-custom" name="file1" id="file1" placeholder="" value="자료.pdf" aria-describedby="File Up">
+                        @foreach(json_decode($resource->path) as $filePath)
+                            <div class="height-52 item-flex-start ml30 my-3">
+                                <div class="height-52">
+                                    <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
+                                    <a href="{{ Storage::url($filePath) }}" class="form-control val-text file-up-bar-custom" target="_blank">
+                                        {{ basename($filePath) }}
+                                    </a>  
+                                </div>
+                                <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
                             </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
-                                <input type="text" class="form-control val-text file-up-bar-custom" name="file1" id="file1" placeholder="" value="자료123.pdf" aria-describedby="File Up">
-                            </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <span class="position-rel"><i class='far fa-file-alt view-file-i'></i></span>
-                                <input type="text" class="form-control val-text file-up-bar-custom" name="file1" id="file1" placeholder="" value="자료123456.pdf" aria-describedby="File Up">
-                            </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">파일 삭제</a>
-                        </div>
+                        @endforeach
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <a href="#" class="btn btn9">
-                                첨부파일 등록
-                            </a>
+                            <input type="file"  class="btn btn9" name="files[]"   placeholder="첨부파일 등록" id="" multiple>
                         </div>
                     </td>
                 </tr>
-
                 <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="item-flex-start width-50 ml30 my-3">
-                            <textarea class="form-control val-text" name="contents" id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
+                            <textarea class="form-control val-text" name="contents" required id="contents" aria-describedby="Contents Input" rows="2">
+                                {{ old('contents', $resource->details) }}
+                            </textarea>
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
@@ -127,10 +119,12 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
+                        
                         <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+
+                        <button type="submit" class="btn btn-alert2">수정</button>
                     </div>
                 </div>
             </div>
@@ -138,31 +132,10 @@
     </div>
 </div>
 <!-- Confirmation Alert Modal -->
-<!-- Completion Alert Modal -->
-<div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    자료실 수정을 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Completion Alert Modal -->
 
 </div>
+</form>
 <!-- Resource Management End -->
 
 @endsection

@@ -54,7 +54,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$resources->count()}}
                     </span>
                 </div>
 
@@ -93,75 +93,34 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    <td>10</td>
-                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>
-                        <div class="item-flex-center">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                    </td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>
-                        <div class="item-flex-center mb-1">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                        <div class="item-flex-center">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                    </td>
-                    <td>700</td>
-                    <td>미노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>
-                        <div class="item-flex-center mb-1">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                        <div class="item-flex-center mb-1">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                        <div class="item-flex-center">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                    </td>
-                    <td>700</td>
-                    <td>미노출</td>
-                    <td>2023.01.23</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td><a href="{{ url('admin/resourceDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</a></td>
-                    <td>
-                        <div class="item-flex-center">
-                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                            <span class="ms-2">자료.pdf</span>
-                        </div>
-                    </td>
-                    <td>700</td>
-                    <td>노출</td>
-                    <td>2023.01.23</td>
-                </tr>
+                    @foreach ($resources as $resource)
+                    <tr>  
+                        <td>{{$resource->id}}</td>
+                        <td><a href="{{ route('resourceDetails', ['resource' => $resource->id]) }}" class="td-a-custom">{{$resource->title}}</a></td>
+                        <td>
+                            <div class="item-flex-center">
+                                <ul>
+                                    @foreach(json_decode($resource->path) as $filePath)
+                                    <li>
+                                        <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                        <span class="ms-2">
+                                            <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                {{ basename($filePath) }}
+                                            </a>
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{{$resource->details}}</td>
+                        <td>{{$resource->status == 1 ? '노출' : '미노출'}}</td>
+                        <td>{{$resource->created_at->format('Y-m-d')}}</td>
+                    </tr>
+                    @endforeach
             </tbody>
         </table>
-
     </div>
-
 </div>
 
 <div class="item-flex-end">
@@ -242,5 +201,58 @@
 
 </div>
 <!-- Resource Management End -->
+
+    <!-- Delete Completion Alert Modal -->
+    <div class="modal" tabindex="-1" style="display: {{ session('resource delete') ? 'block' : 'none'}}">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p class="alert-text2 text-center mt-2 mb-5">
+                        자료실 삭제를 완료하였습니다.
+                    </p>
+    
+                    <div class="item-flex-center my-2">
+                        <div class="mx-1">
+                            <a href="{{route('resourceDash')}}">
+                                <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Completion Alert Modal -->
+
+    <!-- UpdateCompletion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('resource update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    자료실 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('resourceDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
 
 @endsection

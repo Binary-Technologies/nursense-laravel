@@ -33,29 +33,37 @@
                     <div class="col-lg-11">
                         
                         <div class="row">
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.그들은...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 ...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png"  style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
-                            </div>
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
-                            </div>
-                            <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
-                                <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.가지에 만물은 수 앞이 ...</p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #1B1D1F;">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;"> 자료실.pdf</p>
-                            </div>
+                            @foreach ($resources as $resource)
+                                @if ($resource->status === 1)
+                                    
+                                
+                                <div class="col-lg-4">
+                                <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
+                                    <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">
+                                        {{$resource->title}}
+                                    </p>
+                                    <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">
+                                        {{$resource->details}}
+                                    
+                                    </p>
+                                    
+                                        <ul>
+                                            @foreach(json_decode($resource->path) as $filePath)
+                                            <li>
+                                                <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                    <span class="ms-2">
+                                                    <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                        {{ basename($filePath) }}
+                                                    </a>
+                                                </span>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                </div>
+                                </div>
+                                @endif
+                            @endforeach
+                            
                             </div>
                         </div>
                     </div>
@@ -88,126 +96,34 @@
                                 <th style="width: 15%">등록 일</th>
                                 <th style="width: 15%">조회 수</th>
                             </tr>
+                            @foreach ($resources as $resource)
                             <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">10</td>
+                                <td style="width: 10%; padding: 20px;">{{$resource->id}}</td>
                                 <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
+                                    <a href="/info/resources_details/{{$resource->id}}">
+                                        {{$resource->title}}
                                     </a>
                                 </td>
                                 <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
+                                    <ul>
+                                        @foreach(json_decode($resource->path) as $filePath)
+                                        <li>
+                                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                <span class="ms-2">
+                                                <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                    {{ basename($filePath) }}
+                                                </a>
+                                            </span>
+                                        </li>
+                                        @endforeach
+                                    </ul>
                                 </td>
-                                <td style="width: 15%">2023.02.11</td>
-                                <td style="width: 15%">300</td>
+                                <td style="width: 15%">
+                                    {{$resource->created_at->format('Y-m-d')}}
+                                </td>
+                                <td style="width: 15%">{{$resource->views}}</td>
                             </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">9</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.10</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">8</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.08</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">7</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.07</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">6</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.06</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">5</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.05</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">4</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.04</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">3</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.03</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">2</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.02</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 10%; padding: 20px;">1</td>
-                                <td style="width: 55%; text-align: left;">
-                                    <a href="resources_details.php">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                                    </a>
-                                </td>
-                                <td style="width: 5%">
-                                    <img src="images/pdf.png" style="width: 18px; height: 18px;">
-                                </td>
-                                <td style="width: 15%">2023.02.01</td>
-                                <td style="width: 15%">300</td>
-                            </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>

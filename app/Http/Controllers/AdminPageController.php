@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Inquiry;
+use App\Models\Direction;
+use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
 use App\Models\User;
@@ -207,11 +209,17 @@ class AdminPageController extends Controller
     }
     public function directionDetailsView()
     {
-        return view('pages.admin.direction.direction-details');
+        $directions = Direction::all();
+        return view('pages.admin.direction.direction-details',[
+            'directions' => $directions,
+        ]);
     }
-    public function directionModify()
+    public function directionModify($id)
     {
-        return view('pages.admin.direction.direction-modification');
+        $direction = Direction::findOrFail($id);
+        return view('pages.admin.direction.direction-modification',[
+            'direction' => $direction,
+        ]);
     }
 
     // Direction Manegement End ------------------------------------------------------------------
@@ -221,23 +229,30 @@ class AdminPageController extends Controller
 
     public function resourceDashboard()
     {
-        return view('pages.admin.resource.resource-dashboard');
+        $resources = Resource::orderBy('id','desc')->get();
+        return view('pages.admin.resource.resource-dashboard',compact('resources'));
     }
     public function resourceRegistration()
     {
-        return view('pages.admin.resource.resource-register');
+        $count = Resource::where('status',1)->count();
+        return view('pages.admin.resource.resource-register',[
+            'count' => $count,
+        ]);
     }
     public function resourceAttFileRegistration()
     {
         return view('pages.admin.resource.resource-att-file-register');
     }
-    public function resourceDetailsView()
+    public function resourceDetailsView(Resource $resource)
     {
-        return view('pages.admin.resource.resource-details');
+        return view('pages.admin.resource.resource-details',[
+            'resource' => $resource,
+        ]);
     }
-    public function resourceModify()
+    public function resourceModify($id)
     {
-        return view('pages.admin.resource.resource-modification');
+        $resource  = Resource::findOrFail($id);
+        return view('pages.admin.resource.resource-modification',compact('resource'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
