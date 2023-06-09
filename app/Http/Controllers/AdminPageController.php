@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Direction;
 use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
@@ -209,11 +210,17 @@ class AdminPageController extends Controller
     }
     public function directionDetailsView()
     {
-        return view('pages.admin.direction.direction-details');
+        $directions = Direction::all();
+        return view('pages.admin.direction.direction-details',[
+            'directions' => $directions,
+        ]);
     }
-    public function directionModify()
+    public function directionModify($id)
     {
-        return view('pages.admin.direction.direction-modification');
+        $direction = Direction::findOrFail($id);
+        return view('pages.admin.direction.direction-modification',[
+            'direction' => $direction,
+        ]);
     }
 
     // Direction Manegement End ------------------------------------------------------------------

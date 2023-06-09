@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
@@ -128,6 +129,7 @@ Route::prefix('/admin')->group(function () {
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
+    Route::get('/directionUpdate/{direction:id}', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
     Route::get('/directionUpdate', [AdminPageController::class, 'directionModify'])->name('directionUpdate');
 
     // Resource Management
@@ -156,6 +158,7 @@ Route::post('/Register-student', [UserController::class, 'studentRegister'])->na
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
 Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
+Route::post('/direction/directionUpdate/{direction:id}',[DirectionController::class, 'directionUpdate']);
 
 // Utilities
 Route::get('/util/clear', function () {
