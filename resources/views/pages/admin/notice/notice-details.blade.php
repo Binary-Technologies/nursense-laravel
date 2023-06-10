@@ -106,7 +106,7 @@
                 삭제
             </a>
 
-            <a href="{{ route('noticeUpdate', ['notice' => $notice->id]) }}" class="btn btn13 ms-3">
+            <a href="{{ url('admin/noticeUpdate', ['notice' => $notice->id]) }}" class="btn btn13 ms-3">
                 수정
             </a>
             

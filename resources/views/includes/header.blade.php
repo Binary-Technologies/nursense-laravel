@@ -2,7 +2,7 @@
 		<nav class="navbar navbar-expand-md sticky-top fixed-top px-5 bg-light-w">
 			<div class="navbar-toggler-right">
 				<a class="navbar-brand" href="/">
-					<img src="images/logo.png" alt="Brand">
+					<img src="/images/logo.png" alt="Brand">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>

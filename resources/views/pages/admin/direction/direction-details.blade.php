@@ -66,7 +66,7 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="{{ route('directionUpdate',['direction' => $direction->id]) }}" class="btn btn13 ms-3">
+            <a href="{{ url('admin/directionUpdate', ['direction' => $direction->id]) }}" class="btn btn13 ms-3">
                 수정
             </a>
         </div>

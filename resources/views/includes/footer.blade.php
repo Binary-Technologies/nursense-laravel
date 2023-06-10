@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-12 pb-3">
                 <div class="footer-brand pl-2">
-                    <img src="images/logo.png" alt="Brand">
+                    <img src="/images/logo.png" alt="Brand">
                 </div>
             </div>
             <div class="col-lg-10 col-md-8 col-sm-12">

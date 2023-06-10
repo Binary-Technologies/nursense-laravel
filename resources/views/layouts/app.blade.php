@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Title</title>
-	<link rel="icon" href="images/logo.png" />
+	<title>NURESENSE</title>
+	<link rel="icon" href="/images/logo.png" />
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="www.">
@@ -16,7 +16,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="" />
 	<meta property="og:url" content="https://.uk/index.php" />
-	<meta property="og:image" content="images/og_share.jpg" />
+	<meta property="og:image" content="/images/og_share.jpg" />
 
 	<!-- Flavicon -->
 	<link rel="apple-touch-icon" sizes="57x57" href="images/fav/apple-icon-57x57.png">
@@ -32,7 +32,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="images/fav/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="images/fav/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/fav/favicon-16x16.png">
-	<link rel="manifest" href="images/fav/manifest.json">
+	<link rel="manifest" href="/images/fav/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="images/fav/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
@@ -46,7 +46,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <!-- Fonts -->
@@ -56,7 +56,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="bootstrap/bootstrap-4.6.0.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="/bootstrap/bootstrap-4.6.0.min.css" crossorigin="anonymous">
 
 	<!-- Montserrat font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,23 +79,23 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 	<!-- Fancy box -->
-	<link rel="stylesheet" href="plugins/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="/plugins/jquery.fancybox.min.css" />
 
 	<!-- animate css (wow) -->
-	<link rel="stylesheet" type="text/css" href="plugins/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animate.css">
 
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="../css/owl.css">
 
 	<!-- bxslider - vertical -->
-	<link rel="stylesheet" href="plugins/jquery.bxslider.css">
+	<link rel="stylesheet" href="/plugins/jquery.bxslider.css">
 
 	<!-- Main Stylesheet -->
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="/css/main.css">
 	
 	<!-- Responsive -->
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="/css/responsive.css">
 </head>
 <body>
     <div id="app">

@@ -65,7 +65,7 @@
                 @endif
                 @if (isset(explode('/', Request::url())[3]) && explode('/', Request::url())[3] == 'info')
                 <li class="nav-item pt-2 pl-4 {{ isset(explode('/', Request::url())[4]) ?
-											explode('/', Request::url())[4] == 'info' ? 'active' : ''
+											explode('/', Request::url())[4] == 'notice' ? 'active' : ''
 											: ''}} side-menu-ac">
                     <a class="nav-link px-3" href="/info/notice">공지사항<span class="sr-only">(current)</span></a>
                 </li>
