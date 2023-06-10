@@ -34,7 +34,7 @@ class ResourceController extends Controller
         foreach ($request->file('files') as $file) {
             if ($file->isValid()) {
                 $name = $file->getClientOriginalName();
-                $path = $file->storeAs('public/files/resources/'.$id,$name);
+                $path = $file->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
                 $filePaths[] = $path;
             }
         }
@@ -85,7 +85,7 @@ class ResourceController extends Controller
             foreach ($request->file('files') as $file) {
                 if ($file->isValid()) {
                     $name = $file->getClientOriginalName();
-                    $path = $file->storeAs('public/files/resources/'.$id,$name);
+                    $path = $file->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
                     $filePaths[] = $path;
                 }
             }
