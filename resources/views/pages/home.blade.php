@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+            <img src="images/msg.png" class="arrow_btn" style="width: 60px; position: absolute; right: 10px; margin-top: 30%; z-index: 2; position: fixed;"/>
 <!-- banner-section -->
-<section class="banner-section" style="background-color: #F4F5FA; height:720px;">
-    <div class="row" style="margin-left: 90px; margin-top: 90px;">
-        <div class="col-lg-3">
+<section class="banner-section" style="background-color: #F4F5FA; padding: 0px;">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-3" style="padding: 3%;">
             <h5 style="margin-top: 100px; font-family: pretendard-bold; font-size: 30px; color: #3941A2;">현실을 넘어 미래를 꿈꾸는 교육</h5>
             <div>&nbsp;</div>
             <p style="font-family: pretendard-medium; font-size: 16px; color: #616474;">디지털스마트교육센터는 지속적인 혁신과 변화, 그리고 도전을 통해 새로운 교육 패러다임을 제시하고 있습니다. 디지털 시대를 준비하는 여러분들의 미래를 응원합니다.</p>
@@ -16,26 +18,25 @@
             <span><img src="images/arrow1.png" class="arrow_btn"></span>
             <span><img src="images/arrow2.png" class="arrow_btn"></span>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9" style="padding: 3%; padding-right: 5%;">
             @foreach ($banners as $banner)
             
-            <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 546px; border-radius: 16px;">
+            <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 560px; border-radius: 16px;">
             @endforeach
             
            <!-- <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>  -->
-            <img src="images/msg.png" class="arrow_btn" style="width: 60px; float: right; margin-top: 480px; margin-right: 15px;"/>
         </div>
     </div>
 </section>
 <!-- banner-section end -->
 
-<section style="width: 1920px;">
-    <div class="container pt-5" style="width: 100%;padding: 0px; margin: 0px;">
-        <h2 style="font-family: pretendard-bold; font-size: 28px; color: #090909; margin-left: 120px;">디지털스마트교육센터 안내사항</h2>
-        <div class="row" style="width: 1920px; padding: 40px 120px;">
+<section class="pt-5" style="width: 100%; padding: 5%; margin: 0px;">
+    
+        <h2 style="font-family: pretendard-bold; font-size: 28px; color: #090909;">디지털스마트교육센터 안내사항</h2>
+        <div class="row">
 
             <!-- Card -->
-            <div class="col-md-6" style="padding: 0px;">
+            <div class="col-md-6" style="padding: 1%;">
                 <div class="border-rad-10" style="margin-right: 10px; box-shadow: 0px 0px 6px #0000001F;">
                     <div class="docu-details py-3 px-3 session-row" style="width: 100%; border-radius: 10px 10px 0px 0px;">
                         <div class="row">
@@ -92,9 +93,10 @@
         <!-- Card -->
 
         <!-- Card -->
-            <div class="col-md-6" style="padding: 0px;">
-                <div class="border-rad-10" style="margin-left: 10px; box-shadow: 0px 0px 6px #0000001F;">
-                    <div class="docu-details py-3 px-3 session-row2" style="width: 100%; border-radius: 10px 10px 0px 0px;">
+            <div class="col-md-6" style="padding: 1%;">
+          <div class="border-rad-10" style="box-shadow: 0px 0px 6px #0000001F;">
+          <div class="docu-details py-3 px-3 session-row" style="width: 100%; border-radius: 10px 10px 0px 0px;">
+
                         <div class="row">
                             <div class="col-md-9">
                                 <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">소식</h4>
@@ -138,7 +140,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 @endsection
