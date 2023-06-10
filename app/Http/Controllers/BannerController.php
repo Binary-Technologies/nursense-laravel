@@ -26,7 +26,7 @@ class BannerController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             $name = $request->file('image')->getClientOriginalName();
-            $imagePath = $file->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
+            $imagePath = $request->file('image')->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
         }
 
         Banner::create([
@@ -70,7 +70,7 @@ class BannerController extends Controller
             }
     
             $name = $request->file('image')->getClientOriginalName();
-            $imagePath = $file->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
+            $imagePath = $request->file('image')->storeAs('public/files/resources/'.$id, str_replace(' ', '-', $name));
             $data->image = $imagePath;
         }
 
