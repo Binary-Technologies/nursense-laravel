@@ -24,13 +24,16 @@
   src: url(../fonts/Pretendard-Regular.otf);
 }
 
+html{
+    height: 100%;
+}
+
 body {
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
   /*font-family: "Roboto", sans-serif; */
+  height: 100%;
 }
-
-
 
 p {
   font-family: 'Montserrat', sans-serif;
@@ -786,17 +789,16 @@ ul {
 
 .fixed-top {
   position: fixed;
-  max-width: 1920px !important;
   height: 105px;
 }
 
 .navbar-brand img {
-  max-width: 160px;
+  max-width: 200px;
   padding: 16px 34px;
 }
 
 .nav-link {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease-in-out;
@@ -816,7 +818,7 @@ ul {
   padding: 20px 0;
   left: 50px;
   top: 0;
-  z-index: 9998;
+  z-index: 2;
 }
 
 .sidebar ul {
@@ -841,7 +843,7 @@ ul {
 
 .text-muted {
   color: #212a52 !important;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   padding: 42px 40px 4px;
 }
@@ -871,6 +873,7 @@ ul {
 
 .sidebar .side-menu-ac.drp-menu a {
   margin-left: 20px;
+  font-size: 22px;
 }
 
 .active.side-menu-ac.drp-menu>a,
@@ -920,7 +923,7 @@ The navbar toggle appears at this breakpoint */
 .right-nav-block {
   position: absolute;
   right: 40px;
-  height: 40px;
+  height: 50px;
 }
 
 
@@ -1034,7 +1037,7 @@ The navbar toggle appears at this breakpoint */
 .search-bar-custom,
 .search-bar-custom:focus {
   font-family: pretendard-regular;
-  font-size: 16px;
+  font-size: 20px;
   /*color: #D2D3DA!important;*/
   padding: 2px 0 0 6px;
 }
@@ -1125,7 +1128,7 @@ button:focus {
 }
 
 .user-dp {
-  max-width: 88px;
+  /*max-width: 88px;*/
 }
 
 .user-dp img {
@@ -1232,6 +1235,7 @@ button:focus {
 .banner-section {
   position: relative;
   overflow: hidden;
+  padding: 50px 0px;
 }
 
 .banner-carousel {
@@ -2119,12 +2123,13 @@ button:focus {
 
 
 .gallery_img {
-  width: 290px;
+  width: 100%;
   height: 220px;
 }
 
 .gallery_img_margin {
-  margin: 26px;
+  padding: 1%;
+width: 20%;
 }
 
 .gallery-img-desc,
@@ -2230,7 +2235,7 @@ button:focus {
   position: relative;
   background-color: #fff;
   padding: 60px 0px 0px;
-  z-index: 9999;
+  z-index: 3;
 }
 
 .footer-brand {
@@ -2425,4 +2430,61 @@ ul.list_style a:hover {
   color: #ffffff;
 }
 
-/*End Mod DC*/
+.terms_heading{
+     font-family: pretendard-bold;
+     font-size: 30px;
+     color: #3941A2;
+}
+
+.terms_titles{
+     font-family: pretendard-bold;
+     font-size: 20px;
+}
+
+.terms_contents{
+     font-family: pretendard-regular;
+     font-size: 18px;
+}
+
+.login_title{
+     font-family: pretendard-bold;
+     font-size: 30px;
+}
+.login_text{
+     font-family: pretendard-regular;
+     font-size: 20px !important;
+     background-color: #ffffff !important;
+}
+.login_text:focus{
+    border: #3941A2 thin solid !important;
+     background-color: #ffffff !important;
+}
+.login_text:active{
+    border: #3941A2 thin solid !important;
+     background-color: #ffffff !important;
+}
+.login_desc{
+     font-family: pretendard-medium;
+     font-size: 20px !important;
+}
+.login_link{
+     font-family: pretendard-medium;
+     font-size: 20px !important;
+    color: #9495A1;
+}
+.login_error{
+    color: #FF625F;
+}
+.full_height{
+    height: 100%;
+}
+.cen_rel{
+    height: 100%;
+    position: relative;
+}
+.cen_abs{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
