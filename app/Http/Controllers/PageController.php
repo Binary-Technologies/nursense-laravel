@@ -69,7 +69,18 @@ class PageController extends Controller
     }
 
     public function inquiry(){
-        $inquiries = Inquiry::all();
+
+        $searchValue = request('search');
+        if(request('search')){
+            $inquiries = Inquiry::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $inquiries = Inquiry::orderByDesc('id')->paginate(10);
+        }
+                
         return view('pages.inquiry',compact('inquiries'));
     }
 
@@ -138,8 +149,19 @@ class PageController extends Controller
     }
 
     public function news_main(){
-        $news = News::orderByDesc('id')->get();
-        return view('pages.news_main',compact('news'));
+        $newsExposures = News::where('exposure', 0)->orderBy('id', 'desc')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $news = News::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $news = News::orderByDesc('id')->paginate(10);
+        }
+        
+        return view('pages.news_main',compact('news','newsExposures'));
     }
 
     //notice ...... has been leftout
@@ -151,8 +173,19 @@ class PageController extends Controller
     }
 
     public function notice_main(){
-        $notices = Notice::orderByDesc('id')->get();
-        return view('pages.notice_main',compact('notices'));
+        $noticeExposures = Notice::where('exposure', 0)->orderBy('id', 'desc')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $notices = Notice::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $notices = Notice::orderByDesc('id')->paginate(10);
+        }
+        
+        return view('pages.notice_main',compact('notices','noticeExposures'));
     }
 
     public function privacy_policy(){
@@ -171,8 +204,19 @@ class PageController extends Controller
     }
 
     public function resources(){
-        $resources = Resource::orderBy('id','desc')->get();
-        return view('pages.resources',compact('resources'));
+        $resourceExposures = Resource::where('status', 1)->orderBy('id', 'desc')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $resources = Resource::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('details', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $resources = Resource::orderByDesc('id')->paginate(10);
+        }
+
+        return view('pages.resources',compact('resources','resourceExposures'));
     }
     public function terms_conditions(){
         return view('pages.terms_conditions');

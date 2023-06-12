@@ -49,7 +49,7 @@
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                             <div class="input-group">
                                     <span><i class="fas fa-search home-search-i" area-hidden="true"></i></span>
-                                    <input type="text" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
+                                    <input type="search" name="search" value="{{ request('search') }}" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
                             </div>
                             
                             <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="width: 118px; height: 40px; margin-left: 20px;">검색</button>
@@ -138,27 +138,9 @@
 
                 </form>
                 
-<nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
-    <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-        <span aria-hidden="true">&lt;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
-    <li class="page-item">
-      <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
-        <span aria-hidden="true">&gt;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+                <div class="pagination-container">
+                    {{ $inquiries->links('vendor.pagination.bootstrap-4') }}
+                </div>
             </div>
         </div>
 </section>

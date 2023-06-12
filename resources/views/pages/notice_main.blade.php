@@ -31,15 +31,15 @@
                     <div class="col-lg-11">
                         
                         <div class="row">
-                            @foreach ($notices as $notice)
-                                @if ($notice->exposure === 0)
+                            @foreach ($noticeExposures as $noticeExposure)
+                               
                                     <div class="col-lg-4">
                                     <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 15px;">
-                                        <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">{{$notice->title}}</p>
-                                        <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">{!! html_entity_decode($notice->content) !!}</p>
+                                        <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">{{$noticeExposure->title}}</p>
+                                        <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">{!! html_entity_decode($noticeExposure->content) !!}</p>
                                     </div>
                                     </div>
-                                @endif
+                                
                             @endforeach
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                             <div class="input-group">
                                     <span><i class="fas fa-search home-search-i" area-hidden="true"></i></span>
-                                    <input type="text" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
+                                    <input type="search" name="search" value="{{ request('search') }}" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
                             </div>
                             
                             <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="width: 118px; height: 40px; margin-left: 20px;">검색</button>
@@ -90,27 +90,9 @@
                 </div>
             </div>
 
-<nav aria-label="Page navigation muve gallery" style="margin-left: 50%;">
-    <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-        <span aria-hidden="true">&lt;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
-    <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
-    <li class="page-item">
-      <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
-        <span aria-hidden="true">&gt;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+            <div class="pagination-container">
+                {{ $notices->links('vendor.pagination.bootstrap-4') }}
+            </div>
         </div>
     </div>
 </section>
