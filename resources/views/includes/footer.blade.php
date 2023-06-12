@@ -1,7 +1,7 @@
 <footer class="footer-sec">
 
     <nav class="navbar navbar-expand-lg bg-light w-100" style="background-color: #F3F4F8; padding-left: 5%;">
-        <div class="collapse navbar-collapse container" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
                                             explode('/', Request::url())[3] == 'info' ? 'active' : ''
@@ -71,7 +71,7 @@
         </div>
     </nav>
 
-    <div class="container pt-5">
+    <div class="pt-5">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-12 pb-3">
                 <div class="footer-brand pl-2">

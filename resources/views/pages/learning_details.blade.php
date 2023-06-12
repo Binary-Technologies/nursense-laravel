@@ -212,7 +212,7 @@
                                     첨부 자료
                                 </td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                    <img src="images/pdf.png">자료실.pdf
+                                    <img src="/images/pdf.png">자료실.pdf
                                 </td>
                             </tr>
                             <tr>
