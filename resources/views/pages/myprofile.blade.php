@@ -28,9 +28,9 @@
                         <div class="pt-4">
 
                             <div class="item-flex-center relative-block profile-img-outer">
-                                <img src="images/face.png" alt="dp">
+                                <img src="/images/face.png" alt="dp">
                                 <div class="edit_dp_i">
-                                    <a href="myprofile-dp-upload.php"><img src="images/dp_icon.png" class=""></a>
+                                    <a href="myprofile-dp-upload.php"><img src="/images/dp_icon.png" class=""></a>
                                 </div>
                             </div>
                             <div class="pt15 pb10 text-center">

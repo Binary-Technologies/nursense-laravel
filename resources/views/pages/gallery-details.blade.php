@@ -56,11 +56,11 @@
                     
                     
                     <div class="row my-4" style="width: 100%;">
-                        <img src="images/mgd1.png" style="width: 100%; height: 460px;" />
+                        <img src="/images/mgd1.png" style="width: 100%; height: 460px;" />
                     </div>
                     
                     <div class="row my-4" style="width: 100%;">
-                        <img src="images/mgd2.png" style="width: 100%; height: 460px;" />
+                        <img src="/images/mgd2.png" style="width: 100%; height: 460px;" />
                     </div>
                     
                     <div class="row my-4 mx-2" style="width: 828px;">

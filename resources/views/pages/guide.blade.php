@@ -14,7 +14,7 @@
                     <div class="pl30">
                         <div class="content-box">
                             <div class="title">
-                                <h2 class="text-center ttl-4 mb0" style="font-family: pretendard-bold; font-size: 26px; color: #212880;">NURSENSE 다운로드받기 <img src="images/arrow_right2.png" class="ttl-icon"></h2>
+                                <h2 class="text-center ttl-4 mb0" style="font-family: pretendard-bold; font-size: 26px; color: #212880;">NURSENSE 다운로드받기 <img src="/images/arrow_right2.png" class="ttl-icon"></h2>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-lg-1 relative-block">
                             <div class="guide-i">
-                                <img src="images/playarrow.png" alt="steps">
+                                <img src="/images/playarrow.png" alt="steps">
                             </div>
                         </div>
                         <div class="col-lg-3 pl-0 pr-0">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-lg-1 relative-block">
                             <div class="guide-i">
-                                <img src="images/playarrow.png" alt="steps">
+                                <img src="/images/playarrow.png" alt="steps">
                             </div>
                         </div>
                         <div class="col-lg-3 pl-0 pr-0">
@@ -90,7 +90,7 @@
 
                         <div class="col-lg-6 item-flex-center">
                             <div class="ml--110">
-                                <img src="images/guide.png" width="654" alt="Guide">
+                                <img src="/images/guide.png" width="654" alt="Guide">
                             </div>
                         </div>
                         <div class="col-lg-6">
