@@ -90,7 +90,7 @@
 
 
 <div class="pagination-container">
-    {{ $news->links('vendor.pagination.bootstrap-4') }}
+    {{ $news->links('vendor.pagination.default') }}
 </div>
         </div>
     </div>

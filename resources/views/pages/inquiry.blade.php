@@ -139,7 +139,7 @@
                 </form>
                 
                 <div class="pagination-container">
-                    {{ $inquiries->links('vendor.pagination.bootstrap-4') }}
+                    {{ $inquiries->links('vendor.pagination.default') }}
                 </div>
             </div>
         </div>

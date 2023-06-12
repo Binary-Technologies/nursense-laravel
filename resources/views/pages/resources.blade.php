@@ -125,7 +125,7 @@
             </div>
 
             <div class="pagination-container">
-                {{ $resources->links('vendor.pagination.bootstrap-4') }}
+                {{ $resources->links('vendor.pagination.default') }}
             </div>
             </div>
 </section>

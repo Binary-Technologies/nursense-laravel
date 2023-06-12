@@ -91,7 +91,7 @@
             </div>
 
             <div class="pagination-container">
-                {{ $notices->links('vendor.pagination.bootstrap-4') }}
+                {{ $notices->links('vendor.pagination.default') }}
             </div>
         </div>
     </div>
