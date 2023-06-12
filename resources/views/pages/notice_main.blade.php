@@ -14,8 +14,8 @@
                     <div class="pl30">
                         <div class="content-box">
                             <div class="title" style="margin-top: 40px;">
-                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px; color: #3941A2;">소식</h2>
-                                <h5 class="text-left text-white" style="font-family: pretendard-regular; font-size: 14px; color: #3941A2;">새로운 소식을 한곳에서 확인하세요.</h5>
+                                <h2 class="text-left text-white" style="font-family: pretendard-bold; font-size: 24px; color: #3941A2;">공지사항</h2>
+                                <h5 class="text-left text-white" style="font-family: pretendard-regular; font-size: 14px; color: #3941A2;">중요한 안내사항을 한눈에 확인하세요.</h5>
                             </div>
                         </div>
                     </div>
