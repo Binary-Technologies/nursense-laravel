@@ -130,7 +130,7 @@
 
 <div class="item-flex-end">
     
-    {{ $banners->links('vendor.pagination.bootstrap-4') }}
+    {{ $banners->links('vendor.pagination.default') }}
 
 </div>
 

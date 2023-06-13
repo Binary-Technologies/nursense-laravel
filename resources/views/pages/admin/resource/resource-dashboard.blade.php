@@ -126,7 +126,7 @@
 
 <div class="item-flex-end">
     
-    {{ $resources->links('vendor.pagination.bootstrap-4') }}
+    {{ $resources->links('vendor.pagination.default') }}
 
 </div>
 

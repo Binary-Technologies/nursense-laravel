@@ -129,7 +129,7 @@
 
 <div class="item-flex-end">
     
-    {{ $inquiries->links('vendor.pagination.bootstrap-4') }}
+    {{ $inquiries->links('vendor.pagination.default') }}
 
 </div>
 
