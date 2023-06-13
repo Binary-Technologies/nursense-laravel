@@ -20,8 +20,16 @@ class AdminPageController extends Controller
     // Instructor Mng. Start --------------------------------------------------------------
     public function instructorDashboard()
     {
-        $users = User::where('role', 'instructor')->get();
-
+        $searchValue = request('search');
+        if(request('search')){
+            $users = User::where(function ($query) use ($searchValue) {
+                $query  ->where('name', 'like', '%' . $searchValue . '%');
+            })::where('role', 'instructor')->paginate(10);
+        }
+        else{
+            $users = User::where('role', 'instructor')->paginate(10);
+        }
+        
         return view('pages.admin.member.instructor-dashboard', [
             'users' => $users,
         ]);
@@ -54,7 +62,16 @@ class AdminPageController extends Controller
     // Student Mng. Start --------------------------------------------------------------
     public function studentDashboard()
     {
-        $users = User::where('role', 'student')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $users = User::where(function ($query) use ($searchValue) {
+                $query  ->where('name', 'like', '%' . $searchValue . '%');
+            })::where('role', 'student')->paginate(10);
+        }
+        else{
+            $users = User::where('role', 'student')->paginate(10);
+        }
+        
         return view('pages.admin.member.student-dashboard', [
             'users' => $users,
         ]);
@@ -90,7 +107,18 @@ class AdminPageController extends Controller
 
     public function bannerDashboard()
     {
-        $banners = Banner::all();
+        $searchValue = request('search');
+        if(request('search')){
+            $banners = Banner::where(function ($query) use ($searchValue) {
+                $query  ->where('name', 'like', '%' . $searchValue . '%')
+                        ->orWhere('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $banners = Banner::orderByDesc('id')->paginate(10);
+        }
+        
         return view('pages.admin.banner.banner-dashboard', [
             'banners' => $banners,
         ]);
@@ -124,7 +152,17 @@ class AdminPageController extends Controller
 
     public function noticeDashboard()
     {
-        $notices = Notice::orderByDesc('id')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $notices = Notice::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $notices = Notice::orderByDesc('id')->paginate(10);
+        }
+        
         return view('pages.admin.notice.notice-dashboard',[
             'notices' => $notices,
         ]);
@@ -162,7 +200,17 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        $news = News::orderByDesc('id')->get();;
+        $searchValue = request('search');
+        if(request('search')){
+            $news = News::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $news = News::orderByDesc('id')->paginate(10);
+        }
+        
         return view('pages.admin.news.news-dashboard',[
             'news' => $news,
         ]);
@@ -227,7 +275,17 @@ class AdminPageController extends Controller
 
     public function resourceDashboard()
     {
-        $resources = Resource::orderBy('id','desc')->get();
+        $searchValue = request('search');
+        if(request('search')){
+            $resources = Resource::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('details', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $resources = Resource::orderByDesc('id')->paginate(10);
+        }
+        
         return view('pages.admin.resource.resource-dashboard',compact('resources'));
     }
     public function resourceRegistration()
@@ -260,7 +318,17 @@ class AdminPageController extends Controller
 
     public function inquiryDashboard()
     {
-        $inquiries = Inquiry::all();
+        $searchValue = request('search');
+        if(request('search')){
+            $inquiries = Inquiry::where(function ($query) use ($searchValue) {
+                $query  ->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+        else{
+            $inquiries = Inquiry::orderByDesc('id')->paginate(10);
+        }
+        
         return view('pages.admin.inquiry.inquiry-dashboard',compact('inquiries'));
     }
     public function inquiryRegistration($id)

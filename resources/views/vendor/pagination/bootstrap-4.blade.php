@@ -4,13 +4,13 @@
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item">
-                    <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
+                    <a class="page-link pgln-custom pagination_link form-text-d pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
                         <span aria-hidden="true">&lt;</span>
                     </a>
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link pagination_link_arrows" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="Previous">
+                    <a class="page-link pgln-custom pagination_link form-text-d pagination_link_arrows" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="Previous">
                         <span aria-hidden="true">&lt;</span>
                     </a>
                 </li>
@@ -30,11 +30,11 @@
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
                             <li class="page-item">
-                                <a class="page-link pagination_link pagination_link_active" href="{{ $url }}">{{ $page }}</a>
+                                <a class="page-link pgln-custom pagination_link form-text-d pagination_link pagination_link_active" href="{{ $url }}">{{ $page }}</a>
                             </li>
                         @else
                             <li class="page-item">
-                                <a class="page-link pagination_link" href="{{ $url }}">{{ $page }}</a>
+                                <a class="page-link pgln-custom pagination_link form-text-d pagination_link" href="{{ $url }}">{{ $page }}</a>
                             </li>
                         @endif
                     @endforeach
@@ -44,13 +44,13 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="page-item">
-                    <a class="page-link pagination_link_arrows" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="Next">
+                    <a class="page-link pgln-custom pagination_link form-text-d pagination_link_arrows" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="Next">
                         <span aria-hidden="true">&gt;</span>
                     </a>
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
+                    <a class="page-link pgln-custom pagination_link form-text-d pagination_link_arrows" href="#" aria-label="Next">
                         <span aria-hidden="true">&gt;</span>
                     </a>
                 </li>

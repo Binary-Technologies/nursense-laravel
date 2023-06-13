@@ -27,7 +27,7 @@
 
     <div class="rounded pt-4">
 
-        <form method="post" id="news-filter-form" action="#">
+        <form id="news-filter-form" action="#">
 
             <!-- Table Section -->
             <div class="row mb-4">
@@ -38,15 +38,19 @@
                         <option value="3">미노출</option>
                     </select>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-news" id="searchNews" placeholder="제목을 입력하세요." aria-label="Search">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <a href="#" class="btn btn-secondary btn1">
-                        검색
-                    </a>
-                </div>
+                
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                        <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
+                        <input type="search" value="{{ request('search') }}"  class="form-control form-text-l search-bar-custom" name="search" id="searchNews" placeholder="제목을 입력하세요." aria-label="Search">
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
+
+                        <button  class="btn btn-secondary btn1" type="submit">
+                            검색
+                        </button>
+                        
+                    </div>
+                
             </div>
             <div class="row mb-4">
 
@@ -119,27 +123,9 @@
 </div>
 
 <div class="item-flex-end">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&lt;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
-                    <span aria-hidden="true">&gt;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    
+        {{ $news->links('vendor.pagination.bootstrap-4') }}
+   
 </div>
 
 <!-- Confirmation Alert Modal -->

@@ -24,7 +24,7 @@
 
     <div class="rounded pt-4">
 
-        <form method="post" id="inquiry-filter-form" action="#">
+        <form  id="inquiry-filter-form" >
 
             <!-- Table Section -->
             <div class="row mb-4">
@@ -37,12 +37,12 @@
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="text" class="form-control form-text-l search-bar-custom" name="search-inquiry" id="searchInquiry" placeholder="제목을 입력하세요." aria-label="Search">
+                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search" id="searchInquiry" placeholder="제목을 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <a href="#" class="btn btn-secondary btn1">
+                    <button type="submit" class="btn btn-secondary btn1">
                         검색
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="row mb-4">
@@ -126,28 +126,11 @@
 
 </div>
 
+
 <div class="item-flex-end">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&lt;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
-                    <span aria-hidden="true">&gt;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    
+    {{ $inquiries->links('vendor.pagination.bootstrap-4') }}
+
 </div>
 
 <!-- Confirmation Alert Modal -->
