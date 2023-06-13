@@ -26,6 +26,7 @@
                     Dashboard
                 </a> -->
 
+                <!-- Instructor, Student Management -->
                 <div class="nav-item dropdown">
 
                     <a href="#" class="nav-link dropdown-toggle 
@@ -72,6 +73,8 @@
                     ?>
 
                     <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+
+                        <!-- Instructor Management -->
                         <a href="{{ url('admin/instructorDash') }}" class="dropdown-item 
                         <?php if (
                             $current_page == 'instructorDash' ||
@@ -82,6 +85,8 @@
                         ) : ?>active show <?php endif; ?>">
                             회원 관리
                         </a>
+
+                        <!-- Student Management -->
                         <a href="{{ url('admin/studentDash') }}" class="dropdown-item 
                         <?php if (
                             $current_page == 'studentDash' ||
@@ -96,6 +101,7 @@
 
                 </div>
 
+                <!-- Banner Management -->
                 <a href="{{ url('admin/bannerDash') }}" class="nav-item nav-link 
                 <?php if (
                     $current_page == 'bannerDash' ||
@@ -107,6 +113,7 @@
                     배너 관리
                 </a>
 
+                <!-- Notice, News, Direction, Resource Management -->
                 <div class="nav-item dropdown">
 
                     <a href="#" class="nav-link dropdown-toggle 
@@ -216,6 +223,7 @@
 
                 </div>
 
+                <!-- Inquiry Management -->
                 <a href="{{ url('admin/inquiryDash') }}" class="nav-item nav-link 
                 <?php if (
                     $current_page == 'inquiryDash' ||
@@ -224,6 +232,61 @@
                     $current_page == 'inquiryUpdate'
                 ) : ?> active <?php endif; ?>">
                     1:1문의 관리
+                </a>
+
+                <!-- Menu, Logo Management -->
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle 
+                    <?php if (
+                        $current_page == 'menuReg' ||
+                        $current_page == 'logoReg'
+                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
+                        메뉴 관리
+                    </a>
+
+                    <?php
+                    $show_class = "";
+                    if ($current_page == 'menuReg') {
+                        $show_class = "show";
+                    } else if ($current_page == 'logoReg') {
+                        $show_class = "show";
+                    } else {
+                        $show_class = "";
+                    }
+                    ?>
+
+                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+
+                        <!-- Menu Management -->
+                        <a href="{{ url('admin/menuReg') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'menuReg'
+                        ) : ?>active show <?php endif; ?>">
+                            메뉴명 관리
+                        </a>
+
+                        <!-- Logo Management -->
+                        <a href="{{ url('admin/logoReg') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'logoReg'
+                        ) : ?>active show <?php endif; ?>">
+                            로고 관리
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- University Code Management -->
+                <a href="{{ url('admin/univCodeDash') }}" class="nav-item nav-link 
+                <?php if (
+                    $current_page == 'univCodeDash' ||
+                    $current_page == 'univCodeReg' ||
+                    $current_page == 'univCodeDetails' ||
+                    $current_page == 'univCodeUpdate'
+                ) : ?> active <?php endif; ?>">
+                    학교 코드 관리
                 </a>
 
             </div>

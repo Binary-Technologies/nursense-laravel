@@ -21,15 +21,14 @@ class AdminPageController extends Controller
     public function instructorDashboard()
     {
         $searchValue = request('search');
-        if(request('search')){
+        if (request('search')) {
             $users = User::where(function ($query) use ($searchValue) {
-                $query  ->where('name', 'like', '%' . $searchValue . '%');
+                $query->where('name', 'like', '%' . $searchValue . '%');
             })::where('role', 'instructor')->paginate(10);
-        }
-        else{
+        } else {
             $users = User::where('role', 'instructor')->paginate(10);
         }
-        
+
         return view('pages.admin.member.instructor-dashboard', [
             'users' => $users,
         ]);
@@ -63,15 +62,14 @@ class AdminPageController extends Controller
     public function studentDashboard()
     {
         $searchValue = request('search');
-        if(request('search')){
+        if (request('search')) {
             $users = User::where(function ($query) use ($searchValue) {
-                $query  ->where('name', 'like', '%' . $searchValue . '%');
+                $query->where('name', 'like', '%' . $searchValue . '%');
             })::where('role', 'student')->paginate(10);
-        }
-        else{
+        } else {
             $users = User::where('role', 'student')->paginate(10);
         }
-        
+
         return view('pages.admin.member.student-dashboard', [
             'users' => $users,
         ]);
@@ -108,17 +106,16 @@ class AdminPageController extends Controller
     public function bannerDashboard()
     {
         $searchValue = request('search');
-        if(request('search')){
+        if (request('search')) {
             $banners = Banner::where(function ($query) use ($searchValue) {
-                $query  ->where('name', 'like', '%' . $searchValue . '%')
-                        ->orWhere('title', 'like', '%' . $searchValue . '%')
-                        ->orWhere('content', 'like', '%' . $searchValue . '%');
+                $query->where('name', 'like', '%' . $searchValue . '%')
+                    ->orWhere('title', 'like', '%' . $searchValue . '%')
+                    ->orWhere('content', 'like', '%' . $searchValue . '%');
             })->orderByDesc('id')->paginate(10);
-        }
-        else{
+        } else {
             $banners = Banner::orderByDesc('id')->paginate(10);
         }
-        
+
         return view('pages.admin.banner.banner-dashboard', [
             'banners' => $banners,
         ]);
@@ -152,7 +149,7 @@ class AdminPageController extends Controller
 
     public function noticeDashboard(Request $request)
     {
-        
+
         /*return count($notices);
         if ($request->has('expose-notice')) {
             $exposeNotice = $request->input('expose-notice');
@@ -172,9 +169,9 @@ class AdminPageController extends Controller
                         ->orWhere('content', 'like', '%' . $searchValue . '%');
             })->orderByDesc('id')->paginate(10);
         }*/
-        
-        $notices = Notice::orderByDesc('id')->paginate(10);        
-        return view('pages.admin.notice.notice-dashboard',[
+
+        $notices = Notice::orderByDesc('id')->paginate(10);
+        return view('pages.admin.notice.notice-dashboard', [
             'notices' => $notices,
         ]);
     }
@@ -184,7 +181,7 @@ class AdminPageController extends Controller
         $exposure = Notice::pluck('exposure')->toArray();
         $value = 0;
         $count = array_count_values($exposure)[$value];
-        return view('pages.admin.notice.notice-register',[
+        return view('pages.admin.notice.notice-register', [
             'main_exposure' => $main_exposure,
             'count' => $count,
         ]);
@@ -192,14 +189,14 @@ class AdminPageController extends Controller
     public function noticeDetailsView($id)
     {
         $notice = Notice::findOrFail($id);
-        return view('pages.admin.notice.notice-details',[
+        return view('pages.admin.notice.notice-details', [
             'notice' => $notice,
         ]);
     }
     public function noticeModify($id)
     {
         $notice = Notice::findOrFail($id);
-        return view('pages.admin.notice.notice-modification',[
+        return view('pages.admin.notice.notice-modification', [
             'notice' => $notice,
         ]);
     }
@@ -211,10 +208,10 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        
+
         $news = News::orderByDesc('id')->paginate(10);
-        
-        return view('pages.admin.news.news-dashboard',[
+
+        return view('pages.admin.news.news-dashboard', [
             'news' => $news,
         ]);
     }
@@ -232,15 +229,15 @@ class AdminPageController extends Controller
     public function newsDetailsView($id)
     {
         $news = News::findOrFail($id);
-        return view('pages.admin.news.news-details',[
+        return view('pages.admin.news.news-details', [
             'news' => $news,
         ]);
     }
     public function newsModify($id)
     {
-        $news = News::findOrFail($id);   
-        
-        return view('pages.admin.news.news-modification',[
+        $news = News::findOrFail($id);
+
+        return view('pages.admin.news.news-modification', [
             'news' => $news,
         ]);
     }
@@ -259,14 +256,14 @@ class AdminPageController extends Controller
     public function directionDetailsView()
     {
         $directions = Direction::all();
-        return view('pages.admin.direction.direction-details',[
+        return view('pages.admin.direction.direction-details', [
             'directions' => $directions,
         ]);
     }
     public function directionModify($id)
     {
         $direction = Direction::findOrFail($id);
-        return view('pages.admin.direction.direction-modification',[
+        return view('pages.admin.direction.direction-modification', [
             'direction' => $direction,
         ]);
     }
@@ -278,15 +275,15 @@ class AdminPageController extends Controller
 
     public function resourceDashboard()
     {
-        
+
         $resources = Resource::orderByDesc('id')->paginate(10);
-        
-        return view('pages.admin.resource.resource-dashboard',compact('resources'));
+
+        return view('pages.admin.resource.resource-dashboard', compact('resources'));
     }
     public function resourceRegistration()
     {
-        $count = Resource::where('status',1)->count();
-        return view('pages.admin.resource.resource-register',[
+        $count = Resource::where('status', 1)->count();
+        return view('pages.admin.resource.resource-register', [
             'count' => $count,
         ]);
     }
@@ -296,14 +293,14 @@ class AdminPageController extends Controller
     }
     public function resourceDetailsView(Resource $resource)
     {
-        return view('pages.admin.resource.resource-details',[
+        return view('pages.admin.resource.resource-details', [
             'resource' => $resource,
         ]);
     }
     public function resourceModify($id)
     {
         $resource  = Resource::findOrFail($id);
-        return view('pages.admin.resource.resource-modification',compact('resource'));
+        return view('pages.admin.resource.resource-modification', compact('resource'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
@@ -314,35 +311,76 @@ class AdminPageController extends Controller
     public function inquiryDashboard()
     {
         $searchValue = request('search');
-        if(request('search')){
+        if (request('search')) {
             $inquiries = Inquiry::where(function ($query) use ($searchValue) {
-                $query  ->where('title', 'like', '%' . $searchValue . '%')
-                        ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%');
+                $query->where('title', 'like', '%' . $searchValue . '%')
+                    ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%');
             })->orderByDesc('id')->paginate(10);
-        }
-        else{
+        } else {
             $inquiries = Inquiry::orderByDesc('id')->paginate(10);
         }
-        
-        return view('pages.admin.inquiry.inquiry-dashboard',compact('inquiries'));
+
+        return view('pages.admin.inquiry.inquiry-dashboard', compact('inquiries'));
     }
     public function inquiryRegistration($id)
     {
         $inquiry = Inquiry::findOrFail($id);
-        return view('pages.admin.inquiry.inquiry-register',compact('inquiry'));
+        return view('pages.admin.inquiry.inquiry-register', compact('inquiry'));
     }
     public function inquiryDetailsView($id)
     {
         $inquiry = Inquiry::findOrFail($id);
-        return view('pages.admin.inquiry.inquiry-details',compact('inquiry'));
+        return view('pages.admin.inquiry.inquiry-details', compact('inquiry'));
     }
     public function inquiryModify($id)
     {
         $inquiry = Inquiry::findOrFail($id);
-        return view('pages.admin.inquiry.inquiry-modification',compact('inquiry'));
+        return view('pages.admin.inquiry.inquiry-modification', compact('inquiry'));
     }
 
     // Inquiry Manegement End ------------------------------------------------------------------
+
+
+    // University Code Manegement Start ------------------------------------------------------------------
+
+    public function univCodeDashboard()
+    {
+        return view('pages.admin.universityCode.univ-code-dashboard');
+    }
+    public function univCodeRegistration()
+    {
+        return view('pages.admin.universityCode.univ-code-register');
+    }
+    public function univCodeDetailsView()
+    {
+        return view('pages.admin.universityCode.univ-code-details');
+    }
+    public function univCodeModify()
+    {
+        return view('pages.admin.universityCode.univ-code-modification');
+    }
+
+    // University Code Manegement End ------------------------------------------------------------------
+
+
+    // Menu Manegement Start ------------------------------------------------------------------
+
+    public function menuRegistration()
+    {
+        return view('pages.admin.menu.menu-register');
+    }
+
+    // Menu Manegement End ------------------------------------------------------------------
+
+
+    // Logo Manegement Start ------------------------------------------------------------------
+
+    public function logoRegistration()
+    {
+        return view('pages.admin.logo.logo-register');
+    }
+
+    // Logo Manegement End ------------------------------------------------------------------
 
 
 
