@@ -46,7 +46,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -67,7 +67,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/2.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/2.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -89,7 +89,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/3.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/3.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -111,7 +111,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/4.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/4.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -133,7 +133,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -160,7 +160,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -182,7 +182,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/2.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/2.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -204,7 +204,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/3.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/3.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -226,7 +226,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/4.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/4.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
@@ -248,7 +248,7 @@
                         <div class="gallery_img_margin">
 
                             <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="images/gallery/1.jpg" class="gallery_img"></a>
+                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
                             </div>
                             <div class="pt20">
                                 <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>

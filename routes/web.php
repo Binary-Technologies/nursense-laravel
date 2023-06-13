@@ -58,6 +58,14 @@ Route::get('/info/resources', [PageController::class, 'resources']);
 Route::get('/info/resources/details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
+Route::get('/profile/info', [PageController::class, 'myprofile']);
+Route::get('/profile/study', [PageController::class, 'mystudy']);
+Route::get('/profile/manage', [PageController::class, 'mymanage']);
+Route::get('/profile/assesment', [PageController::class, 'myassesment']);
+Route::get('/profile/prelearning', [PageController::class, 'myprelearning']);
+Route::get('/profile/reports', [PageController::class, 'myreports']);
+Route::get('/profile/allocation', [PageController::class, 'myallocation']);
+
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login');
 Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm'])->name('admin.register-view');
@@ -69,14 +77,7 @@ Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
-Route::get('/myallocation', [PageController::class, 'myallocation']);
-Route::get('/myassesment', [PageController::class, 'myassesment']);
-Route::get('/mymanage', [PageController::class, 'mymanage']);
-Route::get('/myprelearning', [PageController::class, 'myprelearning']);
 Route::get('/myprofile_dp_upload', [PageController::class, 'myprofile_dp_upload']);
-Route::get('/myprofile', [PageController::class, 'myprofile']);
-Route::get('/myreports', [PageController::class, 'myreports']);
-Route::get('/mystudy', [PageController::class, 'mystudy']);
 Route::get('/privacy_policy', [PageController::class, 'privacy_policy']);
 Route::get('/terms_conditions', [PageController::class, 'terms_conditions']);
 Route::get('/user_manual', [PageController::class, 'user_manual']);

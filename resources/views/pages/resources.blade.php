@@ -27,7 +27,7 @@
                 <div class="row" style="font-size: 10px;">
                     <div class="col-lg-1" style="margin-top: 5%;">
                         <div class="item-flex-center">
-                            <img src="images/horn.png" style="width: 60px; height: 60px;">
+                            <img src="/images/horn.png" style="width: 60px; height: 60px;">
                         </div>
                     </div>
                     <div class="col-lg-11">
@@ -125,7 +125,7 @@
             </div>
 
             <div class="pagination-container">
-                {{ $resources->links('vendor.pagination.bootstrap-4') }}
+                {{ $resources->links('vendor.pagination.default') }}
             </div>
             </div>
 </section>

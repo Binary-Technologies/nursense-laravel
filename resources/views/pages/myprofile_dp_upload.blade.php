@@ -41,7 +41,7 @@
                                 <span class="ttl-18">프로필 이미지 변경</span>
                             </div>
                             <div class="item-flex-center relative-block profile-img-outer">
-                                <img src="images/face.png" alt="dp">
+                                <img src="/images/face.png" alt="dp">
                             </div>
                             <div class="ttl-19 item-flex-center">
                                 <span>미리보기</span>

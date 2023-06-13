@@ -2,7 +2,7 @@
 
 @section('content')
 
-            <img src="images/msg.png" class="arrow_btn" style="width: 60px; position: absolute; right: 10px; margin-top: 30%; z-index: 2; position: fixed;"/>
+            <img src="/images/msg.png" class="arrow_btn" style="width: 60px; position: absolute; right: 10px; margin-top: 30%; z-index: 2; position: fixed;"/>
 <!-- banner-section -->
 <section class="banner-section" style="background-color: #F4F5FA; padding: 0px;">
     <div class="row" style="margin-top: 100px;">
@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div style="padding-bottom: 100px;">&nbsp;</div>
-            <span><img src="images/arrow1.png" class="arrow_btn"></span>
-            <span><img src="images/arrow2.png" class="arrow_btn"></span>
+            <span><img src="/images/arrow1.png" class="arrow_btn"></span>
+            <span><img src="/images/arrow2.png" class="arrow_btn"></span>
         </div>
         <div class="col-md-9" style="padding: 3%; padding-right: 5%;">
             @foreach ($banners as $banner)
@@ -49,7 +49,7 @@
                         </div>
                         <div class="row mt15">
                             <div class="col-md-9">
-                                <h5 style="font-family: pretendard-semibold; font-size: 18px; color: #090909;"><img src="images/speak.png" style="width: 26px; margin-right: 15px;"/>{{$main_notice[0]->title}}</h5>
+                                <h5 style="font-family: pretendard-semibold; font-size: 18px; color: #090909;"><img src="/images/speak.png" style="width: 26px; margin-right: 15px;"/>{{$main_notice[0]->title}}</h5>
                             </div>
                             <div class="col-md-3 text-right">
                                 <p style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;">{{$main_notice[0]->updated_at}}</p>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="row mt15">
                             <div class="col-md-9">
-                                <h5 style="font-family: pretendard-semibold; font-size: 18px; color: #090909;"><img src="images/speak.png" style="width: 26px; margin-right: 15px;"/><b>{{$main_news[0]->title}}</b></h5>
+                                <h5 style="font-family: pretendard-semibold; font-size: 18px; color: #090909;"><img src="/images/speak.png" style="width: 26px; margin-right: 15px;"/><b>{{$main_news[0]->title}}</b></h5>
                             </div>
                             <div class="col-md-3 text-right">
                             <p style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;">{{$main_news[0]->updated_at}}</p>
