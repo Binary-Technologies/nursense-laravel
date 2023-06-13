@@ -150,19 +150,30 @@ class AdminPageController extends Controller
 
     // Notice Manegement Start ------------------------------------------------------------------
 
-    public function noticeDashboard()
+    public function noticeDashboard(Request $request)
     {
-        $searchValue = request('search');
-        if(request('search')){
+        
+        /*return count($notices);
+        if ($request->has('expose-notice')) {
+            $exposeNotice = $request->input('expose-notice');
+    
+            if ($exposeNotice == 2) {
+                $notices = Notice::where('exposure', 0)->paginate(10);
+            } elseif ($exposeNotice == 3) {
+                $notices = Notice::where('exposure', 1)->paginate(10);
+            }else{
+                $notices = Notice::orderByDesc('id')->paginate(10);
+            }
+        }
+        elseif($request->has('search')){
+            $searchValue = $request->input('search');
             $notices = Notice::where(function ($query) use ($searchValue) {
                 $query  ->where('title', 'like', '%' . $searchValue . '%')
                         ->orWhere('content', 'like', '%' . $searchValue . '%');
             })->orderByDesc('id')->paginate(10);
-        }
-        else{
-            $notices = Notice::orderByDesc('id')->paginate(10);
-        }
+        }*/
         
+        $notices = Notice::orderByDesc('id')->paginate(10);        
         return view('pages.admin.notice.notice-dashboard',[
             'notices' => $notices,
         ]);
@@ -200,16 +211,8 @@ class AdminPageController extends Controller
 
     public function newsDashboard()
     {
-        $searchValue = request('search');
-        if(request('search')){
-            $news = News::where(function ($query) use ($searchValue) {
-                $query  ->where('title', 'like', '%' . $searchValue . '%')
-                        ->orWhere('content', 'like', '%' . $searchValue . '%');
-            })->orderByDesc('id')->paginate(10);
-        }
-        else{
-            $news = News::orderByDesc('id')->paginate(10);
-        }
+        
+        $news = News::orderByDesc('id')->paginate(10);
         
         return view('pages.admin.news.news-dashboard',[
             'news' => $news,
@@ -275,16 +278,8 @@ class AdminPageController extends Controller
 
     public function resourceDashboard()
     {
-        $searchValue = request('search');
-        if(request('search')){
-            $resources = Resource::where(function ($query) use ($searchValue) {
-                $query  ->where('title', 'like', '%' . $searchValue . '%')
-                        ->orWhere('details', 'like', '%' . $searchValue . '%');
-            })->orderByDesc('id')->paginate(10);
-        }
-        else{
-            $resources = Resource::orderByDesc('id')->paginate(10);
-        }
+        
+        $resources = Resource::orderByDesc('id')->paginate(10);
         
         return view('pages.admin.resource.resource-dashboard',compact('resources'));
     }

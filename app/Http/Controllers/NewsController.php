@@ -85,4 +85,36 @@ class NewsController extends Controller
         }
     }
 
+    public function newsFilter(Request $request){
+      
+      $filteredNews = News::query();
+  
+      if ($request->has('expose-news')) {
+          $exposeNews = $request->input('expose-news');
+  
+          if ($exposeNews == 2) {
+              
+              $filteredNews->where('exposure', 0);
+          } elseif ($exposeNews == 3) {
+              
+              $filteredNews->where('exposure', 1);
+          }
+      }
+  
+      if ($request->has('search')) {
+          $searchTerm = $request->input('search');
+  
+          $filteredNews->where(function ($query) use ($searchTerm) {
+              $query->where('title', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('content', 'like', '%' . $searchTerm . '%');
+          })->orderByDesc('id')->paginate(10);
+      }
+  
+      $news = $filteredNews->orderByDesc('id')->orderByDesc('id')->paginate(10);
+  
+          return view('pages.admin.news.news-dashboard',[
+              'news' => $news,
+          ]);
+    }
+
 }

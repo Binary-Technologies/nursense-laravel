@@ -121,6 +121,7 @@ Route::prefix('/admin')->group(function () {
     Route::put('/notice/noticeUpdate/{notice:id}',[NoticeController::class, 'noticeUpdate']);
     Route::get('/noticeDetails', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
+    Route::post('/noticeDash/filterData',[NoticeController::class,'noticeFilter']);
 
     // News Management
     Route::get('/newsDash', [AdminPageController::class, 'newsDashboard'])->name('newsDash');
@@ -130,7 +131,7 @@ Route::prefix('/admin')->group(function () {
     Route::post('/newsReg',[NewsController::class, 'newsRegister']);
     Route::post('/news/newsDelete/{news:id}',[NewsController::class, 'newsDelete'])->name('newsDelete');
     Route::put('/news/newsUpdate/{news:id}',[NewsController::class, 'newsUpdate']);
-
+    Route::post('/newsDash/filterData',[NewsController::class,'newsFilter']);
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
@@ -146,6 +147,7 @@ Route::prefix('/admin')->group(function () {
     Route::post('/resourceRegister', [ResourceController::class, 'resourceAdd'])->name('resourceAdd');
     Route::post('/resourceDelete/{resource:id}', [ResourceController::class, 'resourceDelete'])->name('resourceDelete');
     Route::put('/resourceUpdate/{resource:id}', [ResourceController::class, 'resourceUpdate']);
+    Route::post('/resourceDash/filterData',[ResourceController::class,'resourceFilter']);
 
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
@@ -154,6 +156,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
     Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
+
+
 });
 
 // Instructor  form

@@ -42,11 +42,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">메인 페이지 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" {{ old('flexRadioDefault', $news->main_exposure) === 0 ? 'checked' : '' }} id="flexRadioDefault1" >
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" {{ old('flexRadioDefault', $news->main_exposure) == 0 ? 'checked' : '' }} id="flexRadioDefault1" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ old('flexRadioDefault', $news->main_exposure) === 1 ? 'checked' : '' }} id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ old('flexRadioDefault', $news->main_exposure) == 1 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -57,11 +57,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="0" {{ old('flexRadioDefault2', $news->exposure) === 0 ? 'checked' : '' }} id="flexRadioDefault3" >
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="0" {{ old('flexRadioDefault2', $news->exposure) == 0 ? 'checked' : '' }} id="flexRadioDefault3" >
                             <label class="form-check-label lbl-y1" for="flexRadioDefault3">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2"value="1" {{ old('flexRadioDefault2', $news->exposure) === 1 ? 'checked' : '' }} id="flexRadioDefault4">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2"value="1" {{ old('flexRadioDefault2', $news->exposure) == 1 ? 'checked' : '' }} id="flexRadioDefault4">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault4">
                                 미노출
                             </label>

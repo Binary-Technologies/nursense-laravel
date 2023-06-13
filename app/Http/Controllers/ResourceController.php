@@ -96,4 +96,36 @@ class ResourceController extends Controller
         $data->save();
         return redirect('/admin/resourceDash')->with('resource update','Resource updated successfully');
     }
+
+    public function resourceFilter(Request $request){
+      
+        $filteredResource = Resource::query();
+    
+        if ($request->has('expose-resource')) {
+            $exposeResource = $request->input('expose-resource');
+    
+            if ($exposeResource == 2) {
+                
+                $filteredResource->where('status', 1);
+            } elseif ($exposeResource == 3) {
+                
+                $filteredResource->where('status', 0);
+            }
+        }
+    
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+    
+            $filteredResource->where(function ($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('details', 'like', '%' . $searchTerm . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+    
+        $resources = $filteredResource->orderByDesc('id')->orderByDesc('id')->paginate(10);
+    
+            return view('pages.admin.resource.resource-dashboard',[
+                'resources' => $resources,
+            ]);
+        }
 }

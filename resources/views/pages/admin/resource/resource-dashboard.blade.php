@@ -24,14 +24,14 @@
 <div class="container-fluid px-0">
 
     <div class="rounded pt-4">
-
-        <form id="resource-filter-form">
+        <form id="resource-filter-form" method="POST" action="/admin/resourceDash/filterData">
+            @csrf
 
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="expose-resource" id="exposeResource" aria-label="Whether to Expose Resource">
-                        <option value="1" selected>전체</option>
+                    <select class="form-select form-text-d" value="{{ request('expose-resource') }}"  name="expose-resource" id="exposeResource" aria-label="Whether to Expose Resource">
+                        <option value="1" >전체</option>
                         <option value="2">노출</option>
                         <option value="3">미노출</option>
                     </select>
