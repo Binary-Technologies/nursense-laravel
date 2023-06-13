@@ -56,6 +56,10 @@ body {
     font-size: 16px;
 }
 
+.form-control:focus {
+    box-shadow: none !important;
+}
+
 .btn:focus,
 .btn:hover {
     box-shadow: none !important;
@@ -78,11 +82,16 @@ body {
 
 .table tr td,
 .table tr td .td-a-custom,
-.table tr td .i-color-1 {
+.table tr td .i-color-1,
+.table tr td.txt-bold {
     color: #1B1D1F;
     font-size: 16px;
     font-family: pretendard-regular;
     padding: 16px 10px;
+}
+
+.table tr td.txt-bold {
+    font-family: pretendard-bold;
 }
 
 .table tr td .td-a-custom {
@@ -148,6 +157,31 @@ body {
 
 .ml50 {
     margin-left: 50px !important;
+
+}
+
+.ml60 {
+    margin-left: 60px !important;
+
+}
+
+.ml70 {
+    margin-left: 70px !important;
+
+}
+
+.ml80 {
+    margin-left: 80px !important;
+
+}
+
+.ml90 {
+    margin-left: 90px !important;
+
+}
+
+.ml100 {
+    margin-left: 100px !important;
 
 }
 
@@ -585,8 +619,32 @@ body {
     width: 100%;
 }
 
+.width-90 {
+    width: 90%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.width-75 {
+    width: 75%;
+}
+
+.width-72 {
+    width: 72%;
+}
+
 .width-70 {
     width: 70%;
+}
+
+.width-62 {
+    width: 62%;
+}
+
+.width-60 {
+    width: 60%;
 }
 
 .width-50 {
@@ -607,6 +665,10 @@ body {
 
 .width-20 {
     width: 20%;
+}
+
+.width-15 {
+    width: 15%;
 }
 
 .width-10 {
@@ -1145,7 +1207,8 @@ body {
 
 .breadcrumb-text1,
 .breadcrumb-text1 a,
-.breadcrumb-text2 {
+.breadcrumb-text2,
+.logo-lbl-top {
     color: #616474;
     font-size: 16px;
     font-family: pretendard-medium;
@@ -1893,6 +1956,47 @@ body {
     border-color: var(--dark-blue2);
 }
 
+.bg-white-cus {
+    background-color: #fff !important;
+}
+
+.logo-mng-abs-txt {
+    position: absolute;
+    top: 2px;
+    right: -250px;
+    text-align: left;
+    color: #212880;
+    font-size: 14px;
+    font-family: pretendard-medium;
+}
+
+.scrollable-col-cus {
+    height: 75vh;
+    overflow: auto;
+}
+
+.menu-item-block {
+    display: flow-root;
+}
+
+.menu-i-cus {
+    padding: 13px 25px 13px 16px;
+}
+
+.menu-i-cus i {
+    color: #212880;
+    font-size: 22px;
+}
+
+.menu-in-box {
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.menu-in-box:focus {
+    border-color: #090909 !important;
+    box-shadow: none !important;
+}
 
 
 

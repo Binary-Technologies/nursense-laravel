@@ -23,28 +23,122 @@
 <!-- Menu Management Start -->
 <div class="container-fluid px-0">
 
-    <div class="table-responsive pt-4 mb-3">
-        <table class="table align-middle table-hover">
-            <tbody class="text-center">
+    <div class="row">
+        <div class="col-3 scrollable-col-cus">
+            <div class="table-responsive pt-4 mb-3">
+                <table class="table align-middle table-hover">
+                    <tbody class="text-center">
 
-                <!-- <tr class="table-head-2">
-                    <td scope="row" class="table-td-text1 bg-td height-52">AAA</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="-title" id="Name" placeholder="" value="" aria-describedby="">
-                        </div>
-                    </td>
-                </tr> -->
+                        <tr class="table-head-2">
+                            <td scope="row" class="table-td-text1 txt-bold bg-td">메뉴</td>
+                        </tr>
+                        <tr class="table-head-2">
+                            <td colspan="8" class="table-td-text2">
 
-            </tbody>
-        </table>
-    </div>
+                                <!-- 1 -->
+                                <div class="menu-item-block mt-1">
+                                    <div class="height-52 item-flex-end width-100 my-2">
+                                        <span class="menu-i-cus">
+                                            <i class='fas fa-folder'></i>
+                                        </span>
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="MUVE 소개" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-72 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="MUVE란?" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-72 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="갤러리" aria-describedby="">
+                                    </div>
+                                </div>
 
-    <div class="row mt-4 mb-5">
-        <div class="item-flex-end">
-            <a href="#regExitModal" class="btn btn9" data-bs-toggle="modal">
-                저장
-            </a>
+                                <!-- 2 -->
+                                <div class="menu-item-block mt-3">
+                                    <div class="height-52 item-flex-end width-100 my-2">
+                                        <span class="menu-i-cus">
+                                            <i class='fas fa-folder'></i>
+                                        </span>
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="교육과정" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end item-flex-end width-90 my-2">
+                                        <span class="menu-i-cus">
+                                            <i class='fas fa-folder'></i>
+                                        </span>
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="온라인 사전학습" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-62 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="사전학습" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-62 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="사전학습 평가" aria-describedby="">
+                                    </div>
+                                </div>
+
+                                <!-- 3 -->
+                                <div class="menu-item-block mt-3">
+                                    <div class="height-52 item-flex-end width-100 my-2">
+                                        <span class="menu-i-cus">
+                                            <i class='fas fa-folder'></i>
+                                        </span>
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="본학습" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-72 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="이용안내" aria-describedby="">
+                                    </div>
+                                    <div class="height-52 float-end width-72 my-2">
+                                        <input type="text" class="form-control menu-in-box val-text" name="-title" id="Name" placeholder="" value="다운로드" aria-describedby="">
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="table-responsive pt-4 mb-3">
+                <table class="table align-middle table-hover">
+                    <tbody class="text-center">
+
+                        <tr class="table-head-2">
+                            <td colspan="10" class="table-td-text1 txt-bold bg-td">메뉴 상세 정보</td>
+                        </tr>
+                        <tr class="table-head-1">
+                            <td scope="row" class="table-td-text1 txt-bold bg-td height-52">* 메뉴명</td>
+                            <td colspan="8" class="table-td-text2 bg-white-cus">
+                                <div class="height-52 item-flex-start width-50 ml30 my-2">
+                                    <input type="text" class="form-control val-text" name="-title" id="Name" placeholder="" value="MUVE 소개" aria-describedby="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-head-3">
+                            <td scope="row" class="table-td-text1 txt-bold bg-td height-52">노출 계정</td>
+                            <td colspan="8" class="table-td-text2">
+                                <div class="form-check height-52 item-flex-align-start">
+                                    <input class="form-check-input ms-1 me-2" type="checkbox" name="check1" id="check1" checked>
+                                    <label class="form-check-label lbl-y1" for="check1">
+                                        학생 계정
+                                    </label>
+                                    <input class="form-check-input ms-1 me-2" type="checkbox" name="check2" id="check2" checked>
+                                    <label class="form-check-label lbl-y1" for="check2">
+                                        교수계정
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row mt-4 mb-5">
+                <div class="item-flex-end">
+                    <a href="#modifyConfirmModal" class="btn btn9" data-bs-toggle="modal">
+                        저장
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -52,18 +146,18 @@
 
 
 
-<!-- Delete Confirmation Alert Modal -->
-<div class="modal fade" id="deleteConfirmationModal" aria-hidden="true" aria-labelledby="deleteConfirmationModalContent" tabindex="-1">
+<!-- Modification Confirm Alert Modal -->
+<div class="modal fade" id="modifyConfirmModal" aria-hidden="true" aria-labelledby="modifyConfirmModalContent" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteConfirmationModalContent"></h5>
+                <h5 class="modal-title text-center my-3" id="modifyConfirmModalContent"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pt-0">
-                <h5 class="alert-title text-center mt-1 mb-4">학과 삭제</h5>
+                <h5 class="alert-title text-center mt-1 mb-4">메뉴 수정</h5>
                 <p class="alert-text text-center mt-2 mb-5">
-                    해당 학과를 삭제 하시겠습니까?
+                    수정 사항을 저장하시겠습니까?
                 </p>
 
                 <div class="item-flex-center my-2">
@@ -71,25 +165,25 @@
                         <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        <button class="btn btn-alert2" data-bs-target="#modifyCompleteModal" data-bs-toggle="modal">수정</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Delete Confirmation Alert Modal -->
-<!-- Delete Completion Alert Modal -->
-<div class="modal fade" id="deleteCompletionModal" aria-hidden="true" aria-labelledby="deleteCompletionModalContent" tabindex="-1">
+<!-- Modification Confirm Alert Modal -->
+<!-- Modification Complete Alert Modal -->
+<div class="modal fade" id="modifyCompleteModal" aria-hidden="true" aria-labelledby="modifyCompleteModalContent" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                <h5 class="modal-title text-center my-3" id="modifyCompleteModalContent"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pt-0">
                 <p class="alert-text2 text-center mt-2 mb-5">
-                    이미 등록된 학교입니다.
+                    메뉴 수정을 완료하였습니다.
                 </p>
 
                 <div class="item-flex-center my-2">
@@ -101,35 +195,8 @@
         </div>
     </div>
 </div>
-<!-- Delete Completion Alert Modal -->
+<!-- Modification Complete Alert Modal -->
 
-<!-- Registration Complete/Exit Alert Modal -->
-<div class="modal fade" id="regExitModal" aria-hidden="true" aria-labelledby="regExitModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="regExitModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <h5 class="alert-title text-center mt-1 mb-4">학교 코드 등록 나가기</h5>
-                <p class="alert-text text-center mt-2 mb-5">
-                    등록 중 페이지를 벗어나면 저장되지 않습니다.
-                </p>
-
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
-                    </div>
-                    <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#" data-bs-toggle="modal">나가기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Registration Complete/Exit Alert Modal -->
 
 </div>
 <!-- Menu Management End -->
