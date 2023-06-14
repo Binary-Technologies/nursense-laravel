@@ -75,33 +75,32 @@ class InquiryController extends Controller
 
     public function inquiryFilter(Request $request){
       
-        $filteredInquiries = Inquiry::query();
-    
-        if ($request->has('expose-inquiry')) {
-            $exposeInquiry = $request->input('expose-inquiry');
-    
-            if ($exposeInquiry == 2) {
-                
-                $filteredNews->where('exposure', 0);
-            } elseif ($exposeNews == 3) {
-                
-                $filteredNews->where('exposure', 1);
-            }
+        $exposure = [];
+        switch ($request->input('expose-inquiry')) {
+            case 1:
+                $exposure = [1,0];
+                break;
+            case 2:
+                $exposure = [1];
+                break;
+            case 3:
+                $exposure = [0];
+                break;
+            default:
+                $exposure = [1,0];
+                break;
         }
-    
-        if ($request->has('search')) {
-            $searchTerm = $request->input('search');
-    
-            $filteredNews->where(function ($query) use ($searchTerm) {
-                $query->where('title', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('content', 'like', '%' . $searchTerm . '%');
-            })->orderByDesc('id')->paginate(10);
-        }
-    
-        $news = $filteredNews->orderByDesc('id')->orderByDesc('id')->paginate(10);
-    
-            return view('pages.admin.news.news-dashboard',[
-                'news' => $news,
+
+        $searchValue = $request->input('search');
+
+        $inquiries = Inquiry::whereIn('status', $exposure)->where(function ($query) use ($searchValue) {
+            $query->where('title', 'like', '%' . $searchValue . '%')
+                    ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%')
+                    ->orWhere('writerName', 'like', '%' . $searchValue . '%');
+        })->orderByDesc('id')->paginate(10);
+  
+            return view('pages.admin.inquiry.inquiry-dashboard',[
+                'inquiries' => $inquiries,
             ]);
       }
 }

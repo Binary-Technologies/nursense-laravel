@@ -99,31 +99,29 @@ class ResourceController extends Controller
 
     public function resourceFilter(Request $request){
       
-        $filteredResource = Resource::query();
-    
-        if ($request->has('expose-resource')) {
-            $exposeResource = $request->input('expose-resource');
-    
-            if ($exposeResource == 2) {
-                
-                $filteredResource->where('status', 1);
-            } elseif ($exposeResource == 3) {
-                
-                $filteredResource->where('status', 0);
-            }
+        $exposure = [];
+        switch ($request->input('expose-resource')) {
+            case 1:
+                $exposure = [1,0];
+                break;
+            case 2:
+                $exposure = [1];
+                break;
+            case 3:
+                $exposure = [0];
+                break;
+            default:
+                $exposure = [1,0];
+                break;
         }
-    
-        if ($request->has('search')) {
-            $searchTerm = $request->input('search');
-    
-            $filteredResource->where(function ($query) use ($searchTerm) {
-                $query->where('title', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('details', 'like', '%' . $searchTerm . '%');
-            })->orderByDesc('id')->paginate(10);
-        }
-    
-        $resources = $filteredResource->orderByDesc('id')->orderByDesc('id')->paginate(10);
-    
+
+        $searchValue = $request->input('search');
+
+        $resources = Resource::whereIn('status', $exposure)->where(function ($query) use ($searchValue) {
+            $query->where('title', 'like', '%' . $searchValue . '%')
+                    ->orWhere('details', 'like', '%' . $searchValue . '%');
+        })->orderByDesc('id')->paginate(10);
+  
             return view('pages.admin.resource.resource-dashboard',[
                 'resources' => $resources,
             ]);

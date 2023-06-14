@@ -59,7 +59,7 @@ class NoticeController extends Controller
     }
 
     public function noticeFilter(Request $request){
-        // \DB::enableQueryLog();
+        //\DB::enableQueryLog();
         $exposure = [];
         switch ($request->input('expose-notice')) {
             case 1:
@@ -77,10 +77,12 @@ class NoticeController extends Controller
         }
 
         $searchValue = $request->input('search');
+
         $notices = Notice::whereIn('exposure', $exposure)->where(function ($query) use ($searchValue) {
-            $query  ->where('title', 'like', '%' . $searchValue . '%')
+            $query->where('title', 'like', '%' . $searchValue . '%')
                     ->orWhere('content', 'like', '%' . $searchValue . '%');
         })->orderByDesc('id')->paginate(10);
+        
         // $filteredNotices = Notice::query();
         // if ($request->has('expose-notice')) {
         //     $exposeNotice = $request->input('expose-notice');
@@ -100,7 +102,7 @@ class NoticeController extends Controller
         // }
 
         // $notices = $filteredNotices->orderByDesc('id')->orderByDesc('id')->paginate(10);
-        // return dd(\DB::getQueryLog());
+        //return dd(\DB::getQueryLog());
         return view('pages.admin.notice.notice-dashboard',[
             'notices' => $notices,
         ]);
