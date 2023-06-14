@@ -126,7 +126,13 @@ class AdminPageController extends Controller
     public function bannerAdd()
     {
         $existingValues = Banner::pluck('sequence')->toArray();
-        return view('pages.admin.banner.banner-add', compact('existingValues'));
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.banner.banner-add', [
+            'count' => $count,
+            'existingValues' =>$existingValues,
+        ]);
     }
     public function bannerAddAttachFileReg()
     {
@@ -141,8 +147,14 @@ class AdminPageController extends Controller
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
+        $existingValues = Banner::pluck('sequence')->toArray();
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
+            'count' => $count,
+            'existingValues' =>$existingValues,
         ]);
     }
 
@@ -199,8 +211,14 @@ class AdminPageController extends Controller
     public function noticeModify($id)
     {
         $notice = Notice::findOrFail($id);
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.notice.notice-modification',[
             'notice' => $notice,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -239,9 +257,14 @@ class AdminPageController extends Controller
     public function newsModify($id)
     {
         $news = News::findOrFail($id);   
-        
+        $main_exposure = News::pluck('main_exposure')->toArray();
+        $exposure = News::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.news.news-modification',[
             'news' => $news,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -303,7 +326,8 @@ class AdminPageController extends Controller
     public function resourceModify($id)
     {
         $resource  = Resource::findOrFail($id);
-        return view('pages.admin.resource.resource-modification',compact('resource'));
+        $count = Resource::where('status',1)->count();
+        return view('pages.admin.resource.resource-modification',compact('resource','count'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
