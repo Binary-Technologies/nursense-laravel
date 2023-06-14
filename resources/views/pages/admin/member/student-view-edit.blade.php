@@ -77,7 +77,7 @@
                         <!-- University Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="university">학교</label>
-                            <select class="form-select form-text-d fields-height1" value="{{$user->uni_id}}" name="university" id="university" aria-label="University Selection">
+                            <select class="form-select form-text-d fields-height1" value="{{$user->scl_id}}" name="university" id="university" aria-label="University Selection">
                                 <option value="1" selected>경북대학교</option>
                                 <option value="2">가톨릭상지대학교</option>
                                 <option value="3">경북과학대학교</option>
@@ -89,7 +89,7 @@
                         <!-- Major Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="major">학과</label>
-                            <select class="form-select form-text-d fields-height1" value="{{$user->major_id}}" name="major" id="major" aria-label="Major Selection">
+                            <select class="form-select form-text-d fields-height1" value="{{$user->dep_id}}" name="major" id="major" aria-label="Major Selection">
                                 <option value="1" selected>간호학과</option>
                                 <option value="2">방사선과</option>
                                 <option value="3">임상병리과</option>

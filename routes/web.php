@@ -93,6 +93,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
+    Route::post('/instructorDash/filterData', [UserController::class, 'instructorFilter']);
+
 
     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('studentDash');
@@ -100,6 +102,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
+    Route::post('/studentDash/filterData', [UserController::class, 'studentFilter']);
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');

@@ -25,12 +25,12 @@
 
     <div class="rounded pt-4">
 
-        <form id="instructor-filter-form" >
-
+        <form id="instructor-filter-form" method="POST" action="/admin/instructorDash/filterData">
+            @csrf
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="university" id="university" aria-label="University Selection">
+                    <select class="form-select form-text-d" value="{{ request('university') }}" name="university" id="university" aria-label="University Selection">
                         <option value="1" selected>전체 학교</option>
                         <option value="2">경북대학교</option>
                         <option value="3">대구대학교</option>
@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="major" id="major" aria-label="Select Major">
+                    <select class="form-select form-text-d" value="{{ request('major') }}" name="major" id="major" aria-label="Select Major">
                         <option value="1" selected>전체 학과</option>
                         <option value="2">간호학과</option>
                         <option value="3">물리치료학과</option>
@@ -46,17 +46,17 @@
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="criteria" id="criteria" aria-label="Alignment Criteria">
-                        <option value="1" selected>이름 순</option>
-                        <option value="2">최근 등록 순</option>
+                    <select class="form-select form-text-d" value="{{ request('criteria') }}" name="criteria" id="criteria" aria-label="Alignment Criteria">
+                        <option value="name">이름 순</option>
+                        <option value="created_at">최근 등록 순</option>
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <input type="date" class="form-control form-text-l" name="reg-date" id="regDate" aria-describedby="Account Reg Date">
+                    <input type="date" class="form-control form-text-l" value="{{ request('reg-date') }}" name="reg-date" id="regDate" aria-describedby="Account Reg Date">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search1" id="search1" placeholder="이름, 아이디를 입력하세요." aria-label="Search">
+                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search" id="search" placeholder="이름, 아이디를 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <button type="submit" class="btn btn-secondary btn1">
