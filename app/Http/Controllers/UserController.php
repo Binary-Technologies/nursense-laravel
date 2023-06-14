@@ -149,7 +149,7 @@ class UserController extends Controller
                 $school = [5];
                 break;
             default:
-                $school = [2,3,4,5];
+                $school = [1,2,3,4,5];
                 break;
         }
 
@@ -171,7 +171,7 @@ class UserController extends Controller
                 $department = [5];
                 break;
             default:
-                $department = [2,3,4,5];
+                $department = [1,2,3,4,5];
                 break;
         }
         $date = null;
@@ -179,12 +179,12 @@ class UserController extends Controller
         $searchValue = $request->input('search');
         $order = $request->input('criteria');
         $users = User::whereIn('scl_id',$school)->whereIn('dep_id',$department)->where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%')
+                    $query->where('name', 'like', '%' . $searchValue . '%')
                         ->orWhere('email', 'like', '%' . $searchValue . '%');
-                        })->where(function ($query) use ($date) {
-                            if($date == null) $query->whereNotNull('created_at');
-                            else $query->whereDate('created_at','=',$date);
-                        })->where('role', 'student')->orderBy($order)->paginate(10);
+                })->where(function ($query) use ($date) {
+                    if($date == null) $query->whereNotNull('created_at');
+                    else $query->whereDate('created_at','=',$date);
+                })->where('role', 'student')->orderBy($order)->paginate(10);
   
         return view('pages.admin.member.student-dashboard',[
             'users' => $users,
@@ -211,7 +211,7 @@ class UserController extends Controller
                 $university = [5];
                 break;
             default:
-                $university = [2,3,4,5];
+                $university = [1,2,3,4,5];
                 break;
         }
 
@@ -233,7 +233,7 @@ class UserController extends Controller
                 $major = [5];
                 break;
             default:
-                $major = [2,3,4,5];
+                $major = [1,2,3,4,5];
                 break;
         }
         $date = null;
@@ -241,12 +241,12 @@ class UserController extends Controller
         $searchValue = $request->input('search');
         $order = $request->input('criteria');
         $users = User::whereIn('uni_id',$university)->whereIn('major_id',$major)->where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%')
+                    $query->where('name', 'like', '%' . $searchValue . '%')
                         ->orWhere('email', 'like', '%' . $searchValue . '%');
-                        })->where(function ($query) use ($date) {
-                            if($date == null) $query->whereNotNull('created_at');
-                            else $query->whereDate('created_at','=',$date);
-                        })->where('role', 'instructor')->orderBy($order)->paginate(10);
+                })->where(function ($query) use ($date) {
+                    if($date == null) $query->whereNotNull('created_at');
+                    else $query->whereDate('created_at','=',$date);
+                })->where('role', 'instructor')->orderBy($order)->paginate(10);
   
         return view('pages.admin.member.instructor-dashboard',[
             'users' => $users,
