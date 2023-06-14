@@ -87,30 +87,28 @@ class NewsController extends Controller
 
     public function newsFilter(Request $request){
       
-      $filteredNews = News::query();
-  
-      if ($request->has('expose-news')) {
-          $exposeNews = $request->input('expose-news');
-  
-          if ($exposeNews == 2) {
-              
-              $filteredNews->where('exposure', 0);
-          } elseif ($exposeNews == 3) {
-              
-              $filteredNews->where('exposure', 1);
-          }
-      }
-  
-      if ($request->has('search')) {
-          $searchTerm = $request->input('search');
-  
-          $filteredNews->where(function ($query) use ($searchTerm) {
-              $query->where('title', 'like', '%' . $searchTerm . '%')
-                  ->orWhere('content', 'like', '%' . $searchTerm . '%');
-          })->orderByDesc('id')->paginate(10);
-      }
-  
-      $news = $filteredNews->orderByDesc('id')->orderByDesc('id')->paginate(10);
+        $exposure = [];
+        switch ($request->input('expose-news')) {
+            case 1:
+                $exposure = [1,0];
+                break;
+            case 2:
+                $exposure = [0];
+                break;
+            case 3:
+                $exposure = [1];
+                break;
+            default:
+                $exposure = [1,0];
+                break;
+        }
+
+        $searchValue = $request->input('search');
+
+        $news = News::whereIn('exposure', $exposure)->where(function ($query) use ($searchValue) {
+            $query->where('title', 'like', '%' . $searchValue . '%')
+                    ->orWhere('content', 'like', '%' . $searchValue . '%');
+        })->orderByDesc('id')->paginate(10);
   
           return view('pages.admin.news.news-dashboard',[
               'news' => $news,

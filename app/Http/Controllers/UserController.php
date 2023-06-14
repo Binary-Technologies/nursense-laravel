@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -82,8 +83,8 @@ class UserController extends Controller
                 'pno' => $request['mobile'],
                 'email' => $request['email'],
                 'occupation' => $request['job'],
-                'uni_id' => $request['university'],
-                'major_id' => $request['major'],
+                'scl_id' => $request['university'],
+                'dep_id' => $request['major'],
                 'role' => 'student',
                 'password' => '',
             ]);
@@ -97,8 +98,8 @@ class UserController extends Controller
         validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
-        $user->uni_id = $request->input('university');
-        $user->major_id = $request->input('major');
+        $user->scl_id = $request->input('university');
+        $user->dep_id = $request->input('major');
         $user->grade = $request->input('year');
         $user->std_id = $request->input('stu-id');
         $user->email = $request->input('email');
@@ -127,4 +128,128 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function studentFilter(Request $request){
+      
+        $school = [];
+        switch ($request->input('university')) {
+            case 1:
+                $school = [1,2,3,4,5];
+                break;
+            case 2:
+                $school = [2];
+                break;
+            case 3:
+                $school = [3];
+                break;
+            case 4:
+                $school = [4];
+                break;
+            case 5:
+                $school = [5];
+                break;
+            default:
+                $school = [1,2,3,4,5];
+                break;
+        }
+
+        $department = [];
+        switch ($request->input('major')) {
+            case 1:
+                $department = [1,2,3,4,5];
+                break;
+            case 2:
+                $department = [2];
+                break;
+            case 3:
+                $department = [3];
+                break;
+            case 4:
+                $department = [4];
+                break;
+            case 5:
+                $department = [5];
+                break;
+            default:
+                $department = [1,2,3,4,5];
+                break;
+        }
+        $date = null;
+        if ($request->input('reg-date') != '') $date = Carbon::parse($request->input('reg-date'));
+        $searchValue = $request->input('search');
+        $order = $request->input('criteria');
+        $users = User::whereIn('scl_id',$school)->whereIn('dep_id',$department)->where(function ($query) use ($searchValue) {
+                    $query->where('name', 'like', '%' . $searchValue . '%')
+                        ->orWhere('email', 'like', '%' . $searchValue . '%');
+                })->where(function ($query) use ($date) {
+                    if($date == null) $query->whereNotNull('created_at');
+                    else $query->whereDate('created_at','=',$date);
+                })->where('role', 'student')->orderBy($order)->paginate(10);
+  
+        return view('pages.admin.member.student-dashboard',[
+            'users' => $users,
+        ]);
+      }
+
+      public function instructorFilter(Request $request){
+      
+        $university = [];
+        switch ($request->input('university')) {
+            case 1:
+                $university = [1,2,3,4,5];
+                break;
+            case 2:
+                $university = [2];
+                break;
+            case 3:
+                $university = [3];
+                break;
+            case 4:
+                $university = [4];
+                break;
+            case 5:
+                $university = [5];
+                break;
+            default:
+                $university = [1,2,3,4,5];
+                break;
+        }
+
+        $major = [];
+        switch ($request->input('major')) {
+            case 1:
+                $major = [1,2,3,4,5];
+                break;
+            case 2:
+                $major = [2];
+                break;
+            case 3:
+                $major = [3];
+                break;
+            case 4:
+                $major = [4];
+                break;
+            case 5:
+                $major = [5];
+                break;
+            default:
+                $major = [1,2,3,4,5];
+                break;
+        }
+        $date = null;
+        if ($request->input('reg-date') != '') $date = Carbon::parse($request->input('reg-date'));
+        $searchValue = $request->input('search');
+        $order = $request->input('criteria');
+        $users = User::whereIn('uni_id',$university)->whereIn('major_id',$major)->where(function ($query) use ($searchValue) {
+                    $query->where('name', 'like', '%' . $searchValue . '%')
+                        ->orWhere('email', 'like', '%' . $searchValue . '%');
+                })->where(function ($query) use ($date) {
+                    if($date == null) $query->whereNotNull('created_at');
+                    else $query->whereDate('created_at','=',$date);
+                })->where('role', 'instructor')->orderBy($order)->paginate(10);
+  
+        return view('pages.admin.member.instructor-dashboard',[
+            'users' => $users,
+        ]);
+      }
 }

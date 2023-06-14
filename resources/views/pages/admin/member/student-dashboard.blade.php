@@ -25,8 +25,8 @@
 
     <div class="rounded pt-4">
 
-        <form id="instructor-filter-form" >
-
+        <form id="instructor-filter-form" method="POST" action="/admin/studentDash/filterData">
+            @csrf
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -47,16 +47,16 @@
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <select class="form-select form-text-d" name="criteria" id="criteria" aria-label="Alignment Criteria">
-                        <option value="1" selected>이름 순</option>
-                        <option value="2">최근 등록 순</option>
+                        <option value="name" selected>이름 순</option>
+                        <option value="created_at">최근 등록 순</option>
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <input type="date" class="form-control form-text-l" name="reg-date" id="regDate" aria-describedby="Account Reg Date">
+                    <input type="date" class="form-control form-text-l" value="{{ request('reg-date') }}" name="reg-date" id="regDate" aria-describedby="Account Reg Date">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search1" id="search1" placeholder="이름, 아이디를 입력하세요." aria-label="Search">
+                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search" id="search" placeholder="이름, 아이디를 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <button type="submit" class="btn btn-secondary btn1">
@@ -137,8 +137,8 @@
                         
                         @endif    
                     </td>
-                    <td>{{$user->uni_id}}</td>
-                    <td>{{$user->major_id}}</td>
+                    <td>{{$user->scl_id}}</td>
+                    <td>{{$user->dep_id}}</td>
                     <td>{{$user->pno}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('Y-m-d')}}</td>
