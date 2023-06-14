@@ -128,7 +128,7 @@ class AdminPageController extends Controller
         $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-add', [
             'count' => $count,
-            'existingValues' =>$existingValues,
+            'existingValues' => $existingValues,
         ]);
     }
     public function bannerAddAttachFileReg()
@@ -151,7 +151,7 @@ class AdminPageController extends Controller
         return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
             'count' => $count,
-            'existingValues' =>$existingValues,
+            'existingValues' => $existingValues,
         ]);
     }
 
@@ -212,7 +212,7 @@ class AdminPageController extends Controller
         $exposure = Notice::pluck('exposure')->toArray();
         $value = 0;
         $count = array_count_values($exposure)[$value];
-        return view('pages.admin.notice.notice-modification',[
+        return view('pages.admin.notice.notice-modification', [
             'notice' => $notice,
             'main_exposure' => $main_exposure,
             'count' => $count,
@@ -253,12 +253,12 @@ class AdminPageController extends Controller
     }
     public function newsModify($id)
     {
-        $news = News::findOrFail($id);   
+        $news = News::findOrFail($id);
         $main_exposure = News::pluck('main_exposure')->toArray();
         $exposure = News::pluck('exposure')->toArray();
         $value = 0;
         $count = array_count_values($exposure)[$value];
-        return view('pages.admin.news.news-modification',[
+        return view('pages.admin.news.news-modification', [
             'news' => $news,
             'main_exposure' => $main_exposure,
             'count' => $count,
@@ -323,8 +323,8 @@ class AdminPageController extends Controller
     public function resourceModify($id)
     {
         $resource  = Resource::findOrFail($id);
-        $count = Resource::where('status',1)->count();
-        return view('pages.admin.resource.resource-modification',compact('resource','count'));
+        $count = Resource::where('status', 1)->count();
+        return view('pages.admin.resource.resource-modification', compact('resource', 'count'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
@@ -365,6 +365,80 @@ class AdminPageController extends Controller
     // Inquiry Manegement End ------------------------------------------------------------------
 
 
+    // Menu Manegement Start ------------------------------------------------------------------
+
+    public function menuRegistration()
+    {
+        return view('pages.admin.menu.menu-register');
+    }
+
+    // Menu Manegement End ------------------------------------------------------------------
+
+
+    // Logo Manegement Start ------------------------------------------------------------------
+
+    public function logoRegistration()
+    {
+        return view('pages.admin.menu.logo-register');
+    }
+
+    // Logo Manegement End ------------------------------------------------------------------
+
+
+
+    // Reports Manegement Start ------------------------------------------------------------------
+
+    // Instructor report
+    public function insReportDashboard()
+    {
+        return view('pages.admin.reports.ins-report-dashboard');
+    }
+    public function insReportDetailsView()
+    {
+        return view('pages.admin.reports.ins-report-details');
+    }
+
+    // Student report
+    public function stuReportDashboard()
+    {
+        return view('pages.admin.reports.stu-report-dashboard');
+    }
+    public function stuReportDetailsView()
+    {
+        return view('pages.admin.reports.stu-report-details');
+    }
+
+    // Reports Manegement End ------------------------------------------------------------------
+
+
+    // Gallery Manegement Start ------------------------------------------------------------------
+
+    public function galleryDashboard()
+    {
+        return view('pages.admin.gallery.gallery-dashboard');
+    }
+    public function galleryRegistration()
+    {
+        return view('pages.admin.gallery.gallery-register');
+    }
+    public function galleryRegistrationComplete()
+    {
+        return view('pages.admin.gallery.gallery-register-complete');
+    }
+    public function galleryDetailsView()
+    {
+        return view('pages.admin.gallery.gallery-details');
+    }
+    public function galleryModify()
+    {
+        return view('pages.admin.gallery.gallery-modification');
+    }
+
+    // Gallery Manegement End ------------------------------------------------------------------
+
+
+
+
     // University Code Manegement Start ------------------------------------------------------------------
 
     public function univCodeDashboard()
@@ -385,26 +459,6 @@ class AdminPageController extends Controller
     }
 
     // University Code Manegement End ------------------------------------------------------------------
-
-
-    // Menu Manegement Start ------------------------------------------------------------------
-
-    public function menuRegistration()
-    {
-        return view('pages.admin.menu.menu-register');
-    }
-
-    // Menu Manegement End ------------------------------------------------------------------
-
-
-    // Logo Manegement Start ------------------------------------------------------------------
-
-    public function logoRegistration()
-    {
-        return view('pages.admin.logo.logo-register');
-    }
-
-    // Logo Manegement End ------------------------------------------------------------------
 
 
 

@@ -278,6 +278,70 @@
 
                 </div>
 
+                <!-- Instructor, Student Reports Management -->
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle 
+                    <?php if (
+                        $current_page == 'insReportDash' ||
+                        $current_page == 'insReportDetails' ||
+                        $current_page == 'stuReportDash' ||
+                        $current_page == 'stuReportDetails'
+                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
+                        리포트 관리
+                    </a>
+
+                    <?php
+                    $show_class = "";
+                    if ($current_page == 'insReportDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'insReportDetails') {
+                        $show_class = "show";
+                    } else if ($current_page == 'stuReportDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'stuReportDetails') {
+                        $show_class = "show";
+                    } else {
+                        $show_class = "";
+                    }
+                    ?>
+
+                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+
+                        <!-- Instructor Reports Management -->
+                        <a href="{{ url('admin/insReportDash') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'insReportDash' ||
+                            $current_page == 'insReportDetails'
+                        ) : ?>active show <?php endif; ?>">
+                            교수자 리포트 자료
+                        </a>
+
+                        <!-- Student Reports Management -->
+                        <a href="{{ url('admin/stuReportDash') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'stuReportDash' ||
+                            $current_page == 'stuReportDetails'
+                        ) : ?>active show <?php endif; ?>">
+                            학생 리포트
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Gallery Management -->
+                <a href="{{ url('admin/galleryDash') }}" class="nav-item nav-link 
+                <?php if (
+                    $current_page == 'galleryDash' ||
+                    $current_page == 'galleryReg' ||
+                    $current_page == 'galleryRegComplete' ||
+                    $current_page == 'galleryDetails' ||
+                    $current_page == 'galleryUpdate'
+                ) : ?> active <?php endif; ?>">
+                    갤러리 관리
+                </a>
+
                 <!-- University Code Management -->
                 <a href="{{ url('admin/univCodeDash') }}" class="nav-item nav-link 
                 <?php if (

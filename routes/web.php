@@ -87,7 +87,6 @@ Route::get('/login', [PageController::class, 'userLogin']);
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/profile/info', [PageController::class, 'myprofile']);
-
 });
 
 Route::prefix('/admin')->middleware('auth:admin')->group(function () {
@@ -163,7 +162,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
     Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
-    Route::post('inquiryDash/filterData',[InquiryController::class,'inquiryFilter']);
+    Route::post('inquiryDash/filterData', [InquiryController::class, 'inquiryFilter']);
 
     // Menu Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
@@ -171,6 +170,20 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Logo Management
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
 
+    // Report Management -Instructor Mng.
+    Route::get('/insReportDash', [AdminPageController::class, 'insReportDashboard'])->name('insReportDash');
+    Route::get('/insReportDetails', [AdminPageController::class, 'insReportDetailsView'])->name('insReportDetails');
+
+    // Report Management -Student Mng.
+    Route::get('/stuReportDash', [AdminPageController::class, 'stuReportDashboard'])->name('stuReportDash');
+    Route::get('/stuReportDetails', [AdminPageController::class, 'stuReportDetailsView'])->name('stuReportDetails');
+
+    // Gallery Management
+    Route::get('/galleryDash', [AdminPageController::class, 'galleryDashboard'])->name('galleryDash');
+    Route::get('/galleryReg', [AdminPageController::class, 'galleryRegistration'])->name('galleryReg');
+    Route::get('/galleryRegComplete', [AdminPageController::class, 'galleryRegistrationComplete'])->name('galleryRegComplete');
+    Route::get('/galleryDetails', [AdminPageController::class, 'galleryDetailsView'])->name('galleryDetails');
+    Route::get('/galleryUpdate', [AdminPageController::class, 'galleryModify'])->name('galleryUpdate');
 
     // University Code Management
     Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');
