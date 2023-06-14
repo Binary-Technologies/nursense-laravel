@@ -18,7 +18,7 @@
                 <a href="{{ url('admin/bannerDash') }}">배너 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/bannerDetails') }}">배너 상세</a>
+                <a href="{{ url('admin/bannerDetails', ['notice' => $banner->id]) }}">배너 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">배너 수정</li>
         </ol>

@@ -22,7 +22,7 @@
                 <a href="{{ url('admin/newsDash') }}">소식 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/newsDetails') }}">소식 상세</a>
+                <a href="{{ url('admin/newsDetails', ['notice' => $news->id]) }}">소식 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">소식 수정</li>
         </ol>

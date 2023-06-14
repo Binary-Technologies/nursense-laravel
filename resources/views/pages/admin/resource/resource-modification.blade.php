@@ -20,7 +20,7 @@
                 <a href="{{ url('admin/resourceDash') }}">자료실 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/resourceDetails') }}">자료실 상세</a>
+                <a href="{{ url('admin/resourceDetails', ['notice' => $resource->id]) }}">자료실 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">자료실 수정</li>
         </ol>
