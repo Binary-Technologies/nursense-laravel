@@ -24,13 +24,13 @@
 
     <div class="rounded pt-4">
 
-        <form  id="inquiry-filter-form" >
-
+        <form  id="inquiry-filter-form" method="POST" action="/admin/inquiryDash/filterData">
+            @csrf
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="expose-inquiry" id="exposeInquiry" aria-label="Whether to Expose Inquiry">
-                        <option value="1" selected>전체</option>
+                    <select class="form-select form-text-d" value="{{ request('expose-inquiry') }}" name="expose-inquiry" id="exposeInquiry" aria-label="Whether to Expose Inquiry">
+                        <option value="1" >전체</option>
                         <option value="2">답변 대기</option>
                         <option value="3">답변 완료</option>
                     </select>

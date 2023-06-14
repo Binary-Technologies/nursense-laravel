@@ -156,7 +156,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
     Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
-
+    Route::post('inquiryDash/filterData',[InquiryController::class,'inquiryFilter']);
 
 });
 

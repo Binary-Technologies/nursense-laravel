@@ -72,4 +72,36 @@ class InquiryController extends Controller
         $inquiry->delete();
         return redirect('/info/inquiry')->with('inquiry delete', 'deleted successfully.');
     }
+
+    public function inquiryFilter(Request $request){
+      
+        $filteredInquiries = Inquiry::query();
+    
+        if ($request->has('expose-inquiry')) {
+            $exposeInquiry = $request->input('expose-inquiry');
+    
+            if ($exposeInquiry == 2) {
+                
+                $filteredNews->where('exposure', 0);
+            } elseif ($exposeNews == 3) {
+                
+                $filteredNews->where('exposure', 1);
+            }
+        }
+    
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+    
+            $filteredNews->where(function ($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('content', 'like', '%' . $searchTerm . '%');
+            })->orderByDesc('id')->paginate(10);
+        }
+    
+        $news = $filteredNews->orderByDesc('id')->orderByDesc('id')->paginate(10);
+    
+            return view('pages.admin.news.news-dashboard',[
+                'news' => $news,
+            ]);
+      }
 }
