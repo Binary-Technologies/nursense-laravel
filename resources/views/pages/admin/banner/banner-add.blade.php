@@ -33,11 +33,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">배너 노출</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="0" id="flexRadioDefault1" checked>
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="0" id="flexRadioDefault1" onchange="exposureChange()" checked>
                             <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                 노출
                             </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="1" id="flexRadioDefault2">
+                            <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="1" {{ $count>=3 ? 'checked' : '' }} id="flexRadioDefault2">
                             <label class="form-check-label lbl-y1" for="flexRadioDefault2">
                                 미노출
                             </label>
@@ -140,7 +140,7 @@
 </div>
 <!-- Sequence Select Impossible Alert Modal -->
 <!-- Exposure Impossible Alert Modal -->
-<div class="modal fade" id="exposureImpossibleModal" aria-hidden="true" aria-labelledby="exposureImpossibleModalContent" tabindex="-1">
+<div class="modal"  style="display:none;" id="cardExposure" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -156,7 +156,9 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        <a href="/admin/bannerAdd" class="btn btn-alert3">
+                            확인
+                        </a>
                     </div>
                 </div>
             </div>
@@ -220,4 +222,32 @@
 </div>
 <!-- Banner Management End -->
 
+@endsection
+
+@section('scripts')
+        <script>
+            ClassicEditor
+            .create( document.querySelector( '#contents' ) )
+            .catch( error => {
+            console.error( error );
+            } );
+            </script>
+
+        <script>
+            CKEDITOR.replace( 'contents', {
+                filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
+        <script type="text/javascript">
+           function exposureChange() {
+                var exposure =  {{$count}};
+
+                if (exposure >=3) {
+                    document.getElementById('cardExposure').style.display = "block";
+                }
+            }
+        </script>
+        
+        
 @endsection

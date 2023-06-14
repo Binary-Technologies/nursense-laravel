@@ -158,27 +158,27 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="name">이름</label>
                                         <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('name') }}" name="name" id="name" placeholder="이름을 입력하세요." aria-describedby="Instructor Name" required>
-                                        
+
                                     </div>
 
                                     <!-- Mobile -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
-                                        <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Mobile" required>
+                                        <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="휴대폰 번호를 입력하세요." aria-describedby="Instructor Mobile" required>
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="email">이메일</label>
                                         <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('email') }}" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Instructor Email" required>
-                                       
+
                                     </div>
 
                                     <!-- Job -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="job">직종</label>
                                         <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('job') }}" name="job" id="job" placeholder="직종을 입력해주세요. (예. 간호사, 물리치료사 등)" aria-describedby="Instructor Job">
-                                   
+
                                     </div>
 
                                 </div>
@@ -220,7 +220,7 @@
                                 <div class="row mt-4 mb-5">
                                     <div class="item-flex-end">
 
-<button type="submit" class="btn btn11">  계정 등록 </button>
+                                        <button type="submit" class="btn btn11"> 계정 등록 </button>
                                         <!---<a href="{{ route('instructorReg') }}" class="btn btn11">
                                             계정 등록
                                         </a> --->

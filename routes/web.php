@@ -47,9 +47,9 @@ Route::get('/curriculum/curr/quiz', [PageController::class, 'quiz']);
 Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry/register', [PageController::class, 'inquiry_activated']);
 Route::get('/info/inquiry/details/{inquiry:id}', [PageController::class, 'inquiry_await']);
-Route::post('/info/inquiry/register',[InquiryController::class,'inquiryRegister']);
-Route::delete('/delete/inquiry',[InquiryController::class,'delete']);
-Route::delete('/delete/inquiry/{inquiry:id}',[InquiryController::class,'deleteInquiry']);
+Route::post('/info/inquiry/register', [InquiryController::class, 'inquiryRegister']);
+Route::delete('/delete/inquiry', [InquiryController::class, 'delete']);
+Route::delete('/delete/inquiry/{inquiry:id}', [InquiryController::class, 'deleteInquiry']);
 Route::get('/info/news', [PageController::class, 'news_main']);
 Route::get('/info/news/details/{news:id}', [PageController::class, 'news_main_details']);
 Route::get('/info/notice', [PageController::class, 'notice_main']);
@@ -97,6 +97,8 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
+    Route::post('/instructorDash/filterData', [UserController::class, 'instructorFilter']);
+
 
     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('studentDash');
@@ -104,6 +106,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
+    Route::post('/studentDash/filterData', [UserController::class, 'studentFilter']);
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
@@ -120,22 +123,22 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/noticeReg', [AdminPageController::class, 'noticeRegistration'])->name('noticeReg');
     Route::get('/noticeDetails/{notice:id}', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate/{notice:id}', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
-    Route::post('/noticeReg',[NoticeController::class, 'noticeRegister']);
-    Route::post('/notice/noticeDelete/{notice:id}',[NoticeController::class, 'noticeDelete'])->name('noticeDelete');
-    Route::put('/notice/noticeUpdate/{notice:id}',[NoticeController::class, 'noticeUpdate']);
+    Route::post('/noticeReg', [NoticeController::class, 'noticeRegister']);
+    Route::post('/notice/noticeDelete/{notice:id}', [NoticeController::class, 'noticeDelete'])->name('noticeDelete');
+    Route::put('/notice/noticeUpdate/{notice:id}', [NoticeController::class, 'noticeUpdate']);
     Route::get('/noticeDetails', [AdminPageController::class, 'noticeDetailsView'])->name('noticeDetails');
     Route::get('/noticeUpdate', [AdminPageController::class, 'noticeModify'])->name('noticeUpdate');
-    Route::post('/noticeDash/filterData',[NoticeController::class,'noticeFilter']);
+    Route::post('/noticeDash/filterData', [NoticeController::class, 'noticeFilter']);
 
     // News Management
     Route::get('/newsDash', [AdminPageController::class, 'newsDashboard'])->name('newsDash');
     Route::get('/newsReg', [AdminPageController::class, 'newsRegistration'])->name('newsReg');
     Route::get('/newsDetails/{news:id}', [AdminPageController::class, 'newsDetailsView'])->name('newsDetails');
     Route::get('/newsUpdate/{news:id}', [AdminPageController::class, 'newsModify'])->name('newsUpdate');
-    Route::post('/newsReg',[NewsController::class, 'newsRegister']);
-    Route::post('/news/newsDelete/{news:id}',[NewsController::class, 'newsDelete'])->name('newsDelete');
-    Route::put('/news/newsUpdate/{news:id}',[NewsController::class, 'newsUpdate']);
-    Route::post('/newsDash/filterData',[NewsController::class,'newsFilter']);
+    Route::post('/newsReg', [NewsController::class, 'newsRegister']);
+    Route::post('/news/newsDelete/{news:id}', [NewsController::class, 'newsDelete'])->name('newsDelete');
+    Route::put('/news/newsUpdate/{news:id}', [NewsController::class, 'newsUpdate']);
+    Route::post('/newsDash/filterData', [NewsController::class, 'newsFilter']);
 
     // Direction Management
     Route::get('/directionDetails', [AdminPageController::class, 'directionDetailsView'])->name('directionDetails');
@@ -151,7 +154,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::post('/resourceRegister', [ResourceController::class, 'resourceAdd'])->name('resourceAdd');
     Route::post('/resourceDelete/{resource:id}', [ResourceController::class, 'resourceDelete'])->name('resourceDelete');
     Route::put('/resourceUpdate/{resource:id}', [ResourceController::class, 'resourceUpdate']);
-    Route::post('/resourceDash/filterData',[ResourceController::class,'resourceFilter']);
+    Route::post('/resourceDash/filterData', [ResourceController::class, 'resourceFilter']);
 
     // Inquiry Management
     Route::get('/inquiryDash', [AdminPageController::class, 'inquiryDashboard'])->name('inquiryDash');
@@ -160,8 +163,20 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
     Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
+    Route::post('inquiryDash/filterData',[InquiryController::class,'inquiryFilter']);
+
+    // Menu Management
+    Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
+
+    // Logo Management
+    Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
 
 
+    // University Code Management
+    Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');
+    Route::get('/univCodeReg', [AdminPageController::class, 'univCodeRegistration'])->name('univCodeReg');
+    Route::get('/univCodeDetails', [AdminPageController::class, 'univCodeDetailsView'])->name('univCodeDetails');
+    Route::get('/univCodeUpdate', [AdminPageController::class, 'univCodeModify'])->name('univCodeUpdate');
 });
 
 // Instructor  form
@@ -173,7 +188,7 @@ Route::post('/Register-student', [UserController::class, 'studentRegister'])->na
 Route::post('/Update-student/{user:id}', [UserController::class, 'studentUpdate'])->name('studentUpdate');
 
 Route::post('ckeditor/image_upload', [NewsController::class, 'upload'])->name('upload');
-Route::post('/direction/directionUpdate/{direction:id}',[DirectionController::class, 'directionUpdate']);
+Route::post('/direction/directionUpdate/{direction:id}', [DirectionController::class, 'directionUpdate']);
 
 // Utilities
 Route::get('/util/clear', function () {

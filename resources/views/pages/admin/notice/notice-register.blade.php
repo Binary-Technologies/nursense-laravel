@@ -26,83 +26,83 @@
 <!-- Notice Management Start -->
 <form action="/admin/noticeReg" method="post">
     @csrf
-<div class="container-fluid px-0">
+    <div class="container-fluid px-0">
 
-    <div class="table-responsive pt-4 mb-3">
-        <table class="table align-middle table-hover">
-            <tbody class="text-center">
-                <tr class="table-head-2">
-                    <td scope="row" class="table-td-text1 bg-td height-52">메인 페이지 노출</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0"  id="flexRadioDefault1" onchange="mainExposureChange()" checked>
-                            <label class="form-check-label lbl-y1" for="flexRadioDefault1">
-                                노출
-                            </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ in_array(0, $main_exposure) ? 'checked' : '' }} id="flexRadioDefault2">
-                            <label class="form-check-label lbl-y1" for="flexRadioDefault2">
-                                미노출
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="table-head-2">
-                    <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="form-check height-52 item-flex-align-start">
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="0"  id="flexRadioDefault3" onchange="exposureChange()" checked>
-                            <label class="form-check-label lbl-y1" for="flexRadioDefault3">
-                                노출
-                            </label>
-                            <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="1" {{ $count>=3 ? 'checked' : '' }} id="flexRadioDefault4">
-                            <label class="form-check-label lbl-y1" for="flexRadioDefault4">
-                                미노출
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="title" id="newsName" placeholder="제목을 입력하세요." value="" aria-describedby="News Title Input">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="title" id="noticeName" placeholder="제목을 입력하세요." value="" aria-describedby="Notice Title Input">
-                        </div>
-                    </td>
-                </tr>
+        <div class="table-responsive pt-4 mb-3">
+            <table class="table align-middle table-hover">
+                <tbody class="text-center">
+                    <tr class="table-head-2">
+                        <td scope="row" class="table-td-text1 bg-td height-52">메인 페이지 노출</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="form-check height-52 item-flex-align-start">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="0" id="flexRadioDefault1" onchange="mainExposureChange()" checked>
+                                <label class="form-check-label lbl-y1" for="flexRadioDefault1">
+                                    노출
+                                </label>
+                                <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault" value="1" {{ in_array(0, $main_exposure) ? 'checked' : '' }} id="flexRadioDefault2">
+                                <label class="form-check-label lbl-y1" for="flexRadioDefault2">
+                                    미노출
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="table-td-text1 bg-td height-52">카드 노출</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="form-check height-52 item-flex-align-start">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="0" id="flexRadioDefault3" onchange="exposureChange()" checked>
+                                <label class="form-check-label lbl-y1" for="flexRadioDefault3">
+                                    노출
+                                </label>
+                                <input class="form-check-input ms-1 me-2" type="radio" name="flexRadioDefault2" value="1" {{ $count>=3 ? 'checked' : '' }} id="flexRadioDefault4">
+                                <label class="form-check-label lbl-y1" for="flexRadioDefault4">
+                                    미노출
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="height-52 item-flex-start width-50 ml30 my-3">
+                                <input type="text" class="form-control val-text" name="title" id="newsName" placeholder="제목을 입력하세요." value="" aria-describedby="News Title Input">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="height-52 item-flex-start width-50 ml30 my-3">
+                                <input type="text" class="form-control val-text" name="title" id="noticeName" placeholder="제목을 입력하세요." value="" aria-describedby="Notice Title Input">
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr class="table-head-3">
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="item-flex-start width-50 ml30 my-3">
-                            <textarea class="form-control val-text" name="contents" id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
-                        </div>
-                    </td>
-                </tr>
+                    <tr class="table-head-3">
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 내용</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="item-flex-start width-50 ml30 my-3">
+                                <textarea class="form-control val-text" name="contents" id="contents" placeholder="TEXT EDITOR AREA ======= 별과 그들에게 대한 그들의 투명하되 사막이다. 물방아 하여도 심장의 것이다. 들어 무한한 가장 날카로우나 미묘한 가지에 무엇을 구하기 것이다. 가슴에 피가 아니더면, 그들은 끓는 사막이다. 가지에 실로 고행을 소리다.이것은 우리의 전인 것이다. ======= TEXT EDITOR AREA" aria-describedby="Contents Input" rows="2"></textarea>
+                            </div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 
-    <div class="row mt-4 mb-5">
-        <div class="item-flex-end">
-            <button type="submit" class="btn btn9" data-bs-toggle="modal">
-                등록 완료
-            </button>
-            <!--- <a href="#regCompletionModal" class="btn btn9" data-bs-toggle="modal">
+        <div class="row mt-4 mb-5">
+            <div class="item-flex-end">
+                <button type="submit" class="btn btn9" data-bs-toggle="modal">
+                    등록 완료
+                </button>
+                <!--- <a href="#regCompletionModal" class="btn btn9" data-bs-toggle="modal">
                 
             </a> -->
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 </form>
 <!-- Main Page Exposure Impossible Alert Modal -->
@@ -200,31 +200,38 @@
 
 
 @section('scripts')
-        <script>
-            ClassicEditor
-            .create( document.querySelector( '#contents' ) )
-            .catch( error => {
-            console.error( error );
-            } );
-            </script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#contents'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
-        <script type="text/javascript">
-            
-            function exposureChange() {
-                var exposure =  {{$count}};
+<script type="text/javascript">
+    function exposureChange() {
+        var exposure = {
+            {
+                $count
+            }
+        };
 
-                if (exposure >=3) {
-                    document.getElementById('cardExposure').style.display = "block";
-                }
+        if (exposure >= 3) {
+            document.getElementById('cardExposure').style.display = "block";
+        }
+    }
+
+    function mainExposureChange() {
+        var main_exposure = {
+            {
+                in_array(0, $main_exposure)
             }
-              
-            function mainExposureChange() {
-                var main_exposure = {{in_array(0, $main_exposure)}}
-                if(main_exposure == true){
-                    document.getElementById('MainExposure').style.display = "block";
-            }
-            }
-        </script>
-        
-        
+        }
+        if (main_exposure == true) {
+            document.getElementById('MainExposure').style.display = "block";
+        }
+    }
+</script>
+
+
 @endsection
