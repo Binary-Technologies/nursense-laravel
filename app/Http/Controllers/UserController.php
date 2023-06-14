@@ -110,6 +110,15 @@ class UserController extends Controller
         return redirect('/admin/studentDash')->with('success', 'Student account has been Updated.');
     }
 
+    public function deleteImage(Request $request){
+        $user = User::findOrFail($request->id);
+        if($user->thumbnail){
+            Storage::delete($user->thumbnail);
+            $user->thumbnail = null;
+        }
+        return redirect()->back()->with('success', 'Image has been deleted.');
+    }
+
     public function loginAPI(Request $request){
         $credentials = $this->validate($request, [
             'email' => 'required|email',

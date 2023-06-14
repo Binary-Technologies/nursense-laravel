@@ -130,7 +130,8 @@ class PageController extends Controller
     //myprofile-passsword..... has been left out
 
     public function myprofile(){
-        return view('pages.myprofile');
+        $user = \Auth::user();
+        return view('pages.myprofile',compact('user'));
     }
 
     public function myreports(){

@@ -58,7 +58,6 @@ Route::get('/info/resources', [PageController::class, 'resources']);
 Route::get('/info/resources/details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
-Route::get('/profile/info', [PageController::class, 'myprofile']);
 Route::get('/profile/study', [PageController::class, 'mystudy']);
 Route::get('/profile/manage', [PageController::class, 'mymanage']);
 Route::get('/profile/assesment', [PageController::class, 'myassesment']);
@@ -72,7 +71,7 @@ Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm
 Route::post('/admin/register', [RegisterController::class, 'createAdmin'])->name('admin.register');
 
 Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
-Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('user.login');
+Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('login');
 Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
 Route::get('/certificate', [PageController::class, 'certificate']);
@@ -86,7 +85,12 @@ Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_u
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
-Route::prefix('/admin')->group(function () {
+Route::middleware('auth:web')->group(function () {
+    Route::get('/profile/info', [PageController::class, 'myprofile']);
+
+});
+
+Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
     Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
