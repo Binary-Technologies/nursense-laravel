@@ -14,6 +14,7 @@ use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -171,8 +172,12 @@ Route::prefix('/admin')->group(function () {
     // University Code Management
     Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');
     Route::get('/univCodeReg', [AdminPageController::class, 'univCodeRegistration'])->name('univCodeReg');
-    Route::get('/univCodeDetails', [AdminPageController::class, 'univCodeDetailsView'])->name('univCodeDetails');
-    Route::get('/univCodeUpdate', [AdminPageController::class, 'univCodeModify'])->name('univCodeUpdate');
+    Route::get('/univCodeDetails/{university:id}', [AdminPageController::class, 'univCodeDetailsView'])->name('univCodeDetails');
+    Route::get('/univCodeUpdate/{university:id}', [AdminPageController::class, 'univCodeModify'])->name('univCodeUpdate');
+    Route::post('/universityRegister', [UniversityController::class, 'universityRegister']);
+    Route::post('/UniversityUpdate/{university:id}', [UniversityController::class, 'universityUpdate']);
+    Route::post('/university/universityDelete/{university:id}', [UniversityController::class, 'universityDelete'])->name('universityDelete');
+
 });
 
 // Instructor  form

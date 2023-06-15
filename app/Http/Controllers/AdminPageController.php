@@ -8,6 +8,7 @@ use App\Models\Direction;
 use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -345,19 +346,22 @@ class AdminPageController extends Controller
 
     public function univCodeDashboard()
     {
-        return view('pages.admin.universityCode.univ-code-dashboard');
+        $universities = University::all();
+        return view('pages.admin.universityCode.univ-code-dashboard',compact('universities'));
     }
     public function univCodeRegistration()
     {
         return view('pages.admin.universityCode.univ-code-register');
     }
-    public function univCodeDetailsView()
+    public function univCodeDetailsView($id)
     {
-        return view('pages.admin.universityCode.univ-code-details');
+        $university = University::findOrFail($id);
+        return view('pages.admin.universityCode.univ-code-details', compact('university'));
     }
-    public function univCodeModify()
+    public function univCodeModify($id)
     {
-        return view('pages.admin.universityCode.univ-code-modification');
+        $university = University::findOrFail($id);
+        return view('pages.admin.universityCode.univ-code-modification',compact('university'));
     }
 
     // University Code Manegement End ------------------------------------------------------------------

@@ -32,7 +32,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                거제대학교
+                               {{$university->name}}
                             </label>
                         </div>
                     </td>
@@ -42,7 +42,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                BDJK098
+                                {{$university->code}}
                             </label>
                         </div>
                     </td>
@@ -50,21 +50,15 @@
                 <tr>
                     <td scope="row" class="table-td-text1 bg-td height-52">학과</td>
                     <td colspan="8" class="table-td-text2">
+                        
+                        @foreach ($university->major as $major)
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                간호학과
+                                {{$major}}
                             </label>
                         </div>
-                        <div class="height-52 item-flex-align-start ps-4 pe-5">
-                            <label class="lbl-y2 py-0 my-0 pe-5">
-                                물리치료학과
-                            </label>
-                        </div>
-                        <div class="height-52 item-flex-align-start ps-4 pe-5">
-                            <label class="lbl-y2 py-0 my-0 pe-5">
-                                방사선학과
-                            </label>
-                        </div>
+                        @endforeach
+                        
                     </td>
                 </tr>
                 <tr class="table-head-3">
@@ -72,7 +66,7 @@
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-align-start ps-4 my-2">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                2023.03.03
+                                {{$university->created_at->format('d-m-y')}}
                             </label>
                         </div>
                     </td>
@@ -87,7 +81,7 @@
             <a href="#deleteConfirmationModal" class="btn btn14" data-bs-toggle="modal">
                 삭제
             </a>
-            <a href="{{ route('univCodeUpdate') }}" class="btn btn13 ms-3">
+            <a href="{{ route('univCodeUpdate',['university'=>$university->id]) }}" class="btn btn13 ms-3">
                 수정
             </a>
         </div>
@@ -111,10 +105,16 @@
 
                 <div class="item-flex-center my-2">
                     <div class="mx-1">
-                        <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                        <a href="{{ route('univCodeDetails',['university'=>$university->id]) }}" class="btn btn-alert1">
+                            취소
+                        </a>
+                        
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        <form action="{{ route('universityDelete', ['university' => $university->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-alert2" data-bs-target="#deleteCompletionModal" data-bs-toggle="modal">삭제</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -122,29 +122,7 @@
     </div>
 </div>
 <!-- Delete Confirmation Alert Modal -->
-<!-- Delete Completion Alert Modal -->
-<div class="modal fade" id="deleteCompletionModal" aria-hidden="true" aria-labelledby="deleteCompletionModalContent" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <p class="alert-text2 text-center mt-2 mb-5">
-                    학교 코드 삭제를 완료하였습니다.
-                </p>
 
-                <div class="item-flex-center my-2">
-                    <div class="mx-1">
-                        <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete Completion Alert Modal -->
 
 </div>
 <!-- University Code Management End -->

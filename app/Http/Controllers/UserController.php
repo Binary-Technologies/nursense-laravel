@@ -83,8 +83,8 @@ class UserController extends Controller
                 'pno' => $request['mobile'],
                 'email' => $request['email'],
                 'occupation' => $request['job'],
-                'scl_id' => $request['university'],
-                'dep_id' => $request['major'],
+                'uni_id' => $request['university'],
+                'major_id' => $request['major'],
                 'role' => 'student',
                 'password' => '',
             ]);
@@ -98,8 +98,8 @@ class UserController extends Controller
         validator($request->all())->validate();
         $user->name = $request->input('name');
         $user->pno = $request->input('mobile');
-        $user->scl_id = $request->input('university');
-        $user->dep_id = $request->input('major');
+        $user->uni_id = $request->input('university');
+        $user->major_id = $request->input('major');
         $user->grade = $request->input('year');
         $user->std_id = $request->input('stu-id');
         $user->email = $request->input('email');
@@ -178,7 +178,7 @@ class UserController extends Controller
         if ($request->input('reg-date') != '') $date = Carbon::parse($request->input('reg-date'));
         $searchValue = $request->input('search');
         $order = $request->input('criteria');
-        $users = User::whereIn('scl_id',$school)->whereIn('dep_id',$department)->where(function ($query) use ($searchValue) {
+        $users = User::whereIn('uni_id',$school)->whereIn('major_id',$department)->where(function ($query) use ($searchValue) {
                 $query->where('name', 'like', '%' . $searchValue . '%')
                         ->orWhere('email', 'like', '%' . $searchValue . '%');
                         })->where(function ($query) use ($date) {
