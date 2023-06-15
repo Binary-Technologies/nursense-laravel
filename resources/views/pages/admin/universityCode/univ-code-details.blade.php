@@ -51,10 +51,10 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">학과</td>
                     <td colspan="8" class="table-td-text2">
                         
-                        @foreach ($university->major as $major)
+                        @foreach ($departments as $major)
                         <div class="height-52 item-flex-align-start ps-4 pe-5">
                             <label class="lbl-y2 py-0 my-0 pe-5">
-                                {{$major}}
+                                {{$major->name}}
                             </label>
                         </div>
                         @endforeach

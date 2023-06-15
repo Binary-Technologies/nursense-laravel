@@ -48,24 +48,23 @@
 
                 <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 학과</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="major[]" id="major1" placeholder="학과를 입력하세요.">
-                            </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">학과 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
+                    <td colspan="8" class="table-td-text2" id="departments-container">
+                        
+                        <div class="height-52 item-flex-start ml30 my-3" >
                             <div class="height-52">
                                 <input type="text" class="form-control val-text file-up-bar-custom2" name="major[]" id="major2" placeholder="학과를 입력하세요.">
                             </div>
                             <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">학과 삭제</a>
                         </div>
-                        <div class="height-52 item-flex-start width-10 ml30 my-3">
-                            <a href="#" class="btn btn5 btn5-1">
-                                학과 추가
-                            </a>
+
+                        <div class="height-52 item-flex-start ml30 my-3 width-50" >
+                           
+                            <button type="button" id="add-department" class="btn btn5 btn5-1 ">
+                                    학과 추가
+                            </button> 
+                            
                         </div>
+                        
                     </td>
                 </tr>
 
@@ -142,5 +141,38 @@
 
 </div>
 <!-- University Code Management End -->
+
+@endsection
+
+
+@section('scripts')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var addDepartmentButton = document.getElementById('add-department');
+        var departmentsContainer = document.getElementById('departments-container');
+
+        addDepartmentButton.addEventListener('click', function() {
+            var newDepartmentInput = document.createElement('div');
+            newDepartmentInput.innerHTML = `
+                <div class="height-52 item-flex-start ml30 my-3">
+                    <div class="height-52">
+                        <input type="text" class="form-control val-text file-up-bar-custom2" name="major[]" placeholder="" >
+                    </div>
+                    <button type="button" class="btn btn12 ms-4 remove-department">학과 삭제</button>
+                </div>
+            `;
+
+            departmentsContainer.insertBefore(newDepartmentInput, addDepartmentButton.parentNode);
+
+            var removeButtons = departmentsContainer.getElementsByClassName('remove-department');
+            for (var i = 0; i < removeButtons.length; i++) {
+                removeButtons[i].addEventListener('click', function() {
+                    this.parentNode.remove();
+                });
+            }
+        });
+    });
+</script>
 
 @endsection

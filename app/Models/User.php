@@ -28,8 +28,6 @@ class User extends Authenticatable
         'pno',
         'uni_id',
         'major_id',
-        'scl_id',
-        'dep_id',
         'active_status',
         'dob',
         'occupation',

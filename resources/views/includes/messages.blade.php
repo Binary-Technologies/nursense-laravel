@@ -42,3 +42,7 @@
 @if ($errors->has('flexRadioDefault'))
 <div class="alert alert-danger">{{ $errors->first('flexRadioDefault') }}</div>
 @endif
+
+@if ($errors->has('univ-title'))
+<div class="alert alert-danger">{{ $errors->first('name') }}</div>
+@endif

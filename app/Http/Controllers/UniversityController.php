@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,11 +19,18 @@ class UniversityController extends Controller
 
         if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
         
-        University::create([               
-            'name' => $request->input('univ-title'),            
+        $university = University::create([
+            'name' =>  $request->input('univ-title'), 
             'code' => $request->input('univ-code'),
-            'major' => $request->input('major'),
         ]);
+
+        foreach ($request->input('major') as $departmentName) {
+            $department = new Department([
+                'name' => $departmentName,
+            ]);
+            $university->departments()->save($department);
+        }
+
         return redirect('/admin/univCodeDash')->with('University added', 'University has been added.');
     }
 
@@ -33,14 +41,25 @@ class UniversityController extends Controller
             'univ-code' => 'required',
         ]);
     
-        if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
-        
-        $data = University::findOrFail($id);
-        $data->name = $request->input('univ-title');
-        $data->code = $request->input('univ-code');
-        $data->major = $request->input('major');
-          
-        $data->save();
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        $university = University::findOrFail($id);
+        $university->save([
+            'name' => $request->input('univ-title'),
+            'code' => $request->input('univ-code'),
+        ]);
+
+        $departments = $request->input('major');
+        if ($departments) {
+            $university->departments()->delete();
+
+            foreach ($departments as $departmentName) {
+                $department = new Department([
+                    'name' => $departmentName,
+                ]);
+                $university->departments()->save($department);
+            }
+        }
+
         return redirect('/admin/univCodeDash')->with('university update','university updated successfully');
     }
 
@@ -49,5 +68,18 @@ class UniversityController extends Controller
         $university = University::findOrFail($id);
         $university->delete();
         return redirect('/admin/univCodeDash')->with('university delete','university deleted successfully');
+    }
+
+    public function univFilter(Request $request){
+        
+        $searchValue = $request->input('search');
+
+        $universities = University::where(function ($query) use ($searchValue) {
+            $query->where('name', 'like', '%' . $searchValue . '%');
+        })->orderByDesc('id')->paginate(10);
+        
+        
+        return view('pages.admin.universityCode.univ-code-dashboard',compact('universities'));
+    
     }
 }

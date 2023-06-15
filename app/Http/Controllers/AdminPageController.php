@@ -346,7 +346,8 @@ class AdminPageController extends Controller
 
     public function univCodeDashboard()
     {
-        $universities = University::all();
+        $universities = University::with('departments')->paginate(10);
+        
         return view('pages.admin.universityCode.univ-code-dashboard',compact('universities'));
     }
     public function univCodeRegistration()
@@ -356,12 +357,14 @@ class AdminPageController extends Controller
     public function univCodeDetailsView($id)
     {
         $university = University::findOrFail($id);
-        return view('pages.admin.universityCode.univ-code-details', compact('university'));
+        $departments = $university->departments;
+        return view('pages.admin.universityCode.univ-code-details', compact('university','departments'));
     }
     public function univCodeModify($id)
     {
         $university = University::findOrFail($id);
-        return view('pages.admin.universityCode.univ-code-modification',compact('university'));
+        $departments = $university->departments;
+        return view('pages.admin.universityCode.univ-code-modification',compact('university','departments'));
     }
 
     // University Code Manegement End ------------------------------------------------------------------

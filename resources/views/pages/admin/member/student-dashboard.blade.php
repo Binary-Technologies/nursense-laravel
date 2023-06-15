@@ -137,8 +137,8 @@
                         
                         @endif    
                     </td>
-                    <td>{{$user->scl_id}}</td>
-                    <td>{{$user->dep_id}}</td>
+                    <td>{{$user->uni_id}}</td>
+                    <td>{{$user->major_id}}</td>
                     <td>{{$user->pno}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('Y-m-d')}}</td>

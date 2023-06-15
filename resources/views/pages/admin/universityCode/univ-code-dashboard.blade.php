@@ -26,13 +26,13 @@
 
     <div class="rounded pt-4">
 
-        <form method="post" id="university-code-filter-form" action="#">
-@csrf
+        <form id="notice-filter-form" method="POST" action="/admin/univDash/filterData">
+            @csrf
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <span class="position-rel"><i class="fas fa-search view-search-i" area-hidden="true"></i></span>
-                    <input type="search" class="form-control form-text-l search-bar-custom" name="search" id="searchUnivCode" placeholder=" 학교, 코드명을 입력하세요." aria-label="Search">
+                    <input type="search" value="{{ request('search') }}" class="form-control form-text-l search-bar-custom" name="search" id="searchUnivCode" placeholder=" 학교, 코드명을 입력하세요." aria-label="Search">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
 
@@ -92,7 +92,11 @@
                         <td>{{$university->id}}</td>
                         <td><a href="{{ route('univCodeDetails', ['university' => $university->id]) }}" class="td-a-custom">{{$university->name}}</a></td>
                         <td>{{$university->code}}</td>
-                        <td>{{ implode(', ', $university->major) }}</td>
+                        <td>
+                            @foreach ($university->departments as $department)
+                                {{$department->name}},
+                            @endforeach
+                        </td>
                         <td>{{$university->created_at->format('d-m-y')}}</td>
                     </tr>    
                 @endforeach
@@ -105,27 +109,9 @@
 </div>
 
 <div class="item-flex-end">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&lt;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
-                    <span aria-hidden="true">&gt;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    
+    {{ $universities->links('vendor.pagination.default') }}
+
 </div>
 
 <!-- Confirmation Alert Modal -->

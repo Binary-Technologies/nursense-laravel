@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class University extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['name','code','major',];
-
     
-    public function department()
+    protected $guarded = [];
+
+    public function departments()
     {
         return $this->hasMany(Department::class);
     }

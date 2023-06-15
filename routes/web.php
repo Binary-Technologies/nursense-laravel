@@ -16,6 +16,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
+use App\Models\University;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -177,6 +178,10 @@ Route::prefix('/admin')->group(function () {
     Route::post('/universityRegister', [UniversityController::class, 'universityRegister']);
     Route::post('/UniversityUpdate/{university:id}', [UniversityController::class, 'universityUpdate']);
     Route::post('/university/universityDelete/{university:id}', [UniversityController::class, 'universityDelete'])->name('universityDelete');
+    Route::post('/deleteDepartment/{major:id}', [UniversityController::class, 'departmentDelete']);
+    Route::post('/univDash/filterData', [UniversityController::class, 'univFilter']);
+
+
 
 });
 
