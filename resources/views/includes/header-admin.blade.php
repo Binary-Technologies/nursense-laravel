@@ -278,6 +278,114 @@
 
                 </div>
 
+                <!-- Statistics Management -->
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle
+                    <?php if (
+                        $current_page == 'surveyStatDash' ||
+                        $current_page == 'surveyStatDetails' ||
+                        $current_page == 'surveyItemDash' ||
+                        $current_page == 'surveyItemReg' ||
+                        $current_page == 'surveyItemUpdate'
+                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
+                        통계 관리
+                    </a>
+
+                    <?php
+                    $show_class = "";
+                    if ($current_page == 'surveyStatDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'surveyStatDetails') {
+                        $show_class = "show";
+                    } else if ($current_page == 'surveyItemDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'surveyItemReg') {
+                        $show_class = "show";
+                    } else if ($current_page == 'surveyItemUpdate') {
+                        $show_class = "show";
+                    } else {
+                        $show_class = "";
+                    }
+                    ?>
+
+                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+
+                        <!-- Survey Stat Management -->
+                        <a href="{{ url('admin/surveyStatDash') }}" class="dropdown-item
+                        <?php if (
+                            $current_page == 'surveyStatDash' ||
+                            $current_page == 'surveyStatDetails'
+                        ) : ?>active show <?php endif; ?>">
+                            설문 통계
+                        </a>
+
+                        <!-- Survey Item Management -->
+                        <a href="{{ url('admin/surveyItemDash') }}" class="dropdown-item
+                        <?php if (
+                            $current_page == 'surveyItemDash' ||
+                            $current_page == 'surveyItemReg' ||
+                            $current_page == 'surveyItemUpdate'
+                        ) : ?>active show <?php endif; ?>">
+                            설문 항목
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Score Management -->
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle 
+                    <?php if (
+                        $current_page == 'scoreEvalDash' ||
+                        $current_page == 'scoreEvalUpdate' ||
+                        $current_page == 'scoreCertifyDash' ||
+                        $current_page == 'scoreCertifyUpdate'
+                    ) : ?> active <?php endif; ?> " data-bs-toggle="dropdown">
+                        배점 관리
+                    </a>
+
+                    <?php
+                    $show_class = "";
+                    if ($current_page == 'scoreEvalDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'scoreEvalUpdate') {
+                        $show_class = "show";
+                    } else if ($current_page == 'scoreCertifyDash') {
+                        $show_class = "show";
+                    } else if ($current_page == 'scoreCertifyUpdate') {
+                        $show_class = "show";
+                    } else {
+                        $show_class = "";
+                    }
+                    ?>
+
+                    <div class="dropdown-menu bg-transparent border-0 <?php echo $show_class ?> py-0">
+
+                        <!-- Score Management -->
+                        <a href="{{ url('admin/scoreEvalDash') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'scoreEvalDash' ||
+                            $current_page == 'scoreEvalUpdate'
+                        ) : ?>active show <?php endif; ?>">
+                            평가 배점 관리
+                        </a>
+
+                        <!-- Certification Management -->
+                        <a href="{{ url('admin/scoreCertifyDash') }}" class="dropdown-item 
+                        <?php if (
+                            $current_page == 'scoreCertifyDash' ||
+                            $current_page == 'scoreCertifyUpdate'
+                        ) : ?>active show <?php endif; ?>">
+                            수료증 관리
+                        </a>
+
+                    </div>
+
+                </div>
+
                 <!-- Instructor, Student Reports Management -->
                 <div class="nav-item dropdown">
 
@@ -356,6 +464,41 @@
             </div>
 
         </nav>
+
+        <div class="log-out-btn">
+            <a href="#logOutModal" data-bs-toggle="modal" class="item-flex-start">
+                <span class="me-2"><i class='far fa-arrow-alt-circle-right'></i></span>
+                <span>로그아웃</span>
+            </a>
+        </div>
+
+        <!-- Log Out Alert Modal -->
+        <!-- <div class="modal fade" id="logOutModal" aria-hidden="true" aria-labelledby="logOutModalContent" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center my-3" id="logOutModalContent"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <h5 class="alert-title text-center mt-1 mb-4">로그아웃</h5>
+                        <p class="alert-text text-center mt-2 mb-5">
+                            로그아웃 하시겠습니까?
+                        </p>
+
+                        <div class="item-flex-center my-2">
+                            <div class="mx-1">
+                                <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
+                            </div>
+                            <div class="mx-1">
+                                <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">로그아웃</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Log Out Alert Modal -->
 
     </div>
     <!-- Sidebar End -->

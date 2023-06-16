@@ -63,7 +63,7 @@
             </div>
             <div class="row mb-4">
 
-                <div class="col-xl-8 col-lg-8 col-md-6 d-sm-none d-md-block list-count-outer">
+                <div class="col-xl-8 col-lg-8 col-md-6 d-md-block list-count-outer">
                     <span class="position-rel list-count">
                         Total
                         <span class="b-right"></span>

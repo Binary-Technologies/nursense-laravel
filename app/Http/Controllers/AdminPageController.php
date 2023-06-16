@@ -385,6 +385,53 @@ class AdminPageController extends Controller
     // Logo Manegement End ------------------------------------------------------------------
 
 
+    // Statistics Manegement Start ------------------------------------------------------------------
+
+    public function surveyStatDashboard()
+    {
+        return view('pages.admin.statistics.survey-stat-dashboard');
+    }
+    public function surveyStatDetailsView()
+    {
+        return view('pages.admin.statistics.survey-stat-details');
+    }
+    public function surveyItemDashboard()
+    {
+        return view('pages.admin.statistics.survey-item-dashboard');
+    }
+    public function surveyItemRegistration()
+    {
+        return view('pages.admin.statistics.survey-item-register');
+    }
+    public function surveyItemModify()
+    {
+        return view('pages.admin.statistics.survey-item-modification');
+    }
+
+    // Statistics Manegement End ------------------------------------------------------------------
+
+
+    // Score Manegement Start ------------------------------------------------------------------
+
+    public function scoreEvalDashboard()
+    {
+        return view('pages.admin.score.eval-score-dashboard');
+    }
+    public function scoreEvalModify()
+    {
+        return view('pages.admin.score.eval-score-modification');
+    }
+    public function scoreCertifyDashboard()
+    {
+        return view('pages.admin.score.certify-score-dashboard');
+    }
+    public function scoreCertifyModify()
+    {
+        return view('pages.admin.score.certify-score-modification');
+    }
+
+    // Score Manegement End ------------------------------------------------------------------
+
 
     // Reports Manegement Start ------------------------------------------------------------------
 

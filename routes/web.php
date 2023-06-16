@@ -164,16 +164,26 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
     Route::post('inquiryDash/filterData', [InquiryController::class, 'inquiryFilter']);
 
-    // Menu Management
+    // Menu, Logo Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
-
-    // Logo Management
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
+
+    // Statistics Management
+    Route::get('/surveyStatDash', [AdminPageController::class, 'surveyStatDashboard'])->name('surveyStatDash');
+    Route::get('/surveyStatDetails', [AdminPageController::class, 'surveyStatDetailsView'])->name('surveyStatDetails');
+    Route::get('/surveyItemDash', [AdminPageController::class, 'surveyItemDashboard'])->name('surveyItemDash');
+    Route::get('/surveyItemReg', [AdminPageController::class, 'surveyItemRegistration'])->name('surveyItemReg');
+    Route::get('/surveyItemUpdate', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+
+    // Score Management
+    Route::get('/scoreEvalDash', [AdminPageController::class, 'scoreEvalDashboard'])->name('scoreEvalDash');
+    Route::get('/scoreEvalUpdate', [AdminPageController::class, 'scoreEvalModify'])->name('scoreEvalUpdate');
+    Route::get('/scoreCertifyDash', [AdminPageController::class, 'scoreCertifyDashboard'])->name('scoreCertifyDash');
+    Route::get('/scoreCertifyUpdate', [AdminPageController::class, 'scoreCertifyModify'])->name('scoreCertifyUpdate');
 
     // Report Management -Instructor Mng.
     Route::get('/insReportDash', [AdminPageController::class, 'insReportDashboard'])->name('insReportDash');
     Route::get('/insReportDetails', [AdminPageController::class, 'insReportDetailsView'])->name('insReportDetails');
-
     // Report Management -Student Mng.
     Route::get('/stuReportDash', [AdminPageController::class, 'stuReportDashboard'])->name('stuReportDash');
     Route::get('/stuReportDetails', [AdminPageController::class, 'stuReportDetailsView'])->name('stuReportDetails');
