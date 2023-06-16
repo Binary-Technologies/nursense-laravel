@@ -169,6 +169,8 @@ Route::prefix('/admin')->group(function () {
     // Menu, Logo Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
+    Route::post('/userLogoRegister', [AdminPageController::class, 'userLogoRegister']);
+    Route::post('/AdminLogoRegister', [AdminPageController::class, 'adminLogoRegister']);
 
     // Statistics Management
     Route::get('/surveyStatDash', [AdminPageController::class, 'surveyStatDashboard'])->name('surveyStatDash');
