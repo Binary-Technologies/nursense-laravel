@@ -124,7 +124,13 @@ class AdminPageController extends Controller
     public function bannerAdd()
     {
         $existingValues = Banner::pluck('sequence')->toArray();
-        return view('pages.admin.banner.banner-add', compact('existingValues'));
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.banner.banner-add', [
+            'count' => $count,
+            'existingValues' => $existingValues,
+        ]);
     }
     public function bannerAddAttachFileReg()
     {
@@ -139,8 +145,14 @@ class AdminPageController extends Controller
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
+        $existingValues = Banner::pluck('sequence')->toArray();
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
+            'count' => $count,
+            'existingValues' => $existingValues,
         ]);
     }
 
@@ -197,8 +209,14 @@ class AdminPageController extends Controller
     public function noticeModify($id)
     {
         $notice = Notice::findOrFail($id);
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.notice.notice-modification', [
             'notice' => $notice,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -237,9 +255,14 @@ class AdminPageController extends Controller
     public function newsModify($id)
     {
         $news = News::findOrFail($id);
-
+        $main_exposure = News::pluck('main_exposure')->toArray();
+        $exposure = News::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.news.news-modification', [
             'news' => $news,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -301,7 +324,8 @@ class AdminPageController extends Controller
     public function resourceModify($id)
     {
         $resource  = Resource::findOrFail($id);
-        return view('pages.admin.resource.resource-modification', compact('resource'));
+        $count = Resource::where('status', 1)->count();
+        return view('pages.admin.resource.resource-modification', compact('resource', 'count'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
@@ -342,28 +366,6 @@ class AdminPageController extends Controller
     // Inquiry Manegement End ------------------------------------------------------------------
 
 
-    // University Code Manegement Start ------------------------------------------------------------------
-
-    public function univCodeDashboard()
-    {
-        return view('pages.admin.universityCode.univ-code-dashboard');
-    }
-    public function univCodeRegistration()
-    {
-        return view('pages.admin.universityCode.univ-code-register');
-    }
-    public function univCodeDetailsView()
-    {
-        return view('pages.admin.universityCode.univ-code-details');
-    }
-    public function univCodeModify()
-    {
-        return view('pages.admin.universityCode.univ-code-modification');
-    }
-
-    // University Code Manegement End ------------------------------------------------------------------
-
-
     // Menu Manegement Start ------------------------------------------------------------------
 
     public function menuRegistration()
@@ -378,8 +380,70 @@ class AdminPageController extends Controller
 
     public function logoRegistration()
     {
+        return view('pages.admin.menu.logo-register');
+    }
 
-        return view('pages.admin.logo.logo-register');
+    // Logo Manegement End ------------------------------------------------------------------
+
+
+    // Statistics Manegement Start ------------------------------------------------------------------
+
+    public function surveyStatDashboard()
+    {
+        return view('pages.admin.statistics.survey-stat-dashboard');
+    }
+    public function surveyStatDetailsView()
+    {
+        return view('pages.admin.statistics.survey-stat-details');
+    }
+    public function surveyItemDashboard()
+    {
+        return view('pages.admin.statistics.survey-item-dashboard');
+    }
+    public function surveyItemRegistration()
+    {
+        return view('pages.admin.statistics.survey-item-register');
+    }
+    public function surveyItemModify()
+    {
+        return view('pages.admin.statistics.survey-item-modification');
+    }
+
+    // Statistics Manegement End ------------------------------------------------------------------
+
+
+    // Score Manegement Start ------------------------------------------------------------------
+
+    public function scoreEvalDashboard()
+    {
+        return view('pages.admin.score.eval-score-dashboard');
+    }
+    public function scoreEvalModify()
+    {
+        return view('pages.admin.score.eval-score-modification');
+    }
+    public function scoreCertifyDashboard()
+    {
+        return view('pages.admin.score.certify-score-dashboard');
+    }
+    public function scoreCertifyModify()
+    {
+        return view('pages.admin.score.certify-score-modification');
+    }
+
+    // Score Manegement End ------------------------------------------------------------------
+
+
+    // Reports Manegement Start ------------------------------------------------------------------
+
+    // Instructor report
+    public function insReportDashboard()
+    {
+        return view('pages.admin.reports.ins-report-dashboard');
+    }
+    public function insReportDetailsView()
+    {
+        return view('pages.admin.reports.ins-report-details');
     }
 
     public function userLogoRegister(Request $request)
@@ -425,6 +489,68 @@ class AdminPageController extends Controller
         return redirect('/admin/logoReg')->with('success', 'logo has been added.');
     }
     // Logo Manegement End ------------------------------------------------------------------
+
+    // Student report
+    public function stuReportDashboard()
+    {
+        return view('pages.admin.reports.stu-report-dashboard');
+    }
+    public function stuReportDetailsView()
+    {
+        return view('pages.admin.reports.stu-report-details');
+    }
+
+    // Reports Manegement End ------------------------------------------------------------------
+
+
+    // Gallery Manegement Start ------------------------------------------------------------------
+
+    public function galleryDashboard()
+    {
+        return view('pages.admin.gallery.gallery-dashboard');
+    }
+    public function galleryRegistration()
+    {
+        return view('pages.admin.gallery.gallery-register');
+    }
+    public function galleryRegistrationComplete()
+    {
+        return view('pages.admin.gallery.gallery-register-complete');
+    }
+    public function galleryDetailsView()
+    {
+        return view('pages.admin.gallery.gallery-details');
+    }
+    public function galleryModify()
+    {
+        return view('pages.admin.gallery.gallery-modification');
+    }
+
+    // Gallery Manegement End ------------------------------------------------------------------
+
+
+
+
+    // University Code Manegement Start ------------------------------------------------------------------
+
+    public function univCodeDashboard()
+    {
+        return view('pages.admin.universityCode.univ-code-dashboard');
+    }
+    public function univCodeRegistration()
+    {
+        return view('pages.admin.universityCode.univ-code-register');
+    }
+    public function univCodeDetailsView()
+    {
+        return view('pages.admin.universityCode.univ-code-details');
+    }
+    public function univCodeModify()
+    {
+        return view('pages.admin.universityCode.univ-code-modification');
+    }
+
+    // University Code Manegement End ------------------------------------------------------------------
 
 
 

@@ -18,7 +18,7 @@
                 <a href="{{ url('admin/bannerDash') }}">배너 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/bannerDetails') }}">배너 상세</a>
+                <a href="{{ url('admin/bannerDetails', ['notice' => $banner->id]) }}">배너 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">배너 수정</li>
         </ol>
@@ -38,7 +38,7 @@
                         <td scope="row" class="table-td-text1 bg-td height-52">배너 노출</td>
                         <td colspan="8" class="table-td-text2">
                             <div class="form-check height-52 item-flex-align-start">
-                                <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="0" {{ old('flexRadioDefault', $banner->status) == 0 ? 'checked' : '' }} id="flexRadioDefault1">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="exposureStatus" value="0" {{ old('flexRadioDefault', $banner->status) == 0 ? 'checked' : '' }}  onchange="exposureChange()" id="flexRadioDefault1">
                                 <label class="form-check-label lbl-y1" for="flexRadioDefault1">
                                     노출
                                 </label>
@@ -125,6 +125,34 @@
 
     </div>
 </form>
+
+<!-- Card Exposure Impossible Alert Modal -->
+<div class="modal" style="display:none;" id="cardExposure" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id=""></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    카드 노출은 최대 3개까지 가능합니다.<br>
+                    다른 공지사항의 상세 페이지에서 1개 이상<br>
+                    삭제 또는 미노출로 변경해주세요.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="/admin/bannerUpdate/{{$banner->id}}" class="btn btn-alert3">
+                            확인
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Card Exposure Impossible Alert Modal -->
 <!-- Confirmation Alert Modal -->
 <div class="modal fade" id="confirmationModal" aria-hidden="true" aria-labelledby="confirmationModalContent" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -230,4 +258,28 @@
 </div>
 <!-- Banner Management End -->
 
+@endsection
+
+@section('scripts')
+        <script>
+            ClassicEditor
+            .create( document.querySelector( '#contents' ) )
+            .catch( error => {
+            console.error( error );
+            } );
+            </script>
+
+        <script type="text/javascript">
+            
+            function exposureChange() {
+                var exposure =  {{$count}};
+
+                if (exposure >=3) {
+                    document.getElementById('cardExposure').style.display = "block";
+                }
+            }
+              
+        </script>
+        
+        
 @endsection

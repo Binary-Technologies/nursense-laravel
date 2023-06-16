@@ -34,12 +34,12 @@
                                 </div>
                             </div>
                             <div class="pt15 pb10 text-center">
-                                <span class="ttl-14">홍길동</span>
+                                <span class="ttl-14">{{$user->name}}</span>
                             </div>
                             <div class="ttl-15 item-flex-center">
                                 <span>ID</span>
                                 <span class="mx-2">&#x2022;</span>
-                                <span>abc123490</span>
+                                <span>{{isset($user->std_id) ? $user->std_id : $user->inst_id}}</span>
                             </div>
 
                         </div>
@@ -59,11 +59,11 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label class="ttl-3 pt-3 mb-1">학교</label>
-                                        <p class="ttl-12 ">경북대학교</p>
+                                        <p class="ttl-12 ">{{$user->uni_id}}</p>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="ttl-3 pt-3 mb-1">학과</label>
-                                        <p class="ttl-12 ">간호학과</p>
+                                        <p class="ttl-12 ">{{$user->dep_id}}</p>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="border-b-cus2"></div>
@@ -72,11 +72,11 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label class="ttl-3 pt-3 mb-1">학교</label>
-                                        <p class="ttl-12 ">3학년</p>
+                                        <p class="ttl-12 ">{{$user->grade}}</p>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="ttl-3 pt-3 mb-1">학과</label>
-                                        <p class="ttl-12 ">12345678</p>
+                                        <p class="ttl-12 ">{{isset($user->std_id) ? $user->std_id : $user->inst_id}}</p>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="border-b-cus2"></div>
@@ -85,7 +85,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label class="ttl-3 pt-3 mb-1">학교</label>
-                                        <p class="ttl-12 ">간호사</p>
+                                        <p class="ttl-12 ">{{$user->occupation}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                                     <div class="col-lg-11 bg-color-2 border-rad-10">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <p class="ttl-12 pt-3">01012345678</p>
+                                                <p class="ttl-12 pt-3">{{$user->pno}}</p>
                                                 <span class="relative-block">
                                                     <a href="myprofile-contact-upload.php" class="ttl-17 move-right1 relative-block title-border-b1">수정</a>
                                                 </span>
@@ -123,7 +123,7 @@
                                     <div class="col-lg-12 bg-color-2 border-rad-10">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <p class="ttl-12 pt-3">abc@naver.com</p>
+                                                <p class="ttl-12 pt-3">{{$user->email}}</p>
                                                 <span class="relative-block">
                                                     <a href="myprofile-email-upload.php" class="ttl-17 move-right2 relative-block title-border-b1">수정</a>
                                                 </span>
@@ -150,7 +150,7 @@
                                     <div class="col-lg-11 bg-color-2 border-rad-10">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <p class="ttl-12 pt-3">Abc123490</p>
+                                                <p class="ttl-12 pt-3">{{isset($user->std_id) ? $user->std_id : $user->inst_id}}</p>
                                             </div>
                                         </div>
                                     </div>

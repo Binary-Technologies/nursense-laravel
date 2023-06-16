@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin-top: 50px">
                 <div class="card-header">{{ $title ?? "" }} {{ __('Register') }}</div>
 
                 <div class="card-body">

@@ -95,12 +95,12 @@ class InquiryController extends Controller
 
         $inquiries = Inquiry::whereIn('status', $exposure)->where(function ($query) use ($searchValue) {
             $query->where('title', 'like', '%' . $searchValue . '%')
-                    ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%')
-                    ->orWhere('writerName', 'like', '%' . $searchValue . '%');
+                ->orWhere('inquiryDetail', 'like', '%' . $searchValue . '%')
+                ->orWhere('writerName', 'like', '%' . $searchValue . '%');
         })->orderByDesc('id')->paginate(10);
   
-            return view('pages.admin.inquiry.inquiry-dashboard',[
-                'inquiries' => $inquiries,
-            ]);
-      }
+        return view('pages.admin.inquiry.inquiry-dashboard',[
+            'inquiries' => $inquiries,
+        ]);
+    }
 }

@@ -79,7 +79,7 @@ class BannerController extends Controller
         $data->title = $request->input('title');
         $data->content = $request->input('contents');
         $data->link = $request->input('link');
-        $data->sequence = $request->input('sequence');
+        
         $data->save();
         
         return redirect('/admin/bannerDash')->with('success','Banner updated successfully');

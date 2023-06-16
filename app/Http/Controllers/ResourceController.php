@@ -119,11 +119,11 @@ class ResourceController extends Controller
 
         $resources = Resource::whereIn('status', $exposure)->where(function ($query) use ($searchValue) {
             $query->where('title', 'like', '%' . $searchValue . '%')
-                    ->orWhere('details', 'like', '%' . $searchValue . '%');
+                ->orWhere('details', 'like', '%' . $searchValue . '%');
         })->orderByDesc('id')->paginate(10);
   
-            return view('pages.admin.resource.resource-dashboard',[
-                'resources' => $resources,
-            ]);
-        }
+        return view('pages.admin.resource.resource-dashboard',[
+            'resources' => $resources,
+        ]);
+    }
 }

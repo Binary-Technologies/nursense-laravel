@@ -58,7 +58,6 @@ Route::get('/info/resources', [PageController::class, 'resources']);
 Route::get('/info/resources/details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
-Route::get('/profile/info', [PageController::class, 'myprofile']);
 Route::get('/profile/study', [PageController::class, 'mystudy']);
 Route::get('/profile/manage', [PageController::class, 'mymanage']);
 Route::get('/profile/assesment', [PageController::class, 'myassesment']);
@@ -72,7 +71,7 @@ Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm
 Route::post('/admin/register', [RegisterController::class, 'createAdmin'])->name('admin.register');
 
 Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
-Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('user.login');
+Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('login');
 Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
 Route::get('/certificate', [PageController::class, 'certificate']);
@@ -86,7 +85,11 @@ Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_u
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
 
-Route::prefix('/admin')->group(function () {
+Route::middleware('auth:web')->group(function () {
+    Route::get('/profile/info', [PageController::class, 'myprofile']);
+});
+
+Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
     Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
@@ -159,16 +162,40 @@ Route::prefix('/admin')->group(function () {
     Route::get('/inquiryUpdate/{inquiry:id}', [AdminPageController::class, 'inquiryModify'])->name('inquiryUpdate');
     Route::post('/inquiryRegister/{inquiry:id}', [InquiryController::class, 'inquiryAnswerReg']);
     Route::put('/inquiryUpdate/{inquiry:id}', [InquiryController::class, 'inquiryUpdate']);
-    Route::post('inquiryDash/filterData',[InquiryController::class,'inquiryFilter']);
+    Route::post('inquiryDash/filterData', [InquiryController::class, 'inquiryFilter']);
 
-    // Menu Management
+    // Menu, Logo Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
-
-    // Logo Management
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
     Route::post('/userLogoRegister', [AdminPageController::class, 'userLogoRegister']);
     Route::post('/AdminLogoRegister', [AdminPageController::class, 'adminLogoRegister']);
 
+    // Statistics Management
+    Route::get('/surveyStatDash', [AdminPageController::class, 'surveyStatDashboard'])->name('surveyStatDash');
+    Route::get('/surveyStatDetails', [AdminPageController::class, 'surveyStatDetailsView'])->name('surveyStatDetails');
+    Route::get('/surveyItemDash', [AdminPageController::class, 'surveyItemDashboard'])->name('surveyItemDash');
+    Route::get('/surveyItemReg', [AdminPageController::class, 'surveyItemRegistration'])->name('surveyItemReg');
+    Route::get('/surveyItemUpdate', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+
+    // Score Management
+    Route::get('/scoreEvalDash', [AdminPageController::class, 'scoreEvalDashboard'])->name('scoreEvalDash');
+    Route::get('/scoreEvalUpdate', [AdminPageController::class, 'scoreEvalModify'])->name('scoreEvalUpdate');
+    Route::get('/scoreCertifyDash', [AdminPageController::class, 'scoreCertifyDashboard'])->name('scoreCertifyDash');
+    Route::get('/scoreCertifyUpdate', [AdminPageController::class, 'scoreCertifyModify'])->name('scoreCertifyUpdate');
+
+    // Report Management -Instructor Mng.
+    Route::get('/insReportDash', [AdminPageController::class, 'insReportDashboard'])->name('insReportDash');
+    Route::get('/insReportDetails', [AdminPageController::class, 'insReportDetailsView'])->name('insReportDetails');
+    // Report Management -Student Mng.
+    Route::get('/stuReportDash', [AdminPageController::class, 'stuReportDashboard'])->name('stuReportDash');
+    Route::get('/stuReportDetails', [AdminPageController::class, 'stuReportDetailsView'])->name('stuReportDetails');
+
+    // Gallery Management
+    Route::get('/galleryDash', [AdminPageController::class, 'galleryDashboard'])->name('galleryDash');
+    Route::get('/galleryReg', [AdminPageController::class, 'galleryRegistration'])->name('galleryReg');
+    Route::get('/galleryRegComplete', [AdminPageController::class, 'galleryRegistrationComplete'])->name('galleryRegComplete');
+    Route::get('/galleryDetails', [AdminPageController::class, 'galleryDetailsView'])->name('galleryDetails');
+    Route::get('/galleryUpdate', [AdminPageController::class, 'galleryModify'])->name('galleryUpdate');
 
     // University Code Management
     Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');
