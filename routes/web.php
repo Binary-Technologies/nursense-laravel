@@ -91,7 +91,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/profile/info', [PageController::class, 'myprofile']);
 });
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
     Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
