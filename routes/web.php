@@ -166,6 +166,8 @@ Route::prefix('/admin')->group(function () {
 
     // Logo Management
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
+    Route::post('/userLogoRegister', [AdminPageController::class, 'userLogoRegister']);
+    Route::post('/AdminLogoRegister', [AdminPageController::class, 'adminLogoRegister']);
 
 
     // University Code Management

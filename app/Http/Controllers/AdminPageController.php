@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPageController extends Controller
 {
@@ -377,9 +378,52 @@ class AdminPageController extends Controller
 
     public function logoRegistration()
     {
+
         return view('pages.admin.logo.logo-register');
     }
 
+    public function userLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
+
+        if ($request->hasFile('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = 'userSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image')->storeAs('public/images/userlogo/', $fileName);
+        }
+    
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
+
+    public function adminLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image2' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
+    
+        if ($request->hasFile('image2')) {
+            $extension = $request->file('image2')->getClientOriginalExtension();
+            $fileName = 'adminSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+    
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image2')->storeAs('public/images/adminlogo/', $fileName);
+        }
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
     // Logo Manegement End ------------------------------------------------------------------
 
 
