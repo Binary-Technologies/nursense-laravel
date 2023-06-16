@@ -21,6 +21,8 @@
 </div>
 
 <!-- Gallery Management Start -->
+<form action="/admin/gallery/galleryRegister" method="POST" enctype="multipart/form-data">
+    @csrf
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -30,18 +32,22 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="resource-title" id="resourceName" placeholder="제목을 입력하세요." value="" aria-describedby="Resource Title Input">
+                            <input type="text" class="form-control val-text" name="title" id="resourceName" placeholder="제목을 입력하세요." value="" aria-describedby="Resource Title Input">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row" class="table-td-text1 bg-td height-52">* 썸네일 이미지</td>
                     <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <a href="{{ route('galleryRegComplete') }}" class="btn btn9">
+                       
+                            <div class="item-flex-center width-10 ml30 mb-4">
+                                <img id="imagePreview" src="#" class="width-100 " style="display: none;" >
+                            </div>
+                            <input type="button"  class="btn btn12 btn12-1" data-bs-toggle="modal"  id="removeButton" value="이미지 삭제" style="display: none;" onclick="removeImage()">
+                            <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+                            <!-- <a href="{{ route('galleryRegComplete') }}" class="btn btn9">
                                 이미지 등록
-                            </a>
-                        </div>
+                            </a> -->
                     </td>
                 </tr>
 
@@ -60,9 +66,12 @@
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="#regExitModal" class="btn btn11" data-bs-toggle="modal">
+           <button type="submit" class="btn btn11">
+            등록 완료
+           </button>
+            <!-- <a href="#regExitModal" class="btn btn11" data-bs-toggle="modal">
                 등록 완료
-            </a>
+            </a> -->
         </div>
     </div>
 
@@ -152,4 +161,46 @@
 </div>
 <!-- Gallery Management End -->
 
+@endsection
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#contents'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<script>
+   function previewImage(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+        var imagePreview = document.getElementById('imagePreview');
+        imagePreview.src = e.target.result;
+        imagePreview.style.display = 'block';
+
+        var imageInput = document.getElementById('image');
+        var removeButton = document.getElementById('removeButton');
+
+        imageInput.style.display = 'none';
+        removeButton.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function removeImage() {
+  var imageInput = document.getElementById('image');
+  var removeButton = document.getElementById('removeButton');
+  var imagePreview = document.getElementById('imagePreview');
+
+  imageInput.value = ''; // Reset the input value
+  imageInput.style.display = 'block';
+  removeButton.style.display = 'none';
+  imagePreview.style.display = 'none';
+}
+</script>
 @endsection

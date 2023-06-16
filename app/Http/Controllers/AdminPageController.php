@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Inquiry;
 use App\Models\Direction;
+use App\Models\Gallery;
 use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
@@ -462,7 +463,8 @@ class AdminPageController extends Controller
 
     public function galleryDashboard()
     {
-        return view('pages.admin.gallery.gallery-dashboard');
+        $galleries = Gallery::all();
+        return view('pages.admin.gallery.gallery-dashboard',compact('galleries'));
     }
     public function galleryRegistration()
     {
@@ -472,13 +474,15 @@ class AdminPageController extends Controller
     {
         return view('pages.admin.gallery.gallery-register-complete');
     }
-    public function galleryDetailsView()
+    public function galleryDetailsView($id)
     {
-        return view('pages.admin.gallery.gallery-details');
+        $gallery = Gallery::findOrFail($id);
+        return view('pages.admin.gallery.gallery-details',compact('gallery'));
     }
-    public function galleryModify()
+    public function galleryModify($id)
     {
-        return view('pages.admin.gallery.gallery-modification');
+        $gallery = Gallery::findOrFail($id);
+        return view('pages.admin.gallery.gallery-modification',compact('gallery'));
     }
 
     // Gallery Manegement End ------------------------------------------------------------------

@@ -11,10 +11,12 @@ use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\DirectionController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UserController;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -89,7 +91,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/profile/info', [PageController::class, 'myprofile']);
 });
 
-Route::prefix('/admin')->middleware('auth:admin')->group(function () {
+Route::prefix('/admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
     Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
@@ -192,8 +194,12 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/galleryDash', [AdminPageController::class, 'galleryDashboard'])->name('galleryDash');
     Route::get('/galleryReg', [AdminPageController::class, 'galleryRegistration'])->name('galleryReg');
     Route::get('/galleryRegComplete', [AdminPageController::class, 'galleryRegistrationComplete'])->name('galleryRegComplete');
-    Route::get('/galleryDetails', [AdminPageController::class, 'galleryDetailsView'])->name('galleryDetails');
-    Route::get('/galleryUpdate', [AdminPageController::class, 'galleryModify'])->name('galleryUpdate');
+    Route::get('/galleryDetails/{gallery:id}', [AdminPageController::class, 'galleryDetailsView'])->name('galleryDetails');
+    Route::get('/galleryUpdate/{gallery:id}', [AdminPageController::class, 'galleryModify'])->name('galleryUpdate');
+    Route::post('/gallery/galleryRegister', [GalleryController::class, 'galleryRegister']);
+    Route::post('/gallery/galleryDelete/{gallery:id}', [GalleryController::class, 'galleryDelete'])->name('galleryDelete');
+    Route::put('/gallery/galleryUpdate/{gallery:id}', [GalleryController::class, 'galleryUpdate']);
+
 
     // University Code Management
     Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');

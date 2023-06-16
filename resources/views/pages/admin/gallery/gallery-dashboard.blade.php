@@ -46,7 +46,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        70
+                        {{$galleries->count()}}
                     </span>
                 </div>
 
@@ -84,51 +84,18 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    <td>10</td>
-                    <td><a href="{{ route('galleryDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다가지에 만물은 수 앞이</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/gallery.png') }}" class="width-40">
-                    </td>
-                    <td>300</td>
-                    <td>2023.01.31</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td><a href="{{ route('galleryDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다가지에 만물은 수 앞이</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/gallery.png') }}" class="width-40">
-                    </td>
-                    <td>300</td>
-                    <td>2023.01.31</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td><a href="{{ route('galleryDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다가지에 만물은 수 앞이</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/gallery.png') }}" class="width-40">
-                    </td>
-                    <td>300</td>
-                    <td>2023.01.31</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td><a href="{{ route('galleryDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다가지에 만물은 수 앞이</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/gallery.png') }}" class="width-40">
-                    </td>
-                    <td>300</td>
-                    <td>2023.01.31</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><a href="{{ route('galleryDetails') }}" class="td-a-custom">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다가지에 만물은 수 앞이</a></td>
-                    <td>
-                        <img src="{{ asset('assets/img/gallery.png') }}" class="width-40">
-                    </td>
-                    <td>300</td>
-                    <td>2023.01.31</td>
-                </tr>
+                @foreach ($galleries as $gallery)
+                    <tr>
+                        <td>{{$gallery->id}}</td>
+                        <td><a href="{{ route('galleryDetails', ['gallery' => $gallery->id])  }}" class="td-a-custom">{{$gallery->title}}</a></td>
+                        <td>
+                            <img src="{{ Storage::url($gallery->path) }}" height="200px">
+                        </td>
+                        <td>{{$gallery->views}}</td>
+                        <td>{{$gallery->created_at->format('Y-m-d')}}</td>
+                    </tr>
+                @endforeach
+                
             </tbody>
         </table>
 
@@ -163,5 +130,60 @@
 
 </div>
 <!-- Gallery Management End -->
+
+
+<!-- Delete Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('gallery delete') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="deleteCompletionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    갤러리 삭제를 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('galleryDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Completion Alert Modal -->
+
+
+<!-- Completion Alert Modal -->
+<div class="modal" tabindex="-1" style="display: {{ session('gallery update') ? 'block' : 'none'}}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="alert-text2 text-center mt-2 mb-5">
+                    갤러리 수정을 완료하였습니다.
+                </p>
+
+                <div class="item-flex-center my-2">
+                    <div class="mx-1">
+                        <a href="{{route('galleryDash')}}">
+                            <button type="submit" class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Completion Alert Modal -->
+
 
 @endsection
