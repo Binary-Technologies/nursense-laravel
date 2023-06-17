@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\Notice;
 use App\Models\University;
 use App\Models\User;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -372,9 +373,18 @@ class AdminPageController extends Controller
 
     public function menuRegistration()
     {
-        $universities = University::with('departments')->paginate(10);
-        
-        return view('pages.admin.universityCode.univ-code-dashboard',compact('universities'));
+        $menus = Menu::get();
+        return view('pages.admin.menu.menu-register',compact('menus'));
+    }
+
+    public function updateMenu(Request $request){
+        $menu = Menu::findOrFail(request('menu_id'));
+        $menu->update([
+            'name' => request('name'),
+            'student' => isset($request->chkStudent) ? 1 : 0,
+            'instructor' => isset($request->chkInstructor) ? 1 : 0,
+        ]);
+        return redirect('/admin/menuReg')->with('success', 'Menu Updated Successfully');
     }
 
     // Menu Manegement End ------------------------------------------------------------------

@@ -170,6 +170,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
 
     // Menu, Logo Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
+    Route::post('/menuUpdate', [AdminPageController::class, 'updateMenu']);
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
     Route::post('/userLogoRegister', [AdminPageController::class, 'userLogoRegister']);
     Route::post('/AdminLogoRegister', [AdminPageController::class, 'adminLogoRegister']);
