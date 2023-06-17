@@ -22,7 +22,8 @@
 
 <!-- Logo Management Start -->
 <div class="container-fluid px-0">
-
+<form action="/admin/userLogoRegister" method="post" enctype="multipart/form-data">
+    @csrf
     <!-- 1 -->
     <div class="table-responsive mt-4 mb-3">
         <span class="logo-lbl-top">
@@ -35,10 +36,11 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">유저 페이지 로고</td>
                     <td colspan="8" class="table-td-text2 bg-white-cus">
                         <div class="item-flex-center width-10 ml30 mb-2">
-                            <img src="{{ asset('assets/img/logo-light.png') }}" class="width-100">
+                            <img src="{{ asset('storage/images/userlogo/userSiteLogo.png') }}" class="width-100">
                         </div>
-                        <div class="height-52 item-flex-center width-10 ml30 my-1">
-                            <a href="#" class="btn btn5 btn5-1">
+                        <div class="height-52 item-flex-center width-20 ml30 my-1">
+                            <input type="file" class="btn btn5 btn5-1" name="image" id="">
+                            <a class="btn btn5 btn5-1">
                                 첨부파일 등록
                             </a>
                         </div>
@@ -51,13 +53,18 @@
 
     <div class="row mt-3 mb-2">
         <div class="item-flex-end">
-            <a href="#regExitModal" class="btn btn9" data-bs-toggle="modal">
+            <button type="submit" class="btn btn9">
                 수정 완료
-            </a>
+            </button>
+            <!--<a href="#regExitModal" class="btn btn9" data-bs-toggle="modal">
+                수정 완료
+            </a> -->
         </div>
     </div>
-
+</form>
     <!-- 2 -->
+    <form action="/admin/AdminLogoRegister" method="post" enctype="multipart/form-data">
+        @csrf
     <div class="table-responsive my-3">
         <span class="logo-lbl-top">
             권장 사이즈: 100px*58px
@@ -69,13 +76,14 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">어드민 페이지 로고</td>
                     <td colspan="8" class="table-td-text2 bg-white-cus">
                         <div class="item-flex-center width-10 ml30 mb-2 position-rel">
-                            <img src="{{ asset('assets/img/logo-dark.png') }}" class="width-100">
+                            <img src="{{ asset('storage/images/adminlogo/adminSiteLogo.png') }}" class="width-100">
                             <span class="logo-mng-abs-txt">
                                 #212880 배경 위에 올라가는 로고이므로<br>
                                 밝은 색상의 png 이미지 권장함
                             </span>
                         </div>
-                        <div class="height-52 item-flex-center width-10 ml30 my-1">
+                        <div class="height-52 item-flex-center width-20 ml30 my-1">
+                            <input type="file" class="btn btn5 btn5-1" name="image2" id="">
                             <a href="#" class="btn btn5 btn5-1">
                                 첨부파일 등록
                             </a>
@@ -89,13 +97,14 @@
 
     <div class="row mt-3 mb-5">
         <div class="item-flex-end">
-            <a href="#modifyConfirmModal" class="btn btn9" data-bs-toggle="modal">
+            <button type="submit" class="btn btn9">
                 수정 완료
-            </a>
+            </button>
         </div>
     </div>
 
 </div>
+</form>
 
 
 <!-- Modification Confirm Alert Modal -->

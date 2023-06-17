@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Inquiry;
 use App\Models\Direction;
+use App\Models\Gallery;
 use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
@@ -13,6 +14,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPageController extends Controller
 {
@@ -124,7 +126,13 @@ class AdminPageController extends Controller
     public function bannerAdd()
     {
         $existingValues = Banner::pluck('sequence')->toArray();
-        return view('pages.admin.banner.banner-add', compact('existingValues'));
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
+        return view('pages.admin.banner.banner-add', [
+            'count' => $count,
+            'existingValues' => $existingValues,
+        ]);
     }
     public function bannerAddAttachFileReg()
     {
@@ -139,8 +147,14 @@ class AdminPageController extends Controller
     public function bannerModify($id)
     {
         $banner = Banner::findOrFail($id);
+        $existingValues = Banner::pluck('sequence')->toArray();
+        $exposure = Banner::pluck('status')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
+            'count' => $count,
+            'existingValues' => $existingValues,
         ]);
     }
 
@@ -197,8 +211,14 @@ class AdminPageController extends Controller
     public function noticeModify($id)
     {
         $notice = Notice::findOrFail($id);
+        $main_exposure = Notice::pluck('main_exposure')->toArray();
+        $exposure = Notice::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.notice.notice-modification', [
             'notice' => $notice,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -237,9 +257,14 @@ class AdminPageController extends Controller
     public function newsModify($id)
     {
         $news = News::findOrFail($id);
-
+        $main_exposure = News::pluck('main_exposure')->toArray();
+        $exposure = News::pluck('exposure')->toArray();
+        $value = 0;
+        $count = array_count_values($exposure)[$value];
         return view('pages.admin.news.news-modification', [
             'news' => $news,
+            'main_exposure' => $main_exposure,
+            'count' => $count,
         ]);
     }
 
@@ -301,7 +326,8 @@ class AdminPageController extends Controller
     public function resourceModify($id)
     {
         $resource  = Resource::findOrFail($id);
-        return view('pages.admin.resource.resource-modification', compact('resource'));
+        $count = Resource::where('status', 1)->count();
+        return view('pages.admin.resource.resource-modification', compact('resource', 'count'));
     }
 
     // Resource Manegement End ------------------------------------------------------------------
@@ -342,13 +368,181 @@ class AdminPageController extends Controller
     // Inquiry Manegement End ------------------------------------------------------------------
 
 
-    // University Code Manegement Start ------------------------------------------------------------------
+    // Menu Manegement Start ------------------------------------------------------------------
 
-    public function univCodeDashboard()
+    public function menuRegistration()
     {
         $universities = University::with('departments')->paginate(10);
         
         return view('pages.admin.universityCode.univ-code-dashboard',compact('universities'));
+    }
+
+    // Menu Manegement End ------------------------------------------------------------------
+
+
+    // Logo Manegement Start ------------------------------------------------------------------
+
+    public function logoRegistration()
+    {
+        return view('pages.admin.menu.logo-register');
+    }
+
+    // Logo Manegement End ------------------------------------------------------------------
+
+
+    // Statistics Manegement Start ------------------------------------------------------------------
+
+    public function surveyStatDashboard()
+    {
+        return view('pages.admin.statistics.survey-stat-dashboard');
+    }
+    public function surveyStatDetailsView()
+    {
+        return view('pages.admin.statistics.survey-stat-details');
+    }
+    public function surveyItemDashboard()
+    {
+        return view('pages.admin.statistics.survey-item-dashboard');
+    }
+    public function surveyItemRegistration()
+    {
+        return view('pages.admin.statistics.survey-item-register');
+    }
+    public function surveyItemModify()
+    {
+        return view('pages.admin.statistics.survey-item-modification');
+    }
+
+    // Statistics Manegement End ------------------------------------------------------------------
+
+
+    // Score Manegement Start ------------------------------------------------------------------
+
+    public function scoreEvalDashboard()
+    {
+        return view('pages.admin.score.eval-score-dashboard');
+    }
+    public function scoreEvalModify()
+    {
+        return view('pages.admin.score.eval-score-modification');
+    }
+    public function scoreCertifyDashboard()
+    {
+        return view('pages.admin.score.certify-score-dashboard');
+    }
+    public function scoreCertifyModify()
+    {
+        return view('pages.admin.score.certify-score-modification');
+    }
+
+    // Score Manegement End ------------------------------------------------------------------
+
+
+    // Reports Manegement Start ------------------------------------------------------------------
+
+    // Instructor report
+    public function insReportDashboard()
+    {
+        return view('pages.admin.reports.ins-report-dashboard');
+    }
+    public function insReportDetailsView()
+    {
+        return view('pages.admin.reports.ins-report-details');
+    }
+
+    public function userLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
+
+        if ($request->hasFile('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = 'userSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image')->storeAs('public/images/userlogo/', $fileName);
+        }
+    
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
+
+    public function adminLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image2' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
+    
+        if ($request->hasFile('image2')) {
+            $extension = $request->file('image2')->getClientOriginalExtension();
+            $fileName = 'adminSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+    
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image2')->storeAs('public/images/adminlogo/', $fileName);
+        }
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
+    // Logo Manegement End ------------------------------------------------------------------
+
+    // Student report
+    public function stuReportDashboard()
+    {
+        return view('pages.admin.reports.stu-report-dashboard');
+    }
+    public function stuReportDetailsView()
+    {
+        return view('pages.admin.reports.stu-report-details');
+    }
+
+    // Reports Manegement End ------------------------------------------------------------------
+
+
+    // Gallery Manegement Start ------------------------------------------------------------------
+
+    public function galleryDashboard()
+    {
+        $galleries = Gallery::all();
+        return view('pages.admin.gallery.gallery-dashboard',compact('galleries'));
+    }
+    public function galleryRegistration()
+    {
+        return view('pages.admin.gallery.gallery-register');
+    }
+    public function galleryRegistrationComplete()
+    {
+        return view('pages.admin.gallery.gallery-register-complete');
+    }
+    public function galleryDetailsView($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('pages.admin.gallery.gallery-details',compact('gallery'));
+    }
+    public function galleryModify($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('pages.admin.gallery.gallery-modification',compact('gallery'));
+    }
+
+    // Gallery Manegement End ------------------------------------------------------------------
+
+
+
+
+    // University Code Manegement Start ------------------------------------------------------------------
+
+    public function univCodeDashboard()
+    {
+        return view('pages.admin.universityCode.univ-code-dashboard');
     }
     public function univCodeRegistration()
     {
@@ -368,26 +562,6 @@ class AdminPageController extends Controller
     }
 
     // University Code Manegement End ------------------------------------------------------------------
-
-
-    // Menu Manegement Start ------------------------------------------------------------------
-
-    public function menuRegistration()
-    {
-        return view('pages.admin.menu.menu-register');
-    }
-
-    // Menu Manegement End ------------------------------------------------------------------
-
-
-    // Logo Manegement Start ------------------------------------------------------------------
-
-    public function logoRegistration()
-    {
-        return view('pages.admin.logo.logo-register');
-    }
-
-    // Logo Manegement End ------------------------------------------------------------------
 
 
 

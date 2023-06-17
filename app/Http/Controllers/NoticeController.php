@@ -59,7 +59,6 @@ class NoticeController extends Controller
     }
 
     public function noticeFilter(Request $request){
-        //\DB::enableQueryLog();
         $exposure = [];
         switch ($request->input('expose-notice')) {
             case 1:
@@ -80,29 +79,9 @@ class NoticeController extends Controller
 
         $notices = Notice::whereIn('exposure', $exposure)->where(function ($query) use ($searchValue) {
             $query->where('title', 'like', '%' . $searchValue . '%')
-                    ->orWhere('content', 'like', '%' . $searchValue . '%');
+                ->orWhere('content', 'like', '%' . $searchValue . '%');
         })->orderByDesc('id')->paginate(10);
         
-        // $filteredNotices = Notice::query();
-        // if ($request->has('expose-notice')) {
-        //     $exposeNotice = $request->input('expose-notice');
-        //     if ($exposeNotice == 2) {
-        //         $filteredNotices->where('exposure', 0);
-        //     } elseif ($exposeNotice == 3) {
-        //         $filteredNotices->where('exposure', 1);
-        //     }
-        // }
-
-        // if ($request->has('search')) {
-        //     $searchTerm = $request->input('search');
-        //     $filteredNotices->where(function ($query) use ($searchTerm) {
-        //         $query->where('title', 'like', '%' . $searchTerm . '%')
-        //             ->orWhere('content', 'like', '%' . $searchTerm . '%');
-        //     })->orderByDesc('id')->paginate(10);
-        // }
-
-        // $notices = $filteredNotices->orderByDesc('id')->orderByDesc('id')->paginate(10);
-        //return dd(\DB::getQueryLog());
         return view('pages.admin.notice.notice-dashboard',[
             'notices' => $notices,
         ]);

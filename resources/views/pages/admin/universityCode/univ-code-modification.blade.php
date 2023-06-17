@@ -7,7 +7,7 @@
     <div class="page-title-top">
         <div class="rounded">
             <div class="d-flex align-items-center justify-content-between">
-                <h5 class="text-center mb-0">1:1문의 답변 상세</h5>
+                <h5 class="text-center mb-0">학교 코드 관리</h5>
             </div>
         </div>
     </div>
@@ -15,9 +15,12 @@
     <nav aria-label="breadcrumb" class="mb-28">
         <ol class="breadcrumb">
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/univCodeDash') }}">1:1문의 관리</a>
+                <a href="{{ url('admin/univCodeDash') }}">학교 코드 관리</a>
             </li>
-            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">1:1문의 답변 상세</li>
+            <li class="breadcrumb-item breadcrumb-text1">
+                <a href="{{ url('admin/univCodeDetails') }}">학교 코드 상세</a>
+            </li>
+            <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학교 코드 수정</li>
         </ol>
     </nav>
 </div>
