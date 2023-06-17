@@ -387,8 +387,50 @@ class AdminPageController extends Controller
         return view('pages.admin.menu.logo-register');
     }
 
-    // Logo Manegement End ------------------------------------------------------------------
+    public function userLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
 
+        if ($request->hasFile('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = 'userSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image')->storeAs('public/images/userlogo/', $fileName);
+        }
+    
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
+
+    public function adminLogoRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image2' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
+        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
+    
+        if ($request->hasFile('image2')) {
+            $extension = $request->file('image2')->getClientOriginalExtension();
+            $fileName = 'adminSiteLogo'.'.' . $extension;
+            $imagePath = 'public/images/logo/' . $fileName;
+    
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+            $request->file('image2')->storeAs('public/images/adminlogo/', $fileName);
+        }
+        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
+    }
+
+    // Logo Manegement End ------------------------------------------------------------------
 
     // Statistics Manegement Start ------------------------------------------------------------------
 
@@ -450,50 +492,6 @@ class AdminPageController extends Controller
         return view('pages.admin.reports.ins-report-details');
     }
 
-    public function userLogoRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
-        ]);
-        
-        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
-
-        if ($request->hasFile('image')) {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileName = 'userSiteLogo'.'.' . $extension;
-            $imagePath = 'public/images/logo/' . $fileName;
-
-            if (Storage::exists($imagePath)) {
-                Storage::delete($imagePath);
-            }
-            $request->file('image')->storeAs('public/images/userlogo/', $fileName);
-        }
-    
-        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
-    }
-
-    public function adminLogoRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'image2' => 'image|mimes:jpeg,png,jpg,gif',
-        ]);
-        
-        if ($validator->fails()) return redirect('/admin/logoReg')->withErrors($validator)->withInput();
-    
-        if ($request->hasFile('image2')) {
-            $extension = $request->file('image2')->getClientOriginalExtension();
-            $fileName = 'adminSiteLogo'.'.' . $extension;
-            $imagePath = 'public/images/logo/' . $fileName;
-    
-            if (Storage::exists($imagePath)) {
-                Storage::delete($imagePath);
-            }
-            $request->file('image2')->storeAs('public/images/adminlogo/', $fileName);
-        }
-        return redirect('/admin/logoReg')->with('success', 'logo has been added.');
-    }
-    // Logo Manegement End ------------------------------------------------------------------
-
     // Student report
     public function stuReportDashboard()
     {
@@ -536,8 +534,6 @@ class AdminPageController extends Controller
     // Gallery Manegement End ------------------------------------------------------------------
 
 
-
-
     // University Code Manegement Start ------------------------------------------------------------------
 
     public function univCodeDashboard()
@@ -562,7 +558,6 @@ class AdminPageController extends Controller
     }
 
     // University Code Manegement End ------------------------------------------------------------------
-
 
 
     // DashBoard Start ---------------------------------------------------------------------------
