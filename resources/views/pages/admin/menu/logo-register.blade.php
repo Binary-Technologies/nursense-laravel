@@ -39,10 +39,8 @@
                             <img src="{{ asset('storage/images/userlogo/userSiteLogo.png') }}" class="width-100">
                         </div>
                         <div class="height-52 item-flex-center width-20 ml30 my-1">
-                            <input type="file" class="btn btn5 btn5-1" name="image" id="">
-                            <a class="btn btn5 btn5-1">
-                                첨부파일 등록
-                            </a>
+                            <label for="image" class="btn btn5 btn5-1">첨부파일 등록</label>
+                            <input type="file" style="visibility: hidden" name="image" id="image">
                         </div>
                     </td>
                 </tr>
@@ -83,10 +81,8 @@
                             </span>
                         </div>
                         <div class="height-52 item-flex-center width-20 ml30 my-1">
-                            <input type="file" class="btn btn5 btn5-1" name="image2" id="">
-                            <a href="#" class="btn btn5 btn5-1">
-                                첨부파일 등록
-                            </a>
+                            <label for="image2" class="btn btn5 btn5-1">첨부파일 등록</label>
+                            <input type="file" style="visibility: hidden" name="image2" id="image2">
                         </div>
                     </td>
                 </tr>
