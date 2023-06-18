@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\University;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -139,126 +140,42 @@ class UserController extends Controller
     }
 
     public function studentFilter(Request $request){
-      
-        $school = [];
-        switch ($request->input('university')) {
-            case 1:
-                $school = [1,2,3,4,5];
-                break;
-            case 2:
-                $school = [2];
-                break;
-            case 3:
-                $school = [3];
-                break;
-            case 4:
-                $school = [4];
-                break;
-            case 5:
-                $school = [5];
-                break;
-            default:
-                $school = [1,2,3,4,5];
-                break;
-        }
-
-        $department = [];
-        switch ($request->input('major')) {
-            case 1:
-                $department = [1,2,3,4,5];
-                break;
-            case 2:
-                $department = [2];
-                break;
-            case 3:
-                $department = [3];
-                break;
-            case 4:
-                $department = [4];
-                break;
-            case 5:
-                $department = [5];
-                break;
-            default:
-                $department = [1,2,3,4,5];
-                break;
-        }
         $date = null;
         if ($request->input('reg-date') != '') $date = Carbon::parse($request->input('reg-date'));
+
         $searchValue = $request->input('search');
         $order = $request->input('criteria');
-        $users = User::whereIn('uni_id',$school)->whereIn('major_id',$department)->where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%')
-                        ->orWhere('email', 'like', '%' . $searchValue . '%');
-                })->where(function ($query) use ($date) {
-                    if($date == null) $query->whereNotNull('created_at');
-                    else $query->whereDate('created_at','=',$date);
-                })->where('role', 'student')->orderBy($order)->paginate(10);
+
+        $userQuery = User::where(function ($query) use ($searchValue) {
+                                $query->where('name', 'like', '%' . $searchValue . '%')
+                                    ->orWhere('email', 'like', '%' . $searchValue . '%');
+                            })->where('role', 'student')->with('university:id,name', 'major:id,name');
   
-        return view('pages.admin.member.student-dashboard',[
-            'users' => $users,
-        ]);
+        if ($request->input('university') > 0) $userQuery->where('uni_id',$request->input('university'));
+        if ($request->input('major') > 0) $userQuery->where('major_id',$request->input('major'));
+        if ($date != null) $userQuery->whereDate('created_at','=',$date);
+
+        $users = $userQuery->orderBy($order)->paginate(10);
+        $unis = University::with('departments')->get();
+        return view('pages.admin.member.student-dashboard', compact('users','unis'));
       }
 
       public function instructorFilter(Request $request){
-      
-        $university = [];
-        switch ($request->input('university')) {
-            case 1:
-                $university = [1,2,3,4,5];
-                break;
-            case 2:
-                $university = [2];
-                break;
-            case 3:
-                $university = [3];
-                break;
-            case 4:
-                $university = [4];
-                break;
-            case 5:
-                $university = [5];
-                break;
-            default:
-                $university = [1,2,3,4,5];
-                break;
-        }
-
-        $major = [];
-        switch ($request->input('major')) {
-            case 1:
-                $major = [1,2,3,4,5];
-                break;
-            case 2:
-                $major = [2];
-                break;
-            case 3:
-                $major = [3];
-                break;
-            case 4:
-                $major = [4];
-                break;
-            case 5:
-                $major = [5];
-                break;
-            default:
-                $major = [1,2,3,4,5];
-                break;
-        }
         $date = null;
         if ($request->input('reg-date') != '') $date = Carbon::parse($request->input('reg-date'));
         $searchValue = $request->input('search');
         $order = $request->input('criteria');
-        $users = User::whereIn('uni_id',$university)->whereIn('major_id',$major)->where(function ($query) use ($searchValue) {
-                    $query->where('name', 'like', '%' . $searchValue . '%')
-                        ->orWhere('email', 'like', '%' . $searchValue . '%');
-                })->where(function ($query) use ($date) {
-                    if($date == null) $query->whereNotNull('created_at');
-                    else $query->whereDate('created_at','=',$date);
-                })->where('role', 'instructor')->orderBy($order)->paginate(10);
-  
-        return view('pages.admin.member.instructor-dashboard',[
-            'users' => $users,
-        ]);
+        $userQuery = User::where(function ($query) use ($searchValue) {
+                            $query->where('name', 'like', '%' . $searchValue . '%')
+                                ->orWhere('email', 'like', '%' . $searchValue . '%');
+                        })->where('role', 'instructor')->with('university:id,name', 'major:id,name');
+
+        if ($request->input('university') > 0) $userQuery->where('uni_id',$request->input('university'));
+        if ($request->input('major') > 0) $userQuery->where('major_id',$request->input('major'));
+        if ($date != null) $userQuery->whereDate('created_at','=',$date);
+
+        $users = $userQuery->orderBy($order)->paginate(10);
+        $unis = University::with('departments')->get();
+        return view('pages.admin.member.instructor-dashboard', compact('users','unis'));
       }
 }

@@ -24,32 +24,21 @@ class AdminPageController extends Controller
     // Instructor Mng. Start --------------------------------------------------------------
     public function instructorDashboard()
     {
-        $searchValue = request('search');
-        if (request('search')) {
-            $users = User::where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%');
-            })::where('role', 'instructor')->paginate(10);
-        } else {
-            $users = User::where('role', 'instructor')->paginate(10);
-        }
-
-        return view('pages.admin.member.instructor-dashboard', [
-            'users' => $users,
-        ]);
+        $users = User::where('role', 'instructor')->with('university:id,name', 'major:id,name')->paginate(10);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-dashboard', compact('users', 'unis'));
     }
 
-    public function viewInstructor(User $user)
+    public function viewInstructor($id)
     {
-        return view('pages.admin.member.instructor-view', [
-            'user' => $user,
-        ]);
+        $user = User::with('university', 'major')->find($id);
+        return view('pages.admin.member.instructor-view', compact('user'));
     }
 
     public function viewInstructorEdit(User $user)
     {
-        return view('pages.admin.member.instructor-view-edit', [
-            'user' => $user,
-        ]);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-view-edit', compact('user', 'unis'));
     }
 
     public function viewInstructorEditDp()
@@ -59,38 +48,28 @@ class AdminPageController extends Controller
 
     public function registerInstructor()
     {
-        return view('pages.admin.member.instructor-register');
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-register', compact('unis'));
     }
 
     // Student Mng. Start --------------------------------------------------------------
     public function studentDashboard()
     {
-        $searchValue = request('search');
-        if (request('search')) {
-            $users = User::where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%');
-            })::where('role', 'student')->paginate(10);
-        } else {
-            $users = User::where('role', 'student')->paginate(10);
-        }
-
-        return view('pages.admin.member.student-dashboard', [
-            'users' => $users,
-        ]);
+        $users = User::where('role', 'student')->with('university:id,name', 'major:id,name')->paginate(10);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-dashboard', compact('users', 'unis'));
     }
 
-    public function viewStudent(User $user)
+    public function viewStudent($id)
     {
-        return view('pages.admin.member.student-view', [
-            'user' => $user,
-        ]);
+        $user = User::with('university', 'major')->find($id);
+        return view('pages.admin.member.student-view', compact('user'));
     }
 
     public function viewStudentEdit(User $user)
     {
-        return view('pages.admin.member.student-view-edit', [
-            'user' => $user,
-        ]);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-view-edit', compact('user', 'unis'));
     }
 
     public function viewStudentEditDp()
@@ -100,7 +79,8 @@ class AdminPageController extends Controller
 
     public function registerStudent()
     {
-        return view('pages.admin.member.student-register');
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-register', compact('unis'));
     }
     // Member Management End -------------------------------------------------------------------
 
@@ -519,7 +499,7 @@ class AdminPageController extends Controller
 
     public function galleryDashboard()
     {
-        $galleries = Gallery::all();
+        $galleries = Gallery::paginate(10);
         return view('pages.admin.gallery.gallery-dashboard',compact('galleries'));
     }
     public function galleryRegistration()
@@ -548,7 +528,8 @@ class AdminPageController extends Controller
 
     public function univCodeDashboard()
     {
-        return view('pages.admin.universityCode.univ-code-dashboard');
+        $universities = University::paginate(10);
+        return view('pages.admin.universityCode.univ-code-dashboard', compact('universities'));
     }
     public function univCodeRegistration()
     {

@@ -466,10 +466,14 @@
         </nav>
 
         <div class="log-out-btn">
-            <a href="#logOutModal" data-bs-toggle="modal" class="item-flex-start">
+            <a class="item-flex-start" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
                 <span class="me-2"><i class='far fa-arrow-alt-circle-right'></i></span>
                 <span>로그아웃</span>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </div>
 
         <!-- Log Out Alert Modal -->

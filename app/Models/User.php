@@ -97,4 +97,14 @@ class User extends Authenticatable
             $user->password = Hash::make($password);
         });
     }
+
+    public function university()
+    {
+        return $this->belongsTo(University::class, 'uni_id');
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Department::class, 'major_id');
+    }
 }

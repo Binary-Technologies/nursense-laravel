@@ -77,11 +77,11 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학교</label>
-                                <p class="ttl-p1">{{$user->uni_id}}</p>
+                                <p class="ttl-p1">{{ isset($user->university) ? $user->university->name : '-' }}</p>
                             </div>
                             <div class="col-xl-6">
                                 <label class="ttl-lbl1 pt-3 mb-1">학과</label>
-                                <p class="ttl-p1">{{$user->major_id}}</p>
+                                <p class="ttl-p1">{{ isset($user->major) ? $user->major->name : '-' }}</p>
                             </div>
                             <div class="col-xl-12">
                                 <div class="border-b-cus2"></div>

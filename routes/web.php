@@ -96,7 +96,7 @@ Route::middleware('auth:web')->group(function () {
 Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
-    Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
+    Route::get('/insAccData/{id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
@@ -105,7 +105,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
 
     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('studentDash');
-    Route::get('/stuAccData/{user:id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
+    Route::get('/stuAccData/{id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
     Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
