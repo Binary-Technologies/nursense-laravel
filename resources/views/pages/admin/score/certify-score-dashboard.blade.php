@@ -22,9 +22,7 @@
 
 <!-- Score Management Start -->
 <div class="container-fluid px-0">
-
     <div class="rounded pt-4"></div>
-
     <div class="table-responsive pt-4 mb-3">
 
         <!-- 1 -->
@@ -33,7 +31,6 @@
         </div>
         <table class="table align-middle table-hover mb-5">
             <tbody class="text-center">
-
                 <tr class="table-head-2">
                     <td colspan="10" class="table-td-text1 bg-td height-30 text-left">
                         <span class="ms-5">
@@ -44,11 +41,10 @@
                 <tr class="table-head-3">
                     <td class="ps-5">
                         <div class="item-flex-start ps-4 py-3">
-                            80점
+                            {{ $score->cutoff }}점
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
 
@@ -60,18 +56,16 @@
         </div>
         <table class="table align-middle table-hover">
             <tbody class="text-center">
-
                 <tr class="table-head-1">
                     <td scope="row" class="table-td-text1 bg-td height-52">수료증 설명</td>
                     <td colspan="8" class="table-td-text2 bg-white-cus">
                         <div class="item-flex-align-start ps-4 pe-5 py-3">
                             <label class="lbl-y2 pe-5">
-                                가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다. 가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다. 가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
+                                {{ $score->cert_explanation }}
                             </label>
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
 

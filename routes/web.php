@@ -185,8 +185,10 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Score Management
     Route::get('/scoreEvalDash', [AdminPageController::class, 'scoreEvalDashboard'])->name('scoreEvalDash');
     Route::get('/scoreEvalUpdate', [AdminPageController::class, 'scoreEvalModify'])->name('scoreEvalUpdate');
+    Route::post('/scoreUpdate', [AdminPageController::class, 'scoreUpdate']);
     Route::get('/scoreCertifyDash', [AdminPageController::class, 'scoreCertifyDashboard'])->name('scoreCertifyDash');
     Route::get('/scoreCertifyUpdate', [AdminPageController::class, 'scoreCertifyModify'])->name('scoreCertifyUpdate');
+    Route::post('/certificateUpdate', [AdminPageController::class, 'certificateUpdate']);
 
     // Report Management -Instructor Mng.
     Route::get('/insReportDash', [AdminPageController::class, 'insReportDashboard'])->name('insReportDash');

@@ -29,55 +29,57 @@
     <div class="rounded pt-4"></div>
 
     <div class="table-responsive pt-4 mb-3">
-
+        <form method="post" id="certificate-update-form" action="/admin/certificateUpdate">
+        @csrf
         <!-- 1 -->
-        <div class="mt-3 mb-4">
-            <h4 class="ttl-acc-blue position-rel title-border-t">수료증 발급 커트라인</h4>
-        </div>
-        <table class="table align-middle table-hover mb-5">
-            <tbody class="text-center">
+            <div class="mt-3 mb-4">
+                <h4 class="ttl-acc-blue position-rel title-border-t">수료증 발급 커트라인</h4>
+            </div>
+            <table class="table align-middle table-hover mb-5">
+                <tbody class="text-center">
 
-                <tr class="table-head-2">
-                    <td colspan="10" class="table-td-text1 bg-td height-30 text-left">
-                        <span class="ms-5">
-                            * 수료증 발급 커트라인
-                        </span>
-                    </td>
-                </tr>
-                <tr class="table-head-3">
-                    <td class="ps-4">
-                        <div class="height-52 width-20 item-flex-start mx-4 my-3 position-rel">
-                            <input type="text" class="form-control val-text" name="" id="" placeholder="" value="80" aria-describedby="Input">
-                            <span class="score-text1">점</span>
-                        </div>
-                    </td>
-                </tr>
+                    <tr class="table-head-2">
+                        <td colspan="10" class="table-td-text1 bg-td height-30 text-left">
+                            <span class="ms-5">
+                                * 수료증 발급 커트라인
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="table-head-3">
+                        <td class="ps-4">
+                            <div class="height-52 width-20 item-flex-start mx-4 my-3 position-rel">
+                                <input type="text" class="form-control val-text" name="cutoff" id="" placeholder="" value="{{ $score->cutoff }}" aria-describedby="Input">
+                                <span class="score-text1">점</span>
+                            </div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        <div class="mb-4"></div>
+            <div class="mb-4"></div>
 
-        <!-- 2 -->
-        <div class="mt-5 mb-4">
-            <h4 class="ttl-acc-blue position-rel title-border-t">수료증 설명</h4>
-        </div>
-        <table class="table align-middle table-hover">
-            <tbody class="text-center">
+            <!-- 2 -->
+            <div class="mt-5 mb-4">
+                <h4 class="ttl-acc-blue position-rel title-border-t">수료증 설명</h4>
+            </div>
+            <table class="table align-middle table-hover">
+                <tbody class="text-center">
 
-                <tr class="table-head-1">
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 수료증 설명</td>
-                    <td colspan="8" class="table-td-text2 bg-white-cus">
-                        <div class="item-flex-start mx-4 my-3">
-                            <textarea class="form-control val-text py-4 px-4" name="" id="" placeholder="" value="" rows="2" aria-describedby="Input">가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다. 가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다. 가지에 만물은 수 앞이 맺어, 들어 그리하였는가? 우는 인생을 굳세게 황금시대다. 피가 인생에 그들은 말이다.
-                            </textarea>
-                        </div>
-                    </td>
-                </tr>
+                    <tr class="table-head-1">
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 수료증 설명</td>
+                        <td colspan="8" class="table-td-text2 bg-white-cus">
+                            <div class="item-flex-start mx-4 my-3">
+                                <textarea class="form-control val-text py-4 px-4" name="cert_explanation" id="" placeholder="" value="" rows="2" aria-describedby="Input">
+                                    {{ $score->cert_explanation }}
+                                </textarea>
+                            </div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </form>
     </div>
 
     <div class="row mt-4 mb-5">
@@ -109,7 +111,8 @@
                             <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                         </div>
                         <div class="mx-1">
-                            <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+                            <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal" onclick="event.preventDefault();
+                            document.getElementById('certificate-update-form').submit();">수정</button>
                         </div>
                     </div>
                 </div>

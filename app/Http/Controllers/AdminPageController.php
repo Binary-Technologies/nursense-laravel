@@ -12,6 +12,7 @@ use App\Models\Notice;
 use App\Models\University;
 use App\Models\User;
 use App\Models\Menu;
+use App\Models\Score;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -452,21 +453,43 @@ class AdminPageController extends Controller
 
     public function scoreEvalDashboard()
     {
-        return view('pages.admin.score.eval-score-dashboard');
+        $score = Score::first();
+        return view('pages.admin.score.eval-score-dashboard', compact('score'));
     }
     public function scoreEvalModify()
     {
-        return view('pages.admin.score.eval-score-modification');
+        $score = Score::first();
+        return view('pages.admin.score.eval-score-modification', compact('score'));
+    }
+    public function scoreUpdate(Request $request)
+    {
+        $score = Score::first();
+        $score->update([
+            'pre_learning' => request('pre_learning'),
+            'main_study' => request('main_study'),
+            'report' => request('report'),
+        ]);
+        return redirect('/admin/scoreEvalDash')->with('success', 'Score Updated Successfully');
     }
     public function scoreCertifyDashboard()
     {
-        return view('pages.admin.score.certify-score-dashboard');
+        $score = Score::first();
+        return view('pages.admin.score.certify-score-dashboard', compact('score'));
     }
     public function scoreCertifyModify()
     {
-        return view('pages.admin.score.certify-score-modification');
+        $score = Score::first();
+        return view('pages.admin.score.certify-score-modification', compact('score'));
     }
-
+    public function certificateUpdate(Request $request)
+    {
+        $score = Score::first();
+        $score->update([
+            'cutoff' => request('cutoff'),
+            'cert_explanation' => request('cert_explanation'),
+        ]);
+        return redirect('/admin/scoreCertifyDash')->with('success', 'Score Updated Successfully');
+    }
     // Score Manegement End ------------------------------------------------------------------
 
 
