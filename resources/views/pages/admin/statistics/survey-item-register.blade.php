@@ -29,46 +29,43 @@
     <div class="table-responsive pt-4 mb-3">
         <table class="table align-middle table-hover">
             <tbody class="text-center">
-                <tr class="table-head-2">
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="title" id="title" placeholder="제목을 입력하세요." value="" aria-describedby="Statistics Item Title Input">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="table-head-3">
-                    <td scope="row" class="table-td-text1 bg-td height-52">* 문항</td>
-                    <td colspan="8" class="table-td-text2">
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q1" id="q1" placeholder="문항을 입력하세요.">
+                <form method="post" id="survey-add-form" action="/admin/surveyItemReg">
+                @csrf
+                    <tr class="table-head-2">
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
+                        <td colspan="8" class="table-td-text2">
+                            <div class="height-52 item-flex-start width-50 ml30 my-3">
+                                <input type="text" class="form-control val-text" name="title" id="title" placeholder="제목을 입력하세요." value="" aria-describedby="Statistics Item Title Input">
                             </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q2" id="q2" placeholder="문항을 입력하세요.">
+                        </td>
+                    </tr>
+                    <tr class="table-head-3">
+                        <td scope="row" class="table-td-text1 bg-td height-52">* 문항</td>
+                        <td colspan="8" class="table-td-text2" id="questions-container">
+                            <div class="height-52 item-flex-start ml30 my-3">
+                                <div class="height-52">
+                                    <input type="text" class="form-control val-text file-up-bar-custom2" name="questions[]" id="q1" placeholder="문항을 입력하세요.">
+                                </div>
+                                <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
                             </div>
-                            <a href="#deleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start width-10 ml30 my-3">
-                            <a href="#" class="btn btn5 btn5-1">
-                                문항 추가
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-
+                            <div class="height-52 item-flex-start width-10 ml30 my-3">
+                                <button type="button" id="add-question" class="btn btn5 btn5-1 ">
+                                    문항 추가
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
             </tbody>
         </table>
     </div>
 
     <div class="row mt-4 mb-5">
         <div class="item-flex-end">
-            <a href="#regCompleteModal" class="btn btn11" data-bs-toggle="modal">
+            <button class="btn btn11" data-bs-toggle="modal" onclick="event.preventDefault();
+            document.getElementById('survey-add-form').submit();">
                 추가 완료
-            </a>
+            </button>
             <!-- For Active Button -->
             <!-- <a href="#regCompleteModal" class="btn btn9" data-bs-toggle="modal">
                 추가 완료
@@ -158,4 +155,39 @@
 </div>
 <!-- Statistics Item Management End -->
 
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var addQuestionBtn = document.getElementById('add-question');
+        var questionsContainer = document.getElementById('questions-container');
+        var qCount = 1
+
+        addQuestionBtn.addEventListener('click', function() {
+            if(qCount < 8){
+                var newQuestionInput = document.createElement('div');
+                newQuestionInput.innerHTML = `
+                    <div class="height-52 item-flex-start ml30 my-3">
+                        <div class="height-52">
+                            <input type="text" class="form-control val-text file-up-bar-custom2" name="questions[]" placeholder="문항을 입력하세요." >
+                        </div>
+                        <button type="button" class="btn btn12 ms-4 remove-question">학과 삭제</button>
+                    </div>
+                `;
+
+                questionsContainer.insertBefore(newQuestionInput, addQuestionBtn.parentNode);
+
+                var removeButtons = questionsContainer.getElementsByClassName('remove-question');
+                for (var i = 0; i < removeButtons.length; i++) {
+                    removeButtons[i].addEventListener('click', function() {
+                        this.parentNode.remove();
+                        qCount--;
+                    });
+                }
+                qCount++;
+            }
+            if(qCount == 8) addQuestionBtn.classList.add('opacity-50');
+        });
+    });
+</script>
 @endsection

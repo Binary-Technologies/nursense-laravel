@@ -58,96 +58,24 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($surveys as $survey)
                 <tr>
-                    <td>1</td>
-                    <td class="text-left">수업에 얼마나 만족하시나요?</td>
+                    <td>{{ $survey->id }}</td>
+                    <td class="text-left">{{ $survey->title }}</td>
                     <td class="text-left">
-                        <div>매우 만족</div>
-                        <div>만족</div>
-                        <div>보통</div>
-                        <div>불만족</div>
-                        <div>매우 불만족</div>
+                        @foreach (json_decode($survey->questions) as $question)
+                        <div>{{ $question }}</div>
+                        @endforeach
                     </td>
                     <td>
                         <div class="height-52 item-flex-center">
-                            <a href="{{ route('surveyItemUpdate') }}" class="btn btn5 btn5-1 width-70">
+                            <a href="{{ url('/admin/surveyItemUpdate', ['surveyItem' => $survey->id]) }}" class="btn btn5 btn5-1 width-70">
                                 수정
                             </a>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="text-left">수업에 얼마나 만족하시나요?</td>
-                    <td class="text-left">
-                        <div>매우 만족</div>
-                        <div>만족</div>
-                        <div>보통</div>
-                        <div>불만족</div>
-                        <div>매우 불만족</div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('surveyItemUpdate') }}" class="btn btn5 btn5-1 width-70">
-                                수정
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="text-left">수업에 얼마나 만족하시나요?</td>
-                    <td class="text-left">
-                        <div>매우 만족</div>
-                        <div>만족</div>
-                        <div>보통</div>
-                        <div>불만족</div>
-                        <div>매우 불만족</div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('surveyItemUpdate') }}" class="btn btn5 btn5-1 width-70">
-                                수정
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="text-left">수업에 얼마나 만족하시나요?</td>
-                    <td class="text-left">
-                        <div>매우 만족</div>
-                        <div>만족</div>
-                        <div>보통</div>
-                        <div>불만족</div>
-                        <div>매우 불만족</div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('surveyItemUpdate') }}" class="btn btn5 btn5-1 width-70">
-                                수정
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="text-left">수업에 얼마나 만족하시나요?</td>
-                    <td class="text-left">
-                        <div>매우 만족</div>
-                        <div>만족</div>
-                        <div>보통</div>
-                        <div>불만족</div>
-                        <div>매우 불만족</div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-center">
-                            <a href="{{ route('surveyItemUpdate') }}" class="btn btn5 btn5-1 width-70">
-                                수정
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
 
@@ -156,27 +84,7 @@
 </div>
 
 <div class="item-flex-end mb-5">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&lt;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d pagination_link_active" href="">1</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">2</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">3</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">4</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">5</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">6</a></li>
-            <li class="page-item"><a class="page-link pgln-custom pagination_link form-text-d" href="#">7</a></li>
-            <li class="page-item">
-                <a class="page-link pgln-custom pagination_link_arrows" href="#" aria-label="Next">
-                    <span aria-hidden="true">&gt;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    {{ $surveys->links('vendor.pagination.default') }}
 </div>
 
 <!-- Confirmation Alert Modal -->

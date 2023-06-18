@@ -148,7 +148,8 @@ class UserController extends Controller
 
         $userQuery = User::where(function ($query) use ($searchValue) {
                                 $query->where('name', 'like', '%' . $searchValue . '%')
-                                    ->orWhere('email', 'like', '%' . $searchValue . '%');
+                                    ->orWhere('std_id', 'like', '%' . $searchValue . '%')
+                                    ->orWhere('inst_id', 'like', '%' . $searchValue . '%');
                             })->where('role', 'student')->with('university:id,name', 'major:id,name');
   
         if ($request->input('university') > 0) $userQuery->where('uni_id',$request->input('university'));
@@ -167,7 +168,8 @@ class UserController extends Controller
         $order = $request->input('criteria');
         $userQuery = User::where(function ($query) use ($searchValue) {
                             $query->where('name', 'like', '%' . $searchValue . '%')
-                                ->orWhere('email', 'like', '%' . $searchValue . '%');
+                                ->orWhere('std_id', 'like', '%' . $searchValue . '%')
+                                ->orWhere('inst_id', 'like', '%' . $searchValue . '%');
                         })->where('role', 'instructor')->with('university:id,name', 'major:id,name');
 
         if ($request->input('university') > 0) $userQuery->where('uni_id',$request->input('university'));

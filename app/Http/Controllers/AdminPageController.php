@@ -13,6 +13,7 @@ use App\Models\University;
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\Score;
+use App\Models\SurveyItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -435,15 +436,17 @@ class AdminPageController extends Controller
     }
     public function surveyItemDashboard()
     {
-        return view('pages.admin.statistics.survey-item-dashboard');
+        $surveys = SurveyItem::orderByDesc('id')->paginate(10);
+        return view('pages.admin.statistics.survey-item-dashboard', compact('surveys'));
     }
     public function surveyItemRegistration()
     {
         return view('pages.admin.statistics.survey-item-register');
     }
-    public function surveyItemModify()
+    public function surveyItemModify($id)
     {
-        return view('pages.admin.statistics.survey-item-modification');
+        $survey = SurveyItem::findOrFail($id);
+        return view('pages.admin.statistics.survey-item-modification', compact('survey'));
     }
 
     // Statistics Manegement End ------------------------------------------------------------------

@@ -144,10 +144,8 @@
 
 @endsection
 
-
 @section('scripts')
-
-<script>
+<script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         var addDepartmentButton = document.getElementById('add-department');
         var departmentsContainer = document.getElementById('departments-container');
@@ -174,5 +172,4 @@
         });
     });
 </script>
-
 @endsection

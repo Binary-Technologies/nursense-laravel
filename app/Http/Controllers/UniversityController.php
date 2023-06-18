@@ -7,14 +7,12 @@ use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-
 class UniversityController extends Controller
 {
     public function universityRegister(Request $request){
         $validate = Validator::make($request->all(), [
             'univ-title' => 'required',
             'univ-code' => 'required',
-            
         ]);
 
         if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();

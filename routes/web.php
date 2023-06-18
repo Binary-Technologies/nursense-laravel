@@ -17,6 +17,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SurveyController;
 use App\Models\University;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
@@ -180,7 +181,9 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/surveyStatDetails', [AdminPageController::class, 'surveyStatDetailsView'])->name('surveyStatDetails');
     Route::get('/surveyItemDash', [AdminPageController::class, 'surveyItemDashboard'])->name('surveyItemDash');
     Route::get('/surveyItemReg', [AdminPageController::class, 'surveyItemRegistration'])->name('surveyItemReg');
-    Route::get('/surveyItemUpdate', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+    Route::post('/surveyItemReg', [SurveyController::class, 'surveyItemRegister']);
+    Route::get('/surveyItemUpdate/{surveyItem:id}', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+    Route::post('/surveyItemUpdate/{surveyItem:id}', [SurveyController::class, 'surveyItemUpdate']);
 
     // Score Management
     Route::get('/scoreEvalDash', [AdminPageController::class, 'scoreEvalDashboard'])->name('scoreEvalDash');

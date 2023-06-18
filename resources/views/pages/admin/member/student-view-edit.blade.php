@@ -19,7 +19,7 @@
                 <a href="{{ url('admin/studentDash') }}">학생 계정 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/stuAccData') }}">학생 계정 상세</a>
+                <a href="{{ url('admin/stuAccData', ['user' => $user->id]) }}">학생 계정 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학생 계정 수정</li>
         </ol>
