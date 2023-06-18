@@ -110,7 +110,7 @@ class AdminPageController extends Controller
     {
         $existingValues = Banner::pluck('sequence')->toArray();
         $exposure = Banner::pluck('status')->toArray();
-        $value = 0;
+        $value = 1;
         $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-add', [
             'count' => $count,

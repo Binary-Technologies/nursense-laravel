@@ -131,13 +131,8 @@
                     <td>{{$user->id}}</td>
                     <td><a href="{{ route('insAccData', $user->id) }}">{{$user->name}}</a> </td>
                     <td>{{$user->inst_id}}</td>
-                    <td>
-                        @if($user->active_status == 1)Active 
-
-                        @else Not Active
-                        
-                        @endif
-                    
+                    <td style="color: {{ $user->active_status == 1 ? 'Black' : 'Red' }}">
+                        {{ $user->active_status == 1 ? 'Active' : 'Not Active' }}                    
                     </td>
                     <td>{{ isset($user->university) ? $user->university->name : '-' }}</td>
                     <td>{{ isset($user->major) ? $user->major->name : '-' }}</td>

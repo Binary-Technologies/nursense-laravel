@@ -6,7 +6,7 @@
                 <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
                                             explode('/', Request::url())[3] == 'info' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/info">
+                    <a class="nav-link px-3" href="/muve/muve">
                         <span class="footer_font">회사소개</span>
                         <span class="sr-only">(current)</span>
                     </a>
@@ -30,7 +30,7 @@
                 <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
                                             explode('/', Request::url())[3] == 'info' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/info">
+                    <a class="nav-link px-3" href="/info/notice">
                         <span class="footer_font">공지사항</span>
                         <span class="sr-only">(current)</span>
                     </a>
@@ -46,7 +46,7 @@
                 <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
                                             explode('/', Request::url())[4] == 'inquiry' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/inquiry">
+                    <a class="nav-link px-3" href="/info/inquiry">
                         <span class="footer_font">1:1문의</span>
                         <span class="sr-only">(current)</span>
                     </a>
@@ -54,7 +54,7 @@
                 <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
                                             explode('/', Request::url())[3] == 'mystudy' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/mystudy">
+                    <a class="nav-link px-3" href="/profile/study">
                         <span class="footer_font">수료증출력</span>
                         <span class="sr-only">(current)</span>
                     </a>
@@ -62,7 +62,7 @@
                 <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
                                             explode('/', Request::url())[4] == 'location' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/location">
+                    <a class="nav-link px-3" href="/info/location">
                         <span class="footer_font">찾아오시는길</span>
                         <span class="sr-only">(current)</span>
                     </a>

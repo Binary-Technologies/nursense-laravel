@@ -128,12 +128,8 @@
                     <td>{{$user->id}}</td>
                     <td><a href="{{ route('stuAccData', $user->id) }}">{{$user->name}}</a> </td>
                     <td>{{$user->std_id}}</td>
-                    <td>
-                        @if($user->active_status == 1)Learnable 
-
-                        @else Not Learnable
-                        
-                        @endif    
+                    <td style="color: {{ $user->active_status == 1 ? 'Black' : 'Red' }}">
+                        {{ $user->active_status == 1 ? 'Learnable' : 'Not Learnable' }}                    
                     </td>
                     <td>{{ isset($user->university) ? $user->university->name : '-' }}</td>
                     <td>{{ isset($user->major) ? $user->major->name : '-' }}</td>
