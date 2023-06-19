@@ -179,5 +179,45 @@ class UserController extends Controller
         $users = $userQuery->orderBy($order)->paginate(10);
         $unis = University::with('departments')->get();
         return view('pages.admin.member.instructor-dashboard', compact('users','unis'));
-      }
+    }
+
+    public function instructorUpload(Request $request){
+        $filename = $request->file('insData')->storeAs('public/uploads', 'instructors.csv');
+        if (($handle = fopen('storage/uploads/instructors.csv', 'r')) !== false){
+            while (($row = fgetcsv($handle, 1000, ",")) !== false && $row[0] != null){
+                User::create([
+                    'name' => $row[0],
+                    'pno' => $row[1],
+                    'email' => $row[2],
+                    'occupation' => $row[3],
+                    'uni_id' => $row[4],
+                    'major_id' => $row[5],
+                    'role' => 'instructor',
+                    'password' => '',
+                ]);
+            }
+            fclose($handle);
+        }
+        return redirect('instructorDash')->with('success', 'Instructor data has been uploaded.');
+    }
+
+    public function studentUpload(Request $request){
+        $filename = $request->file('stdData')->storeAs('public/uploads', 'students.csv');
+        if (($handle = fopen('storage/uploads/students.csv', 'r')) !== false){
+            while (($row = fgetcsv($handle, 1000, ",")) !== false && $row[0] != null){
+                User::create([
+                    'name' => $row[0],
+                    'pno' => $row[1],
+                    'email' => $row[2],
+                    'occupation' => $row[3],
+                    'uni_id' => $row[4],
+                    'major_id' => $row[5],
+                    'role' => 'student',
+                    'password' => '',
+                ]);
+            }
+            fclose($handle);
+        }
+        return redirect('instructorDash')->with('success', 'Instructor data has been uploaded.');
+    }
 }

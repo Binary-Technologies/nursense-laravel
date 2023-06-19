@@ -60,7 +60,11 @@
                                         <div class="img-up-box-inner">
                                             <div class="mt-1">
                                                 <div class="item-flex-align-center">
-                                                    <button class="btn btn9 mt-2">파일 선택</button>
+                                                    <form action="/admin/studentUpload" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                        <input type="file" name="stdData" id="stdData">
+                                                        <button type="submit" class="btn btn9 mt-2">파일 선택</button>
+                                                    </form>
                                                 </div>
                                                 <p class="modal-inner-text2 text-center mb-0">또는 여기로 파일을 끌어와주세요.</p>
                                             </div>

@@ -62,7 +62,7 @@
 </form>
     <!-- 2 -->
     <form action="/admin/AdminLogoRegister" method="post" enctype="multipart/form-data">
-        @csrf
+    @csrf
     <div class="table-responsive my-3">
         <span class="logo-lbl-top">
             권장 사이즈: 100px*58px

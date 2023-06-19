@@ -101,6 +101,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
+    Route::post('/instructorUpload', [UserController::class, 'instructorUpload']);
     Route::post('/instructorDash/filterData', [UserController::class, 'instructorFilter']);
 
 
@@ -111,6 +112,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
     Route::post('/studentDash/filterData', [UserController::class, 'studentFilter']);
+    Route::post('/studentUpload', [UserController::class, 'studentUpload']);
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
