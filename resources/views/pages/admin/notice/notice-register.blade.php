@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('dashboardContent')
+@include('includes.messages')
+
 <div class="container-fluid border-b1 px-0">
     <div class="page-title-top">
         <div class="rounded">

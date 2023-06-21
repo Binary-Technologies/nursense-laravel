@@ -19,7 +19,7 @@
                 <a href="{{ url('admin/studentDash') }}">학생 계정 관리</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text1">
-                <a href="{{ url('admin/stuAccData') }}">학생 계정 상세</a>
+                <a href="{{ url('admin/stuAccData', ['user' => $user->id]) }}">학생 계정 상세</a>
             </li>
             <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">학생 계정 수정</li>
         </ol>
@@ -77,24 +77,20 @@
                         <!-- University Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="university">학교</label>
-                            <select class="form-select form-text-d fields-height1" value="{{$user->scl_id}}" name="university" id="university" aria-label="University Selection">
-                                <option value="1" selected>경북대학교</option>
-                                <option value="2">가톨릭상지대학교</option>
-                                <option value="3">경북과학대학교</option>
-                                <option value="4">경북대학교</option>
-                                <option value="5">경북보건대학교</option>
+                            <select class="form-select form-text-d fields-height1" value="{{$user->uni_id}}" name="university" id="university" aria-label="University Selection" onchange="showDepartments()">
+                                <option value="0" {{ $user->uni_id == 0 ? 'selected' : '' }}>경북대학교</option>
+                                @forelse ($unis as $uni)
+                                <option value="{{ $uni->id }}" {{ $user->uni_id == $uni->id ? 'selected' : '' }}>{{ $uni->name }}</option>
+                                @empty
+                                @endforelse
                             </select>
                         </div>
 
                         <!-- Major Select -->
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="major">학과</label>
-                            <select class="form-select form-text-d fields-height1" value="{{$user->dep_id}}" name="major" id="major" aria-label="Major Selection">
-                                <option value="1" selected>간호학과</option>
-                                <option value="2">방사선과</option>
-                                <option value="3">임상병리과</option>
-                                <option value="4">물리치료과</option>
-                                <option value="5">바이오환경보건과</option>
+                            <select class="form-select form-text-d fields-height1" value="{{$user->major_id}}" name="major" id="major" aria-label="Major Selection">
+                                <option value="0" {{ $user->uni_id == 0 ? 'selected' : '' }}>간호학과</option>
                             </select>
                         </div>
 
@@ -102,7 +98,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-4 pe-2">
                             <label class="form-text-lbl pb-2" for="year">학년</label>
                             <select class="form-select form-text-d fields-height1" value="{{$user->grade}} 학년" name="year" id="year" aria-label="Year Selection">
-                                <option value="1" selected>3학년</option>
+                                <option value="1">3학년</option>
                                 <option value="2">1학년</option>
                                 <option value="3">2학년</option>
                                 <option value="4">3학년</option>
@@ -291,4 +287,29 @@
 </div>
 <!-- Student Account Management End -->
 
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    let uniData = {!! json_encode($unis) !!}
+    let userDep = {!! $user->major_id !!}
+    let userUni = {!! $user->uni_id !!}
+
+    $(document).ready(function () {
+        if(userUni > 0) showDepartments()
+    })
+
+    function showDepartments(){
+        let uniID = document.getElementById('university').value;
+        $('#major').find('option:not(:first)').remove();
+
+        if(uniID > 0){
+            let departments = uniData[uniID].departments;
+            departments.forEach(element => {
+                let sel = ""
+                if (userDep > 0 && uniID == userUni) sel = 'selected'
+                $('#major').append('<option value="'+element.id+'" '+sel+'>'+element.name+'</option>');
+            });
+        }
+    }
+</script>
 @endsection

@@ -24,6 +24,8 @@
 </div>
 
 <!-- Statistics Item Management Start -->
+<form method="post" id="survey-update-form" action="/admin/surveyItemUpdate/{{ $survey->id }}">
+@csrf
 <div class="container-fluid px-0">
 
     <div class="table-responsive pt-4 mb-3">
@@ -33,56 +35,28 @@
                     <td scope="row" class="table-td-text1 bg-td height-52">* 제목</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="text" class="form-control val-text" name="title" id="title" placeholder="" value="수업에 얼마나 만족하시나요?" aria-describedby="Statistics Item Title Input">
+                            <input type="text" class="form-control val-text" name="title" id="title" placeholder="" value="{{ $survey->title }}" aria-describedby="Statistics Item Title Input">
                         </div>
                     </td>
                 </tr>
                 <tr class="table-head-3">
                     <td scope="row" class="table-td-text1 bg-td height-52">* 문항</td>
-                    <td colspan="8" class="table-td-text2">
+                    <td colspan="8" class="table-td-text2" id="questions-container">
+                        @foreach (json_decode($survey->questions) as $question)
                         <div class="height-52 item-flex-start ml30 my-3">
                             <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q1" id="q1" placeholder="" value="매우 만족">
+                                <input type="text" class="form-control val-text file-up-bar-custom2" name="questions[]" placeholder="" value="{{ $question }}">
                             </div>
-                            <a href="#quesDeleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
+                            <button type="button" class="btn btn12 ms-4 remove-question" data-bs-toggle="modal">문항 삭제</button>
                         </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q2" id="q2" placeholder="" value="보통">
-                            </div>
-                            <a href="#quesDeleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q3" id="q3" placeholder="" value="볼만족">
-                            </div>
-                            <a href="#quesDeleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q4" id="q4" placeholder="" value="매우 불만족">
-                            </div>
-                            <a href="#quesDeleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-                        <div class="height-52 item-flex-start ml30 my-3">
-                            <div class="height-52">
-                                <input type="text" class="form-control val-text file-up-bar-custom2" name="q5" id="q5" placeholder="" value="매우 불만족">
-                            </div>
-                            <a href="#quesDeleteConfirmationModal" class="btn btn12 ms-4" data-bs-toggle="modal">문항 삭제</a>
-                        </div>
-
+                        @endforeach
                         <div class="height-52 item-flex-start width-10 ml30 my-3">
-                            <a href="#" class="btn btn5 btn5-1">
+                            <button type="button" class="btn btn5 btn5-1" id="add-question">
                                 문항 추가
-                            </a>
-                            <!-- Deactivated -->
-                            <!-- <a href="#" class="btn btn5 btn5-1 opacity-50">
-                                문항 추가
-                            </a> -->
+                            </button>
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
@@ -222,7 +196,8 @@
                         <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                     </div>
                     <div class="mx-1">
-                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+                        <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal" onclick="event.preventDefault();
+                        document.getElementById('survey-update-form').submit();">수정</button>
                     </div>
                 </div>
             </div>
@@ -253,8 +228,46 @@
     </div>
 </div>
 <!-- Completion Alert Modal -->
-
+</form>
 </div>
 <!-- Statistics Item Management End -->
 
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    let addQuestionBtn = document.getElementById('add-question');
+    let questionsContainer = document.getElementById('questions-container');
+    let qCount = {!! count(json_decode($survey->questions)) !!}
+    document.addEventListener('DOMContentLoaded', function() {
+        removeButton();
+        addQuestionBtn.addEventListener('click', function() {
+            if(qCount < 8){
+                var newQuestionInput = document.createElement('div');
+                newQuestionInput.innerHTML = `
+                    <div class="height-52 item-flex-start ml30 my-3">
+                        <div class="height-52">
+                            <input type="text" class="form-control val-text file-up-bar-custom2" name="questions[]" placeholder="문항을 입력하세요." >
+                        </div>
+                        <button type="button" class="btn btn12 ms-4 remove-question">학과 삭제</button>
+                    </div>
+                `;
+
+                questionsContainer.insertBefore(newQuestionInput, addQuestionBtn.parentNode);
+                qCount++;
+                removeButton();
+            }
+            if(qCount == 8) addQuestionBtn.classList.add('opacity-50');
+        });
+    });
+
+    function removeButton(){
+        var removeButtons = questionsContainer.getElementsByClassName('remove-question');
+        for (var i = 0; i < removeButtons.length; i++) {
+            removeButtons[i].addEventListener('click', function() {
+                this.parentNode.remove();
+                qCount--;
+            });
+        }
+    }
+</script>
 @endsection

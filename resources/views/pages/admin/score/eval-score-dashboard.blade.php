@@ -55,17 +55,17 @@
                 <tr>
                     <td>
                         <div class="item-flex-align-center height-40">
-                            30점
+                            {{ $score->pre_learning }}점
                         </div>
                     </td>
                     <td>
                         <div class="item-flex-align-center height-40">
-                            60점
+                            {{ $score->main_study }}점
                         </div>
                     </td>
                     <td>
                         <div class="item-flex-align-center height-40">
-                            10점
+                            {{ $score->report }}점
                         </div>
                     </td>
                     <td>

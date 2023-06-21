@@ -59,7 +59,11 @@
                                         <div class="img-up-box-inner">
                                             <div class="mt-1">
                                                 <div class="item-flex-align-center">
-                                                    <button class="btn btn9 mt-2">파일 선택</button>
+                                                    <form action="/admin/instructorUpload" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                        <input type="file" name="insData" id="insData">
+                                                        <button type="submit" class="btn btn9 mt-2">파일 선택</button>
+                                                    </form>
                                                 </div>
                                                 <p class="modal-inner-text2 text-center mb-0">또는 여기로 파일을 끌어와주세요.</p>
                                             </div>
@@ -193,12 +197,12 @@
                                     <!-- University Select -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="university">학교</label>
-                                        <select class="form-select form-text-d fields-height1" name="university" id="university" aria-label="University Selection">
-                                            <option value="1" selected>학교명을 선택하세요.</option>
-                                            <option value="2">가톨릭상지대학교</option>
-                                            <option value="3">경북과학대학교</option>
-                                            <option value="4">경북대학교</option>
-                                            <option value="5">경북보건대학교</option>
+                                        <select class="form-select form-text-d fields-height1" name="university" id="university" aria-label="University Selection" onchange="showDepartments()">
+                                            <option value="0" selected>학교명을 선택하세요.</option>
+                                            @forelse ($unis as $uni)
+                                            <option value="{{ $uni->id }}">{{ $uni->name }}</option>
+                                            @empty
+                                            @endforelse
                                         </select>
                                     </div>
 
@@ -206,11 +210,7 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="major">학과</label>
                                         <select class="form-select form-text-d fields-height1" name="major" id="major" aria-label="Major Selection">
-                                            <option value="1" selected>학과명을 선택하세요.</option>
-                                            <option value="2">방사선과</option>
-                                            <option value="3">임상병리과</option>
-                                            <option value="4">물리치료과</option>
-                                            <option value="5">바이오환경보건과</option>
+                                            <option value="0" selected>학과명을 선택하세요.</option>
                                         </select>
                                     </div>
 
@@ -332,4 +332,21 @@
 
 </div>
 <!-- Instructor Account Management End -->
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    let uniData = {!! json_encode($unis) !!}
+
+    function showDepartments(){
+        let uniID = document.getElementById('university').value;
+        $('#major').find('option:not(:first)').remove();
+
+        if(uniID > 0){
+            let departments = uniData[uniID].departments;
+            departments.forEach(element => {
+                $('#major').append('<option value="'+element.id+'">'+element.name+'</option>');
+            });
+        }
+    }
+</script>
 @endsection

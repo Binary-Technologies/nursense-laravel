@@ -24,8 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('pno')->unique();
             $table->integer('uni_id')->nullable();
             $table->integer('major_id')->nullable();
-            $table->integer('scl_id')->nullable();
-            $table->integer('dep_id')->nullable();
             $table->boolean('active_status')->nullable();
             $table->date('dob')->nullable();
             $table->string('occupation')->nullable();

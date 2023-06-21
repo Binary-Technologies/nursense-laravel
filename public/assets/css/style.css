@@ -2039,6 +2039,8 @@ body {
 .menu-in-box {
     padding: 12px;
     border-radius: 6px;
+    text-align: left;
+    background-color: #fff !important;
 }
 
 .menu-in-box:focus {

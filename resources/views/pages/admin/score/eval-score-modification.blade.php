@@ -55,31 +55,34 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    <td>
-                        <div class="height-52 item-flex-start mx-2 my-2 position-rel">
-                            <input type="text" class="form-control val-text" name="" id="" placeholder="" value="30" aria-describedby="Input">
-                            <span class="score-text1">점</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-start mx-2 my-2 position-rel">
-                            <input type="text" class="form-control val-text" name="" id="" placeholder="" value="60" aria-describedby="Input">
-                            <span class="score-text1">점</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="height-52 item-flex-start mx-2 my-2 position-rel">
-                            <input type="text" class="form-control val-text" name="" id="" placeholder="" value="10" aria-describedby="Input">
-                            <span class="score-text1">점</span>
-                        </div>
-                    </td>
-                    <td class="width-30">
-                        <div class="item-flex-align-center">
-                            100점
-                        </div>
-                    </td>
-                </tr>
+                <form method="post" id="score-update-form" action="/admin/scoreUpdate">
+                @csrf
+                    <tr>
+                        <td>
+                            <div class="height-52 item-flex-start mx-2 my-2 position-rel">
+                                <input type="text" class="form-control val-text" name="pre_learning" id="" placeholder="" value="{{ $score->pre_learning }}" aria-describedby="Input">
+                                <span class="score-text1">점</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="height-52 item-flex-start mx-2 my-2 position-rel">
+                                <input type="text" class="form-control val-text" name="main_study" id="" placeholder="" value="{{ $score->main_study }}" aria-describedby="Input">
+                                <span class="score-text1">점</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="height-52 item-flex-start mx-2 my-2 position-rel">
+                                <input type="text" class="form-control val-text" name="report" id="" placeholder="" value="{{ $score->report }}" aria-describedby="Input">
+                                <span class="score-text1">점</span>
+                            </div>
+                        </td>
+                        <td class="width-30">
+                            <div class="item-flex-align-center">
+                                100점
+                            </div>
+                        </td>
+                    </tr>
+                </form>
             </tbody>
         </table>
     </div>
@@ -113,7 +116,8 @@
                             <button class="btn btn-alert1" data-bs-target="#" data-bs-toggle="modal">취소</button>
                         </div>
                         <div class="mx-1">
-                            <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal">수정</button>
+                            <button class="btn btn-alert2" data-bs-target="#completionModal" data-bs-toggle="modal" onclick="event.preventDefault();
+                            document.getElementById('score-update-form').submit();">수정</button>
                         </div>
                     </div>
                 </div>

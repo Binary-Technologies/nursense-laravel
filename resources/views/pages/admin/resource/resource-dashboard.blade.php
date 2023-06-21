@@ -114,7 +114,9 @@
                             </div>
                         </td>
                         <td>{{$resource->details}}</td>
-                        <td>{{$resource->status == 1 ? '노출' : '미노출'}}</td>
+                        <td style="color: {{ $resource->status == 1 ? 'Red' : 'Black' }}">
+                            {{$resource->status == 1 ? '노출' : '미노출'}}
+                        </td>
                         <td>{{$resource->created_at->format('Y-m-d')}}</td>
                     </tr>
                     @endforeach

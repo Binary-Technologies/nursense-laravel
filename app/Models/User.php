@@ -28,8 +28,6 @@ class User extends Authenticatable
         'pno',
         'uni_id',
         'major_id',
-        'scl_id',
-        'dep_id',
         'active_status',
         'dob',
         'occupation',
@@ -98,5 +96,15 @@ class User extends Authenticatable
             $password = '12345678'; // Generate a random password of 8 characters
             $user->password = Hash::make($password);
         });
+    }
+
+    public function university()
+    {
+        return $this->belongsTo(University::class, 'uni_id');
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Department::class, 'major_id');
     }
 }

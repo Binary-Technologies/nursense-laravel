@@ -59,7 +59,8 @@
                     <td scope="row" class="table-td-text1 bg-td height-52" >* 첨부파일</td>
                     <td colspan="8" class="table-td-text2">
                         <div class="height-52 item-flex-start width-50 ml30 my-3">
-                            <input type="file" class="btn btn9" name="files[]" multiple required>
+                            <label for="files[]" class="btn btn9">첨부파일 등록</label>
+                            <input type="file" style="visibility: hidden" name="files[]" id="files[]" multiple required>
                             <!--- <a href="#" class="btn btn9">
                                 첨부파일 등록
                             </a> -->

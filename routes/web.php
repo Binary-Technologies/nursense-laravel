@@ -15,7 +15,10 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SurveyController;
+use App\Models\University;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
 
@@ -94,20 +97,22 @@ Route::middleware('auth:web')->group(function () {
 Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------
     Route::get('/instructorDash', [AdminPageController::class, 'instructorDashboard'])->name('instructorDash');
-    Route::get('/insAccData/{user:id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
+    Route::get('/insAccData/{id}', [AdminPageController::class, 'viewInstructor'])->name('insAccData');
     Route::get('/insAccDataEdit/{user:id}', [AdminPageController::class, 'viewInstructorEdit'])->name('insAccDataEdit');
     Route::get('/insAccDataEditDp', [AdminPageController::class, 'viewInstructorEditDp'])->name('insAccDataEditDp');
     Route::get('/insReg', [AdminPageController::class, 'registerInstructor'])->name('insReg');
+    Route::post('/instructorUpload', [UserController::class, 'instructorUpload']);
     Route::post('/instructorDash/filterData', [UserController::class, 'instructorFilter']);
 
 
     // Member Management - Student Mng-----------------------------------------------------------------------------------------------
     Route::get('/studentDash', [AdminPageController::class, 'studentDashboard'])->name('studentDash');
-    Route::get('/stuAccData/{user:id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
+    Route::get('/stuAccData/{id}', [AdminPageController::class, 'viewStudent'])->name('stuAccData');
     Route::get('/stuAccDataEdit/{user:id}', [AdminPageController::class, 'viewStudentEdit'])->name('stuAccDataEdit');
     Route::get('/stuAccDataEditDp', [AdminPageController::class, 'viewStudentEditDp'])->name('stuAccDataEditDp');
     Route::get('/stuReg', [AdminPageController::class, 'registerStudent'])->name('stuReg');
     Route::post('/studentDash/filterData', [UserController::class, 'studentFilter']);
+    Route::post('/studentUpload', [UserController::class, 'studentUpload']);
 
     // Banner Management
     Route::get('/bannerDash', [AdminPageController::class, 'bannerDashboard'])->name('bannerDash');
@@ -168,6 +173,7 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
 
     // Menu, Logo Management
     Route::get('/menuReg', [AdminPageController::class, 'menuRegistration'])->name('menuReg');
+    Route::post('/menuUpdate', [AdminPageController::class, 'updateMenu']);
     Route::get('/logoReg', [AdminPageController::class, 'logoRegistration'])->name('logoReg');
     Route::post('/userLogoRegister', [AdminPageController::class, 'userLogoRegister']);
     Route::post('/AdminLogoRegister', [AdminPageController::class, 'adminLogoRegister']);
@@ -177,13 +183,17 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::get('/surveyStatDetails', [AdminPageController::class, 'surveyStatDetailsView'])->name('surveyStatDetails');
     Route::get('/surveyItemDash', [AdminPageController::class, 'surveyItemDashboard'])->name('surveyItemDash');
     Route::get('/surveyItemReg', [AdminPageController::class, 'surveyItemRegistration'])->name('surveyItemReg');
-    Route::get('/surveyItemUpdate', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+    Route::post('/surveyItemReg', [SurveyController::class, 'surveyItemRegister']);
+    Route::get('/surveyItemUpdate/{surveyItem:id}', [AdminPageController::class, 'surveyItemModify'])->name('surveyItemUpdate');
+    Route::post('/surveyItemUpdate/{surveyItem:id}', [SurveyController::class, 'surveyItemUpdate']);
 
     // Score Management
     Route::get('/scoreEvalDash', [AdminPageController::class, 'scoreEvalDashboard'])->name('scoreEvalDash');
     Route::get('/scoreEvalUpdate', [AdminPageController::class, 'scoreEvalModify'])->name('scoreEvalUpdate');
+    Route::post('/scoreUpdate', [AdminPageController::class, 'scoreUpdate']);
     Route::get('/scoreCertifyDash', [AdminPageController::class, 'scoreCertifyDashboard'])->name('scoreCertifyDash');
     Route::get('/scoreCertifyUpdate', [AdminPageController::class, 'scoreCertifyModify'])->name('scoreCertifyUpdate');
+    Route::post('/certificateUpdate', [AdminPageController::class, 'certificateUpdate']);
 
     // Report Management -Instructor Mng.
     Route::get('/insReportDash', [AdminPageController::class, 'insReportDashboard'])->name('insReportDash');
@@ -206,8 +216,16 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // University Code Management
     Route::get('/univCodeDash', [AdminPageController::class, 'univCodeDashboard'])->name('univCodeDash');
     Route::get('/univCodeReg', [AdminPageController::class, 'univCodeRegistration'])->name('univCodeReg');
-    Route::get('/univCodeDetails', [AdminPageController::class, 'univCodeDetailsView'])->name('univCodeDetails');
-    Route::get('/univCodeUpdate', [AdminPageController::class, 'univCodeModify'])->name('univCodeUpdate');
+    Route::get('/univCodeDetails/{university:id}', [AdminPageController::class, 'univCodeDetailsView'])->name('univCodeDetails');
+    Route::get('/univCodeUpdate/{university:id}', [AdminPageController::class, 'univCodeModify'])->name('univCodeUpdate');
+    Route::post('/universityRegister', [UniversityController::class, 'universityRegister']);
+    Route::post('/UniversityUpdate/{university:id}', [UniversityController::class, 'universityUpdate']);
+    Route::post('/university/universityDelete/{university:id}', [UniversityController::class, 'universityDelete'])->name('universityDelete');
+    Route::post('/deleteDepartment/{major:id}', [UniversityController::class, 'departmentDelete']);
+    Route::post('/univDash/filterData', [UniversityController::class, 'univFilter']);
+
+
+
 });
 
 // Instructor  form

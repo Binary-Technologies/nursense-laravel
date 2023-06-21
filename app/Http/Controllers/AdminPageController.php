@@ -9,7 +9,11 @@ use App\Models\Gallery;
 use App\Models\Resource;
 use App\Models\News;
 use App\Models\Notice;
+use App\Models\University;
 use App\Models\User;
+use App\Models\Menu;
+use App\Models\Score;
+use App\Models\SurveyItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -22,32 +26,21 @@ class AdminPageController extends Controller
     // Instructor Mng. Start --------------------------------------------------------------
     public function instructorDashboard()
     {
-        $searchValue = request('search');
-        if (request('search')) {
-            $users = User::where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%');
-            })::where('role', 'instructor')->paginate(10);
-        } else {
-            $users = User::where('role', 'instructor')->paginate(10);
-        }
-
-        return view('pages.admin.member.instructor-dashboard', [
-            'users' => $users,
-        ]);
+        $users = User::where('role', 'instructor')->with('university:id,name', 'major:id,name')->paginate(10);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-dashboard', compact('users', 'unis'));
     }
 
-    public function viewInstructor(User $user)
+    public function viewInstructor($id)
     {
-        return view('pages.admin.member.instructor-view', [
-            'user' => $user,
-        ]);
+        $user = User::with('university', 'major')->find($id);
+        return view('pages.admin.member.instructor-view', compact('user'));
     }
 
     public function viewInstructorEdit(User $user)
     {
-        return view('pages.admin.member.instructor-view-edit', [
-            'user' => $user,
-        ]);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-view-edit', compact('user', 'unis'));
     }
 
     public function viewInstructorEditDp()
@@ -57,38 +50,28 @@ class AdminPageController extends Controller
 
     public function registerInstructor()
     {
-        return view('pages.admin.member.instructor-register');
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.instructor-register', compact('unis'));
     }
 
     // Student Mng. Start --------------------------------------------------------------
     public function studentDashboard()
     {
-        $searchValue = request('search');
-        if (request('search')) {
-            $users = User::where(function ($query) use ($searchValue) {
-                $query->where('name', 'like', '%' . $searchValue . '%');
-            })::where('role', 'student')->paginate(10);
-        } else {
-            $users = User::where('role', 'student')->paginate(10);
-        }
-
-        return view('pages.admin.member.student-dashboard', [
-            'users' => $users,
-        ]);
+        $users = User::where('role', 'student')->with('university:id,name', 'major:id,name')->paginate(10);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-dashboard', compact('users', 'unis'));
     }
 
-    public function viewStudent(User $user)
+    public function viewStudent($id)
     {
-        return view('pages.admin.member.student-view', [
-            'user' => $user,
-        ]);
+        $user = User::with('university', 'major')->find($id);
+        return view('pages.admin.member.student-view', compact('user'));
     }
 
     public function viewStudentEdit(User $user)
     {
-        return view('pages.admin.member.student-view-edit', [
-            'user' => $user,
-        ]);
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-view-edit', compact('user', 'unis'));
     }
 
     public function viewStudentEditDp()
@@ -98,7 +81,8 @@ class AdminPageController extends Controller
 
     public function registerStudent()
     {
-        return view('pages.admin.member.student-register');
+        $unis = University::with('departments')->get()->keyBy('id');
+        return view('pages.admin.member.student-register', compact('unis'));
     }
     // Member Management End -------------------------------------------------------------------
 
@@ -126,7 +110,7 @@ class AdminPageController extends Controller
     {
         $existingValues = Banner::pluck('sequence')->toArray();
         $exposure = Banner::pluck('status')->toArray();
-        $value = 0;
+        $value = 1;
         $count = array_count_values($exposure)[$value];
         return view('pages.admin.banner.banner-add', [
             'count' => $count,
@@ -371,7 +355,18 @@ class AdminPageController extends Controller
 
     public function menuRegistration()
     {
-        return view('pages.admin.menu.menu-register');
+        $menus = Menu::get();
+        return view('pages.admin.menu.menu-register',compact('menus'));
+    }
+
+    public function updateMenu(Request $request){
+        $menu = Menu::findOrFail(request('menu_id'));
+        $menu->update([
+            'name' => request('name'),
+            'student' => isset($request->chkStudent) ? 1 : 0,
+            'instructor' => isset($request->chkInstructor) ? 1 : 0,
+        ]);
+        return redirect('/admin/menuReg')->with('success', 'Menu Updated Successfully');
     }
 
     // Menu Manegement End ------------------------------------------------------------------
@@ -382,69 +377,6 @@ class AdminPageController extends Controller
     public function logoRegistration()
     {
         return view('pages.admin.menu.logo-register');
-    }
-
-    // Logo Manegement End ------------------------------------------------------------------
-
-
-    // Statistics Manegement Start ------------------------------------------------------------------
-
-    public function surveyStatDashboard()
-    {
-        return view('pages.admin.statistics.survey-stat-dashboard');
-    }
-    public function surveyStatDetailsView()
-    {
-        return view('pages.admin.statistics.survey-stat-details');
-    }
-    public function surveyItemDashboard()
-    {
-        return view('pages.admin.statistics.survey-item-dashboard');
-    }
-    public function surveyItemRegistration()
-    {
-        return view('pages.admin.statistics.survey-item-register');
-    }
-    public function surveyItemModify()
-    {
-        return view('pages.admin.statistics.survey-item-modification');
-    }
-
-    // Statistics Manegement End ------------------------------------------------------------------
-
-
-    // Score Manegement Start ------------------------------------------------------------------
-
-    public function scoreEvalDashboard()
-    {
-        return view('pages.admin.score.eval-score-dashboard');
-    }
-    public function scoreEvalModify()
-    {
-        return view('pages.admin.score.eval-score-modification');
-    }
-    public function scoreCertifyDashboard()
-    {
-        return view('pages.admin.score.certify-score-dashboard');
-    }
-    public function scoreCertifyModify()
-    {
-        return view('pages.admin.score.certify-score-modification');
-    }
-
-    // Score Manegement End ------------------------------------------------------------------
-
-
-    // Reports Manegement Start ------------------------------------------------------------------
-
-    // Instructor report
-    public function insReportDashboard()
-    {
-        return view('pages.admin.reports.ins-report-dashboard');
-    }
-    public function insReportDetailsView()
-    {
-        return view('pages.admin.reports.ins-report-details');
     }
 
     public function userLogoRegister(Request $request)
@@ -489,7 +421,92 @@ class AdminPageController extends Controller
         }
         return redirect('/admin/logoReg')->with('success', 'logo has been added.');
     }
+
     // Logo Manegement End ------------------------------------------------------------------
+
+    // Statistics Manegement Start ------------------------------------------------------------------
+
+    public function surveyStatDashboard()
+    {
+        return view('pages.admin.statistics.survey-stat-dashboard');
+    }
+    public function surveyStatDetailsView()
+    {
+        return view('pages.admin.statistics.survey-stat-details');
+    }
+    public function surveyItemDashboard()
+    {
+        $surveys = SurveyItem::orderByDesc('id')->paginate(10);
+        return view('pages.admin.statistics.survey-item-dashboard', compact('surveys'));
+    }
+    public function surveyItemRegistration()
+    {
+        return view('pages.admin.statistics.survey-item-register');
+    }
+    public function surveyItemModify($id)
+    {
+        $survey = SurveyItem::findOrFail($id);
+        return view('pages.admin.statistics.survey-item-modification', compact('survey'));
+    }
+
+    // Statistics Manegement End ------------------------------------------------------------------
+
+
+    // Score Manegement Start ------------------------------------------------------------------
+
+    public function scoreEvalDashboard()
+    {
+        $score = Score::first();
+        return view('pages.admin.score.eval-score-dashboard', compact('score'));
+    }
+    public function scoreEvalModify()
+    {
+        $score = Score::first();
+        return view('pages.admin.score.eval-score-modification', compact('score'));
+    }
+    public function scoreUpdate(Request $request)
+    {
+        $score = Score::first();
+        $score->update([
+            'pre_learning' => request('pre_learning'),
+            'main_study' => request('main_study'),
+            'report' => request('report'),
+        ]);
+        return redirect('/admin/scoreEvalDash')->with('success', 'Score Updated Successfully');
+    }
+    public function scoreCertifyDashboard()
+    {
+        $score = Score::first();
+        return view('pages.admin.score.certify-score-dashboard', compact('score'));
+    }
+    public function scoreCertifyModify()
+    {
+        $score = Score::first();
+        return view('pages.admin.score.certify-score-modification', compact('score'));
+    }
+    public function certificateUpdate(Request $request)
+    {
+        $score = Score::first();
+        $score->update([
+            'cutoff' => request('cutoff'),
+            'cert_explanation' => request('cert_explanation'),
+        ]);
+        return redirect('/admin/scoreCertifyDash')->with('success', 'Score Updated Successfully');
+    }
+    // Score Manegement End ------------------------------------------------------------------
+
+
+    // Reports Manegement Start ------------------------------------------------------------------
+
+    // Instructor report
+    public function insReportDashboard()
+    {
+        return view('pages.admin.reports.ins-report-dashboard');
+    }
+    public function insReportDetailsView()
+    {
+        return view('pages.admin.reports.ins-report-details');
+    }
 
     // Student report
     public function stuReportDashboard()
@@ -508,7 +525,7 @@ class AdminPageController extends Controller
 
     public function galleryDashboard()
     {
-        $galleries = Gallery::all();
+        $galleries = Gallery::paginate(10);
         return view('pages.admin.gallery.gallery-dashboard',compact('galleries'));
     }
     public function galleryRegistration()
@@ -533,29 +550,31 @@ class AdminPageController extends Controller
     // Gallery Manegement End ------------------------------------------------------------------
 
 
-
-
     // University Code Manegement Start ------------------------------------------------------------------
 
     public function univCodeDashboard()
     {
-        return view('pages.admin.universityCode.univ-code-dashboard');
+        $universities = University::paginate(10);
+        return view('pages.admin.universityCode.univ-code-dashboard', compact('universities'));
     }
     public function univCodeRegistration()
     {
         return view('pages.admin.universityCode.univ-code-register');
     }
-    public function univCodeDetailsView()
+    public function univCodeDetailsView($id)
     {
-        return view('pages.admin.universityCode.univ-code-details');
+        $university = University::findOrFail($id);
+        $departments = $university->departments;
+        return view('pages.admin.universityCode.univ-code-details', compact('university','departments'));
     }
-    public function univCodeModify()
+    public function univCodeModify($id)
     {
-        return view('pages.admin.universityCode.univ-code-modification');
+        $university = University::findOrFail($id);
+        $departments = $university->departments;
+        return view('pages.admin.universityCode.univ-code-modification',compact('university','departments'));
     }
 
     // University Code Manegement End ------------------------------------------------------------------
-
 
 
     // DashBoard Start ---------------------------------------------------------------------------

@@ -90,7 +90,7 @@
                     <td>
                         <img src="{{ Storage::url($banner->image) }}" height="200px">
                     </td>
-                    <td>
+                    <td style="color: {{ $banner->status == 1 ? 'Black' : 'Red' }}">
                         {{$banner->status == 0 ? '노출' : '미노출' }}
                     </td>
                     <td>{{$banner->sequence}}</td>

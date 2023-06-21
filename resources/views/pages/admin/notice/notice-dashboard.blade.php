@@ -101,11 +101,12 @@
                     <td>{{$notice->id}}</td>
                     <td><a href="{{ url('admin/noticeDetails', ['notice' => $notice->id])  }}" class="td-a-custom">{{$notice->title}}</a></td>
                     <td>{{$notice->views}}</td>
-                    <td> 
+                    <td style="color: {{ $notice->main_exposure == 1 ? 'Black' : 'Red' }}">
                         {{$notice->main_exposure == 0 ? '노출' : '미노출'}}
                     </td>
-                    <td>
+                    <td style="color: {{ $notice->exposure == 1 ? 'Black' : 'Red' }}">
                         {{$notice->exposure == 0 ? '노출' : '미노출'}}
+                    </td>
                     <td>{{$notice->created_at->format('Y-m-d')}}</td>
                 </tr>
                 @endforeach

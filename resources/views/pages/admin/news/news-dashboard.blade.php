@@ -105,10 +105,10 @@
                     <td>{{$newsItem->id}}</td>
                     <td><a href="{{ url('admin/newsDetails', ['news' => $newsItem->id])  }}" class="td-a-custom">{{$newsItem->title}}</a></td>
                     <td>{{$newsItem->views}}</td>
-                    <td>
+                    <td style="color: {{ $newsItem->main_exposure == 1 ? 'Black' : 'Red' }}">
                         {{$newsItem->main_exposure == 0 ? '노출' : '미노출'}}
                     </td>
-                    <td>
+                    <td style="color: {{ $newsItem->exposure == 1 ? 'Black' : 'Red' }}">
                         {{$newsItem->exposure == 0 ? '노출' : '미노출'}}
                     </td>
                     <td>{{$newsItem->created_at->format('Y-m-d')}}</td>

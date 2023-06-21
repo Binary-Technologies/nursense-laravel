@@ -30,19 +30,17 @@
             <!-- Table Section -->
             <div class="row mb-4">
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <select class="form-select form-text-d" name="university" id="university" aria-label="University Selection">
-                        <option value="1" selected>전체 학교</option>
-                        <option value="2">경북대학교</option>
-                        <option value="3">대구대학교</option>
-                        <option value="4">부산대학교</option>
+                    <select class="form-select form-text-d" name="university" id="university" aria-label="University Selection" onchange="showDepartments()">
+                        <option value="0" selected>전체 학교</option>
+                        @forelse ($unis as $uni)
+                        <option value="{{ $uni->id }}">{{ $uni->name }}</option>
+                        @empty
+                        @endforelse
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <select class="form-select form-text-d" name="major" id="major" aria-label="Select Major">
-                        <option value="1" selected>전체 학과</option>
-                        <option value="2">간호학과</option>
-                        <option value="3">물리치료학과</option>
-                        <option value="4">방사선학과</option>
+                        <option value="0" selected>전체 학과</option>
                     </select>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -128,17 +126,13 @@
                         <span><input type="checkbox" name="" id="" class="form-check-input" aria-label=""></span>
                     </td>
                     <td>{{$user->id}}</td>
-                    <td><a href="{{ route('stuAccData', ['user' => $user->id]) }}">{{$user->name}}</a> </td>
+                    <td><a href="{{ route('stuAccData', $user->id) }}">{{$user->name}}</a> </td>
                     <td>{{$user->std_id}}</td>
-                    <td>
-                        @if($user->active_status == 1)Learnable 
-
-                        @else Not Learnable
-                        
-                        @endif    
+                    <td style="color: {{ $user->active_status == 1 ? 'Black' : 'Red' }}">
+                        {{ $user->active_status == 1 ? 'Learnable' : 'Not Learnable' }}                    
                     </td>
-                    <td>{{$user->scl_id}}</td>
-                    <td>{{$user->dep_id}}</td>
+                    <td>{{ isset($user->university) ? $user->university->name : '-' }}</td>
+                    <td>{{ isset($user->major) ? $user->major->name : '-' }}</td>
                     <td>{{$user->pno}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('Y-m-d')}}</td>
@@ -243,4 +237,21 @@
 
 </div>
 <!-- Instructor Account Management End -->
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    let uniData = {!! json_encode($unis) !!}
+
+    function showDepartments(){
+        let uniID = document.getElementById('university').value;
+        $('#major').find('option:not(:first)').remove();
+
+        if(uniID > 0){
+            let departments = uniData[uniID].departments;
+            departments.forEach(element => {
+                $('#major').append('<option value="'+element.id+'">'+element.name+'</option>');
+            });
+        }
+    }
+</script>
 @endsection
