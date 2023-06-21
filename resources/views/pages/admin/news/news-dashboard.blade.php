@@ -61,7 +61,7 @@
                     </span>
                     <span class="list-count-num">
                         
-                        {{$news->count()}}
+                        {{$news->total()}}
                     </span>
                 </div>
 

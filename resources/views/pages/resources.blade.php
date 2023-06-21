@@ -66,7 +66,7 @@
                 <div class="row my-3" style="margin-left: 0px;">
 
                     <div class="col-md-8">
-                        Total : 28
+                        Total : {{ $resources->total() }}
                     </div>
                     <div class="col-md-4">
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">

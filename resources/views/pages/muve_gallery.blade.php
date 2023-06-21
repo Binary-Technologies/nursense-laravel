@@ -23,7 +23,7 @@
 
                 <div class="row" style="padding: 2%;">
                     <div class="col-md-2">
-                        <p class="py-2" style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total 28</p>
+                        <p class="py-2" style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total {{$galleries->total()}}</p>
                     </div>
                     <div class="col-md-4">
                     </div>
@@ -39,10 +39,10 @@
                     </div>
                     
                 </div>
-
+                    @foreach ($galleries->chunk(5) as $galleryChunk)
                     <div class="row">
                         <!--<div class="col-lg-1"></div>-->
-                        @foreach ($galleries as $gallery)
+                        @foreach ($galleryChunk as $gallery)
                         <!-- 1 -->
                         <div class="gallery_img_margin">
 
@@ -64,138 +64,14 @@
                                 <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 {{$gallery->views}}</p>
                             </div>
                         </div>
-                        <!-- 1 -->
                         @endforeach
-
-
-                        <!--<div class="col-lg-1"></div>-->
                     </div>
-                    
-                    {{-- <div class="row">
-                        <!--<div class="col-lg-1"></div>-->
-                        <!-- 1 -->
-                        <div class="gallery_img_margin">
-
-                            <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
-                            </div>
-                            <div class="pt20">
-                                <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
-                            </div>
-                            <div class="text-justify">
-                                <p class="gallery-img-desc pt5" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;"><립모션 장치> <위 장치로 시뮬레이션 하는 모습> 이미지 센싱 기반 모션인식 디바이스 …</p>
-                            </div>
-
-                            <div class="item-flex-left position-rel">
-                                <p class="gallery-img-desc-date pr-4" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">2023.01.06</p>
-                                <span class="br-right"></span>
-                                <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
-                            </div>
-
-                        </div>
-                        <!-- 1 -->
-
-                        <!-- 2 -->
-                        <div class="gallery_img_margin">
-
-                            <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="/images/gallery/2.jpg" class="gallery_img"></a>
-                            </div>
-                            <div class="pt20">
-                                <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
-                            </div>
-                            <div class="text-justify">
-                                <p class="gallery-img-desc pt5" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;"><립모션 장치> <위 장치로 시뮬레이션 하는 모습> 이미지 센싱 기반 모션인식 디바이스 …</p>
-                            </div>
-
-                            <div class="item-flex-left position-rel">
-                                <p class="gallery-img-desc-date pr-4" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">2023.01.06</p>
-                                <span class="br-right"></span>
-                                <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
-                            </div>
-
-                        </div>
-                        <!-- 2 -->
-
-                        <!-- 3 -->
-                        <div class="gallery_img_margin">
-
-                            <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="/images/gallery/3.jpg" class="gallery_img"></a>
-                            </div>
-                            <div class="pt20">
-                                <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
-                            </div>
-                            <div class="text-justify">
-                                <p class="gallery-img-desc pt5" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;"><립모션 장치> <위 장치로 시뮬레이션 하는 모습> 이미지 센싱 기반 모션인식 디바이스 …</p>
-                            </div>
-
-                            <div class="item-flex-left position-rel">
-                                <p class="gallery-img-desc-date pr-4" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">2023.01.06</p>
-                                <span class="br-right"></span>
-                                <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
-                            </div>
-
-                        </div>
-                        <!-- 3 -->
-
-                        <!-- 4 -->
-                        <div class="gallery_img_margin">
-
-                            <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="/images/gallery/4.jpg" class="gallery_img"></a>
-                            </div>
-                            <div class="pt20">
-                                <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
-                            </div>
-                            <div class="text-justify">
-                                <p class="gallery-img-desc pt5" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;"><립모션 장치> <위 장치로 시뮬레이션 하는 모습> 이미지 센싱 기반 모션인식 디바이스 …</p>
-                            </div>
-
-                            <div class="item-flex-left position-rel">
-                                <p class="gallery-img-desc-date pr-4" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">2023.01.06</p>
-                                <span class="br-right"></span>
-                                <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
-                            </div>
-
-                        </div>
-                        <!-- 4 -->
-
-                        <!-- 5 -->
-                        <div class="gallery_img_margin">
-
-                            <div class="item-flex-center">
-                                <a href="gallery_details.php"><img src="/images/gallery/1.jpg" class="gallery_img"></a>
-                            </div>
-                            <div class="pt20">
-                                <h5 style="font-family: pretendard-semibold; font-size: 16px; color: #090909;">이미지 센싱 기반 모션인식 디바이스</h5>
-                            </div>
-                            <div class="text-justify">
-                                <p class="gallery-img-desc pt5" style="font-family: pretendard-regular; font-size: 14px; color: #9495A1;"><립모션 장치> <위 장치로 시뮬레이션 하는 모습> 이미지 센싱 기반 모션인식 디바이스 …</p>
-                            </div>
-
-                            <div class="item-flex-left position-rel">
-                                <p class="gallery-img-desc-date pr-4" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">2023.01.06</p>
-                                <span class="br-right"></span>
-                                <p class="gallery-img-desc-views" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">조회수 300</p>
-                            </div>
-
-                        </div>
-                        <!-- 5 -->
-
-                        <!--<div class="col-lg-1"></div>--> --}}
-                    </div>
-
-
+                    @endforeach
+                </div>
             </div>
-           
-
         </div>
-         
         <div class="item-flex-end">
-    
             {{ $galleries->links('vendor.pagination.default') }}
-        
         </div>
         
 </section>

@@ -46,7 +46,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$galleries->count()}}
+                        {{$galleries->total()}}
                     </span>
                 </div>
 
