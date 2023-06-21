@@ -49,7 +49,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$universities->count()}}
+                        {{$universities->total()}}
                     </span>
                 </div>
 
