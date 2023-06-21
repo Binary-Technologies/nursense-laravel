@@ -36,7 +36,7 @@ Route::get('/', [PageController::class, 'index']);
 
 Route::get('/muve/muve', [PageController::class, 'muve']);
 Route::get('/muve/gallery', [PageController::class, 'muve_gallery']);
-Route::get('/muve/gallery-details', [PageController::class, 'galleryDetails']);
+Route::get('/muve/gallery-details/{gallery:id}', [PageController::class, 'galleryDetails'])->name('muve-gallery');
 
 Route::get('/curriculum/curriculum', [PageController::class, 'curriculum']);
 Route::get('/curriculum/guide', [PageController::class, 'guide']);
