@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\News;
 use App\Models\Notice;
 use App\Models\Resource;
 use App\Models\Direction;
+use App\Models\Semester;
+use App\Models\University;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -115,7 +118,10 @@ class PageController extends Controller
     }
 
     public function mymanage(){
-        return view('pages.mymanage');
+        $students = User::whereNotNull('std_id')->paginate(10);
+        $semesters = Semester::all();
+        $university = University::where('id', \Auth::user()->uni_id)->with('departments')->first();
+        return view('pages.mymanage', compact('students', 'semesters', 'university'));
     }
 
     public function myprelearning(){

@@ -27,16 +27,16 @@
                         <div class="row">
                             <div class="col-lg-2" style="padding: 20px; color: #FFFFFF;">
                                 <select class="form-control mr-sm-2 search-bar-custom">
-                                    <option>2023년도 1학기</option>
-                                    <option>2023년도 1학기</option>
-                                    <option>2023년도 1학기</option>
+                                    @foreach ($semesters as $semester)
+                                    <option value="{{ $semester->id }}">{{ $semester->semester }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-2" style="padding: 20px; color: #FFFFFF;">
                                 <select class="form-control mr-sm-2 search-bar-custom">
-                                    <option>당뇨 - 간호학과</option>
-                                    <option>당뇨 - 간호학과</option>
-                                    <option>당뇨 - 간호학과</option>
+                                    @foreach ($university->departments as $department)
+                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-2" style="padding: 20px; color: #FFFFFF;">
@@ -61,7 +61,7 @@
                 <div class="row my-5">
 
                     <div class="col-md-8">
-                        Total : 70
+                        Total : {{ count($students) }}
                     </div>
                     <div class="col-md-4">
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
@@ -88,145 +88,33 @@
                                 <th style="width: 10%">총점(100점)</th>
                                 <th style="width: 8%">수료 여부</th>
                             </tr>
+                            @foreach ($students as $student)
                             <tr style="border-bottom: #ccc solid thin;">
                                 <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">70</td>
-                                <td style="width: 8%; padding: 10px;">김선미</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
+                                <td style="width: 6%; padding: 10px;">{{ $student->id }}</td>
+                                <td style="width: 8%; padding: 10px;">{{ $student->name }}</td>
+                                <td style="width: 6%; padding: 10px;">{{ $student->gender }}</td>
+                                <td style="width: 9%; padding: 10px;">{{ $student->department }}</td>
+                                <td style="width: 16%; padding: 10px;">{{ $student->grade }}</td>
+                                <td style="width: 12%; padding: 10px;">{{ $student->std_id }}</td>
+                                <td style="width: 10%; padding: 10px;">{{ $student->id }}</td>
+                                <td style="width: 10%; padding: 10px;">{{ $student->id }}/10점</td>
+                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>{{ $student->id }}점</b></td>
+                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>{{ $student->id }}</b></td>
                             </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">69</td>
-                                <td style="width: 8%; padding: 10px;">권하윤</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>60점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #FF625F;"><b>미수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">68</td>
-                                <td style="width: 8%; padding: 10px;">김승은</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>30점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #FF625F;"><b>미수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">67</td>
-                                <td style="width: 8%; padding: 10px;">이수빈</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">66</td>
-                                <td style="width: 8%; padding: 10px;">윤다영</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">65</td>
-                                <td style="width: 8%; padding: 10px;">오지민</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">64</td>
-                                <td style="width: 8%; padding: 10px;">임수아</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">63</td>
-                                <td style="width: 8%; padding: 10px;">허예린</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">62</td>
-                                <td style="width: 8%; padding: 10px;">김소윤</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
-                            <tr style="border-bottom: #ccc solid thin;">
-                                <td style="width: 5%; padding: 10px;"><input type="checkbox" ></td>
-                                <td style="width: 6%; padding: 10px;">61</td>
-                                <td style="width: 8%; padding: 10px;">심현서</td>
-                                <td style="width: 6%; padding: 10px;">여</td>
-                                <td style="width: 9%; padding: 10px;">간호학과</td>
-                                <td style="width: 16%; padding: 10px;">3학년/2019123456</td>
-                                <td style="width: 12%; padding: 10px;">30점/40점</td>
-                                <td style="width: 10%; padding: 10px;">40점/50점</td>
-                                <td style="width: 10%; padding: 10px;">10점/10점</td>
-                                <td style="width: 10%; padding: 10px;color: #3941A2;"><b>80점</b></td>
-                                <td style="width: 8%; padding: 10px;color: #3941A2;"><b>수료</b></td>
-                            </tr>
+                            @endforeach
                             <tr>
                                 <td colspan="11" style="padding: 20px;">
                                     <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">메일 발송</button>
-                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">SMS 발송</button></td>
+                                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">SMS 발송</button>
+                                </td>
                             </tr>
                         </table>
                     </div>
                 </div>
-
+                <div class="pagination-container">
+                    {{ $students->links('vendor.pagination.default') }}
+                </div>
         </div>
     </div>
     </div>
