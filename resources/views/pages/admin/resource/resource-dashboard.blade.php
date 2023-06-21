@@ -54,7 +54,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$resources->count()}}
+                        {{$resources->total()}}
                     </span>
                 </div>
 

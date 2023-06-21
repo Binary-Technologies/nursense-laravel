@@ -12,6 +12,7 @@ use App\Models\Resource;
 use App\Models\Direction;
 use App\Models\Semester;
 use App\Models\University;
+use App\Models\Gallery;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -38,8 +39,11 @@ class PageController extends Controller
         return view('pages.curriculum');
     }
 
-    public function galleryDetails(){
-        return view('pages.gallery-details');
+    public function galleryDetails($id){
+        $gallery = Gallery::findOrFail($id);
+        $gallery->increment('views');
+        $gallery->save();
+        return view('pages.gallery-details',compact('gallery'));
     }
 
     public function guide(){
@@ -102,7 +106,8 @@ class PageController extends Controller
     }
 
     public function muve_gallery(){
-        return view('pages.muve_gallery');
+        $galleries = Gallery::paginate(10);
+        return view('pages.muve_gallery',compact('galleries'));
     }
 
     public function muve(){
