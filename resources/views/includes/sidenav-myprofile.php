@@ -26,10 +26,15 @@
                         평가 관리
                     </a>
                     <div class="dropdown-menu drp-m show"> <!-- Remove this "show" class to active show/hide dropdown menu function -->
-                        <div class="<?php if ($currentpage == "myassestments.php") {
-                                        echo 'active';
-                                    } ?> side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="myassestments.php"><i class="fas fa-circle sub-menu-i"></i> 사전/최종평가<span class="sr-only">(current)</span></a>
+                        <div class="
+                        <?php if (
+                            $currentpage == "assestment" ||
+                            $currentpage == "assesmentPrev" ||
+                            $currentpage == "assesmentEvalReg"
+                        ) {
+                            echo 'active';
+                        } ?> side-menu-ac drp-menu">
+                            <a class="dropdown-item" href="{{ url('profile/assesment') }}"><i class="fas fa-circle sub-menu-i"></i> 사전/최종평가<span class="sr-only">(current)</span></a>
                         </div>
                         <div class="<?php if ($currentpage == "myprelearning.php") {
                                         echo 'active';

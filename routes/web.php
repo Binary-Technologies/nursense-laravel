@@ -65,7 +65,9 @@ Route::get('/info/location', [PageController::class, 'location']);
 
 Route::get('/profile/study', [PageController::class, 'mystudy']);
 Route::get('/profile/manage', [PageController::class, 'mymanage']);
-Route::get('/profile/assesment', [PageController::class, 'myassesment']);
+Route::get('/profile/assesment', [PageController::class, 'myassesment'])->name('assesment');
+Route::get('/profile/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
+Route::get('/profile/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
 Route::get('/profile/prelearning', [PageController::class, 'myprelearning']);
 Route::get('/profile/reports', [PageController::class, 'myreports']);
 Route::get('/profile/allocation', [PageController::class, 'myallocation']);
@@ -223,9 +225,6 @@ Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     Route::post('/university/universityDelete/{university:id}', [UniversityController::class, 'universityDelete'])->name('universityDelete');
     Route::post('/deleteDepartment/{major:id}', [UniversityController::class, 'departmentDelete']);
     Route::post('/univDash/filterData', [UniversityController::class, 'univFilter']);
-
-
-
 });
 
 // Instructor  form
