@@ -1796,8 +1796,6 @@ body {
     border-color: var(--dark-blue2);
 }
 
-/* ------------------ Alert Modals End ----------------------- */
-
 .modal-content {
     border-radius: 12px;
 }
@@ -1830,6 +1828,8 @@ body {
     color: #9495A1;
     padding-top: 7px;
 }
+
+/* ------------------ Alert Modals End ----------------------- */
 
 .img-up-box {
     background-color: #F5F7FE;

@@ -68,7 +68,10 @@ Route::get('/profile/manage', [PageController::class, 'mymanage']);
 Route::get('/profile/assesment', [PageController::class, 'myassesment'])->name('assesment');
 Route::get('/profile/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
 Route::get('/profile/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
-Route::get('/profile/prelearning', [PageController::class, 'myprelearning']);
+Route::get('/profile/assesmentRevision', [PageController::class, 'myassesmentRevision'])->name('assesmentRevision');
+Route::get('/profile/prelearning', [PageController::class, 'myprelearning'])->name('prelearning');
+Route::get('/profile/prelearningReg', [PageController::class, 'myprelearningReg'])->name('prelearningReg');
+Route::get('/profile/prelearningModify', [PageController::class, 'myprelearningModify'])->name('prelearningModify');
 Route::get('/profile/reports', [PageController::class, 'myreports']);
 Route::get('/profile/allocation', [PageController::class, 'myallocation']);
 

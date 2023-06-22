@@ -30,16 +30,22 @@
                         <?php if (
                             $currentpage == "assestment" ||
                             $currentpage == "assesmentPrev" ||
-                            $currentpage == "assesmentEvalReg"
+                            $currentpage == "assesmentEvalReg" ||
+                            $currentpage == "assesmentRevision"
                         ) {
                             echo 'active';
                         } ?> side-menu-ac drp-menu">
                             <a class="dropdown-item" href="{{ url('profile/assesment') }}"><i class="fas fa-circle sub-menu-i"></i> 사전/최종평가<span class="sr-only">(current)</span></a>
                         </div>
-                        <div class="<?php if ($currentpage == "myprelearning.php") {
-                                        echo 'active';
-                                    } ?> side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="myprelearning.php"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
+                        <div class="
+                        <?php if (
+                            $currentpage == "prelearning" ||
+                            $currentpage == "prelearningReg" ||
+                            $currentpage == "prelearningModify"
+                        ) {
+                            echo 'active';
+                        } ?> side-menu-ac drp-menu">
+                            <a class="dropdown-item" href="{{url('profile/prelearning)}}"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
                         </div>
                         <div class="<?php if ($currentpage == "myreports.php") {
                                         echo 'active';

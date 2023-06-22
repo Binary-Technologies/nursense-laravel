@@ -698,6 +698,12 @@ ul {
   top: -40px;
 }
 
+.move-right3 {
+  position: absolute;
+  right: 34px;
+  top: 14px;
+}
+
 .border-custom {
   border: 2px solid #8282ff !important;
 }
@@ -1053,9 +1059,14 @@ The navbar toggle appears at this breakpoint */
   box-shadow: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
 }
 
-.form-control {
+.form-control,
+.form-select {
   height: calc(2rem + 2px);
-  padding: .4rem .4rem;
+  padding: .5rem .5rem;
+}
+
+.form-check-input {
+  margin-top: 2px;
 }
 
 .search-bar-custom,
@@ -1577,14 +1588,16 @@ button:focus {
 }
 
 .bg-color-1 {
-  background: #f5f7fa;
+  background-color: #f5f7fa;
 }
 
 .bg-color-2 {
-  background: #F5F7FE;
+  background-color: #F5F7FE;
 }
 
-.bg-color-3 {}
+.bg-color-3 {
+  background-color: #FFFFFF;
+}
 
 /* Content Cards Start */
 
@@ -2236,7 +2249,8 @@ button:focus {
   background-color: #3941A2;
 }
 
-.btn-2 {
+.btn-2,
+.btn-3 {
   font-family: pretendard-medium;
   color: #fff;
   font-size: 16px;
@@ -2247,12 +2261,303 @@ button:focus {
   transition: all 0.3s ease-in-out;
 }
 
+.btn-3 {
+  background-color: #F3F4F8;
+  border: 1px solid #F3F4F8;
+  color: #9495A1;
+}
+
 .btn-2:hover,
 .btn-2:focus {
   background-color: #5058ba;
 }
 
+.btn-3:hover,
+.btn-3:focus {
+  background-color: #3941A2;
+  border: 1px solid #3941A2;
+  color: #fff;
+}
 
+
+.width-100 {
+  width: 100%;
+}
+
+.width-90 {
+  width: 90%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+.width-75 {
+  width: 75%;
+}
+
+.width-72 {
+  width: 72%;
+}
+
+.width-70 {
+  width: 70% !important;
+}
+
+.width-62 {
+  width: 62%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-44 {
+  width: 44%;
+}
+
+.width-30 {
+  width: 30%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.width-15 {
+  width: 15%;
+}
+
+.width-10 {
+  width: 10%;
+}
+
+.max-w-100 {
+  max-width: 100%;
+}
+
+.max-w-75 {
+  max-width: 75%;
+}
+
+.max-w-50 {
+  max-width: 50%;
+}
+
+.max-w-25 {
+  max-width: 25%;
+}
+
+.height-52 {
+  height: 52px !important;
+}
+
+.height-40 {
+  height: 40px !important;
+}
+
+.height-30 {
+  height: 30px !important;
+}
+
+.min-width-80px {
+  min-width: 80px;
+}
+
+.val-text,
+.val-text-area,
+.val-text:focus,
+.val-text-area:focus {
+  color: #D2D3DA;
+  font-size: 16px;
+  font-family: pretendard-regular;
+  /* opacity: 0.4; */
+}
+
+/* .val-text-area {
+  opacity: 1;
+  border-color: 1px solid #ced4da40;
+}
+
+.val-text:focus,
+.val-text-area:focus {
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 1;
+} */
+
+.form-text-lbl {
+  color: #767885;
+  font-size: 16px;
+  font-family: pretendard-regular;
+}
+
+.asses-eval-reg-abs {
+  position: absolute;
+  top: 17px;
+  right: 28px;
+  color: #090909;
+  font-size: 16px;
+  font-family: pretendard-regular;
+}
+
+.add-icon-btn-abs {
+  position: absolute;
+  right: 180px;
+  bottom: 34px;
+}
+
+.add-icon-btn {
+  color: #3941A2;
+  font-size: 34px;
+}
+
+.form-lbl1 {
+  color: #090909;
+  font-size: 16px;
+  font-family: pretendard-medium;
+}
+
+
+.img-up-box {
+  background-color: #F5F7FE;
+  border: 2px dashed #BABCDE;
+  border-radius: 12px;
+}
+
+.img-up-box-inner {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn9 {
+  color: #fff;
+  font-size: 18px;
+  font-family: pretendard-medium;
+  background-color: #3941A2;
+  border: 1px solid #3941A2;
+  border-radius: 6px;
+  padding: 12px 40px;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn9:hover,
+.btn9:focus {
+  background-color: #3a409d;
+  border-color: #3a409d;
+}
+
+
+
+
+
+/* DC */
+
+/* ------------------ Alert Modals Start ----------------------- */
+
+.alert-title {
+  color: #090909;
+  font-size: 26px;
+  font-family: pretendard-bold;
+}
+
+.alert-text {
+  color: #767885;
+  font-size: 16px;
+  font-family: pretendard-regular;
+}
+
+.alert-text2 {
+  color: #090909;
+  font-size: 20px;
+  font-family: pretendard-regular;
+}
+
+.btn-alert1 {
+  color: #3941A2;
+  font-size: 18px;
+  font-family: pretendard-medium;
+  background-color: #D7D9EC;
+  border: 1px solid #D7D9EC;
+  border-radius: 6px;
+  padding: 10px 88px;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-alert1:hover,
+.btn-alert1:focus {
+  background-color: #9397ba;
+  border-color: #9397ba;
+}
+
+.btn-alert2,
+.btn-alert3 {
+  color: #fff;
+  font-size: 18px;
+  font-family: pretendard-medium;
+  background-color: #3941A2;
+  border: 1px solid #3941A2;
+  border-radius: 6px;
+  padding: 10px 88px;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-alert3 {
+  padding: 10px 180px;
+}
+
+.btn-alert2:hover,
+.btn-alert2:focus,
+.btn-alert3:hover,
+.btn-alert3:focus {
+  background-color: var(--dark-blue2);
+  border-color: var(--dark-blue2);
+}
+
+.modal-content {
+  border-radius: 12px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-title {
+  color: #090909;
+  font-size: 30px;
+  font-family: pretendard-bold;
+}
+
+.modal-inner-text,
+.modal-inner-text2,
+.modal-inner-text3 {
+  color: #767885;
+  font-size: 16px;
+  font-family: pretendard-regular;
+}
+
+.modal-inner-text2 {
+  color: #7479BD;
+  font-size: 18px;
+  padding-top: 7px;
+}
+
+.modal-inner-text3 {
+  color: #9495A1;
+  padding-top: 7px;
+}
+
+/* ------------------ Alert Modals End ----------------------- */
 
 /*List page*/
 

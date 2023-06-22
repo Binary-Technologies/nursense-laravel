@@ -143,6 +143,11 @@ class PageController extends Controller
         return view('pages.myassesment-eval-reg');
     }
 
+    public function myassesmentRevision()
+    {
+        return view('pages.myassesment-revision');
+    }
+
     public function mymanage()
     {
         return view('pages.mymanage');
@@ -151,6 +156,16 @@ class PageController extends Controller
     public function myprelearning()
     {
         return view('pages.myprelearning');
+    }
+
+    public function myprelearningReg()
+    {
+        return view('pages.myprelearning-reg');
+    }
+
+    public function myprelearningModify()
+    {
+        return view('pages.myprelearning-modify');
     }
 
 

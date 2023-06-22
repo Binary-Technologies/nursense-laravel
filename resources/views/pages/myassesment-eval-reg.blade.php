@@ -48,20 +48,50 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 box-assesment border-t-custom-assesment shadow border-rad-5 mb-4 px-4">
                         <div class="py-4">
-                            <!-- <h2 class="ttl-18 py-2">사전 학습 2 평가 등록 제목</h2>
-                            <p class="desc-2 text-justify">
-                                따뜻한 풀밭에 커다란 살 노래하며 남는 위하여서, 뼈 말이다. 위하여, 그들의 가지에 이 남는 가슴에 굳세게 쓸쓸하랴? 같이, 대중을 낙원을 얼음이 공자는 심장의 철환하였는가? 황금시대의 청춘이 우리는 철환하였는가? 인생에 두기 장식하는 그와 구할 곳이 창공에 듣는다. 행복스럽고 별과 찾아다녀도, 동력은 생생하며, 얼마나 것이다. 전인 노래하며 있는 있으랴? 청춘 간에 가장 구하지 돋고, 같은 꽃이 그들을 칼이다. 행복스럽고 같으며, 보내는 피고 이상의 이상 새 쓸쓸하랴?
-                            </p> -->
-                            <p class="pt-3 mb-2">
-                                <span class="ttl-27 pr-3">총 문제 수</span>
-                                <span class="divider1">|</span>
-                                <span class="ttl-1 pl-3">1개</span>
-                            </p>
-                            <p>
-                                <span class="ttl-27 pr-3">총 배점</span>
-                                <span class="divider1">|</span>
-                                <span class="ttl-1 pl-3">0점</span>
-                            </p>
+                            <div class="item-flex-center my-2">
+                                <input type="text" class="form-control val-text py-2" name="" id="" placeholder="제목을 입력해주세요." value="" aria-describedby="">
+                            </div>
+                            <div class="item-flex-center my-2">
+                                <textarea class="form-control val-text-area py-2" name="" id="" value="" rows="2" aria-describedby="">평가의 내용 설명을 입력해주세요.</textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="pt-3 mb-2 item-flex-left">
+                                        <div class="ttl-27 pr-3 min-width-80px">총 문제 수</div>
+                                        <div class="divider1">|</div>
+                                        <div class="ttl-1 pl-3">1개</div>
+                                    </div>
+                                    <div class="item-flex-left">
+                                        <div class="ttl-27 pr-3 min-width-80px">총 배점</div>
+                                        <div class="divider1">|</div>
+                                        <div class="ttl-1 pl-3">0점</div>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="row my-4">
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                            <p class="form-text-lbl my-1">종료일시</p>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <input type="date" class="form-control val-text" name="" id="" aria-describedby="">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <select class="form-select form-text-d" name="" id="" aria-label="">
+                                                <option value="1" selected>시</option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <select class="form-select form-text-d" name="" id="" aria-label="">
+                                                <option value="1" selected>분</option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-2"></div>
@@ -69,16 +99,16 @@
                 <!-- card main -->
 
                 <!-- card 1 -->
-                <!-- <div class="row mx-5">
+                <div class="row mx-5">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 box-assesment shadow border-rad-5 mb-4 px-4">
                         <div class="py-4">
                             <div class="row border-b-cus mb-4">
                                 <div class="col-9 pb-1">
-                                    <h2 class="ttl-29 py-2">1. 다음 중 당뇨 증상과 올바르지 않은 것을 고르시오.</h2>
+                                    <h2 class="ttl-29 py-2">1. 질문을 입력해주세요.</h2>
                                 </div>
                                 <div class="col-3 pb-1">
-                                    <p class="ttl-30 text-right my-1">5점</p>
+                                    <p class="ttl-30 text-right my-1">-점</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -86,47 +116,161 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                         <label class="form-check-label ttl-31" for="flexRadioDefault1">
-                                            텍스트텍스트
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label ttl-31" for="flexRadioDefault2">
-                                            텍스트텍스트텍스트텍스트텍스트텍스트
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault13">
-                                        <label class="form-check-label ttl-31" for="flexRadioDefault3">
-                                            텍스트텍스트텍스트텍스트텍스트텍스트
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                                        <label class="form-check-label ttl-31" for="flexRadioDefault4">
-                                            텍스트텍스트텍스트텍스트텍스트텍스트
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-                                        <label class="form-check-label ttl-31" for="flexRadioDefault5">
-                                            텍스트텍스트텍스트텍스트텍스트텍스트
+                                            답지1
                                         </label>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2"></div>
-                </div> -->
+                    <div class="col-lg-2 position-rel">
+                        <div class="add-icon-btn-abs">
+                            <div class="add-icon-btn">
+                                <i class='fas fa-plus-circle'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- card 1 -->
+
+                <!-- card 2 for Add -->
+                <div class="row mx-5">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 box-assesment shadow border-rad-5 mb-4 px-4">
+                        <div class="py-4">
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="item-flex-center my-2">
+                                        <input type="text" class="form-control val-text py-2" name="" id="" placeholder="질문을 입력해주세요." value="" aria-describedby="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form method="post" action="#">
+                                <!-- 1 -->
+                                <div class="row border-b-cus mx-1 mb-4">
+                                    <div class="form-check col-6 item-flex-left mb-4">
+                                        <div class="ml-1">
+                                            <input class="form-check-input" type="radio" name="" id="">
+                                            <label class="form-check-label ttl-1" for="">
+                                                답지1
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check col-6 item-flex-right mb-4">
+                                        <div class="mr-1">
+                                            <input class="form-check-input" type="radio" name="" id="" checked>
+                                            <label class="form-check-label ttl-1 mr-2" for="">
+                                                정답
+                                            </label>
+                                            <a href="#" class="ttl-31">
+                                                X
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 2 -->
+                                <div class="row border-b-cus mx-1 mb-4">
+                                    <div class="form-check col-6 item-flex-left mb-4">
+                                        <div class="ml-1">
+                                            <input class="form-check-input" type="radio" name="" id="">
+                                            <label class="form-check-label ttl-31" for="">
+                                                답지 추가
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="row mx-1">
+                                    <div class="form-check col-6 item-flex-left mb-4">
+                                        <div class="ml-1">
+                                            <input class="form-check-input" type="checkbox" name="" id="" checked>
+                                            <label class="form-check-label ttl-31" for="">
+                                                선택지 섞기
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check col-6 item-flex-right mb-4">
+                                        <div class="mr-1">
+                                            <div class="item-flex-right my-2">
+                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="" id="" placeholder="배점 입력" value="" aria-describedby="">
+                                                <a href="#" class="asses-eval-reg-abs">점</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 position-rel">
+                        <div class="add-icon-btn-abs">
+                            <div class="add-icon-btn">
+                                <i class='fas fa-plus-circle'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- card 2 for Add -->
 
                 <div class="row my-5">
                     <div class="col-12 item-flex-center">
-                        <a href="#" class="btn-2">저장</a>
+                        <!-- If Completed -->
+                        <a href="#completionModal" class="btn-2" data-bs-toggle="modal">저장</a>
+                        <!-- If Fail -->
+                        <!-- <a href="#failModal" class="btn-2" data-bs-toggle="modal">저장</a> -->
                     </div>
                 </div>
             </div>
+
+            <!-- Completion Alert Modal -->
+            <div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center my-3" id="completionModalContent"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <p class="alert-text2 text-center mt-2 mb-5">
+                                총 배점이 100점이 아닐 경우<br>
+                                저장되지 않습니다.
+                            </p>
+
+                            <div class="item-flex-center my-2">
+                                <div class="mx-1">
+                                    <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Completion Alert Modal -->
+            <!-- Fail Alert Modal -->
+            <div class="modal fade" id="failModal" aria-hidden="true" aria-labelledby="failModalContent" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center my-3" id="failModalContent"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <p class="alert-text2 text-center mt-2 mb-5">
+                                사전학습 2 평가가 성공적으로<br>
+                                저장되었습니다.
+                            </p>
+
+                            <div class="item-flex-center my-2">
+                                <div class="mx-1">
+                                    <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fail Alert Modal -->
 
         </div>
     </div>
