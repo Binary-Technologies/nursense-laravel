@@ -74,7 +74,7 @@
                                 2023년도 1학기 . 당뇨 - 간호학과
                             </div>
                         </div>
-                        <div class="col-md-4" style="text-align: center;">
+                        <div class="col-md-4" style="text-align: right;">
 
                             <span class="ttl-3" style="color: #3941A2; font-size: 11px;">등록완료</span>
                             <br />
@@ -82,10 +82,8 @@
 
                             <br />
                             <br />
-                            <span class="curr-brd">
-                                수정하기
-                            </span>
-                            <a href="{{route('assesmentPrev')}}" class="btn btn-outline-secondary btn-sm btn-curr" type="submit">미리보기</a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm btn-curr mr-2" type="submit">미리보기</a>
+                            <a href="{{route('assesmentPrev')}}" class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</a>
                         </div>
                     </div>
 
@@ -112,7 +110,7 @@
                                 2023년도 1학기 . 당뇨 - 간호학과
                             </div>
                         </div>
-                        <div class="col-md-4" style="text-align: center;">
+                        <div class="col-md-4" style="text-align: right;">
 
                             <span class="ttl-3" style="color: #3941A2; font-size: 11px;">등록완료</span>
                             <br />
@@ -120,10 +118,8 @@
 
                             <br />
                             <br />
-                            <span class="curr-brd">
-                                수정하기
-                            </span>
-                            <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit">미리보기</button>
+                            <a href="#" class="btn btn-outline-secondary btn-sm btn-curr mr-2" type="submit">미리보기</a>
+                            <a href="{{route('assesmentPrev')}}" class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</a>
                         </div>
                     </div>
 
@@ -150,7 +146,7 @@
                                 2023년도 1학기 . 당뇨 - 간호학과
                             </div>
                         </div>
-                        <div class="col-md-4" style="text-align: center;">
+                        <div class="col-md-4" style="text-align: right;">
 
                             <span class="ttl-3" style="color: #3941A2; font-size: 11px;">등록완료</span>
                             <br />
@@ -158,10 +154,8 @@
 
                             <br />
                             <br />
-                            <span class="curr-brd">
-                                수정하기
-                            </span>
-                            <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit">미리보기</button>
+                            <a href="#" class="btn btn-outline-secondary btn-sm btn-curr mr-2" type="submit">미리보기</a>
+                            <a href="{{route('assesmentPrev')}}" class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</a>
                         </div>
                     </div>
 

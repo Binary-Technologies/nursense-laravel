@@ -72,8 +72,11 @@ Route::get('/profile/assesmentRevision', [PageController::class, 'myassesmentRev
 Route::get('/profile/prelearning', [PageController::class, 'myprelearning'])->name('prelearning');
 Route::get('/profile/prelearningReg', [PageController::class, 'myprelearningReg'])->name('prelearningReg');
 Route::get('/profile/prelearningModify', [PageController::class, 'myprelearningModify'])->name('prelearningModify');
-Route::get('/profile/reports', [PageController::class, 'myreports']);
-Route::get('/profile/allocation', [PageController::class, 'myallocation']);
+Route::get('/profile/reports', [PageController::class, 'myreports'])->name('reports');
+Route::get('/profile/reportsReg', [PageController::class, 'myreportsReg'])->name('reportsReg');
+Route::get('/profile/reportsAllSem', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
+Route::get('/profile/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
+Route::get('/profile/allocation', [PageController::class, 'myallocation'])->name('allocation');
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login');

@@ -186,6 +186,18 @@ class PageController extends Controller
     {
         return view('pages.myreports');
     }
+    public function myreportsReg()
+    {
+        return view('pages.myreports-reg');
+    }
+    public function myreportsAllSem()
+    {
+        return view('pages.myreports-all-sem');
+    }
+    public function myreportsModify()
+    {
+        return view('pages.myreports-modify');
+    }
 
     public function mystudy()
     {

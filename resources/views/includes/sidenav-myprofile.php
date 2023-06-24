@@ -45,16 +45,25 @@
                         ) {
                             echo 'active';
                         } ?> side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="{{url('profile/prelearning)}}"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="{{url('profile/reports)}}"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
                         </div>
-                        <div class="<?php if ($currentpage == "myreports.php") {
-                                        echo 'active';
-                                    } ?> side-menu-ac drp-menu">
+                        <div class="
+                        <?php if (
+                            $currentpage == "reports" ||
+                            $currentpage == "reportsReg" ||
+                            $currentpage == "reportsAllSem" ||
+                            $currentpage == "reportsModify"
+                        ) {
+                            echo 'active';
+                        } ?> side-menu-ac drp-menu">
                             <a class="dropdown-item" href="myreports.php"><i class="fas fa-circle sub-menu-i"></i> 리포트<span class="sr-only">(current)</span></a>
                         </div>
-                        <div class="<?php if ($currentpage == "myallocation.php") {
-                                        echo 'active';
-                                    } ?> side-menu-ac drp-menu">
+                        <div class="
+                        <?php if (
+                            $currentpage == "allocation"
+                        ) {
+                            echo 'active';
+                        } ?> side-menu-ac drp-menu">
                             <a class="dropdown-item" href="myallocation.php"><i class="fas fa-circle sub-menu-i"></i> 배점 설정<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
