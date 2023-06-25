@@ -47,7 +47,7 @@ Route::get('/curriculum/curr', [PageController::class, 'curriculum2']);
 Route::get('/curriculum/download', [PageController::class, 'download']);
 Route::get('/curriculum/learning', [PageController::class, 'learning']);
 Route::get('/curriculum/learning/details', [PageController::class, 'learning_details']);
-Route::get('/curriculum/curr/quiz', [PageController::class, 'quiz']);
+Route::get('/curriculum/curr/quiz/{preLearning:id}', [PageController::class, 'quiz']);
 
 Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry/register', [PageController::class, 'inquiry_activated']);

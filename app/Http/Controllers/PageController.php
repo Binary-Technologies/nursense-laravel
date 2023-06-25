@@ -13,6 +13,9 @@ use App\Models\Direction;
 use App\Models\Semester;
 use App\Models\University;
 use App\Models\Gallery;
+use App\Models\Curriculum;
+use App\Models\PreLearning;
+use App\Models\PreLearningDetail;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -36,7 +39,13 @@ class PageController extends Controller
     }
 
     public function curriculum(){
-        return view('pages.curriculum');
+        $preLearnings = PreLearning::where('status', 1)->paginate(10);
+        return view('pages.curriculum', compact('preLearnings'));
+    }
+
+    public function quiz($id){
+        $quiz = PreLearning::where('id', $id)->with('questions')->first();
+        return view('pages.quiz', compact('quiz'));
     }
 
     public function galleryDetails($id){
@@ -150,7 +159,8 @@ class PageController extends Controller
     }
 
     public function mystudy(){
-        return view('pages.mystudy');
+        $user = User::where('id', \Auth::user()->id)->with('curricula')->first();
+        return view('pages.mystudy', compact('user'));
     }
 
     public function news_main_details($id){
@@ -202,10 +212,6 @@ class PageController extends Controller
 
     public function privacy_policy(){
         return view('pages.privacy_policy');
-    }
-
-    public function quiz(){
-        return view('pages.quiz');
     }
 
     public function resources_details($id){

@@ -29,10 +29,9 @@
                         <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                             <span>교육 과정</span>
                             <select class="form-control search-bar-custom ml-2" style="width: 150px;">
-                                <option>전체</option>
-                                <option>당뇨</option>
-                                <option>당뇨당뇨</option>
-                                <option>당뇨당뇨당뇨</option>
+                                @foreach ($user->curricula as $curriculum)
+                                <option value="{{ $curriculum->id }}">{{ $curriculum->name }}</option>
+                                @endforeach
                             </select>
                         </form>
                     </div>

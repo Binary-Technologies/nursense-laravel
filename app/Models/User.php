@@ -107,4 +107,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class, 'major_id');
     }
+
+    public function curricula(){
+        return $this->hasManyThrough(Curriculum::class, Department::class, 'id', 'department_id', 'major_id', 'id');
+    }
 }
