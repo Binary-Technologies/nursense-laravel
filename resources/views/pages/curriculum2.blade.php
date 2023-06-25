@@ -98,7 +98,7 @@
                                         <span class="ttl-26">0점</span>
                                     </div>
                                     <div class="align-item-top-end">
-                                        <a href="quiz.php">
+                                        <a href="/curriculum/curr/quiz">
                                         <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit">자료 보기</button>
                                         </a>
                                     </div>

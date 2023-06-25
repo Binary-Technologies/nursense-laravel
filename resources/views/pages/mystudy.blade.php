@@ -19,9 +19,18 @@
                     </div>
                 </div>
 
-            </section>
-
-            <div class="row my-4">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-4">
+                    <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
+                        <span>교육 과정</span>
+                        <select class="form-control search-bar-custom ml-2" style="width: 150px;">
+                            @foreach ($user->curricula as $curriculum)
+                            <option value="{{ $curriculum->id }}">{{ $curriculum->name }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
 
                 <div class="col-md-8">
                 </div>

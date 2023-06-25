@@ -53,7 +53,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$inquiries->count()}}
+                        {{$inquiries->total()}}
                     </span>
                 </div>
 

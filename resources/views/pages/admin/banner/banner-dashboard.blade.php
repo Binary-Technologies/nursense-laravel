@@ -48,7 +48,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$banners->count()}}
+                        {{$banners->total()}}
                     </span>
                 </div>
 

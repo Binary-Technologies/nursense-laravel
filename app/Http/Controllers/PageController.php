@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\News;
 use App\Models\Notice;
 use App\Models\Resource;
 use App\Models\Direction;
+use App\Models\Semester;
+use App\Models\University;
+use App\Models\Gallery;
+use App\Models\Curriculum;
+use App\Models\PreLearning;
+use App\Models\PreLearningDetail;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -34,14 +41,21 @@ class PageController extends Controller
         return view('pages.certificate', compact('news'));
     }
 
-    public function curriculum()
-    {
-        return view('pages.curriculum');
+    public function curriculum(){
+        $preLearnings = PreLearning::where('status', 1)->paginate(10);
+        return view('pages.curriculum', compact('preLearnings'));
     }
 
-    public function galleryDetails()
-    {
-        return view('pages.gallery-details');
+    public function quiz($id){
+        $quiz = PreLearning::where('id', $id)->with('questions')->first();
+        return view('pages.quiz', compact('quiz'));
+    }
+
+    public function galleryDetails($id){
+        $gallery = Gallery::findOrFail($id);
+        $gallery->increment('views');
+        $gallery->save();
+        return view('pages.gallery-details',compact('gallery'));
     }
 
     public function guide()
@@ -113,9 +127,9 @@ class PageController extends Controller
         return view('pages.location', compact('location'));
     }
 
-    public function muve_gallery()
-    {
-        return view('pages.muve_gallery');
+    public function muve_gallery(){
+        $galleries = Gallery::paginate(10);
+        return view('pages.muve_gallery',compact('galleries'));
     }
 
     public function muve()
@@ -150,7 +164,10 @@ class PageController extends Controller
 
     public function mymanage()
     {
-        return view('pages.mymanage');
+        $students = User::whereNotNull('std_id')->paginate(10);
+        $semesters = Semester::all();
+        $university = University::where('id', \Auth::user()->uni_id)->with('departments')->first();
+        return view('pages.mymanage', compact('students', 'semesters', 'university'));
     }
 
     public function myprelearning()
@@ -203,9 +220,9 @@ class PageController extends Controller
         return view('pages.myreports-modify');
     }
 
-    public function mystudy()
-    {
-        return view('pages.mystudy');
+    public function mystudy(){
+        $user = User::where('id', \Auth::user()->id)->with('curricula')->first();
+        return view('pages.mystudy', compact('user'));
     }
 
     public function news_main_details($id)
@@ -262,18 +279,12 @@ class PageController extends Controller
         return view('pages.privacy_policy');
     }
 
-    public function quiz()
-    {
-        return view('pages.quiz');
-    }
-
     public function quizCheckAns()
     {
         return view('pages.quiz-check-ans');
     }
 
-    public function resources_details($id)
-    {
+    public function resources_details($id){
         $resource = Resource::findOrFail($id);
         $resource->increment('views');
         $resource->save();

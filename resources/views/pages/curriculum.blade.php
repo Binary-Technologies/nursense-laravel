@@ -36,342 +36,41 @@
                             </select>
                         </form>
                     </div>
-
-                </div>
-
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
+                    @foreach ($preLearnings as $preLearning)
+                    <!-- card -->
+                    <div class="row">
+                        <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
+                            <div class="row">
+                                <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
+                                    <div class="curr-brd">
+                                        지역사회간호학
+                                    </div>
+                                    <div class="curr-brd-r pl20">
+                                        <strong>{{ $preLearning->name }}</strong>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
+                            <div class="row pb-4">
+                                <div class="col-md-8 position-rel">
+                                    <span class="ttl-1 pr-4">등록일</span>
+                                    <span class="br-right-2"></span>
+                                    <span class="ttl-1">{{ $preLearning->register_date }}</span>
+                                    <div class="mt-2" style="width: 516px;">
+                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{ $preLearning->description }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
+                                <div class="col-md-4">
+                                    <div class="align-item-top-end">
+                                        <a href="/curriculum/curr/quiz/{{ $preLearning->id }}" class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- card -->
+                    @endforeach
+                    {{ $preLearnings->links('vendor.pagination.default') }}
                 </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <!-- card -->
-                <div class="row">
-                    <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
-                        <div class="row">
-                            <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
-                                <div class="curr-brd">
-                                    지역사회간호학
-                                </div>
-                                <div class="curr-brd-r pl20">
-                                    <strong>학습 1</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-md-8 position-rel">
-                                <span class="ttl-1 pr-4">등록일</span>
-                                <span class="br-right-2"></span>
-                                <span class="ttl-1">2023.03.16</span>
-                                <div class="mt-2" style="width: 516px;">
-                                    <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="align-item-top-end">
-                                    <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-
-
-                <nav aria-label="Page navigation muve gallery" style="margin-left: 70%;">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&lt;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
-                        <li class="page-item">
-                            <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
-                                <span aria-hidden="true">&gt;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
 
         </div>

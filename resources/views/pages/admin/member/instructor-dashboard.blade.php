@@ -72,7 +72,7 @@
                         <span class="b-right"></span>
                     </span>
                     <span class="list-count-num">
-                        {{$users->count()}}
+                        {{$users->total()}}
                     </span>
                 </div>
 
