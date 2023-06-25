@@ -181,6 +181,10 @@ class PageController extends Controller
         $user = \Auth::user();
         return view('pages.myprofile', compact('user'));
     }
+    public function myprofileMemInfoMng()
+    {
+        return view('pages.myprofile-member-info-mng');
+    }
 
     public function myreports()
     {
@@ -261,6 +265,11 @@ class PageController extends Controller
     public function quiz()
     {
         return view('pages.quiz');
+    }
+
+    public function quizCheckAns()
+    {
+        return view('pages.quiz-check-ans');
     }
 
     public function resources_details($id)

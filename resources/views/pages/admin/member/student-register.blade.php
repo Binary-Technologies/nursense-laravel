@@ -61,7 +61,7 @@
                                             <div class="mt-1">
                                                 <div class="item-flex-align-center">
                                                     <form action="/admin/studentUpload" method="post" enctype="multipart/form-data">
-                                                    @csrf
+                                                        @csrf
                                                         <input type="file" name="stdData" id="stdData">
                                                         <button type="submit" class="btn btn9 mt-2">파일 선택</button>
                                                     </form>
@@ -169,14 +169,14 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="mobile">휴대폰 번호</label>
                                         <input type="phone" class="form-control form-text-d fields-height1" value="{{ old ('mobile') }}" name="mobile" id="mobile" placeholder="학번을 입력하세요." aria-describedby="Student Mobile">
-                                        
+
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-0 py-3 pe-2">
                                         <label class="form-text-lbl pb-2" for="email">이메일</label>
                                         <input type="text" class="form-control form-text-d fields-height1" value="{{ old ('email') }}" name="email" id="email" placeholder="이메일을 입력해주세요." aria-describedby="Student Email">
-                                        
+
                                     </div>
 
                                     <!-- Job -->
@@ -219,8 +219,8 @@
 
                                 <div class="row mt-4 mb-5">
                                     <div class="item-flex-end">
-                                        
-                                        <button type="submit" class="btn btn11">  계정 등록 </button>
+
+                                        <button type="submit" class="btn btn11"> 계정 등록 </button>
                                         <!---<a href="#" class="btn btn11">
                                             계정 등록
                                         </a> --->
@@ -335,16 +335,18 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    let uniData = {!! json_encode($unis) !!}
+    let uniData = {
+        !!json_encode($unis) !!
+    }
 
-    function showDepartments(){
+    function showDepartments() {
         let uniID = document.getElementById('university').value;
         $('#major').find('option:not(:first)').remove();
 
-        if(uniID > 0){
+        if (uniID > 0) {
             let departments = uniData[uniID].departments;
             departments.forEach(element => {
-                $('#major').append('<option value="'+element.id+'">'+element.name+'</option>');
+                $('#major').append('<option value="' + element.id + '">' + element.name + '</option>');
             });
         }
     }

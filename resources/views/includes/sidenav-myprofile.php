@@ -15,10 +15,14 @@
                                                 } ?> side-menu-ac">
                     <a class="nav-link px-3" href="mystudy.php">나의 학습 내역<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item pt-2 pl-4 <?php if ($currentpage == "mymanage.php") {
-                                                    echo 'active';
-                                                } ?> side-menu-ac">
-                    <a class="nav-link px-3" href="mymanage.php">수강생 관리<span class="sr-only">(current)</span></a>
+                <li class="nav-item pt-2 pl-4 
+                <?php if (
+                    $currentpage == "mymanage" ||
+                    $currentpage == "MemberInfoMng"
+                ) {
+                    echo 'active';
+                } ?> side-menu-ac">
+                    <a class="nav-link px-3" href="{{ url('profile/mymanage') }}">수강생 관리<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item pt-2 pl-4">

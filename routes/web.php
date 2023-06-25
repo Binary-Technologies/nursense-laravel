@@ -43,11 +43,12 @@ Route::get('/muve/gallery-details', [PageController::class, 'galleryDetails']);
 
 Route::get('/curriculum/curriculum', [PageController::class, 'curriculum']);
 Route::get('/curriculum/guide', [PageController::class, 'guide']);
-Route::get('/curriculum/curr', [PageController::class, 'curriculum2']);
+Route::get('/curriculum/curr', [PageController::class, 'curriculum2'])->name('curr');
 Route::get('/curriculum/download', [PageController::class, 'download']);
 Route::get('/curriculum/learning', [PageController::class, 'learning']);
 Route::get('/curriculum/learning/details', [PageController::class, 'learning_details']);
-Route::get('/curriculum/curr/quiz', [PageController::class, 'quiz']);
+Route::get('/curriculum/curr/quiz', [PageController::class, 'quiz'])->name('quiz');
+Route::get('/curriculum/curr/quizCheckAns', [PageController::class, 'quizCheckAns'])->name('quizCheckAns');
 
 Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry/register', [PageController::class, 'inquiry_activated']);
@@ -64,7 +65,8 @@ Route::get('/info/resources/details/{resource:id}', [PageController::class, 'res
 Route::get('/info/location', [PageController::class, 'location']);
 
 Route::get('/profile/study', [PageController::class, 'mystudy']);
-Route::get('/profile/manage', [PageController::class, 'mymanage']);
+Route::get('/profile/manage', [PageController::class, 'mymanage'])->name('mymanage');
+Route::get('/profile/MemberInfoMng', [PageController::class, 'myprofileMemInfoMng'])->name('MemberInfoMng');
 Route::get('/profile/assesment', [PageController::class, 'myassesment'])->name('assesment');
 Route::get('/profile/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
 Route::get('/profile/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
