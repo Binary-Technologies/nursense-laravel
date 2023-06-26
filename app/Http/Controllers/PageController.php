@@ -43,14 +43,16 @@ class PageController extends Controller
         return view('pages.certificate', compact('news'));
     }
 
-    public function curriculum(){
+    public function curriculum()
+    {
         $preLearnings = PreLearning::where('status', 1)->paginate(10);
         return view('pages.curriculum', compact('preLearnings'));
     }
 
-    public function quiz($id){
+    public function quiz($id)
+    {
         $played = PreLearningAnswers::where('pre_learning_id', $id)->where('user_id', \Auth::user()->id)->first();
-        if($played) return redirect('/curriculum/quiz/CheckAns/'.$id);
+        if ($played) return redirect('/curriculum/quiz/CheckAns/' . $id);
 
         $quiz = PreLearning::where('id', $id)->with('questions')->first();
         return view('pages.quiz', compact('quiz'));
@@ -123,16 +125,18 @@ class PageController extends Controller
         return view('pages.location', compact('location'));
     }
 
-    public function muve_gallery(){
+    public function muve_gallery()
+    {
         $galleries = Gallery::paginate(10);
-        return view('pages.muve_gallery',compact('galleries'));
+        return view('pages.muve_gallery', compact('galleries'));
     }
 
-    public function galleryDetails($id){
+    public function galleryDetails($id)
+    {
         $gallery = Gallery::findOrFail($id);
         $gallery->increment('views');
         $gallery->save();
-        return view('pages.gallery-details',compact('gallery'));
+        return view('pages.gallery-details', compact('gallery'));
     }
 
     public function muve()
@@ -223,7 +227,8 @@ class PageController extends Controller
         return view('pages.myreports-modify');
     }
 
-    public function mystudy(){
+    public function mystudy()
+    {
         $user = User::where('id', \Auth::user()->id)->with('curricula')->first();
         return view('pages.mystudy', compact('user'));
     }
@@ -282,7 +287,8 @@ class PageController extends Controller
         return view('pages.privacy_policy');
     }
 
-    public function resources_details($id){
+    public function resources_details($id)
+    {
         $resource = Resource::findOrFail($id);
         $resource->increment('views');
         $resource->save();
@@ -333,5 +339,25 @@ class PageController extends Controller
     public function userLogin()
     {
         return view('pages.user-login');
+    }
+
+    public function userLoginEmailAuth()
+    {
+        return view('pages.userloginEmailAuth');
+    }
+
+    public function userloginIdFind()
+    {
+        return view('pages.userloginIdFind');
+    }
+
+    public function userloginPasswordFind()
+    {
+        return view('pages.userloginPasswordFind');
+    }
+
+    public function userloginPasswordFindAuth()
+    {
+        return view('pages.userloginPasswordFindAuth');
     }
 }
