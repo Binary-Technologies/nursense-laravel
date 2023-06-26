@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="align-item-top-end">
-                                        <a href="/curriculum/curr/quiz/{{ $preLearning->id }}" class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</a>
+                                        <a href="/curriculum/quiz/{{ $preLearning->id }}" class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="background-color: #3941A2; color: #FFF;">자료 보기</a>
                                     </div>
                                 </div>
                             </div>
