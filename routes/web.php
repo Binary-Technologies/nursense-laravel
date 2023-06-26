@@ -18,6 +18,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\PreLearningController;
 use App\Models\University;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
@@ -41,13 +42,16 @@ Route::get('/muve/muve', [PageController::class, 'muve']);
 Route::get('/muve/gallery', [PageController::class, 'muve_gallery']);
 Route::get('/muve/gallery-details/{gallery:id}', [PageController::class, 'galleryDetails'])->name('muve-gallery');
 
-Route::get('/curriculum/curriculum', [PageController::class, 'curriculum']);
-Route::get('/curriculum/guide', [PageController::class, 'guide']);
-Route::get('/curriculum/quiz/{preLearning:id}', [PageController::class, 'quiz']);
-Route::get('/curriculum/download', [PageController::class, 'download']);
-Route::get('/curriculum/learning', [PageController::class, 'learning']);
-Route::get('/curriculum/learning/details', [PageController::class, 'learning_details']);
-Route::get('/curriculum/curr/quizCheckAns', [PageController::class, 'quizCheckAns'])->name('quizCheckAns');
+Route::prefix('/curriculum')->middleware('auth:web')->group(function () {
+    Route::get('/curriculum', [PageController::class, 'curriculum']);
+    Route::get('/guide', [PageController::class, 'guide']);
+    Route::get('/quiz/{preLearning:id}', [PageController::class, 'quiz']);
+    Route::post('/quiz', [PreLearningController::class, 'quiz']);
+    Route::get('/download', [PageController::class, 'download']);
+    Route::get('/learning', [PageController::class, 'learning']);
+    Route::get('/learning/details', [PageController::class, 'learning_details']);
+    Route::get('/quiz/CheckAns/{preLearning:id}', [PreLearningController::class, 'quizCheckAns'])->name('quizCheckAns');
+});
 
 Route::get('/info/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 Route::get('/info/inquiry/register', [PageController::class, 'inquiry_activated']);

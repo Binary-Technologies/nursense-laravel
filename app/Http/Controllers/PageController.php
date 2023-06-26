@@ -16,6 +16,8 @@ use App\Models\Gallery;
 use App\Models\Curriculum;
 use App\Models\PreLearning;
 use App\Models\PreLearningDetail;
+use App\Models\PreLearningAnswers;
+
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -47,6 +49,9 @@ class PageController extends Controller
     }
 
     public function quiz($id){
+        $played = PreLearningAnswers::where('pre_learning_id', $id)->where('user_id', \Auth::user()->id)->first();
+        if($played) return redirect('/curriculum/quiz/CheckAns/'.$id);
+
         $quiz = PreLearning::where('id', $id)->with('questions')->first();
         return view('pages.quiz', compact('quiz'));
     }
@@ -277,11 +282,6 @@ class PageController extends Controller
     public function privacy_policy()
     {
         return view('pages.privacy_policy');
-    }
-
-    public function quizCheckAns()
-    {
-        return view('pages.quiz-check-ans');
     }
 
     public function resources_details($id){

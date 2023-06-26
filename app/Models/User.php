@@ -111,4 +111,8 @@ class User extends Authenticatable
     public function curricula(){
         return $this->hasManyThrough(Curriculum::class, Department::class, 'id', 'department_id', 'major_id', 'id');
     }
+
+    public function preLearningAnswers(){
+        return $this->hasMany(PreLearningAnswers::class);
+    }
 }

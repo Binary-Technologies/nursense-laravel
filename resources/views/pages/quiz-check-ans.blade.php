@@ -30,10 +30,68 @@
                             <h2 class="mb-0">총점 88점</h2>
                         </div>
                     </div>
-
                     <!-- Top card end -->
 
+                    @foreach ($quiz->questions as $question)
+                        <!-- card 1 -->
+                    <?php $i = 1; ?>
+                    <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="row border-b-cus pt-2">
+                            <div class="col-md-12 position-rel curr-in-box py-2">
+                                <div class="row my-2">
+                                    <div class="col-md-9 item-flex-left {{ $question->answer == $question->given_answer ? 'correct-ans' : 'wrong-ans' }}">
+                                        <i class="{{ $question->answer == $question->given_answer ? 'far fa-circle' : 'fas fa-times' }} mr-3 pb-1"></i>
+                                        <p class="ttl-12-2 mb-0">
+                                            {{ $i.'. '.$question->question }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3 item-flex-right">
+                                        <p class="ttl-19 mb-0 mt--16">
+                                            {{ $question->points }}점
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-md-8 position-rel">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input {{ $question->option_1 == $question->given_answer ? ($question->option_1 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" type="radio" name="exampleRadios[{{ $question->id }}]" id="exampleRadios1" value="option1" disabled {{ $question->option_1 == $question->answer ? 'checked' : '' }}>
+                                    <label class="form-check-label {{ $question->option_1 == $question->given_answer ? ($question->option_1 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" for="exampleRadios1">
+                                        {{ $question->option_1 }}
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input {{ $question->option_2 == $question->given_answer ? ($question->option_2 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" type="radio" name="exampleRadios[{{ $question->id }}]" id="exampleRadios2" value="option2" disabled {{ $question->option_2 == $question->answer ? 'checked' : '' }}>
+                                    <label class="form-check-label {{ $question->option_2 == $question->given_answer ? ($question->option_2 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" for="exampleRadios2">
+                                        {{ $question->option_2 }}
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input {{ $question->option_3 == $question->given_answer ? ($question->option_3 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" type="radio" name="exampleRadios[{{ $question->id }}]" id="exampleRadios3" value="option3" disabled {{ $question->option_3 == $question->answer ? 'checked' : '' }}>
+                                    <label class="form-check-label {{ $question->option_3 == $question->given_answer ? ($question->option_3 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" for="exampleRadios3">
+                                        {{ $question->option_3 }}
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input {{ $question->option_4 == $question->given_answer ? ($question->option_4 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" type="radio" name="exampleRadios[{{ $question->id }}]" id="exampleRadios4" value="option4" disabled {{ $question->option_4 == $question->answer ? 'checked' : '' }}>
+                                    <label class="form-check-label {{ $question->option_4 == $question->given_answer ? ($question->option_4 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" for="exampleRadios4">
+                                        {{ $question->option_4 }}
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input {{ $question->option_5 == $question->given_answer ? ($question->option_5 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" type="radio" name="exampleRadios[{{ $question->id }}]" id="exampleRadios5" value="option5" disabled {{ $question->option_5 == $question->answer ? 'checked' : '' }}>
+                                    <label class="form-check-label {{ $question->option_5 == $question->given_answer ? ($question->option_5 == $question->answer ? 'correct-ans' : 'wrong-ans') : '' }}" for="exampleRadios5">
+                                        {{ $question->option_5 }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- card 1 -->
+                    <?php $i++; ?>
+                    @endforeach
+                    {{-- <!-- card 1 -->
                     <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                         <div class="row border-b-cus pt-2">
                             <div class="col-md-12 position-rel curr-in-box py-2">
@@ -311,7 +369,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- card 5 -->
+                    <!-- card 5 --> --}}
 
                     <div class="col-md-12 item-flex-center pt-5 pb-4">
                         <button class="btn btn-5" type="submit">목록 보기</button>
