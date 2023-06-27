@@ -43,7 +43,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="75" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -100,7 +100,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="65" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -157,7 +157,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="70" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -214,7 +214,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="85" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -271,7 +271,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="50" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -328,7 +328,7 @@
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="learning_details.php">
+                                <a href="/curriculum/learning/details">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="95" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>

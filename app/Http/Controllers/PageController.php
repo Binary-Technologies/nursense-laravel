@@ -56,11 +56,14 @@ class PageController extends Controller
         return view('pages.quiz', compact('quiz'));
     }
 
-    public function galleryDetails($id){
-        $gallery = Gallery::findOrFail($id);
-        $gallery->increment('views');
-        $gallery->save();
-        return view('pages.gallery-details',compact('gallery'));
+    public function learning_details()
+    {
+        return view('pages.learning_details');
+    }
+
+    public function learning()
+    {
+        return view('pages.learning');
     }
 
     public function guide()
@@ -101,7 +104,6 @@ class PageController extends Controller
 
     public function inquiry()
     {
-
         $searchValue = request('search');
         if (request('search')) {
             $inquiries = Inquiry::where(function ($query) use ($searchValue) {
@@ -115,17 +117,6 @@ class PageController extends Controller
         return view('pages.inquiry', compact('inquiries'));
     }
 
-    public function learning_details()
-    {
-        return view('pages.learning_details');
-    }
-
-    public function learning()
-    {
-        return view('pages.learning');
-    }
-    //
-
     public function location()
     {
         $location = Direction::first();
@@ -135,6 +126,13 @@ class PageController extends Controller
     public function muve_gallery(){
         $galleries = Gallery::paginate(10);
         return view('pages.muve_gallery',compact('galleries'));
+    }
+
+    public function galleryDetails($id){
+        $gallery = Gallery::findOrFail($id);
+        $gallery->increment('views');
+        $gallery->save();
+        return view('pages.gallery-details',compact('gallery'));
     }
 
     public function muve()

@@ -3,13 +3,10 @@
 @section('content')
 <section class="pt100 pb100">
     <div class="row">
-
         <div class="col-lg-2">
             @include('includes.sidenav-info')
         </div>
-
         <div class="col-lg-10 bg-quiz" style="width: 100%; padding: 0px;">
-
             <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #212880);">
                 <div class="pl30">
                     <div class="content-box">
@@ -19,38 +16,36 @@
                     </div>
                 </div>
             </section>
-
             <div class="my-5">
+                <!-- Top card start -->
                 <div class="row item-flex-center">
-
-                    <!-- Top card start -->
-
-                        <div class="col-lg-9 shadow border-t-custom-quiz border-rad-10 px-4 mb-3 bg-quiz2">
-                            <div class="row py-4">
-                                <div class="col-md-12 item-flex-left curr-in-box">
-                                    <p class="ttl-18">{{ $quiz->name }}</p>
-                                </div>
-                                <div class="col-md-12 item-flex-left curr-in-box">
-                                    <p class="ttl-16 text-justify">{{ $quiz->description }}</p>
-                                </div>
-                                <div class="col-md-12 item-flex-left curr-in-box pt-3">
-                                    <span class="ttl-27 pr-4 relative-block border-r2">총 문제 수</span>
-                                    <span class="ttl-28">{{ count($quiz->questions) }}개</span>
-                                </div>
-                                <div class="col-md-12 item-flex-left curr-in-box pt-2">
-                                    <span class="ttl-27">종료일시</span>
-                                    <span class="ttl-28 pr-quiz-date">{{ $quiz->deadline_date }}</span>
-                                </div>
+                    <div class="col-lg-9 shadow border-t-custom-quiz border-rad-10 px-4 mb-3 bg-quiz2">
+                        <div class="row py-4">
+                            <div class="col-md-12 item-flex-left curr-in-box">
+                                <p class="ttl-18">{{ $quiz->name }}</p>
+                            </div>
+                            <div class="col-md-12 item-flex-left curr-in-box">
+                                <p class="ttl-16 text-justify">{{ $quiz->description }}</p>
+                            </div>
+                            <div class="col-md-12 item-flex-left curr-in-box pt-3">
+                                <span class="ttl-27 pr-4 relative-block border-r2">총 문제 수</span>
+                                <span class="ttl-28">{{ count($quiz->questions) }}개</span>
+                            </div>
+                            <div class="col-md-12 item-flex-left curr-in-box pt-2">
+                                <span class="ttl-27">종료일시</span>
+                                <span class="ttl-28 pr-quiz-date">{{ $quiz->deadline_date }}</span>
                             </div>
                         </div>
                     </div>
-                    <form action="/curriculum/quiz" method="POST" id="quiz-form">
-                    @csrf
-                        <input type="hidden" name="pre_learning_id" value="{{ $quiz->id }}">
-                        <!-- Top card end -->
-                        <?php $i = 1; ?>
-                        @foreach ($quiz->questions as $question)
-                        <!-- card -->
+                </div>
+                <!-- Top card end -->
+                <form action="/curriculum/quiz" method="POST" id="quiz-form">
+                @csrf
+                    <input type="hidden" name="pre_learning_id" value="{{ $quiz->id }}">
+                    <?php $i = 1; ?>
+                    @foreach ($quiz->questions as $question)
+                    <!-- card -->
+                    <div class="row item-flex-center">
                         <div class="col-lg-9 shadow border-rad-10 px-4 mb-3 bg-quiz2">
                             <div class="row border-b-cus pt-2">
                                 <div class="col-md-12 position-rel curr-in-box py-2">
@@ -103,21 +98,18 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- card -->
-                        <?php $i++; ?>
-                        @endforeach
-
-                        {{-- <div class="col-md-12 item-flex-center pt-5 pb-4">
-                            <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="color: #ffffff; background-color: #212880;padding-left: 40px;padding-right: 40px;padding-bottom: 10px;padding-top: 10px;">제출</button>
-                        </div> --}}
-                    </form>
                     </div>
                     <!-- card -->
+                    <?php $i++; ?>
+                    @endforeach
 
-                    <div class="col-md-12 item-flex-center pt-5 pb-4">
-                        <a href="#scoreModal" class="btn btn-2" data-bs-toggle="modal">제출</a>
-                    </div>
-
+                    {{-- <div class="col-md-12 item-flex-center pt-5 pb-4">
+                        <button class="btn btn-outline-secondary btn-sm btn-curr" type="submit" style="color: #ffffff; background-color: #212880;padding-left: 40px;padding-right: 40px;padding-bottom: 10px;padding-top: 10px;">제출</button>
+                    </div> --}}
+                <!-- card -->
+                </form>
+                <div class="col-md-12 item-flex-center pt-5 pb-4">
+                    <a href="#scoreModal" class="btn btn-2" data-bs-toggle="modal">제출</a>
                 </div>
             </div>
 
@@ -146,12 +138,9 @@
                 </div>
             </div>
             <!-- Score Alert Modal -->
-
         </div>
     </div>
 </section>
-
-
 @endsection
 
 @section('scripts')

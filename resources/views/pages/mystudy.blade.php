@@ -3,13 +3,10 @@
 @section('content')
 <section class="pt100 pb100">
     <div class="row">
-
         <div class="col-lg-2">
             @include('includes.sidenav-info')
         </div>
-
         <div class="col-lg-10" style="padding: 1%;">
-
             <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #4A227B);">
                 <div class="pl30">
                     <div class="content-box">
@@ -18,9 +15,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-8">
-                </div>
+                <div class="col-md-8"></div>
                 <div class="col-md-4">
                     <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                         <span>교육 과정</span>
@@ -31,9 +26,7 @@
                         </select>
                     </form>
                 </div>
-
-                <div class="col-md-8">
-                </div>
+                <div class="col-md-8"></div>
                 <div class="col-md-4">
                     <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                         <span>교육 과정</span>
@@ -45,8 +38,7 @@
                         </select>
                     </form>
                 </div>
-
-            </div>
+            </section>
             <div class="row mb-4">
                 <div class="col-lg-2">
                     <span class="ttl-3">본 학습</span>
