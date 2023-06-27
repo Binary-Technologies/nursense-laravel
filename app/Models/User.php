@@ -115,4 +115,12 @@ class User extends Authenticatable
     public function preLearningAnswers(){
         return $this->hasMany(PreLearningAnswers::class);
     }
+
+    public function createdMainStudies(){
+        return $this->hasMany(MainStudy::class, 'instructor_id');
+    }
+
+    public function mainStudies(){
+        return $this->hasMany(UserMainStudy::class, 'user_id');
+    }
 }

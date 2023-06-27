@@ -15,13 +15,11 @@ class CreateUserMainStudiesTable extends Migration
     {
         Schema::create('user_main_studies', function (Blueprint $table) {
             $table->id();
+            $table->integer('main_study_id');
             $table->integer('student_id');
-            $table->dateTime('final_date');
-            $table->integer('final_score');
-            $table->tinyInteger('report_status');
-            $table->dateTime('report_submit_date');
-            $table->string('report_file');
-            $table->timestamps();
+            $table->integer('user_final_id')->nullable();
+            $table->integer('user_report_id')->nullable();
+            $table->integer('user_survey_id')->nullable();
         });
     }
 

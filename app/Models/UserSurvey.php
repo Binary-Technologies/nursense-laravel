@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SurveyItem extends Model
+class UserSurvey extends Model
 {
-    protected $fillable = ['title', 'questions'];
-    
+    protected $fillable = [
+        'responses',
+    ];
+
     protected $casts = [
-        'questions' => 'array'
+        'responses' => 'array'
     ];
 }

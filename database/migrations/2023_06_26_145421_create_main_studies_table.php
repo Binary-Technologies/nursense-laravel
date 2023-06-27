@@ -17,9 +17,9 @@ class CreateMainStudiesTable extends Migration
             $table->id();
             $table->integer('curriculum_id');
             $table->integer('instructor_id');
-            $table->integer('final_id');
-            $table->integer('report_id');
-            $table->integer('survey_id');
+            $table->integer('final_id')->nullable();
+            $table->integer('report_id')->nullable();
+            $table->integer('survey_id')->nullable();
             $table->string('name');
             $table->text('description');
             $table->dateTime('end_date');
