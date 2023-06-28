@@ -102,8 +102,8 @@ class MainStudySeeder extends Seeder
         ]);
 
         SurveyItem::create([
-            'title' => 1,
-            'questions' => '텍스트',
+            'title' => 'Survey 1',
+            'questions' => json_encode(['텍1', '텍2', '텍3']),
         ]);
     }
 }
