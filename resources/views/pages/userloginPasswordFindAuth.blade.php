@@ -14,14 +14,28 @@
           <p class="pt10 login_desc">인증이 완료됐습니다. 비밀번호 변경을 진행해주세요.</p>
         </div>
 
-        <form method="POST" action="/userLogin" autocomplete="off" class="col-md-12 mx-2 my-2">
+        <form method="POST" action="#" autocomplete="off" class="col-md-12 mx-2 my-2">
           @csrf
           <div class="docu-details item-flex-center">
 
             <div class="mt-3">
               <div class="form-group comp-width-544">
                 <label for="" class="login_desc"><small>새 비밀번호</small></label>
-                <input type="password" name='' id='' class="form-control login_text ttl-23 height-52 width-100" placeholder="새 비밀번호를 입력하세요." aria-describedby="Email" required>
+                <input type="text" name='' id='' class="form-control login_text ttl-23 height-52 width-100" placeholder="새 비밀번호를 입력하세요." aria-describedby="" required>
+                <div class="item-flex-left mt-2">
+                  <div class="ttl-31 mr-4">
+                    <span class="mr-1"><i class="fa fa-check"></i></span>
+                    <span>영문</span>
+                  </div>
+                  <div class="ttl-31 mr-4">
+                    <span class="mr-1"><i class="fa fa-check"></i></span>
+                    <span>숫자</span>
+                  </div>
+                  <div class="ttl-31">
+                    <span class="mr-1"><i class="fa fa-check"></i></span>
+                    <span>8~20자</span>
+                  </div>
+                </div>
               </div>
 
               <div class="form-group comp-width-544">
@@ -29,12 +43,14 @@
                 <input type="text" name='' id='' class="form-control login_text ttl-23 height-52 width-100" placeholder="입력한 비밀먼호를 재입력하세요." aria-describedby="" required>
               </div>
 
-              <div id="msg" class="item-flex-center login_error"></div>
+              <div id="msg" class="item-flex-left login_error d-none">
+                비밀번호가 일치하지 않습니다.
+              </div>
 
-              <div class="form-group pr-2">
+              <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">저장</span></button>
+                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52" data-bs-target="#" data-bs-toggle="modal"><span class="p10">저장</span></button>
                   <!-- If Active -->
                   <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52 btn-2-1 d-none" data-bs-target="#completionModal" data-bs-toggle="modal"><span class="p10">저장</span></button>
                 </div>
@@ -57,8 +73,7 @@
             </div>
             <div class="modal-body pt-0">
               <p class="alert-text2 text-center mt-2 mb-5">
-                인증된 휴대폰 번호로<br>
-                아이디를 전송하였습니다.
+                비밀번호 변경이 완료되었습니다.
               </p>
 
               <div class="item-flex-center my-2">

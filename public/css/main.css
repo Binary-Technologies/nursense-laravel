@@ -1061,8 +1061,14 @@ The navbar toggle appears at this breakpoint */
 
 .form-control,
 .form-select {
+  color: #D2D3DA;
   height: calc(2rem + 2px);
   padding: .5rem .5rem;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #F3F4F8;
 }
 
 .form-check-input {
@@ -1156,10 +1162,11 @@ button:focus {
 }
 
 .form-control:focus,
+.form-select:focus,
 .custom-select:focus {
   border-color: #ced4da !important;
   outline: 0;
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 0 0 rgb(179 237 108);
+  box-shadow: none !important;
 }
 
 .user-dp {
@@ -1652,13 +1659,12 @@ button:focus {
   font-family: pretendard-bold;
   font-size: 26px;
   color: #212880;
-  font-weight: 600;
 }
 
 .ttl-5 {
   font-size: 20px;
   color: #212880;
-  font-weight: 600;
+  font-family: pretendard-bold;
 }
 
 .ttl-6 {
@@ -1731,12 +1737,13 @@ button:focus {
 .ttl-14 {
   color: #090909;
   font-size: 24px;
-  font-weight: 500;
+  font-family: pretendard-bold;
 }
 
 .ttl-15 {
   color: #9495A1;
   font-size: 16px;
+  font-family: pretendard-regular;
 }
 
 .ttl-16,
@@ -2264,7 +2271,8 @@ button:focus {
 .btn-3-1,
 .btn-3-2,
 .btn-4,
-.btn-5 {
+.btn-5,
+.btn-5-2 {
   font-family: pretendard-medium;
   color: #fff;
   font-size: 16px;
@@ -2310,6 +2318,12 @@ button:focus {
   border-color: #212880;
 }
 
+.btn-5-2 {
+  background-color: #7479BD;
+  border-color: #7479BD;
+  padding: 12px 47px;
+}
+
 .btn-2:hover,
 .btn-2:focus,
 .btn-2-1:hover,
@@ -2317,7 +2331,9 @@ button:focus {
 .btn-2-2:hover,
 .btn-2-2:focus,
 .btn-5:hover,
-.btn-5:focus {
+.btn-5:focus,
+.btn-5-2:hover,
+.btn-5-2:focus {
   color: #fff;
   background-color: #5058ba;
   border-color: #5058ba;
@@ -2586,6 +2602,12 @@ button:focus {
   min-height: 52px;
 }
 
+.table-th-text {
+  color: #1B1D1F;
+  font-size: 16px;
+  font-family: pretendard-bold;
+}
+
 .bg-td {
   width: 160px;
   line-height: 52px;
@@ -2704,6 +2726,13 @@ button:focus {
   color: #3941A2;
 }
 
+.tr-txt10 {
+  color: #3941A2;
+  font-size: 14px;
+  font-family: pretendard-regular;
+
+}
+
 .tr-txt6,
 .tr-txt8 {
   color: #767885;
@@ -2730,6 +2759,13 @@ button:focus {
 .btn-6:focus {
   background-color: #a0a3c4;
   border-color: #a0a3c4;
+}
+
+.btn-abs-certi {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 /* progress bar */
@@ -3195,18 +3231,19 @@ ul.list_style a:hover {
 
 .login_text {
   font-family: pretendard-regular;
-  font-size: 20px !important;
-  background-color: #ffffff !important;
+  color: #D2D3DA;
+  font-size: 16px !important;
+  background-color: #ffffff;
 }
 
 .login_text:focus {
   border: #3941A2 thin solid !important;
-  background-color: #ffffff !important;
+  background-color: #ffffff;
 }
 
 .login_text:active {
   border: #3941A2 thin solid !important;
-  background-color: #ffffff !important;
+  background-color: #ffffff;
 }
 
 .login_desc {

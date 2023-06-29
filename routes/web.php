@@ -96,13 +96,14 @@ Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm
 Route::post('/admin/register', [RegisterController::class, 'createAdmin'])->name('admin.register');
 
 Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
-Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('login');
+Route::get('/userLogin', [LoginController::class, 'showUserLogin']);
 Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
 Route::get('/userLoginEmailAuth', [PageController::class, 'userLoginEmailAuth']);
-Route::get('/userloginIdFind', [PageController::class, 'userloginIdFind']);
-Route::get('/userloginPasswordFind', [PageController::class, 'userloginPasswordFind']);
-Route::get('/userloginPasswordFindAuth', [PageController::class, 'userloginPasswordFindAuth']);
+Route::get('/userLoginInfoInput', [PageController::class, 'userLoginInfoInput']);
+Route::get('/userLoginIdFind', [PageController::class, 'userLoginIdFind']);
+Route::get('/userLoginPasswordFind', [PageController::class, 'userLoginPasswordFind']);
+Route::get('/userLoginPasswordFindAuth', [PageController::class, 'userLoginPasswordFindAuth']);
 
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
