@@ -14,7 +14,7 @@
           <p class="pt10 login_desc">휴대폰 번호 입력 후, 인증하기 버튼을 클릭하여<br> 해당 번호로 전송된 인증번호를 확인해주세요.</p>
         </div>
 
-        <form method="POST" action="/userLogin" autocomplete="off" class="col-md-12 mx-2 my-2">
+        <form method="POST" action="#" autocomplete="off" class="col-md-12 mx-2 my-2">
           @csrf
           <div class="docu-details item-flex-center">
 
@@ -36,9 +36,11 @@
                 </div>
               </div>
 
-              <div id="msg" class="item-flex-center login_error"></div>
+              <div id="msg" class="item-flex-left login_error d-none">
+                번호가 일치하지 않습니다.
+              </div>
 
-              <div class="form-group">
+              <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
                   <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증하기</span></button>

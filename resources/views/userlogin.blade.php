@@ -35,14 +35,12 @@
 
             <div class="item-flex-center mt-3 mb-2 comp-width-402">
               <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-402 comp-height-60"><span class="p10">로그인</span></button>
-
-              <a href="/userLoginEmailAuth" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-402 comp-height-60">EmailAuth</a>
             </div>
 
             <div class="item-flex-center">
-              <a href="#"><small class="form-text login_link">아이디 찾기</small></a>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <a href="#"><small class="form-text login_link">비밀번호 찾기</small></a>
+              <a href="#" class="mr-2"><small class="form-text login_link">아이디 찾기</small></a>
+              <span>&nbsp;|&nbsp;</span>
+              <a href="#" class="ml-2"><small class="form-text login_link">비밀번호 찾기</small></a>
               <!-- <small id="" class="form-text text-muted"><a>?</a></small> -->
             </div>
 

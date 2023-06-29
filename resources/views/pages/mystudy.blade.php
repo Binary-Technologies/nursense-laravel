@@ -7,6 +7,7 @@
             @include('includes.sidenav-info')
         </div>
         <div class="col-lg-10" style="padding: 1%;">
+
             <section class="img-sec-top text-center comp-height-120 py44 pl0 pr0" style="background-image: linear-gradient(to right, #212880 , #4A227B);">
                 <div class="pl30">
                     <div class="content-box">
@@ -15,42 +16,45 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <div class="row mt-4">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
                     <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                         <span>교육 과정</span>
-                        <select class="form-control search-bar-custom ml-2" style="width: 150px;">
+                        <select class="form-select search-bar-custom ml-2" style="width: 150px;">
                             @foreach ($user->curricula as $curriculum)
                             <option value="{{ $curriculum->id }}">{{ $curriculum->name }}</option>
                             @endforeach
                         </select>
                     </form>
                 </div>
-                <div class="col-md-8"></div>
-                <div class="col-md-4">
-                    <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
-                        <span>교육 과정</span>
-                        <select class="form-select search-bar-custom ml-2" style="width: 150px;">
-                            <option>전체</option>
-                            <option>당뇨</option>
-                            <option>당뇨당뇨</option>
-                            <option>당뇨당뇨당뇨</option>
-                        </select>
-                    </form>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 py-4">
+                    <h4 class="ttl-14">당뇨</h4>
                 </div>
-            </section>
+            </div>
+
             <div class="row mb-4">
                 <div class="col-lg-2">
-                    <span class="ttl-3">본 학습</span>
-                    <br />
-                    <span class="ttl-3" style="color: #9495A1; font-size: 11px;">시작일</span>
-                    <span class="ttl-3" style="color: #090909; font-size: 11px;">2023년 3월 1일</span>
-                    <br />
-                    <span class="ttl-3" style="color: #9495A1; font-size: 11px;">종료일</span>
-                    <span class="ttl-3" style="color: #090909; font-size: 11px;">2023년 8월 31일</span>
-                    <br />
-                    <span class="ttl-3" style="color: #9495A1; font-size: 11px;">설문여부</span>
-                    <span class="ttl-3" style="color: #090909; font-size: 11px;">미완료</span>
+                    <div class="pt-4">
+                        <h4 class="ttl-5 relative-block title-border-t">기본 정보</h4>
+                    </div>
+                    <div class="pt-3">
+                        <span class="ttl-15 mr-3">시작일</span>
+                        <span class="ttl-12">2023년 3월 1일</span>
+                    </div>
+                    <div>
+                        <span class="ttl-15 mr-3">종료일</span>
+                        <span class="ttl-12">2023년 8월 31일</span>
+                    </div>
+                    <div>
+                        <span class="ttl-15 mr-3">설문여부</span>
+                        <span class="ttl-12">미완료</span>
+                    </div>
                 </div>
                 <!-- card -->
                 <div class="col-lg-5">
@@ -122,7 +126,7 @@
             <div class="row mb-4" style="font-size: 14px;">
                 <div class="col-lg-12 border-rad-5 mt-2 px-4">
                     <table style="width: 100%;">
-                        <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
+                        <tr class="text-center" style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
                             <th style="width: 10%; padding: 10px;">번호</th>
                             <th style="width: 45%">학습명</th>
                             <th style="width: 10%">시작일</th>
@@ -130,7 +134,7 @@
                             <th style="width: 15%">평가 완료 여부</th>
                             <th style="width: 10%">평가 점수</th>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
+                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">10</td>
                             <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
                             <td style="width: 10%">2023.02.11</td>
@@ -138,7 +142,7 @@
                             <td style="width: 15%">완료</td>
                             <td style="width: 10%">100점/100점</td>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
+                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">10</td>
                             <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
                             <td style="width: 10%">2023.02.11</td>
@@ -146,7 +150,7 @@
                             <td style="width: 15%">완료</td>
                             <td style="width: 10%">100점/100점</td>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
+                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">10</td>
                             <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
                             <td style="width: 10%">2023.02.11</td>
@@ -154,7 +158,7 @@
                             <td style="width: 15%">완료</td>
                             <td style="width: 10%">100점/100점</td>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
+                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">10</td>
                             <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
                             <td style="width: 10%">2023.02.11</td>
@@ -162,7 +166,7 @@
                             <td style="width: 15%">완료</td>
                             <td style="width: 10%">100점/100점</td>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
+                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">10</td>
                             <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
                             <td style="width: 10%">2023.02.11</td>
@@ -170,39 +174,13 @@
                             <td style="width: 15%">완료</td>
                             <td style="width: 10%">100점/100점</td>
                         </tr>
-                        <tr>
-                            <td colspan="6" style="background-color: #F5F7FE; text-align: right;color: #3941A2; font-size: 12px;">평가 점수 총점<br><b>230점 </b>/400점</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="row mb-4" style="font-size: 14px;">
-                <div class="col-lg-12  border-rad-5 mt-2 px-4">
-                    <table style="width: 100%;">
                         <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                            <th style="width: 20%; padding: 10px;">사전 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">총 평가 점수</th>
-                            <th style="width: 20%">수료 여부</th>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 20%; padding: 10px;"><b>25</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>40</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>10</b>/30점</td>
-                            <td style="width: 20%; padding: 10px; color: #3941A2;"><b>75</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1;">*총 평가 점수가 80점 이상일 경우 수료증 발급이 가능합니다.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">?수료증이란?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">
-                                <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">수료증 발급하기</button>
+                            <td colspan="5"></td>
+                            <td class="pr-3">
+                                <p class="tr-txt10 text-right mt-2 mb-0 mr-4">평가 점수 총점</p>
+                                <p class="tr-txt3 text-right mb-2 mr-4">
+                                    <span class="tr-txt5">232</span> /400점
+                                </p>
                             </td>
                         </tr>
                     </table>
@@ -210,70 +188,107 @@
             </div>
 
             <div class="row mb-4" style="font-size: 14px;">
-                <div class="col-lg-12  border-rad-5 mt-2 px-4">
-                    <table style="width: 100%;">
-                        <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                            <th style="width: 20%; padding: 10px;">사전 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">총 평가 점수</th>
-                            <th style="width: 20%">수료 여부</th>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 20%; padding: 10px;"><b>25</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>40</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>10</b>/30점</td>
-                            <td style="width: 20%; padding: 10px; color: #3941A2;"><b>75</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1;">*총 평가 점수가 80점 이상일 경우 수료증 발급이 가능합니다.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">?수료증이란?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">
-                                <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">수료증 발급하기</button>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="col-lg-12 border-rad-5 mt-2 px-4">
+                    <div class="table-responsive mt-4 mb-3">
+
+                        <table class="table align-middle table-hover">
+                            <thead class="thead-light text-center">
+                                <tr class="table-head-1">
+                                    <th scope="col" class="table-th-text">사전 학습</th>
+                                    <th scope="col" class="table-th-text">본 학습</th>
+                                    <th scope="col" class="table-th-text">리포트</th>
+                                    <th scope="col" class="table-th-text">총 평가 점수</th>
+                                    <th scope="col" class="table-th-text">수료 여부</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <p class="tr-txt6 mb-0">
+                                            <span class="tr-txt7">25</span> /30점
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="tr-txt6 mb-0">
+                                            <span class="tr-txt7">25</span> /30점
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="tr-txt6 mb-0">
+                                            <span class="tr-txt7">25</span> /30점
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="tr-txt8 mb-0">
+                                            <span class="tr-txt9">25</span> /30점
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-6">
+                                            수료
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ttl-3">
+                            *총 평가 점수가 80점 이상일 경우 수료증 발급이 가능합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="item-flex-right">
+                    <div class="mr-4">
+                        <div class="ttl-15 text-right">
+                            <span><i class="far fa-question-circle mr-1"></i>수료증이란?</span>
+                        </div>
+                        <div class="mt-1">
+                            <!-- If Deactive -->
+                            <button class="btn btn-3" type="submit">수료증 발급하기</button>
+                            <!-- If Active -->
+                            <button class="btn btn-2 d-none" type="submit">수료증 발급하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-4" style="font-size: 14px;">
-                <div class="col-lg-12  border-rad-5 mt-2 px-4">
-                    <table style="width: 100%;">
-                        <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                            <th style="width: 20%; padding: 10px;">사전 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">본 학습</th>
-                            <th style="width: 20%">총 평가 점수</th>
-                            <th style="width: 20%">수료 여부</th>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 20%; padding: 10px;"><b>25</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>40</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"><b>10</b>/30점</td>
-                            <td style="width: 20%; padding: 10px; color: #3941A2;"><b>75</b>/30점</td>
-                            <td style="width: 20%; padding: 10px;"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1;">*총 평가 점수가 80점 이상일 경우 수료증 발급이 가능합니다.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">?수료증이란?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-size: 8px; color: #9495A1; text-align: right">
-                                <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">수료증 발급하기</button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+            <!-- For display modal -->
+            <button class="btn btn-2" data-bs-target="#certificateDownloadModal" data-bs-toggle="modal">Sample Testing Button for Display Certificate Download Modal</button>
+            <!-- For display modal -->
 
         </div>
+
+
+        <!-- Certificate Download Modal -->
+        <div class="modal fade" id="certificateDownloadModal" aria-hidden="true" aria-labelledby="certificateDownloadModalContent" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header mt-3 mb-1">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <div class="row py-4">
+                            <div class="col-9">
+                                <div class="item-flex-center">
+                                    <img src="{{asset('images/certificate.png')}}" class="width-80" alt="Certificate">
+                                </div>
+                            </div>
+                            <div class="col-3 position-rel">
+                                <div class="btn-abs-certi">
+                                    <div class="item-flex-center">
+                                        <div>
+                                            <a href="#" class="btn btn-2 mb-3">다운로드</a>
+                                            <a href="#" class="btn btn-5-2">인쇄</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Certificate Download Modal -->
+
     </div>
 </section>
 @endsection

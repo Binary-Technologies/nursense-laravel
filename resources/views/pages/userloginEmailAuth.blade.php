@@ -14,7 +14,7 @@
           <p class="pt10 login_desc">이메일 인증을 해주세요</p>
         </div>
 
-        <form method="POST" action="/userLogin" autocomplete="off" class="col-md-12 mx-2 my-2">
+        <form method="POST" action="#" autocomplete="off" class="col-md-12 mx-2 my-2">
           @csrf
           <div class="docu-details item-flex-center">
 
@@ -32,9 +32,11 @@
                 </div>
               </div>
 
-              <div id="msg" class="item-flex-center login_error"></div>
+              <div id="msg" class="item-flex-left login_error d-none">
+                올바른 이메일을 입력해주세요.
+              </div>
 
-              <div class="form-group">
+              <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
                   <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>

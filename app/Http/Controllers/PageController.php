@@ -345,18 +345,22 @@ class PageController extends Controller
     {
         return view('pages.userloginEmailAuth');
     }
+    public function userLoginInfoInput()
+    {
+        return view('pages.userloginInfoInput');
+    }
 
-    public function userloginIdFind()
+    public function userLoginIdFind()
     {
         return view('pages.userloginIdFind');
     }
 
-    public function userloginPasswordFind()
+    public function userLoginPasswordFind()
     {
         return view('pages.userloginPasswordFind');
     }
 
-    public function userloginPasswordFindAuth()
+    public function userLoginPasswordFindAuth()
     {
         return view('pages.userloginPasswordFindAuth');
     }
