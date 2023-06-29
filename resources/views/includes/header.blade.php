@@ -31,9 +31,7 @@
 							<form class="form-inline justify-content-end mx-3 my-2 my-lg-0" method="post" action="#">
 								<div class="input-group">
 									<span><i class="fas fa-search home-search-i" area-hidden="true"></i></span>
-									@guest
 									<input type="text" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
-									@endguest
 								</div>
 							</form>
 							<div class="item-flex-center user-dp mr-4">
