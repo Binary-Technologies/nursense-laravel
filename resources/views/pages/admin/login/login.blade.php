@@ -18,7 +18,7 @@
                 </div>
                 <div class="login-form-box">
                     <form method="post" id="loginForm" class="login-form" action="/userLogin">
-@csrf
+                        @csrf
                         <div class="mb-4">
                             <label for="uName" class="form-label login-lbl">아이디</label>
                             <input type="text" class="form-control" name="email" id="uName" placeholder="아이디를 입력하세요.">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-12 mt-4">
-                           <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
+                            <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
                         </div>
 
                     </form>

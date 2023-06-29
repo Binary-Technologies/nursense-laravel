@@ -99,6 +99,11 @@ Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
 Route::get('/userLogin', [LoginController::class, 'showUserLogin'])->name('login');
 Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
+Route::get('/userLoginEmailAuth', [PageController::class, 'userLoginEmailAuth']);
+Route::get('/userloginIdFind', [PageController::class, 'userloginIdFind']);
+Route::get('/userloginPasswordFind', [PageController::class, 'userloginPasswordFind']);
+Route::get('/userloginPasswordFindAuth', [PageController::class, 'userloginPasswordFindAuth']);
+
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
 Route::get('/myprofile_dp_upload', [PageController::class, 'myprofile_dp_upload']);

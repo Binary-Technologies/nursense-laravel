@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        return view('auth.login', ['url' => route('admin.login-view'), 'title'=>'Admin']);
+        return view('auth.login', ['url' => route('admin.login-view'), 'title' => 'Admin']);
     }
 
     public function adminLogin(Request $request)
@@ -54,14 +54,15 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+        if (Auth::guard('admin')->attempt($request->only(['email', 'password']), $request->get('remember'))) {
             return redirect('/admin/instructorDash');
         }
 
         return back()->withInput($request->only('email', 'remember'));
-    }  
+    }
 
-    public function showUserLogin(){
+    public function showUserLogin()
+    {
         return view('userlogin');
     }
 
@@ -71,19 +72,19 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if (Auth::guard('web')->attempt($request->only(['email','password']), true)) {
+        if (Auth::guard('web')->attempt($request->only(['email', 'password']), true)) {
             return redirect('/');
         }
 
-        
+
         return back()->withErrors([
             'email' => 'Invalid credentials.',
         ]);
-        
     }
 
-    public function userApiLogin(){
-         // Process the response data
+    public function userApiLogin()
+    {
+        // Process the response data
         $responseData = json_decode($response, true);
 
         // Check if the login was successful
