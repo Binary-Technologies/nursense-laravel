@@ -19,6 +19,7 @@ class CreateUserFinalAnswersTable extends Migration
             $table->integer('final_question_id');
             $table->integer('user_id');
             $table->text('given_answer');
+            $table->integer('points');
             $table->timestamps();
         });
     }

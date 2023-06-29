@@ -39,9 +39,9 @@
                     </div>
                 </div>
                 <!-- Top card end -->
-                <form action="/curriculum/quiz" method="POST" id="quiz-form">
+                <form action="{{ $type == 'final' ? '/curriculum/final-quiz' : '/curriculum/quiz' }}" method="POST" id="quiz-form">
                 @csrf
-                    <input type="hidden" name="pre_learning_id" value="{{ $quiz->id }}">
+                    <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
                     <?php $i = 1; ?>
                     @foreach ($quiz->questions as $question)
                     <!-- card -->
@@ -66,31 +66,31 @@
                             <div class="row py-4">
                                 <div class="col-md-8 position-rel">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="preLearningAnswers[{{ $question->id }}]" id="exampleRadios-1-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_1 !!}')">
+                                        <input class="form-check-input" type="radio" name="quizAnswers[{{ $question->id }}]" id="exampleRadios-1-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_1 !!}')">
                                         <label class="form-check-label" for="exampleRadios1{{ $i }}">
                                             {{ $question->option_1 }}
                                         </label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="preLearningAnswers[{{ $question->id }}]" id="exampleRadios-2-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_2 !!}')">
+                                        <input class="form-check-input" type="radio" name="quizAnswers[{{ $question->id }}]" id="exampleRadios-2-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_2 !!}')">
                                         <label class="form-check-label" for="exampleRadios2{{ $i }}">
                                             {{ $question->option_2 }}
                                         </label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="preLearningAnswers[{{ $question->id }}]" id="exampleRadios-3-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_3 !!}')">
+                                        <input class="form-check-input" type="radio" name="quizAnswers[{{ $question->id }}]" id="exampleRadios-3-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_3 !!}')">
                                         <label class="form-check-label" for="exampleRadios3{{ $i }}">
                                             {{ $question->option_3 }}
                                         </label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="preLearningAnswers[{{ $question->id }}]" id="exampleRadios-4-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_4 !!}')">
+                                        <input class="form-check-input" type="radio" name="quizAnswers[{{ $question->id }}]" id="exampleRadios-4-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_4 !!}')">
                                         <label class="form-check-label" for="exampleRadios4{{ $i }}">
                                             {{ $question->option_4 }}
                                         </label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="preLearningAnswers[{{ $question->id }}]" id="exampleRadios-5-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_5 !!}')">
+                                        <input class="form-check-input" type="radio" name="quizAnswers[{{ $question->id }}]" id="exampleRadios-5-{{ $i }}" value="" onchange="updateValue(this, '{!! $question->option_5 !!}')">
                                         <label class="form-check-label" for="exampleRadios5{{ $i }}">
                                             {{ $question->option_5 }}
                                         </label>

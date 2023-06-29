@@ -48,24 +48,6 @@ class PageController extends Controller
         return view('pages.curriculum', compact('preLearnings'));
     }
 
-    public function quiz($id){
-        $played = PreLearningAnswers::where('pre_learning_id', $id)->where('user_id', \Auth::user()->id)->first();
-        if($played) return redirect('/curriculum/quiz/CheckAns/'.$id);
-
-        $quiz = PreLearning::where('id', $id)->with('questions')->first();
-        return view('pages.quiz', compact('quiz'));
-    }
-
-    public function learning_details()
-    {
-        return view('pages.learning_details');
-    }
-
-    public function learning()
-    {
-        return view('pages.learning');
-    }
-
     public function guide()
     {
         return view('pages.guide');

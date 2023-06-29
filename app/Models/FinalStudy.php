@@ -9,8 +9,8 @@ class FinalStudy extends Model
 {
     protected $fillable = [
         'instructor_id',
-        'title',
-        'content',
+        'name',
+        'description',
         'register_date',
         'deadline_date',
     ];
@@ -24,6 +24,6 @@ class FinalStudy extends Model
 
     public function questions()
     {
-        return $this->hasMany(FinalAssessmentQuestion::class);
+        return $this->hasMany(FinalStudyQuestion::class, 'final_id', 'id');
     }
 }

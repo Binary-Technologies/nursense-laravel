@@ -30,20 +30,17 @@
                                 <span>교육 과정</span>
                                 <select class="form-control search-bar-custom ml-3" style="width: 150px;">
                                     <option>당뇨</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
                                 </select>
                             </form>
                         </div>
 
                     </div>
                     <div class="row mt-3">
-
+                        @foreach ($studies as $study)
                         <!-- card -->
                         <div class="col-lg-6 py-4 mb-3">
                             <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
+                                <a href="/curriculum/learning/details/{{ $study->id }}">
                                     <div class="row p20">
                                         <div class="pie_progress col-md-3" role="progressbar" data-goal="75" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
                                             <div class="pie_progress__number" style="top: 70px;">0%</div>
@@ -52,10 +49,10 @@
                                             <div class="row">
                                                 <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
                                                     <div class="ttl-2">
-                                                        학습 1
+                                                        {{ $study->mainStudy->name}}
                                                     </div>
                                                     <div class="ttl-1">
-                                                        김영신 교수님
+                                                        {{ $study->mainStudy->instructor->name }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,9 +60,11 @@
                                                 <div class="col-md-12 position-rel">
                                                     <span class="ttl-3 pr-4">등록일</span>
                                                     <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
+                                                    <span class="ttl-3">{{ $study->mainStudy->end_date }}</span>
                                                     <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
+                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">
+                                                            {{ $study->mainStudy->description }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,247 +75,43 @@
                                         <div class="col-md-4 relative-block border-r1">
                                             <div class="item-flex-center">
                                                 <span class="ttl-3 pr-2">최종평가</span>
+                                                @if ($study->mainStudy->final == null)
+                                                <span class="ttl-24" style="color: #616474;">등록된 평가 없음</span>
+                                                @else
+                                                @if(count($study->userFinalAnswers) == 0)
                                                 <span class="ttl-24">미응시</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24">미제출</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24">미제출</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- card -->
-
-                        <!-- card -->
-                        <div class="col-lg-6 py-4 mb-3">
-                            <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
-                                    <div class="row p20">
-                                        <div class="pie_progress col-md-3" role="progressbar" data-goal="65" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="pie_progress__number" style="top: 70px;">0%</div>
-                                        </div>
-                                        <div class="col-md-9 border-rad-5 mb-3 px-2">
-                                            <div class="row">
-                                                <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
-                                                    <div class="ttl-2">
-                                                        학습 2
-                                                    </div>
-                                                    <div class="ttl-1">
-                                                        김영신 교수님
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 position-rel">
-                                                    <span class="ttl-3 pr-4">등록일</span>
-                                                    <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
-                                                    <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row p20">
-                                        <div class="col-md-12 relative-block border-t1"></div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">최종평가</span>
+                                                @else
                                                 <span class="ttl-24" style="color: #3941A2;">응시 완료</span>
+                                                @endif
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-4 relative-block border-r1">
                                             <div class="item-flex-center">
                                                 <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24" style="color: #3941A2;">제출 완료</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24" style="color: #3941A2;">미제출</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- card -->
-
-                        <!-- card -->
-                        <div class="col-lg-6 py-4 mb-3">
-                            <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
-                                    <div class="row p20">
-                                        <div class="pie_progress col-md-3" role="progressbar" data-goal="70" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="pie_progress__number" style="top: 70px;">0%</div>
-                                        </div>
-                                        <div class="col-md-9 border-rad-5 mb-3 px-2">
-                                            <div class="row">
-                                                <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
-                                                    <div class="ttl-2">
-                                                        학습 3
-                                                    </div>
-                                                    <div class="ttl-1">
-                                                        김영신 교수님
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 position-rel">
-                                                    <span class="ttl-3 pr-4">등록일</span>
-                                                    <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
-                                                    <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row p20">
-                                        <div class="col-md-12 relative-block border-t1"></div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">최종평가</span>
+                                                @if ($study->mainStudy->report == null)
                                                 <span class="ttl-24" style="color: #616474;">등록된 평가 없음</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24" style="color: #616474;">등록된 리포트 없음</span>
+                                                @else
+                                                @if($study->userReport == null)
+                                                <span class="ttl-24">미응시</span>
+                                                @else
+                                                <span class="ttl-24" style="color: #3941A2;">응시 완료</span>
+                                                @endif
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="item-flex-center">
                                                 <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24" style="color: #616474;">학습 완료후 참여 가능</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- card -->
-
-                        <!-- card -->
-                        <div class="col-lg-6 py-4 mb-3">
-                            <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
-                                    <div class="row p20">
-                                        <div class="pie_progress col-md-3" role="progressbar" data-goal="85" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="pie_progress__number" style="top: 70px;">0%</div>
-                                        </div>
-                                        <div class="col-md-9 border-rad-5 mb-3 px-2">
-                                            <div class="row">
-                                                <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
-                                                    <div class="ttl-2">
-                                                        학습 4
-                                                    </div>
-                                                    <div class="ttl-1">
-                                                        김영신 교수님
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 position-rel">
-                                                    <span class="ttl-3 pr-4">등록일</span>
-                                                    <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
-                                                    <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row p20">
-                                        <div class="col-md-12 relative-block border-t1"></div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">최종평가</span>
+                                                @if ($study->mainStudy->survey == null)
                                                 <span class="ttl-24" style="color: #616474;">등록된 평가 없음</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24" style="color: #616474;">등록된 리포트 없음</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24" style="color: #616474;">학습 완료후 참여 가능</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- card -->
-
-                        <!-- card -->
-                        <div class="col-lg-6 py-4 mb-3">
-                            <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
-                                    <div class="row p20">
-                                        <div class="pie_progress col-md-3" role="progressbar" data-goal="50" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="pie_progress__number" style="top: 70px;">0%</div>
-                                        </div>
-                                        <div class="col-md-9 border-rad-5 mb-3 px-2">
-                                            <div class="row">
-                                                <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
-                                                    <div class="ttl-2">
-                                                        학습 5
-                                                    </div>
-                                                    <div class="ttl-1">
-                                                        김영신 교수님
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 position-rel">
-                                                    <span class="ttl-3 pr-4">등록일</span>
-                                                    <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
-                                                    <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row p20">
-                                        <div class="col-md-12 relative-block border-t1"></div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">최종평가</span>
+                                                @else
+                                                @if($study->userSurvey == null)
+                                                <span class="ttl-24">미응시</span>
+                                                @else
                                                 <span class="ttl-24" style="color: #3941A2;">응시 완료</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24" style="color: #3941A2;">제출 완료</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24" style="color: #3941A2;">미제출</span>
+                                                @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -324,64 +119,7 @@
                             </div>
                         </div>
                         <!-- card -->
-
-                        <!-- card -->
-                        <div class="col-lg-6 py-4 mb-3">
-                            <div class="shadow border-rad-10">
-                                <a href="/curriculum/learning/details">
-                                    <div class="row p20">
-                                        <div class="pie_progress col-md-3" role="progressbar" data-goal="95" data-barcolor="#212880" data-barsize="20" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="pie_progress__number" style="top: 70px;">0%</div>
-                                        </div>
-                                        <div class="col-md-9 border-rad-5 mb-3 px-2">
-                                            <div class="row">
-                                                <div class="col-md-12 item-flex-left position-rel curr-in-box pt-4 pb-2">
-                                                    <div class="ttl-2">
-                                                        학습 6
-                                                    </div>
-                                                    <div class="ttl-1">
-                                                        김영신 교수님
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 position-rel">
-                                                    <span class="ttl-3 pr-4">등록일</span>
-                                                    <span class="br-right-2"></span>
-                                                    <span class="ttl-3">2023.04.05</span>
-                                                    <div class="mt-2">
-                                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #090909;">학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용학습에 관한 간단한 내용</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row p20">
-                                        <div class="col-md-12 relative-block border-t1"></div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">최종평가</span>
-                                                <span class="ttl-24" style="color: #3941A2;">응시 완료</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 relative-block border-r1">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">리포트 제출</span>
-                                                <span class="ttl-24" style="color: #3941A2;">제출 완료</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-flex-center">
-                                                <span class="ttl-3 pr-2">설문조사</span>
-                                                <span class="ttl-24" style="color: #3941A2;">미제출</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- card -->
-
+                        @endforeach
                     </div>
                 </div>
 

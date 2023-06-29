@@ -30,16 +30,16 @@ class MainStudy extends Model
 
     public function final()
     {
-        return $this->hasOne(FinalAssessment::class);
+        return $this->hasOne(FinalStudy::class, 'id', 'final_id');
     }
 
     public function report()
     {
-        return $this->hasOne(Report::class);
+        return $this->hasOne(Report::class, 'id', 'report_id');
     }
 
     public function survey()
     {
-        return $this->hasOne(SurveyItem::class);
+        return $this->hasOne(SurveyItem::class, 'id', 'survey_id');
     }
 }

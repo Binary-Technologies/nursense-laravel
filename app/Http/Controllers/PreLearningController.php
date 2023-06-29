@@ -9,11 +9,20 @@ use App\Models\PreLearningQuestion;
 
 class PreLearningController extends Controller
 {
-    public function quiz(Request $request){
+    public function quiz($id){
+        $played = PreLearningAnswers::where('pre_learning_id', $id)->where('user_id', \Auth::user()->id)->first();
+        if($played) return redirect('/curriculum/quiz/CheckAns/'.$id);
+
+        $quiz = PreLearning::where('id', $id)->with('questions')->first();
+        $type = 'pre-learning';
+        return view('pages.quiz', compact('quiz', 'type'));
+    }
+
+    public function quizSubmit(Request $request){
         // return $request;
-        foreach ($request->input('preLearningAnswers') as $key => $value) {
+        foreach ($request->input('quizAnswers') as $key => $value) {
             PreLearningAnswers::create([
-                'pre_learning_id' => $request->pre_learning_id,
+                'pre_learning_id' => $request->quiz_id,
                 'user_id' => \Auth::user()->id,
                 'pre_learning_question_id' => $key,
                 'given_answer' => $value,

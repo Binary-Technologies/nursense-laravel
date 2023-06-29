@@ -16,7 +16,7 @@ class UserMainStudy extends Model
     ];
 
     public $timestamps = false;
-    
+
     public function mainStudy(){
         return $this->belongsTo(MainStudy::class);
     }
@@ -26,14 +26,23 @@ class UserMainStudy extends Model
     }
 
     public function userFinalAnswers(){
-        return $this->hasMain(UserFinalAnswer::class);
+        return $this->hasManyThrough(UserFinalAnswer::class, FinalStudy::class,'id',
+        'final_id',
+        'id',
+        'id');
     }
 
     public function userReport(){
-        return $this->hasOne(UserReport::class);
+        return $this->hasOneThrough(UserReport::class, Report::class,'id',
+        'id',
+        'id',
+        'id');
     }
 
     public function userSurvey(){
-        return $this->hasOne(UserSurvey::class);
+        return $this->hasOneThrough(UserSurvey::class, SurveyItem::class,'id',
+        'id',
+        'id',
+        'id');
     }
 }

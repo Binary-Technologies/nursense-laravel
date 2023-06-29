@@ -12,5 +12,6 @@ class UserFinalAnswer extends Model
         'user_id',
         'final_question_id',
         'given_answer',
+        'points'
     ];
 }

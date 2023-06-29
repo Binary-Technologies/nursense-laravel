@@ -16,8 +16,8 @@ class CreateFinalAssessmentsTable extends Migration
         Schema::create('final_studies', function (Blueprint $table) {
             $table->id();
             $table->integer('instructor_id');
-            $table->string('title');
-            $table->text('content');
+            $table->string('name');
+            $table->text('description');
             $table->dateTime('register_date');
             $table->dateTime('deadline_date');
         });

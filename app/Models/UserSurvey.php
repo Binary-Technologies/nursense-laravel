@@ -9,6 +9,7 @@ class UserSurvey extends Model
 {
     protected $fillable = [
         'responses',
+        'comment'
     ];
 
     protected $casts = [

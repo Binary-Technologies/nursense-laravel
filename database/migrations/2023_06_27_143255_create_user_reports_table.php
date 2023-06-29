@@ -16,7 +16,7 @@ class CreateUserReportsTable extends Migration
         Schema::create('user_reports', function (Blueprint $table) {
             $table->id();
             $table->string('grade')->nullable();
-            $table->string('file_name');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

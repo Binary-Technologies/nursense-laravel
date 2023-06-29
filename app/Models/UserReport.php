@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserReport extends Model
 {
     protected $fillable = [
-        'file_name',
+        'file_path',
         'grade',
     ];
 }

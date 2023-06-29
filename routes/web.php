@@ -19,6 +19,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\PreLearningController;
+use App\Http\Controllers\MainStudyController;
 use App\Models\University;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
@@ -45,11 +46,17 @@ Route::get('/muve/gallery-details/{gallery:id}', [PageController::class, 'galler
 Route::prefix('/curriculum')->middleware('auth:web')->group(function () {
     Route::get('/curriculum', [PageController::class, 'curriculum']);
     Route::get('/guide', [PageController::class, 'guide']);
-    Route::get('/quiz/{preLearning:id}', [PageController::class, 'quiz']);
-    Route::post('/quiz', [PreLearningController::class, 'quiz']);
     Route::get('/download', [PageController::class, 'download']);
-    Route::get('/learning', [PageController::class, 'learning']);
-    Route::get('/learning/details', [PageController::class, 'learning_details']);
+    Route::get('/learning', [MainStudyController::class, 'learning']);
+    Route::get('/learning/details/{userMainStudy:id}', [MainStudyController::class, 'learning_details']);
+
+    Route::get('/learning/final-quiz/{finalStudy:id}', [MainStudyController::class, 'quiz']);
+    Route::post('/final-quiz', [MainStudyController::class, 'quizSubmit']);
+    Route::get('/learning/final-quiz/CheckAns/{finalStudy:id}', [MainStudyController::class, 'quizCheckAns'])->name('quizCheckAns');
+    Route::post('/learning/report', [MainStudyController::class, 'reportUpload']);
+
+    Route::get('/quiz/{preLearning:id}', [PreLearningController::class, 'quiz']);
+    Route::post('/quiz', [PreLearningController::class, 'quizSubmit']);
     Route::get('/quiz/CheckAns/{preLearning:id}', [PreLearningController::class, 'quizCheckAns'])->name('quizCheckAns');
 });
 

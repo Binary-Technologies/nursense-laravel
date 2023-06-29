@@ -16,6 +16,7 @@ class CreateUserSurveysTable extends Migration
         Schema::create('user_surveys', function (Blueprint $table) {
             $table->id();
             $table->json('responses');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
