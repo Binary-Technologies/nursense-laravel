@@ -45,15 +45,21 @@
                     </div>
                     <div class="pt-3">
                         <span class="ttl-15 mr-3">시작일</span>
-                        <span class="ttl-12">2023년 3월 1일</span>
+                        <span class="ttl-12">
+                            {{ $study->mainStudy->created_at }}
+                        </span>
                     </div>
                     <div>
                         <span class="ttl-15 mr-3">종료일</span>
-                        <span class="ttl-12">2023년 8월 31일</span>
+                        <span class="ttl-12">
+                            {{ $study->mainStudy->end_date }}
+                        </span>
                     </div>
                     <div>
                         <span class="ttl-15 mr-3">설문여부</span>
-                        <span class="ttl-12">미완료</span>
+                        <span class="ttl-12">
+                            {{ $study->userSurvey ? '완료' : '미완료' }}
+                        </span>
                     </div>
                 </div>
                 <!-- card -->
@@ -73,9 +79,9 @@
                                         <span class="ttl-3 pr-4">최근 학습</span>
                                         <br />
                                         <span class="ttl-3" style="color: #212880;">챕터 4 .</span>
-                                        <span class="ttl-3" style="color: #212880;">노인 당뇨</span>
+                                        <span class="ttl-3" style="color: #212880;">{{ $study->mainStudy->curriculum->name }}</span>
                                         <div class="mt-2">
-                                            <span class="desc-1" style="color: #0062cc;">2023년 8월 31일(목)</span>
+                                            <span class="desc-1" style="color: #0062cc;">{{ $study->mainStudy->created_at }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -98,13 +104,15 @@
                                             평가 점수
                                         </div>
                                         <span class="ttl-3" style="color: #9495A1; font-size: 11px;">전체 문항 수</span>
-                                        <span class="ttl-3" style="color: #090909; font-size: 11px;">20개</span>
+                                        <span class="ttl-3" style="color: #090909; font-size: 11px;">
+                                            {{ $study->mainStudy->final ? count($study->mainStudy->final->questions) : '-' }}개
+                                        </span>
                                         <br />
                                         <span class="ttl-3" style="color: #9495A1; font-size: 11px;">정답 문항 수</span>
-                                        <span class="ttl-3" style="color: #090909; font-size: 11px;">16개일</span>
+                                        <span class="ttl-3" style="color: #090909; font-size: 11px;">{{ $correct }}개일</span>
                                         <br />
                                         <span class="ttl-3" style="color: #9495A1; font-size: 11px;">오답 문항 수</span>
-                                        <span class="ttl-3" style="color: #FF625F; font-size: 11px;">4개</span>
+                                        <span class="ttl-3" style="color: #FF625F; font-size: 11px;">{{ $incorrect }}개</span>
                                     </div>
                                 </div>
                             </div>
@@ -134,52 +142,24 @@
                             <th style="width: 15%">평가 완료 여부</th>
                             <th style="width: 10%">평가 점수</th>
                         </tr>
+                        <?php $totalScore = 0; $totalUserScore = 0; ?>
+                        @foreach ($preLearnings as $preLearning)
                         <tr class="text-center" style="border-bottom: #ccc solid thin;">
-                            <td style="width: 10%; padding: 10px;">10</td>
-                            <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
-                            <td style="width: 10%">2023.02.11</td>
-                            <td style="width: 10%">2023.02.28</td>
-                            <td style="width: 15%">완료</td>
-                            <td style="width: 10%">100점/100점</td>
+                            <td style="width: 10%; padding: 10px;">{{ $preLearning->id }}</td>
+                            <td style="width: 45%">{{ $preLearning->name }}</td>
+                            <td style="width: 10%">{{ $preLearning->register_date }}</td>
+                            <td style="width: 10%">{{ $preLearning->deadline_date }}</td>
+                            <td style="width: 15%">{{ $preLearning->completeDate == '-' ? '' : '완료' }}</td>
+                            <td style="width: 10%">{{ $preLearning->userScore }}점/{{ $preLearning->score }}점</td>
                         </tr>
-                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
-                            <td style="width: 10%; padding: 10px;">10</td>
-                            <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
-                            <td style="width: 10%">2023.02.11</td>
-                            <td style="width: 10%">2023.02.28</td>
-                            <td style="width: 15%">완료</td>
-                            <td style="width: 10%">100점/100점</td>
-                        </tr>
-                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
-                            <td style="width: 10%; padding: 10px;">10</td>
-                            <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
-                            <td style="width: 10%">2023.02.11</td>
-                            <td style="width: 10%">2023.02.28</td>
-                            <td style="width: 15%">완료</td>
-                            <td style="width: 10%">100점/100점</td>
-                        </tr>
-                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
-                            <td style="width: 10%; padding: 10px;">10</td>
-                            <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
-                            <td style="width: 10%">2023.02.11</td>
-                            <td style="width: 10%">2023.02.28</td>
-                            <td style="width: 15%">완료</td>
-                            <td style="width: 10%">100점/100점</td>
-                        </tr>
-                        <tr class="text-center" style="border-bottom: #ccc solid thin;">
-                            <td style="width: 10%; padding: 10px;">10</td>
-                            <td style="width: 45%">학습 1. 노인 당뇨 기본</td>
-                            <td style="width: 10%">2023.02.11</td>
-                            <td style="width: 10%">2023.02.28</td>
-                            <td style="width: 15%">완료</td>
-                            <td style="width: 10%">100점/100점</td>
-                        </tr>
+                        <?php $totalScore += $preLearning->score; $totalUserScore += $preLearning->userScore; ?>
+                        @endforeach
                         <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
                             <td colspan="5"></td>
                             <td class="pr-3">
                                 <p class="tr-txt10 text-right mt-2 mb-0 mr-4">평가 점수 총점</p>
                                 <p class="tr-txt3 text-right mb-2 mr-4">
-                                    <span class="tr-txt5">232</span> /400점
+                                    <span class="tr-txt5">{{ $totalUserScore }}</span> /{{ $totalScore }}점
                                 </p>
                             </td>
                         </tr>

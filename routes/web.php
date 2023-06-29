@@ -74,21 +74,30 @@ Route::get('/info/resources', [PageController::class, 'resources']);
 Route::get('/info/resources/details/{resource:id}', [PageController::class, 'resources_details']);
 Route::get('/info/location', [PageController::class, 'location']);
 
-Route::get('/profile/study', [PageController::class, 'mystudy']);
-Route::get('/profile/manage', [PageController::class, 'mymanage'])->name('mymanage');
-Route::get('/profile/MemberInfoMng', [PageController::class, 'myprofileMemInfoMng'])->name('MemberInfoMng');
-Route::get('/profile/assesment', [PageController::class, 'myassesment'])->name('assesment');
-Route::get('/profile/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
-Route::get('/profile/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
-Route::get('/profile/assesmentRevision', [PageController::class, 'myassesmentRevision'])->name('assesmentRevision');
-Route::get('/profile/prelearning', [PageController::class, 'myprelearning'])->name('prelearning');
-Route::get('/profile/prelearningReg', [PageController::class, 'myprelearningReg'])->name('prelearningReg');
-Route::get('/profile/prelearningModify', [PageController::class, 'myprelearningModify'])->name('prelearningModify');
-Route::get('/profile/reports', [PageController::class, 'myreports'])->name('reports');
-Route::get('/profile/reportsReg', [PageController::class, 'myreportsReg'])->name('reportsReg');
-Route::get('/profile/reportsAllSem', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
-Route::get('/profile/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
-Route::get('/profile/allocation', [PageController::class, 'myallocation'])->name('allocation');
+Route::prefix('/profile')->middleware('auth:web')->group(function () {
+    Route::get('/info', [PageController::class, 'myprofile']);
+    Route::get('/info/dp', [PageController::class, 'dpUpload']);
+    Route::get('/info/contact', [PageController::class, 'contactUpload']);
+    Route::get('/info/email', [PageController::class, 'emailUpload']);
+    Route::get('/info/password', [PageController::class, 'passwordUpload']);
+    Route::get('/info', [PageController::class, 'myprofile']);
+    Route::get('/info', [PageController::class, 'myprofile']);
+    Route::get('/study', [PageController::class, 'mystudy']);
+    Route::get('/manage', [PageController::class, 'mymanage'])->name('mymanage');
+    Route::get('/MemberInfoMng', [PageController::class, 'myprofileMemInfoMng'])->name('MemberInfoMng');
+    Route::get('/assesment', [PageController::class, 'myassesment'])->name('assesment');
+    Route::get('/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
+    Route::get('/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
+    Route::get('/assesmentRevision', [PageController::class, 'myassesmentRevision'])->name('assesmentRevision');
+    Route::get('/prelearning', [PageController::class, 'myprelearning'])->name('prelearning');
+    Route::get('/prelearningReg', [PageController::class, 'myprelearningReg'])->name('prelearningReg');
+    Route::get('/prelearningModify', [PageController::class, 'myprelearningModify'])->name('prelearningModify');
+    Route::get('/reports', [PageController::class, 'myreports'])->name('reports');
+    Route::get('/reportsReg', [PageController::class, 'myreportsReg'])->name('reportsReg');
+    Route::get('/reportsAllSem', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
+    Route::get('/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
+    Route::get('/allocation', [PageController::class, 'myallocation'])->name('allocation');
+});
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login');
@@ -115,10 +124,6 @@ Route::get('/myprofile_contact_upload', [PageController::class, 'myprofile_conta
 Route::get('/myprofile_email_upload', [PageController::class, 'myprofile_email_upload']);
 Route::get('/myprofile_password_upload', [PageController::class, 'myprofile_password_upload']);
 Route::get('/login', [PageController::class, 'userLogin']);
-
-Route::middleware('auth:web')->group(function () {
-    Route::get('/profile/info', [PageController::class, 'myprofile']);
-});
 
 Route::prefix('/admin')->middleware('auth:admin')->group(function () {
     // Member Management - Instructor Mng-----------------------------------------------------------------------------------------------

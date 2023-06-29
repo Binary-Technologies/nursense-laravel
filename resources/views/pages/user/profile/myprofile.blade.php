@@ -30,7 +30,7 @@
                             <div class="item-flex-center relative-block profile-img-outer">
                                 <img src="/images/face.png" alt="dp">
                                 <div class="edit_dp_i">
-                                    <a href="myprofile-dp-upload.php"><img src="/images/dp_icon.png" class=""></a>
+                                    <a href="/profile/info/dp"><img src="/images/dp_icon.png" class=""></a>
                                 </div>
                             </div>
                             <div class="pt15 pb10 text-center">
@@ -108,7 +108,7 @@
                                             <div class="col-lg-6">
                                                 <p class="ttl-12 pt-3">{{$user->pno}}</p>
                                                 <span class="relative-block">
-                                                    <a href="myprofile-contact-upload.php" class="ttl-17 move-right1 relative-block title-border-b1">수정</a>
+                                                    <a href="/profile/info/contact" class="ttl-17 move-right1 relative-block title-border-b1">수정</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                             <div class="col-lg-6">
                                                 <p class="ttl-12 pt-3">{{$user->email}}</p>
                                                 <span class="relative-block">
-                                                    <a href="myprofile-email-upload.php" class="ttl-17 move-right2 relative-block title-border-b1">수정</a>
+                                                    <a href="/profile/info/email" class="ttl-17 move-right2 relative-block title-border-b1">수정</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -166,7 +166,7 @@
                                             <div class="col-lg-6">
                                                 <p class="ttl-12 pt-3">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</p>
                                                 <span class="relative-block">
-                                                    <a href="myprofile-password-upload.php" class="ttl-17 move-right2 relative-block title-border-b1">수정</a>
+                                                    <a href="/profile/info/password" class="ttl-17 move-right2 relative-block title-border-b1">수정</a>
                                                 </span>
                                             </div>
                                         </div>

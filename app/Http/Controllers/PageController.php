@@ -17,6 +17,8 @@ use App\Models\Curriculum;
 use App\Models\PreLearning;
 use App\Models\PreLearningDetail;
 use App\Models\PreLearningAnswers;
+use App\Models\UserMainStudy;
+use App\Models\UserFinalAnswer;
 
 use Illuminate\Support\Arr;
 
@@ -192,22 +194,77 @@ class PageController extends Controller
         return view('pages.myprelearning-modify');
     }
 
-
-    public function myprofile_dp_upload()
-    {
-        return view('pages.myprofile_dp_upload');
-    }
-
     //myprofile-passsword..... has been left out
 
     public function myprofile()
     {
         $user = \Auth::user();
-        return view('pages.myprofile', compact('user'));
+        return view('pages.user.profile.myprofile', compact('user'));
     }
+
+    public function dpUpload()
+    {
+        return view('pages.user.profile.myprofile-dp-upload');
+    }
+
+    public function contactUpload()
+    {
+        return view('pages.myprofile-contact-upload');
+    }
+
+    public function emailUpload()
+    {
+        return view('pages.user.profile.myprofile-email-upload');
+    }
+
+    public function passwordUpload()
+    {
+        return view('pages.user.profile.myprofile-password-upload');
+    }
+
     public function myprofileMemInfoMng()
     {
-        return view('pages.myprofile-member-info-mng');
+        return view('pages.user.profile.myprofile-member-info-mng');
+    }
+
+    public function mystudy()
+    {
+        $curriculum_id = 1;
+        $user = User::where('id', \Auth::user()->id)->with('curricula')->first();
+        $study = UserMainStudy::where('student_id', \Auth::user()->id)->with('mainStudy', function($query) use ($curriculum_id) {
+            $query->where('curriculum_id', $curriculum_id)->with('report', 'survey:id', 'curriculum')->with('final', function($query){
+                $query->with('questions');
+            });
+        })->with('userFinalAnswers', 'userReport', 'userSurvey')->first();
+
+        $correct = 0;
+        $incorrect = 0;
+        if(count($study->userFinalAnswers) > 0) {
+            foreach ($study->mainStudy->final->questions as $key => $question) {
+                $userAnswer = UserFinalAnswer::where('final_id', $study->mainStudy->final->id)->where('final_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
+                if($question->answer == $userAnswer->given_answer) $correct++;
+                else $incorrect++;
+            }
+        }
+
+        $preLearnings = PreLearning::where('curriculum_id', $curriculum_id)->with('questions')->get();
+        foreach ($preLearnings as $key => $preLearning) {
+            $score = 0;
+            $userScore = 0;
+            $completeDate = '-';
+            foreach ($preLearning->questions as $key => $question) {
+                $answer = PreLearningAnswers::where('pre_learning_id', $preLearning->id)->where('pre_learning_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
+                if($question->answer == $answer->given_answer) $userScore += $question->points;
+                $score += $question->points;
+                $completeDate = $answer->created_at;
+            }
+            $preLearning['score'] = $score;
+            $preLearning['userScore'] = $userScore;
+            $preLearning['completeDate'] = $completeDate;
+            unset($preLearning['questions']);
+        }
+
+        return view('pages.user.profile.mystudy', compact('user', 'study', 'correct', 'incorrect', 'preLearnings'));
     }
 
     public function myreports()
@@ -225,12 +282,6 @@ class PageController extends Controller
     public function myreportsModify()
     {
         return view('pages.myreports-modify');
-    }
-
-    public function mystudy()
-    {
-        $user = User::where('id', \Auth::user()->id)->with('curricula')->first();
-        return view('pages.mystudy', compact('user'));
     }
 
     public function news_main_details($id)
@@ -319,21 +370,6 @@ class PageController extends Controller
     {
         $news = News::where('exposure', 1)->get();
         return view('pages.user_manual', compact('news'));
-    }
-
-    public function myprofile_contact_upload()
-    {
-        return view('pages.myprofile_contact_upload');
-    }
-
-    public function myprofile_email_upload()
-    {
-        return view('pages.my_profile_email_upload');
-    }
-
-    public function myprofile_password_upload()
-    {
-        return view('pages.myprofile_password_upload');
     }
 
     public function userLogin()
