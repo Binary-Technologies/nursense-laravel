@@ -274,7 +274,7 @@
                                         첨부파일
                                     </td>
                                     <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                        {{ $study->userReport != null ? $study->userReport->file_name : '' }}
+                                        {{ $study->userReport != null ? $study->userReport->file_path : '' }}
                                     </td>
                                 </tr>
                                 <tr>

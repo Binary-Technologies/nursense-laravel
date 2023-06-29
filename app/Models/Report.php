@@ -12,7 +12,7 @@ class Report extends Model
         'content',
         'publish_date',
         'deadline_date',
-        'file_name',
+        'file_path',
     ];
 
     public $timestamps = false;
