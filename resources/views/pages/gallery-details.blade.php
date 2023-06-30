@@ -27,9 +27,9 @@
                 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="muve.php" class="ttl-20">MUVE 소개</a></li>
+                            <li><a href="/muve/muve" class="ttl-20">MUVE 소개</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="muve-gallery.php" class="ttl-20">갤러리</a></li>
+                            <li><a href="/muve/gallery" class="ttl-20">갤러리</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">갤러리 상세</li>
                         </ul>
