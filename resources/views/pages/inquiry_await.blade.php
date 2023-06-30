@@ -27,7 +27,7 @@
                 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="news_main.php" class="ttl-20">정보마당</a></li>
+                            <li><a href="/info/inquiry" class="ttl-20">정보마당</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-20">1:1 문의</li>
                         </ul>
