@@ -209,7 +209,7 @@ class PageController extends Controller
 
     public function contactUpload()
     {
-        return view('pages.myprofile-contact-upload');
+        return view('pages.user.profile.myprofile-contact-upload');
     }
 
     public function emailUpload()
@@ -242,6 +242,7 @@ class PageController extends Controller
         if(count($study->userFinalAnswers) > 0) {
             foreach ($study->mainStudy->final->questions as $key => $question) {
                 $userAnswer = UserFinalAnswer::where('final_id', $study->mainStudy->final->id)->where('final_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
+                if($userAnswer == null) continue;
                 if($question->answer == $userAnswer->given_answer) $correct++;
                 else $incorrect++;
             }
@@ -254,6 +255,7 @@ class PageController extends Controller
             $completeDate = '-';
             foreach ($preLearning->questions as $key => $question) {
                 $answer = PreLearningAnswers::where('pre_learning_id', $preLearning->id)->where('pre_learning_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
+                if($answer == null) continue;
                 if($question->answer == $answer->given_answer) $userScore += $question->points;
                 $score += $question->points;
                 $completeDate = $answer->created_at;

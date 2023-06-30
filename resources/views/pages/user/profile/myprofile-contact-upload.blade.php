@@ -24,9 +24,9 @@
 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="index.php" class="ttl-20">마이페이지</a></li>
+                            <li><a href="/profile/info" class="ttl-20">마이페이지</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="myprofile.php" class="ttl-20">회원정보</a></li>
+                            <li><a href="/profile/info" class="ttl-20">회원정보</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">휴대폰 번호 수정</li>
                         </ul>
@@ -55,7 +55,7 @@
                                                 <input type="text" name="contact" id="contact" class="form-control ttl-23 comp-width-402 comp-height-60" placeholder="휴대폰 번호를 입력해주세요." aria-describedby="email" required>
                                             </div>
                                             <div class="item-flex-unset">
-                                                <button type="" class="btn btn-primary border-rad-6 ttl-15 btn-mprof1 comp-width-118 comp-height-60 p0 ml10 mt-3"><span class="">인증번호 전송</span></button>
+                                                <button type="button" class="btn btn-primary border-rad-6 ttl-15 btn-mprof1 comp-width-118 comp-height-60 p0 ml10 mt-3"><span class="">인증번호 전송</span></button>
                                             </div>
                                         </div>
                                         <div class="comp-width-544 item-flex-unset mt-1">
@@ -72,7 +72,7 @@
                                         </div>
 
                                         <div class="item-flex-center mt-4 mb-2">
-                                            <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-410 comp-height-60"><span class="p10">인증하기</span></button>
+                                            <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-410 comp-height-60"><span class="p10">인증하기</span></button>
                                         </div>
 
                                     </form>

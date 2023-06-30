@@ -24,9 +24,9 @@
 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="index.php" class="ttl-20">마이페이지</a></li>
+                            <li><a href="/profile/info" class="ttl-20">마이페이지</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="myprofile.php" class="ttl-20">회원정보</a></li>
+                            <li><a href="/profile/info" class="ttl-20">회원정보</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">이메일 주소 수정</li>
                         </ul>
@@ -47,7 +47,7 @@
                                     <div class="ttl-19 item-flex-center">
                                         <span class="comp-width-260 text-center">이메일 입력 후, 인증하기 버튼을 클릭하여 해당 메일 주소로 전송된 이메일을 확인해주세요.</span>
                                     </div>
-                                    <form method="post" name="" action="#" autocomplete="off" class="col-md-12 p0 my-5">
+                                    <form method="post" name=""  autocomplete="off" class="col-md-12 p0 my-5">
 
                                         <div class="comp-width-544 item-flex-unset">
                                             <div class="form-group pr4">
@@ -55,7 +55,7 @@
                                                 <input type="text" name="email" id="email" class="form-control ttl-23 comp-width-402 comp-height-60" placeholder="이메일을 입력하세요." aria-describedby="email" required>
                                             </div>
                                             <div class="item-flex-center">
-                                                <button type="" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-118 comp-height-60 ml10 mt-3"><span class="">인증하기</span></button>
+                                                <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-118 comp-height-60 ml10 mt-3"><span class="">인증하기</span></button>
                                             </div>
                                         </div>
 
@@ -68,7 +68,7 @@
                                         </div>
 
                                         <div class="item-flex-center mt-1 mb-2">
-                                            <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-544 comp-height-60"><span class="p10">수정 완료</span></button>
+                                            <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-544 comp-height-60"><span class="p10">수정 완료</span></button>
                                         </div>
 
                                     </form>

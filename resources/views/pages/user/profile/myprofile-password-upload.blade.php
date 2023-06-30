@@ -24,9 +24,9 @@
 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="index.php" class="ttl-20">마이페이지</a></li>
+                            <li><a href="/profile/info" class="ttl-20">마이페이지</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="myprofile.php" class="ttl-20">회원정보</a></li>
+                            <li><a href="/profile/info" class="ttl-20">회원정보</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">비밀번호 변경</li>
                         </ul>
@@ -47,7 +47,7 @@
                                     <div class="ttl-19 item-flex-center">
                                         <span class="comp-width-260 text-center">비밀번호 변경 시, 로그인된 모든 기기 및 브라우저에서 로그아웃되며 변경된 비밀번호로 다시 로그인 후 이용 가능합니다.</span>
                                     </div>
-                                    <form method="post" name="" action="#" autocomplete="off" class="col-md-12 p0 my-5">
+                                    <form method="post" name="" action="" autocomplete="off" class="col-md-12 p0 my-5">
 
                                         <div class="comp-width-544 item-flex-unset">
                                             <div class="form-group">
@@ -84,7 +84,7 @@
                                         </div>
 
                                         <div class="item-flex-center mt-4 mb-2">
-                                            <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-410 comp-height-60"><span class="p10">저장</span></button>
+                                            <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-410 comp-height-60"><span class="p10">저장</span></button>
                                         </div>
 
                                     </form>

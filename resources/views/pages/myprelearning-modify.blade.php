@@ -23,13 +23,13 @@
             <nav aria-label="breadcrumb" class="">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item breadcrumb-text1">
-                        <a href="{{ url('assestment') }}">마이페이지</a>
+                        <a href="/profile/info">마이페이지</a>
                     </li>
                     <li class="breadcrumb-item breadcrumb-text1">
-                        <a href="{{ url('assestment') }}">평가 관리</a>
+                        <a href="/profile/prelearning">평가 관리</a>
                     </li>
                     <li class="breadcrumb-item breadcrumb-text1">
-                        <a href="{{ url('prelearning') }}">사전학습</a>
+                        <a href="/profile/prelearning">사전학습</a>
                     </li>
                     <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">사전 학습 수정</li>
                 </ol>

@@ -24,9 +24,9 @@
 
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="index.php" class="ttl-20">마이페이지</a></li>
+                            <li><a href="/profile/info" class="ttl-20">마이페이지</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="myprofile.php" class="ttl-20">회원정보</a></li>
+                            <li><a href="/profile/info" class="ttl-20">회원정보</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">프로필 이미지 변경</li>
                         </ul>

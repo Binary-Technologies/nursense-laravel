@@ -4,7 +4,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
-                                            explode('/', Request::url())[3] == 'info' ? 'active' : ''
+                                            explode('/', Request::url())[3] == 'muve' ? 'active' : ''
                                         : ''}}">
                     <a class="nav-link px-3" href="/muve/muve">
                         <span class="footer_font">회사소개</span>
@@ -27,8 +27,8 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
-                                            explode('/', Request::url())[3] == 'info' ? 'active' : ''
+                <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
+                                            explode('/', Request::url())[4] == 'notice' ? 'active' : ''
                                         : ''}}">
                     <a class="nav-link px-3" href="/info/notice">
                         <span class="footer_font">공지사항</span>
@@ -36,9 +36,9 @@
                     </a>
                 </li>
                 <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
-                                            explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
+                                            explode('/', Request::url())[4] == 'curriculum' ? 'active' : ''
                                         : ''}}">
-                    <a class="nav-link px-3" href="/quiz">
+                    <a class="nav-link px-3" href="/curriculum/curriculum">
                         <span class="footer_font">사용자매뉴얼</span>
                         <span class="sr-only">(current)</span>
                     </a>
@@ -51,8 +51,8 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item {{ isset(explode('/', Request::url())[3]) ?
-                                            explode('/', Request::url())[3] == 'mystudy' ? 'active' : ''
+                <li class="nav-item {{ isset(explode('/', Request::url())[4]) ?
+                                            explode('/', Request::url())[4] == 'study' ? 'active' : ''
                                         : ''}}">
                     <a class="nav-link px-3" href="/profile/study">
                         <span class="footer_font">수료증출력</span>
