@@ -24,7 +24,7 @@
             <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 560px; border-radius: 16px;">
             @endforeach
             
-           <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
+           <!--<img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>-->
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
                                 <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">공지사항</h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F;"></i></a>
+                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
                             </div>
                         </div>
                         <div class="row mt15">
@@ -102,7 +102,7 @@
                                 <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">소식</h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F;"></i></a>
+                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
                             </div>
                         </div>
                         <div class="row mt15">
