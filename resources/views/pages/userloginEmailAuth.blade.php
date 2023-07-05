@@ -18,7 +18,7 @@
           @csrf
           <div class="docu-details item-flex-center">
 
-            <div class="mt-3">
+            <div class="width-100 mt-3">
               <div class="form-group">
                 <label for="email" class="login_desc"><small>이메일</small></label>
                 <div class="item-flex-left">
@@ -39,7 +39,7 @@
               <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
+                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-3" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
                   <!-- If Active -->
                   <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-2-1 d-none" data-bs-target="#completionModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
                 </div>

@@ -7,7 +7,7 @@
     <div class="row item-flex-center py-5">
 
       <!-- Login Card -->
-      <div class="col-md-8 col-sm-12 border-rad-5 py-5 px-4">
+      <div class="col-md-6 col-sm-12 border-rad-5 py-5 px-4">
 
         <div class="text-center pt-3">
           <h3 class="login_title">비밀번호 찾기</h3>
@@ -18,7 +18,7 @@
           @csrf
           <div class="docu-details item-flex-center">
 
-            <div class="mt-3">
+            <div class="width-100 mt-3">
               <div class="form-group">
                 <label for="" class="login_desc"><small>휴대폰 번호</small></label>
                 <div class="item-flex-left">

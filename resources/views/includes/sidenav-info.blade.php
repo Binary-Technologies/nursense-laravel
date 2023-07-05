@@ -25,7 +25,7 @@
                 <li class="nav-item pt-2 pl-4 {{ isset(explode('/', Request::url())[4]) ?
                                                     explode('/', Request::url())[4] == 'gallery' ? 'active' : ''
                                                     : ''}} side-menu-ac">
-                <a class="nav-link px-3" href="/muve/gallery">갤러리<span class="sr-only">(current)</span></a>
+                    <a class="nav-link px-3" href="/muve/gallery">갤러리<span class="sr-only">(current)</span></a>
                 </li>
                 @endif
 
@@ -44,7 +44,7 @@
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/curriculum"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/curr"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
                 </li>

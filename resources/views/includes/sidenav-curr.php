@@ -12,21 +12,21 @@
                     <div class="dropdown-menu drp-m show"> <!-- Remove this "show" class to active show/hide dropdown menu function -->
                         <div class="
                         <?php if (
-                            $currentpage == "curriculum.php"
-                        ) {
-                            echo 'active';
-                        } ?> side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="curriculum.php"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
-                        </div>
-                        <div class="
-                        <?php if (
-                            $currentpage == "curr" ||
+                            $currentpage == "curriculum" ||
                             $currentpage == "quiz" ||
                             $currentpage == "quizCheckAns"
                         ) {
                             echo 'active';
                         } ?> side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="{{ url('/curriculum/curr') }}"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="{{url('curriculum/curriculum')}}"><i class="fas fa-circle sub-menu-i"></i> 사전학습<span class="sr-only">(current)</span></a>
+                        </div>
+                        <div class="
+                        <?php if (
+                            $currentpage == "curr"
+                        ) {
+                            echo 'active';
+                        } ?> side-menu-ac drp-menu">
+                            <a class="dropdown-item" href="{{url('curriculum/curr')}}"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
                 </li>

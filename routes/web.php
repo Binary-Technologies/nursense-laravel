@@ -45,6 +45,7 @@ Route::get('/muve/gallery-details/{gallery:id}', [PageController::class, 'galler
 
 Route::prefix('/curriculum')->middleware('auth:web')->group(function () {
     Route::get('/curriculum', [PageController::class, 'curriculum']);
+    Route::get('/curr', [PageController::class, 'curriculum2'])->name('curr');
     Route::get('/guide', [PageController::class, 'guide']);
     Route::get('/download', [PageController::class, 'download']);
     Route::get('/learning', [MainStudyController::class, 'learning']);

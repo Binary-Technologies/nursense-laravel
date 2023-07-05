@@ -2140,6 +2140,7 @@ button:focus {
   background-color: #3941A2;
   border-color: #3941A2;
   color: #fff !important;
+  box-shadow: none !important;
 }
 
 .pass-note-i {
@@ -2300,11 +2301,12 @@ button:focus {
 }
 
 .btn-3-1 {
-  padding: 14px 30px;
+  padding: 12px 34px;
+  font-size: 20px;
 }
 
 .btn-3-2 {
-  padding: 14px 12px;
+  padding: 14px 26px;
 }
 
 .btn-4 {
@@ -2337,6 +2339,7 @@ button:focus {
   color: #fff;
   background-color: #5058ba;
   border-color: #5058ba;
+  box-shadow: none !important;
 }
 
 .btn-3:hover,
@@ -2348,6 +2351,7 @@ button:focus {
   color: #fff;
   background-color: #3941A2;
   border: 1px solid #3941A2;
+  box-shadow: none !important;
 }
 
 .btn-4:hover,
@@ -2355,6 +2359,7 @@ button:focus {
   color: #fff;
   background-color: #c93a38;
   border: 1px solid #c93a38;
+  box-shadow: none !important;
 }
 
 
