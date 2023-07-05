@@ -121,6 +121,6 @@ class User extends Authenticatable
     }
 
     public function mainStudies(){
-        return $this->hasMany(UserMainStudy::class, 'user_id');
+        return $this->hasMany(UserMainStudy::class, 'student_id');
     }
 }

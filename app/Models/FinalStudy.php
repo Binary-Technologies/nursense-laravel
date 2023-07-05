@@ -11,6 +11,7 @@ class FinalStudy extends Model
         'instructor_id',
         'name',
         'description',
+        'total_points',
         'register_date',
         'deadline_date',
     ];

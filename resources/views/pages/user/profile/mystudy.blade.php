@@ -185,22 +185,22 @@
                                 <tr>
                                     <td>
                                         <p class="tr-txt6 mb-0">
-                                            <span class="tr-txt7">25</span> /30점
+                                            <span class="tr-txt7">{{ $totalUserScore }}</span> /{{ $totalScore }}점
                                         </p>
                                     </td>
                                     <td>
                                         <p class="tr-txt6 mb-0">
-                                            <span class="tr-txt7">25</span> /30점
+                                            <span class="tr-txt7">{{ $study->userFinalScore }}</span> /{{ $study->finalScore }}점
                                         </p>
                                     </td>
                                     <td>
                                         <p class="tr-txt6 mb-0">
-                                            <span class="tr-txt7">25</span> /30점
+                                            <span class="tr-txt7">{{ $study->userReportScore }}</span> /{{ $study->reportScore }}점
                                         </p>
                                     </td>
                                     <td>
                                         <p class="tr-txt8 mb-0">
-                                            <span class="tr-txt9">25</span> /30점
+                                            <span class="tr-txt9">{{ $totalUserScore + $study->userFinalScore + $study->userReportScore }}</span> /{{ $totalScore + $study->finalScore + $study->userReportScore }}점
                                         </p>
                                     </td>
                                     <td>

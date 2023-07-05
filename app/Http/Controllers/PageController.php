@@ -19,7 +19,7 @@ use App\Models\PreLearningDetail;
 use App\Models\PreLearningAnswers;
 use App\Models\UserMainStudy;
 use App\Models\UserFinalAnswer;
-
+use App\Models\MainStudy;
 use Illuminate\Support\Arr;
 
 class PageController extends Controller
@@ -153,12 +153,26 @@ class PageController extends Controller
 
     public function myassesment()
     {
-        return view('pages.myassesment');
+        $studies = MainStudy::with('preLearning', 'final', 'semester', 'curriculum', 'department')->get();
+        return view('pages.myassesment', compact('studies'));
     }
 
-    public function myassesmentPreview()
+    public function myassesmentPreview($id)
     {
-        return view('pages.myassesment-preview');
+        $study =  MainStudy::where('id', $id)->with('preLearning', function($query) {
+            $query->with('questions');
+        })->first();
+        $page = 'pre';
+        return view('pages.myassesment-preview', compact('study', 'page'));
+    }
+
+    public function myassesmentPreviewFinal($id)
+    {
+        $study =  MainStudy::where('id', $id)->with('final', function($query) {
+            $query->with('questions');
+        })->first();
+        $page = 'final';
+        return view('pages.myassesment-preview', compact('study', 'page'));
     }
 
     public function myassesmentEvalReg()
@@ -173,6 +187,7 @@ class PageController extends Controller
 
     public function mymanage()
     {
+        if(\Auth::user()->role == 'student') return redirect('/profile/info');
         $students = User::whereNotNull('std_id')->paginate(10);
         $semesters = Semester::all();
         $university = University::where('id', \Auth::user()->uni_id)->with('departments')->first();
@@ -222,9 +237,16 @@ class PageController extends Controller
         return view('pages.user.profile.myprofile-password-upload');
     }
 
-    public function myprofileMemInfoMng()
+    public function myprofileMemInfoMng($id)
     {
-        return view('pages.user.profile.myprofile-member-info-mng');
+        $curriculum_id = 1;
+        $student = User::where('id', $id)->with('mainStudies', function($query) use ($curriculum_id) {
+            $query->with('mainStudy', function($query) use ($curriculum_id) {
+                $query->where('curriculum_id', $curriculum_id)->with('report:id,grade', 'survey:id', 'final:id,total_points');
+            })->with('userFinal', 'userReport');
+        })->first();
+        // return $student;
+        return view('pages.user.profile.myprofile-member-info-mng', compact('student'));
     }
 
     public function mystudy()
@@ -237,26 +259,19 @@ class PageController extends Controller
             });
         })->with('userFinalAnswers', 'userReport', 'userSurvey')->first();
 
-        $correct = 0;
-        $incorrect = 0;
-        if(count($study->userFinalAnswers) > 0) {
-            foreach ($study->mainStudy->final->questions as $key => $question) {
-                $userAnswer = UserFinalAnswer::where('final_id', $study->mainStudy->final->id)->where('final_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
-                if($question->answer == $userAnswer->given_answer) $correct++;
-                else $incorrect++;
-            }
-        }
-
         $preLearnings = PreLearning::where('curriculum_id', $curriculum_id)->with('questions')->get();
         foreach ($preLearnings as $key => $preLearning) {
             $score = 0;
             $userScore = 0;
             $completeDate = '-';
+            $c = 0;
             foreach ($preLearning->questions as $key => $question) {
                 $answer = PreLearningAnswers::where('pre_learning_id', $preLearning->id)->where('pre_learning_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
-                if($question->answer == $answer->given_answer) $userScore += $question->points;
-                $score += $question->points;
-                $completeDate = $answer->created_at;
+                if($answer) {
+                    if($question->answer == $answer->given_answer) $userScore += $question->points;
+                    $score += $question->points;
+                    $completeDate = $answer->created_at;
+                }
             }
             $preLearning['score'] = $score;
             $preLearning['userScore'] = $userScore;
@@ -264,6 +279,30 @@ class PageController extends Controller
             unset($preLearning['questions']);
         }
 
+        $correct = 0;
+        $incorrect = 0;
+        $correctScore = 0;
+        $totalScore = 0;
+        if(count($study->userFinalAnswers) > 0) {
+            foreach ($study->mainStudy->final->questions as $key => $question) {
+                $userAnswer = UserFinalAnswer::where('final_id', $study->mainStudy->final->id)->where('final_question_id', $question->id)->where('user_id', \Auth::user()->id)->first();
+                if($question->answer == $userAnswer->given_answer){
+                    $correct++;
+                    $correctScore += $question->points;
+                }
+                else $incorrect++;
+                $totalScore += $question->points;
+            }
+        }
+        $study['userFinalScore'] = $correctScore;
+        $study['finalScore'] = $totalScore;
+
+        $reportGrade = 0;
+        $reportTotal = 0;
+        if($study->mainStudy->report) $reportTotal = $study->mainStudy->report->grade;
+        if($study->userReport) $reportGrade = $study->userReport->grade;
+        $study['reportScore'] = $reportTotal;
+        $study['userReportScore'] = $reportGrade;
         return view('pages.user.profile.mystudy', compact('user', 'study', 'correct', 'incorrect', 'preLearnings'));
     }
 

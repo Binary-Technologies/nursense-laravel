@@ -90,7 +90,9 @@
                         <tr style="border-bottom: #ccc solid thin;">
                             <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
                             <td style="width: 6%; padding: 10px;">{{ $student->id }}</td>
-                            <td style="width: 8%; padding: 10px;">{{ $student->name }}</td>
+                            <td style="width: 8%; padding: 10px;">
+                                <a href="/profile/manage/{{ $student->id }}">{{ $student->name }} </a>
+                                </td>
                             <td style="width: 6%; padding: 10px;">{{ $student->gender }}</td>
                             <td style="width: 9%; padding: 10px;">{{ $student->department }}</td>
                             <td style="width: 16%; padding: 10px;">{{ $student->grade }}</td>
@@ -182,8 +184,6 @@
 
                         </div>
                         <div class="item-flex-right my-3">
-                            <!-- If Active -->
-                            <a href="{{route('MemberInfoMng')}}" class="btn btn-2 d-none">SMS 발송</a>
                             <!-- If Deactive -->
                             <a href="#" class="btn btn-3">SMS 발송</a>
                         </div>

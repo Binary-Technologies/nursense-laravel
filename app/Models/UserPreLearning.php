@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserFinalAnswer extends Model
+class UserPreLearning extends Model
 {
     protected $fillable = [
-        'final_id',
-        'user_final_id',
+        'pre_learning_id',
         'user_id',
-        'final_question_id',
-        'given_answer',
-        'points'
+        'points',
+        'correct_count'
     ];
 }
