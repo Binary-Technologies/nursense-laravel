@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-5 px-5">
+<section class="py-5 px-5 pt-5">
     <div class="px-5 pt-5">
         <div class="row">
 
-                <div class="docu-details py-3">
+                <div class="docu-details py-3 pt-5">
                     <h1 class="terms_heading">개인정보처리방침</h1>
                 </div>
-            <div class="col-md-12 shadow border-rad-10 pt-5 px-5">
+            <div class="col-md-12 border-rad-10 pt-5 px-5 border-solid">
 
 
                 <div class="mb-5 text-justify">

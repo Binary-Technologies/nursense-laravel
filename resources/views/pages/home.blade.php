@@ -2,10 +2,10 @@
 
 @section('content')
 
-            <img src="/images/msg.png" class="arrow_btn" style="width: 60px; position: absolute; right: 10px; margin-top: 30%; z-index: 2; position: fixed;"/>
+            <img src="/images/msg.png" class="arrow_btn" style="width: 60px; position: absolute; right: 2%; margin-top: 30%; z-index: 2; position: fixed; box-shadow: 3px 3px #888888; border-radius:50%;"/>
 <!-- banner-section -->
 <section class="banner-section" style="background-color: #F4F5FA; padding: 0px;">
-    <div class="row" style="margin-top: 100px;">
+    <div class="row" style="margin-top: 100px; padding-left: 80px;">
         <div class="col-md-3" style="padding: 3%;">
             <h5 style="margin-top: 100px; font-family: pretendard-bold; font-size: 30px; color: #3941A2;">현실을 넘어 미래를 꿈꾸는 교육</h5>
             <div>&nbsp;</div>
@@ -24,7 +24,7 @@
             <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 560px; border-radius: 16px;">
             @endforeach
             
-           <!-- <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>  -->
+           <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
         </div>
     </div>
 </section>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{$main_notice[0]->content}}
+                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">
                                 
                                     {!! html_entity_decode($main_notice[0]->content) !!}
                                 </p>
