@@ -61,15 +61,18 @@
                               @csrf
                                 <div class="mb-4">
                                     <label for="uName" class="form-label login-lbl">아이디</label>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="아이디를 입력하세요.">
+                                    <input type="text" class="form-control" name="email" id="email" placeholder="아이디를 입력하세요." onkeyup="checkPassword()">
                                 </div>
                                 <div class="mb-4">
                                     <label for="password" class="form-label login-lbl">비밀번호</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요.">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요." onkeyup="checkPassword()">
                                 </div>
+                                <div class="form-group input-group-sm">
+                                    <button type="button" id='togglePasswordBtn' class="btn" onclick="togglePassword()"> show </button>
+                                  </div>
                                 <div class="col-12 mt-4">
 
-                                  <button type="submit" id="loginBtn" class="btn login-btn mt-2">로그인</button>
+                                  <button type="submit" id="loginBtn" class="btn login-btn mt-2" disabled>로그인</button>
                                 </div>
 
                             </form>
@@ -93,7 +96,28 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+    <script>
+        var email = document.getElementById('email');
+        var password = document.getElementById("password");
+        var passwordToggleBtn = document.getElementById("togglePasswordBtn");
 
+        function checkPassword() {
+            if (email.value.length > 0 && password.value.length > 0) {
+                document.getElementById('loginBtn').disabled = false;
+            } else {
+                document.getElementById('loginBtn').disabled = true;
+            }
+        };
+
+        function togglePassword() {
+            if (password.type === "password") {
+                password.type = "text";
+                passwordToggleBtn.innerHTML = "hide";
+            } else {
+                password.type = "password";
+                passwordToggleBtn.innerHTML = "show";
+            }
+        }
+    </script>
 </body>
-
 </html>

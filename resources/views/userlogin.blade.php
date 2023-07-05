@@ -21,12 +21,15 @@
             @csrf
             <div class="form-group input-group-sm">
               <label for="email" class="login_desc"><small>아이디</small></label>
-              <input type="email" name='email' id='email' class="form-control login_text ttl-23 comp-width-402 comp-height-60" placeholder="아이디를 입력하세요." aria-describedby="Email" required style="{{session('errors') ? 'border: #FF625F thin solid' : ''}}">
+              <input type="email" name='email' id='email' class="form-control login_text ttl-23 comp-width-402 comp-height-60" placeholder="아이디를 입력하세요." aria-describedby="Email" required style="{{session('errors') ? 'border: #FF625F thin solid' : ''}}" onkeyup="checkPassword()">
             </div>
 
             <div class="form-group input-group-sm">
               <label for="password" class="login_desc"><small>비밀번호</small></label>
-              <input type="password" name='password' id='password' class="form-control login_text ttl-23 comp-width-402 comp-height-60" placeholder="비밀번호를 입력하세요." required style="{{session('errors') ? 'border: #FF625F thin solid' : ''}}">
+              <input type="password" name='password' id='password' class="form-control login_text ttl-23 comp-width-402 comp-height-60" placeholder="비밀번호를 입력하세요." required style="{{session('errors') ? 'border: #FF625F thin solid' : ''}}" onkeyup="checkPassword()">
+            </div>
+            <div class="form-group input-group-sm">
+              <button type="button" id='togglePasswordBtn' class="btn" onclick="togglePassword()"> show </button>
             </div>
 
             <div id="msg" class="item-flex-center login_error">
@@ -53,4 +56,29 @@
 
     </div>
 </section>
+@endsection
+@section('scripts')
+<script>
+  var emailField = document.getElementById('email');
+  var passwordField = document.getElementById("password");
+  var passwordToggleBtn = document.getElementById("togglePasswordBtn");
+  
+  function checkPassword() {
+    if (emailField.value.length > 0 && passwordField.value.length > 0) {
+      document.getElementById('loginBtn').disabled = false;
+    } else {
+      document.getElementById('loginBtn').disabled = true;
+    }
+  };
+
+  function togglePassword() {
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      passwordToggleBtn.innerHTML = "hide";
+    } else {
+      passwordField.type = "password";
+      passwordToggleBtn.innerHTML = "show";
+    }
+  }
+</script>
 @endsection
