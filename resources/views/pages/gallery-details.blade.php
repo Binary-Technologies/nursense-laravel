@@ -39,15 +39,15 @@
                     <div class="col-lg-12">
                     <table style="width: 100%;">
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thick;">
-                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center;">번호</td>
+                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center; width:15%;">번호</td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$gallery->title}}</td>
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center;">등록일</td>
+                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center; width:15%;">등록일</td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$gallery->created_at->format('Y-m-d')}}</td>
                             </tr>
                             <tr style="border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center;">조회수</td>
+                                <td style="padding: 20px; background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); font-family: pretendard-bold; font-size: 14px; color: #1B1D1F; text-align: center; width:15%;">조회수</td>
                                 <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">{{$gallery->views}}</td>
                             </tr>
                     </table>

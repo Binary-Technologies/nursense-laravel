@@ -3282,4 +3282,9 @@ ul.list_style a:hover {
   transform: translate(-50%, -50%);
 }
 
+.border-solid{
+    border: #D2D3DA thin solid !important;
+    
+}
+
 /*  */

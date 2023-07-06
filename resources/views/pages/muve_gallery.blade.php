@@ -21,9 +21,9 @@
                     </div>
                 </section>
 
-                <div class="row" style="padding: 2%;">
+                <div class="row" style="padding: 2%; padding-left:0;">
                     <div class="col-md-2">
-                        <p class="py-2" style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total {{$galleries->total()}}</p>
+                        <p style="font-family: pretendard-medium; font-size: 14px; color: #9495A1;">Total : {{$galleries->total()}}</p>
                     </div>
                     <div class="col-md-4">
                     </div>
