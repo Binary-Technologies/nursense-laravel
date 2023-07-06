@@ -29,15 +29,17 @@ class BannerController extends Controller
             'content' => $request->input('contents'),
             'link' => $request->input('link'),
             'sequence' => $request->input('sequence'),
-            'image' => $imagePath,
         ]);
 
          // Store the image
-         $imagePath = null;
-         if ($request->hasFile('image')) {
-             $name = $request->file('image')->getClientOriginalName();
-             $imagePath = $request->file('image')->storeAs('public/files/banner/'.$banner->id, str_replace(' ', '-', $name));
-         }
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $name = $request->file('image')->getClientOriginalName();
+            $imagePath = $request->file('image')->storeAs('public/files/banner/'.$banner->id, str_replace(' ', '-', $name));
+        }
+        $banner->image = $imagePath;
+        $banner->save();
+        
         return redirect('/admin/bannerDash')->with('success', 'Banner has been added.');
     }
 
