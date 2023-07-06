@@ -131,8 +131,8 @@ class AdminPageController extends Controller
     {
         $banner = Banner::findOrFail($id);
         $existingValues = Banner::pluck('sequence')->toArray();
-        $count = Banner::where('status', 1)->count();
-        
+        $count = Banner::where('status', 0)->count();
+
         return view('pages.admin.banner.banner-modification', [
             'banner' => $banner,
             'count' => $count,
