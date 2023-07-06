@@ -31,7 +31,9 @@
 
                 {{-- Curriculum --}}
                 @if (isset(explode('/', Request::url())[3]) && explode('/', Request::url())[3] == 'curriculum')
-                <li class="nav-item pt-2 pl-4">
+                <li class="nav-item pt-2 pl-4 {{ isset(explode('/', Request::url())[4]) ?
+                explode('/', Request::url())[4] == 'curriculum' || explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
+                : ''}}">
                     <a class="nav-link dropdown-toggle border-left-transparent px-3" id="curriculum1" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         온라인사전학습
                     </a>
@@ -44,11 +46,13 @@
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/curr"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/curr" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item pt-2 pl-4">
+                <li class="nav-item pt-2 pl-4 {{ isset(explode('/', Request::url())[4]) ?
+                explode('/', Request::url())[4] == 'guide' || explode('/', Request::url())[4] == 'download' || explode('/', Request::url())[4] == 'learning' ? 'active' : ''
+                : ''}}">
                     <a class="nav-link dropdown-toggle border-left-transparent px-3" id="curriculum2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         본학습
                     </a>
@@ -56,17 +60,17 @@
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'guide' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/guide"><i class="fas fa-circle sub-menu-i"></i> 이용안내<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/guide" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 이용안내<span class="sr-only">(current)</span></a>
                         </div>
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'download' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/download"><i class="fas fa-circle sub-menu-i"></i> 다운로드<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/download" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 다운로드<span class="sr-only">(current)</span></a>
                         </div>
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'learning' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/learning"><i class="fas fa-circle sub-menu-i"></i> 학습<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/learning" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 학습<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
                 </li>
