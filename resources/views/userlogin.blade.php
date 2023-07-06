@@ -37,7 +37,7 @@
             </div>
 
             <div class="item-flex-center mt-3 mb-2 comp-width-402">
-              <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-402 comp-height-60"><span class="p10">로그인</span></button>
+              <button type="submit" id="loginBtn" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 comp-width-402 comp-height-60"><span class="p10">로그인</span></button>
             </div>
 
             <div class="item-flex-center">
