@@ -1106,6 +1106,12 @@ button:focus {
   border-radius: 6px;
   padding: 4px 10px;
 }
+.input-group:hover {
+  border: 1px #0000CC solid;
+}
+.input-group:focus {
+  border: 1px #0000CC solid;
+}
 
 .custom-control-input:not(:disabled):focus~.custom-control-label::before {
   box-shadow: none;
