@@ -15,13 +15,14 @@
                 </div>
             </div>
             <div style="padding-bottom: 100px;">&nbsp;</div>
-            <span><img src="/images/arrow1.png" class="arrow_btn"></span>
-            <span><img src="/images/arrow2.png" class="arrow_btn"></span>
+            <span><img src="/images/arrow1.png" class="arrow_btn" onclick="prevBanner()"></span>
+            <span><img src="/images/arrow2.png" class="arrow_btn" onclick="nextBanner()"></span>
         </div>
         <div class="col-md-9" style="padding: 3%; padding-right: 5%;">
+            @php $c = 0; @endphp
             @foreach ($banners as $banner)
-            
-            <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 560px; border-radius: 16px;">
+            @php $c++; @endphp
+            <img src="{{ Storage::url($banner->image) }}" id="banner_{{$c}}" style="width: 1254px; height: 560px; border-radius: 16px; display:none">
             @endforeach
             
            <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
@@ -142,4 +143,39 @@
         </div>
 </section>
 
+@endsection
+@section('scripts')
+<script>
+    var banners = {!! $c !!}
+    document.addEventListener('DOMContentLoaded', function(){
+        console.log(banners)
+        if(banners > 0){
+            document.getElementById('banner_1').style.display = 'block'
+        }
+    });
+
+    function prevBanner(){
+        var visible = false
+        for (let i = banners; i > 0; i--) {
+            if(document.getElementById('banner_'+i).style.display == 'block') visible = true
+            if(i>1 && visible){
+                document.getElementById('banner_'+i).style.display = 'none'
+                document.getElementById('banner_'+(i-1)).style.display = 'block'
+                break
+            }
+        }
+    }
+
+    function nextBanner(){
+        var visible = false
+        for (let i = 1; i <= banners; i--) {
+            if(document.getElementById('banner_'+i).style.display == 'block') visible = true
+            if(i<banners && visible){
+                document.getElementById('banner_'+i).style.display = 'none'
+                document.getElementById('banner_'+(i+1)).style.display = 'block'
+                break
+            }
+        }
+    }
+</script>
 @endsection
