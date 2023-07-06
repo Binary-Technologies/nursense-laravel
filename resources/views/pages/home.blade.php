@@ -25,7 +25,6 @@
             <img src="{{ Storage::url($banner->image) }}" id="banner_{{$c}}" style="width: 1254px; height: 560px; border-radius: 16px; display:none">
             @endforeach
             
-           <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
         </div>
     </div>
 </section>
