@@ -134,7 +134,7 @@
                         </div>
 
                         <div class="col-lg-12">
-                            <ul class="ttl-10 ml30">
+                            <ul class="ttl-10">
                                 <li class="pb20" style="font-family: pretendard-regular; font-size: 20px; color: #1B1D1F;">반드시 하나의 챕터가 끝나고 종료를 누르시기 바랍니다.<br>종료 버튼을 누르지 않고 화면을 이탈할 경우, 처음부터 다시 시작해야할 수 있습니다.</li>
                                 <li style="font-family: pretendard-regular; font-size: 20px; color: #1B1D1F;">온라인 사전학습 완료 후에 해당 학습을 진행하기 바랍니다.</li>
                             </ul>

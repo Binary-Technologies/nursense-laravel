@@ -34,7 +34,6 @@
             <img src="{{ Storage::url($banner->image) }}" id="banner_{{$c}}" style="width: 1254px; height: 560px; border-radius: 16px; display:none">
             @endforeach
             
-           <!--<img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>-->
         </div>
     </div>
 </section>
@@ -51,7 +50,7 @@
                     <div class="docu-details py-3 px-3 session-row" style="width: 100%; border-radius: 10px 10px 0px 0px;">
                         <div class="row">
                             <div class="col-md-9">
-                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">공지사항</h4>
+                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;padding-bottom: 20px;">공지사항</h4>
                             </div>
                             <div class="col-md-3 text-right">
                                 <a href="/info/notice/details/{{$main_notice[0]->id}}"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
@@ -109,7 +108,7 @@
 
                         <div class="row">
                             <div class="col-md-9">
-                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">소식</h4>
+                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;padding-bottom: 20px;">소식</h4>
                             </div>
                             <div class="col-md-3 text-right">
                                 <a href="/info/news/details/{{$main_news[0]->id}}"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>

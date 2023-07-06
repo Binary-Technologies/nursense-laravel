@@ -8,9 +8,9 @@
             @elseif (isset(explode('/', Request::url())[3]) && explode('/', Request::url())[3] == 'curriculum')
             <small class="text-muted">교육과정</small>
             @elseif (isset(explode('/', Request::url())[3]) && explode('/', Request::url())[3] == 'info')
-            <small class="text-muted" style="padding: 10px 55px;">정보마당</small>
+            <small class="text-muted">정보마당</small>
             @elseif (isset(explode('/', Request::url())[3]) && explode('/', Request::url())[3] == 'profile')
-            <small class="text-muted" style="padding: 10px 55px;">마이 페이지</small>
+            <small class="text-muted">마이 페이지</small>
             @endif
 
             <ul class="navbar-nav pt-3">
