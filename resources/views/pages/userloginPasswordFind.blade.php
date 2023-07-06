@@ -43,9 +43,9 @@
               <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증하기</span></button>
+                  <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52 d-none" data-bs-target="#failModal" data-bs-toggle="modal">인증하기</button>
                   <!-- If Active -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52 btn-2-1 d-none" data-bs-target="#completionModal" data-bs-toggle="modal"><span class="p10">인증하기</span></button>
+                  <button type="button" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-80 height-52 btn-2-1" data-bs-target="#completionModal" data-bs-toggle="modal">인증하기</button>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
 
               <div class="item-flex-center my-2">
                 <div class="mx-1">
-                  <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">로그인 하러가기</button>
+                  <a href="{{route('userLoginPasswordFindAuth')}}" class="btn btn-2">로그인 하러가기</a>
                 </div>
               </div>
             </div>

@@ -1106,9 +1106,11 @@ button:focus {
   border-radius: 6px;
   padding: 4px 10px;
 }
+
 .input-group:hover {
   border: 1px #0000CC solid;
 }
+
 .input-group:focus {
   border: 1px #0000CC solid;
 }
@@ -3273,6 +3275,29 @@ ul.list_style a:hover {
   color: #FF625F;
 }
 
+.clear-field1,
+.clear-field2,
+.show-hide-inputs {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+}
+
+.clear-field2 {
+  right: 40px;
+}
+
+.show-hide-inputs i,
+.clear-field1 i,
+.clear-field2 i {
+  color: #9495A1;
+  font-size: 17px;
+}
+
+.show-hide-inputs i {
+  font-size: 20px;
+}
+
 .full_height {
   height: 100%;
 }
@@ -3289,9 +3314,9 @@ ul.list_style a:hover {
   transform: translate(-50%, -50%);
 }
 
-.border-solid{
-    border: #D2D3DA thin solid !important;
-    
+.border-solid {
+  border: #D2D3DA thin solid !important;
+
 }
 
 /*  */

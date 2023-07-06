@@ -109,11 +109,11 @@ Route::get('/userLoginAPI', [LoginController::class, 'userApiLogin']);
 Route::get('/userLogin', [LoginController::class, 'showUserLogin']);
 Route::post('/userLogin', [LoginController::class, 'userLogin']);
 
-Route::get('/userLoginEmailAuth', [PageController::class, 'userLoginEmailAuth']);
-Route::get('/userLoginInfoInput', [PageController::class, 'userLoginInfoInput']);
-Route::get('/userLoginIdFind', [PageController::class, 'userLoginIdFind']);
-Route::get('/userLoginPasswordFind', [PageController::class, 'userLoginPasswordFind']);
-Route::get('/userLoginPasswordFindAuth', [PageController::class, 'userLoginPasswordFindAuth']);
+Route::get('/userLoginEmailAuth', [PageController::class, 'userLoginEmailAuth'])->name('userLoginEmailAuth');
+Route::get('/userLoginInfoInput', [PageController::class, 'userLoginInfoInput'])->name('userLoginInfoInput');
+Route::get('/userLoginIdFind', [PageController::class, 'userLoginIdFind'])->name('userLoginIdFind');
+Route::get('/userLoginPasswordFind', [PageController::class, 'userLoginPasswordFind'])->name('userLoginPasswordFind');
+Route::get('/userLoginPasswordFindAuth', [PageController::class, 'userLoginPasswordFindAuth'])->name('userLoginPasswordFindAuth');
 
 Route::get('/certificate', [PageController::class, 'certificate']);
 Route::get('/front_slider', [PageController::class, 'front_slider']);
