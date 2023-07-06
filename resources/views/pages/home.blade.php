@@ -24,7 +24,7 @@
             <img src="{{ Storage::url($banner->image) }}" style="width: 1254px; height: 560px; border-radius: 16px;">
             @endforeach
             
-           <!--<img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>-->
+           <img src="images/sliders/slide.jpg" style="width: 1254px; height: 546px; border-radius: 16px;"/>
         </div>
     </div>
 </section>
@@ -41,7 +41,7 @@
                     <div class="docu-details py-3 px-3 session-row" style="width: 100%; border-radius: 10px 10px 0px 0px;">
                         <div class="row">
                             <div class="col-md-9">
-                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">공지사항</h4>
+                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;padding-bottom: 20px;">공지사항</h4>
                             </div>
                             <div class="col-md-3 text-right">
                                 <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 text-justify">
+                            <div class="col-md-12 text-justify" style="margin-top:-30px;">
                                 <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">
                                 
                                     {!! html_entity_decode($main_notice[0]->content) !!}
@@ -99,7 +99,7 @@
 
                         <div class="row">
                             <div class="col-md-9">
-                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">소식</h4>
+                                <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;padding-bottom: 20px;">소식</h4>
                             </div>
                             <div class="col-md-3 text-right">
                                 <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 text-justify">
+                            <div class="col-md-12 text-justify" style="margin-top:-30px;">
                             <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{!! html_entity_decode($main_news[0]->content) !!}</p>
                             </div>
                         </div>

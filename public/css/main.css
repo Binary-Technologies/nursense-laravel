@@ -805,9 +805,9 @@ ul {
 }
 
 .nav-link {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  border-bottom: 2px solid transparent;
+  border-bottom: 4px solid transparent;
   transition: all 0.3s ease-in-out;
 }
 
@@ -850,7 +850,7 @@ ul {
 
 .text-muted {
   color: #212a52 !important;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   padding: 42px 40px 4px;
 }
@@ -861,7 +861,7 @@ ul {
 .nav-link:focus,
 .active>.nav-link {
   color: #212880 !important;
-  border-bottom: 2px solid #212880;
+  border-bottom: 4px solid #212880;
 }
 
 .sidebar .nav-link {
@@ -896,8 +896,9 @@ ul {
 .sidebar .side-menu-ac a:focus,
 .sidebar .side-menu-ac a:hover {
   color: #212880;
-  border-left: 2px solid #212880;
+  border-left: 4px solid #212880;
   background-color: transparent;
+  margin-left: 20px;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
