@@ -11,7 +11,7 @@
 
             <div class="col-md-10" style="padding: 5%;">
 
-                <section class="img-sec-top text-center mt-5" style="background-image: url(images/wrappers/muve.png); width: 100%; height: 600px;">
+                <section class="img-sec-top text-center mt-5" style="background-image: url(/images/wrappers/muve.png); width: 100%; height: 600px;">
                 </section>
 
                 <div class="row my-5">
