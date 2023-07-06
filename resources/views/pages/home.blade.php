@@ -66,7 +66,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; margin-top:-25px; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
 
                                     {!! html_entity_decode($main_notice[0]->content) !!}
                                 </p>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; margin-top:-25px; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
                                 {!! html_entity_decode($main_news[0]->content) !!}
                             </p>
                             </div>
