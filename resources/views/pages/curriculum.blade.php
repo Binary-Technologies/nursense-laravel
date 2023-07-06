@@ -56,7 +56,7 @@
                                     <span class="br-right-2"></span>
                                     <span class="ttl-1">{{ $preLearning->register_date }}</span>
                                     <div class="mt-2" style="width: 516px;">
-                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{{ $preLearning->description }}</span>
+                                        <span class="desc-1" style="font-family: pretendard-regular; font-size: 14px; color: #616474; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $preLearning->description }}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

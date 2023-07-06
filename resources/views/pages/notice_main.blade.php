@@ -36,7 +36,7 @@
                                     <div class="col-lg-4">
                                     <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 15px;">
                                         <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">{{$noticeExposure->title}}</p>
-                                        <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">{!! html_entity_decode($noticeExposure->content) !!}</p>
+                                        <p style="font-family: pretendard-regular; font-size: 16px; color: #767885; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">{!! html_entity_decode($noticeExposure->content) !!}</p>
                                     </div>
                                     </div>
                                 
