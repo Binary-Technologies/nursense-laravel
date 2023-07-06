@@ -6,14 +6,23 @@
 <!-- banner-section -->
 <section class="banner-section" style="background-color: #F4F5FA; padding: 0px;">
     <div class="row" style="margin-top: 100px; padding-left: 80px;">
-        <div class="col-md-3" style="padding: 3%;">
-            <h5 style="margin-top: 100px; font-family: pretendard-bold; font-size: 30px; color: #3941A2;">현실을 넘어 미래를 꿈꾸는 교육</h5>
+        <div class="col-md-3" style="padding: 3%;">            
+            @php $c = 0; @endphp
+            @foreach ($banners as $banner)
+            @php $c++; @endphp
+            <h5 id="banner_title_{{$c}}" style="margin-top: 100px; font-family: pretendard-bold; font-size: 30px; color: #3941A2; display:none;">현실을 넘어 미래를 꿈꾸는 교육</h5>
+            @endforeach
             <div>&nbsp;</div>
-            <p style="font-family: pretendard-medium; font-size: 16px; color: #616474;">디지털스마트교육센터는 지속적인 혁신과 변화, 그리고 도전을 통해 새로운 교육 패러다임을 제시하고 있습니다. 디지털 시대를 준비하는 여러분들의 미래를 응원합니다.</p>
-             <div class="progress" style=" height: 8px;">
+            @php $c = 0; @endphp
+            @foreach ($banners as $banner)
+            @php $c++; @endphp
+            <p id="banner_body_{{$c}}" style="font-family: pretendard-medium; font-size: 16px; color: #616474; display:none;">디지털스마트교육센터는 지속적인 혁신과 변화, 그리고 도전을 통해 새로운 교육 패러다임을 제시하고 있습니다. 디지털 시대를 준비하는 여러분들의 미래를 응원합니다.</p>
+            @endforeach
+            <div class="progress" style=" height: 8px;">
                 <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%; background-color: #7479BD;">
                 </div>
             </div>
+            
             <div style="padding-bottom: 100px;">&nbsp;</div>
             <span><img src="/images/arrow1.png" class="arrow_btn" onclick="prevBanner()"></span>
             <span><img src="/images/arrow2.png" class="arrow_btn" onclick="nextBanner()"></span>
@@ -45,7 +54,7 @@
                                 <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">공지사항</h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
+                                <a href="/info/notice/details/{{$main_notice[0]->id}}"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
                             </div>
                         </div>
                         <div class="row mt15">
@@ -58,8 +67,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">
-                                
+                                <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+
                                     {!! html_entity_decode($main_notice[0]->content) !!}
                                 </p>
                             </div>
@@ -103,7 +112,7 @@
                                 <h4 style="font-family: pretendard-bold; font-size: 26px; color: #090909;">소식</h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <a href="add_news.php"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
+                                <a href="/info/news/details/{{$main_news[0]->id}}"><i class="fas fa-plus" style="color: #35418F; font-size:24px;"></i></a>
                             </div>
                         </div>
                         <div class="row mt15">
@@ -116,7 +125,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-justify">
-                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474;">{!! html_entity_decode($main_news[0]->content) !!}</p>
+                            <p class="pt10" style="font-family: pretendard-regular; font-size: 14px; color: #616474; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                {!! html_entity_decode($main_news[0]->content) !!}
+                            </p>
                             </div>
                         </div>
                     </div>
@@ -150,6 +161,8 @@
     document.addEventListener('DOMContentLoaded', function(){
         console.log(banners)
         if(banners > 0){
+            document.getElementById('banner_title_1').style.display = 'block'
+            document.getElementById('banner_body_1').style.display = 'block'
             document.getElementById('banner_1').style.display = 'block'
         }
     });
@@ -159,7 +172,11 @@
         for (let i = banners; i > 0; i--) {
             if(document.getElementById('banner_'+i).style.display == 'block') visible = true
             if(i>1 && visible){
+                document.getElementById('banner_title_'+i).style.display = 'none'
+                document.getElementById('banner_body_'+i).style.display = 'none'
                 document.getElementById('banner_'+i).style.display = 'none'
+                document.getElementById('banner_title_'+(i-1)).style.display = 'block'
+                document.getElementById('banner_body_'+(i-1)).style.display = 'block'
                 document.getElementById('banner_'+(i-1)).style.display = 'block'
                 break
             }
@@ -171,7 +188,11 @@
         for (let i = 1; i <= banners; i--) {
             if(document.getElementById('banner_'+i).style.display == 'block') visible = true
             if(i<banners && visible){
+                document.getElementById('banner_title_'+i).style.display = 'none'
+                document.getElementById('banner_body_'+i).style.display = 'none'
                 document.getElementById('banner_'+i).style.display = 'none'
+                document.getElementById('banner_title_'+(i+1)).style.display = 'block'
+                document.getElementById('banner_body_'+(i+1)).style.display = 'block'
                 document.getElementById('banner_'+(i+1)).style.display = 'block'
                 break
             }
