@@ -22,14 +22,7 @@ class BannerController extends Controller
 
         if ($validate->fails()) return redirect()->back()->withErrors($validate)->withInput();
 
-        // Store the image
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $name = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('public/files/banner/'.$id, str_replace(' ', '-', $name));
-        }
-
-        Banner::create([
+        $banner = Banner::create([
             'status' => $request['exposureStatus'],
             'name' => $request->input('name'),
             'title' => $request->input('title'),            
@@ -38,6 +31,13 @@ class BannerController extends Controller
             'sequence' => $request->input('sequence'),
             'image' => $imagePath,
         ]);
+
+         // Store the image
+         $imagePath = null;
+         if ($request->hasFile('image')) {
+             $name = $request->file('image')->getClientOriginalName();
+             $imagePath = $request->file('image')->storeAs('public/files/banner/'.$banner->id, str_replace(' ', '-', $name));
+         }
         return redirect('/admin/bannerDash')->with('success', 'Banner has been added.');
     }
 
