@@ -39,7 +39,7 @@
                 <!-- For show -->
                 <i class="fas fa-eye"></i>
                 <!-- For hide -->
-                <i class="fas fa-eye-slash d-none"></i>
+                <!-- <i class="fas fa-eye-slash d-none"></i> -->
               </button>
             </div>
 
@@ -90,10 +90,10 @@
   function togglePassword() {
     if (passwordField.type === "password") {
       passwordField.type = "text";
-      passwordToggleBtn.innerHTML = "hide";
+      passwordToggleBtn.innerHTML = "<i class=.fas fa-eye-slash'></i>";
     } else {
       passwordField.type = "password";
-      passwordToggleBtn.innerHTML = "show";
+      passwordToggleBtn.innerHTML = "<i class='fas fa-eye'></i>";
     }
   }
 </script>

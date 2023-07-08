@@ -7,7 +7,7 @@
             @include('includes.sidenav-info')
         </div>
         <div class="col-lg-10" style="padding: 1%;">
-            <section class="page-title text-center pt30 pb30 mt-4" style="background-image: linear-gradient(to right, #212880 , #4A227B); height: 190px">
+            <section class="wrapper-notice page-title text-center pt30 pb30 mt-4">
                 <div class="pl30">
                     <div class="content-box">
                         <div class="title" style="margin-top: 40px;">
@@ -32,13 +32,13 @@
                                     {{$resourceExposure->title}}
                                 </p>
                                 <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">
-                                    {{$resourceExposure->details}}                                    
-                                </p>                                    
+                                    {{$resourceExposure->details}}
+                                </p>
                                 <ul>
                                     @foreach(json_decode($resourceExposure->path) as $filePath)
                                     <li>
                                         <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                                            <span class="ms-2">
+                                        <span class="ms-2">
                                             <a href="{{ Storage::url($filePath) }}" target="_blank">
                                                 {{ basename($filePath) }}
                                             </a>
@@ -70,7 +70,7 @@
                 <div class="col-lg-12 border-rad-5 mt-2 px-4">
                     <table style="width: 100%; text-align: center; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
                         <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                                <th style="width: 10%; padding: 20px;">번호</th>
+                            <th style="width: 10%; padding: 20px;">번호</th>
                             <th style="width: 55%">제목</th>
                             <th style="width: 5%">첨부파일</th>
                             <th style="width: 15%">등록 일</th>
@@ -89,7 +89,7 @@
                                     @foreach(json_decode($resource->path) as $filePath)
                                     <li>
                                         <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                                            <span class="ms-2">
+                                        <span class="ms-2">
                                             <a href="{{ Storage::url($filePath) }}" target="_blank">
                                                 {{ basename($filePath) }}
                                             </a>

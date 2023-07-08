@@ -26,10 +26,10 @@
 
                     <div class="col-md-8">
                     </div>
-                    <div class="col-md-4 pr-0">
+                    <div class="col-md-4 pr-4">
                         <form class="form-inline justify-content-end my-2 ttl-12">
                             <span>교육 과정</span>
-                            <select class="form-control search-bar-custom ml-3" style="width: 150px;">
+                            <select class="form-select search-bar-custom ml-3" style="width: 150px;">
                                 <option>전체</option>
                                 <option>당뇨</option>
                                 <option>정신간호학</option>
@@ -38,7 +38,7 @@
                     </div>
                     @foreach ($preLearnings as $preLearning)
                     <!-- card -->
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-lg-12 shadow border-rad-5 mb-3 px-4">
                             <div class="row">
                                 <div class="col-md-4 item-flex-left position-rel curr-in-box py-4">
