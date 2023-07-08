@@ -39,9 +39,9 @@
               <div class="form-group mt-5">
                 <div class="item-flex-center mt-3 mb-2">
                   <!-- If Deactive -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-3" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
+                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-3 d-none" data-bs-target="#failModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
                   <!-- If Active -->
-                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-2-1 d-none" data-bs-target="#completionModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
+                  <button type="submit" class="btn btn-primary border-rad-6 ttl-22 btn-mprof1 width-100 height-52 btn-2-1" data-bs-target="#completionModal" data-bs-toggle="modal"><span class="p10">인증 완료</span></button>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
 
               <div class="item-flex-center my-2">
                 <div class="mx-1">
-                  <button class="btn btn-alert3" data-bs-target="#" data-bs-toggle="modal">확인</button>
+                  <a href="{{route('userLoginInfoInput')}}" class="btn btn-alert3">확인</a>
                 </div>
               </div>
             </div>
