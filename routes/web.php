@@ -85,9 +85,10 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/info', [PageController::class, 'myprofile']);
     Route::get('/study', [PageController::class, 'mystudy']);
     Route::get('/manage', [PageController::class, 'mymanage'])->name('mymanage');
-    Route::get('/MemberInfoMng', [PageController::class, 'myprofileMemInfoMng'])->name('MemberInfoMng');
+    Route::get('/manage/{id}', [PageController::class, 'myprofileMemInfoMng'])->name('MemberInfoMng');
     Route::get('/assesment', [PageController::class, 'myassesment'])->name('assesment');
-    Route::get('/assesmentPrev', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
+    Route::get('/preLearning/{id}', [PageController::class, 'myassesmentPreview'])->name('assesmentPrev');
+    Route::get('/final/{id}', [PageController::class, 'myassesmentPreviewFinal']);
     Route::get('/assesmentEvalReg', [PageController::class, 'myassesmentEvalReg'])->name('assesmentEvalReg');
     Route::get('/assesmentRevision', [PageController::class, 'myassesmentRevision'])->name('assesmentRevision');
     Route::get('/prelearning', [PageController::class, 'myprelearning'])->name('prelearning');

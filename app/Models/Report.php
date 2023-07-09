@@ -10,6 +10,7 @@ class Report extends Model
     protected $fillable = [
         'title',
         'content',
+        'grade',
         'publish_date',
         'deadline_date',
         'file_path',

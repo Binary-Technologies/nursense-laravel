@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PreLearning;
 use App\Models\PreLearningAnswers;
 use App\Models\PreLearningQuestion;
+use App\Models\UserPreLearning;
 
 class PreLearningController extends Controller
 {
@@ -19,15 +20,32 @@ class PreLearningController extends Controller
     }
 
     public function quizSubmit(Request $request){
-        // return $request;
+        $correctCount = 0;
+        $totalPoints = 0;
+        $userPreLearning = UserPreLearning::create([
+            'pre_learning_id' => $request->quiz_id,
+            'user_id' => \Auth::user()->id,
+        ]);
+
         foreach ($request->input('quizAnswers') as $key => $value) {
             PreLearningAnswers::create([
                 'pre_learning_id' => $request->quiz_id,
+                'user_pre_learning_id' => $userPreLearning->id,
                 'user_id' => \Auth::user()->id,
                 'pre_learning_question_id' => $key,
                 'given_answer' => $value,
             ]);
+            $question = PreLearningQuestion::where('id', $key)->first();
+            if($value == $question->answer){
+                $correctCount++;
+                $totalPoints += $question->points;
+            }
         }
+        $userPreLearning->update([
+            'correct_count' => $correctCount,
+            'total_points' => $totalPoints,
+        ]);
+
         return redirect('/curriculum/quiz/CheckAns/'.$request->pre_learning_id);
     }
 

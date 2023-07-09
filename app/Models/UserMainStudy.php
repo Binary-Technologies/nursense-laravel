@@ -25,6 +25,10 @@ class UserMainStudy extends Model
         return $this->belongsTo(User::class, 'student_id');
     }
 
+    public function userFinal(){
+        return $this->hasOne(UserFinal::class, 'id', 'user_final_id');
+    }
+
     public function userFinalAnswers(){
         return $this->hasManyThrough(UserFinalAnswer::class, FinalStudy::class,'id',
         'final_id',

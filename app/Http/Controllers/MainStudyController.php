@@ -7,6 +7,7 @@ use App\Models\UserMainStudy;
 use App\Models\FinalStudy;
 use App\Models\FinalStudyQuestion;
 use App\Models\UserFinalAnswer;
+use App\Models\UserFinal;
 use App\Models\UserReport;
 use App\Models\UserSurvey;
 
@@ -42,16 +43,34 @@ class MainStudyController extends Controller
     }
 
     public function quizSubmit(Request $request){
+        $correctCount = 0;
+        $totalPoints = 0;
+        $userFinal = UserFinal::create([
+            'final_id' => $request->quiz_id,
+            'user_id' => \Auth::user()->id,
+        ]);
+
         foreach ($request->input('quizAnswers') as $key => $value) {
             $question = FinalStudyQuestion::where('id', $key)->first();
             UserFinalAnswer::create([
                 'final_id' => $request->quiz_id,
+                'user_final_id' => $userFinal->id,
                 'user_id' => \Auth::user()->id,
                 'final_question_id' => $key,
                 'given_answer' => $value,
                 'points' => $question->answer == $value ? $question->points : 0,
             ]);
+            if($question->answer == $value){
+                $correctCount++;
+                $totalPoints += $question->points;
+            }
         }
+
+        $userFinal->update([
+            'correct_count' => $correctCount,
+            'total_points' => $totalPoints,
+        ]);
+
         return redirect('/curriculum/learning/final-quiz/CheckAns/'.$request->quiz_id);
     }
 
