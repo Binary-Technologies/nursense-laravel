@@ -90,7 +90,7 @@
   function togglePassword() {
     if (passwordField.type === "password") {
       passwordField.type = "text";
-      passwordToggleBtn.innerHTML = "<i class=.fas fa-eye-slash'></i>";
+      passwordToggleBtn.innerHTML = "<i class='fas fa-eye-slash'></i>";
     } else {
       passwordField.type = "password";
       passwordToggleBtn.innerHTML = "<i class='fas fa-eye'></i>";
