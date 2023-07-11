@@ -1087,11 +1087,26 @@ The navbar toggle appears at this breakpoint */
   padding: .5rem .5rem;
 }
 
-.form-select option {
-  color: #3941A2 !important;
-  font-size: 20px !important;
+.select-custom {
+  color: #090909;
+  font-size: 16px;
+  font-family: pretendard-regular;
+  padding: 6px;
+  border: 1px solid #D2D3DA;
+  border-radius: 6px;
+}
+
+.select-custom .select-custom-opt {
+  color: #616474;
+  font-size: 16px !important;
   font-family: pretendard-regular !important;
-  padding: 10px 8px !important;
+  padding: 10px 8px;
+}
+
+.select-custom .select-custom-opt:hover,
+.select-custom .select-custom-opt:focus {
+  color: #3941A2;
+  background-color: #F5F7FE;
 }
 
 .form-control:disabled,
@@ -1181,6 +1196,13 @@ button:focus {
 .input-group .form-control:not(:first-child) {
   /*padding-left: 0; */
   border: none;
+}
+
+.in-grp-custom:focus,
+.in-grp-custom:hover {
+  border-color: #0000CC !important;
+  outline: 0;
+  box-shadow: none !important;
 }
 
 .custom-select,

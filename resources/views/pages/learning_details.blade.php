@@ -21,21 +21,19 @@
                 </section>
 
                 <div class="row my-5">
-
                     <div class="col-lg-12">
                         <ul class="bread-crumb item-flex-left">
-                            <li><a href="index.php" class="ttl-20">교육과정</a></li>
+                            <li><a href="/" class="ttl-20">교육과정</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="#" class="ttl-20">본학습</a></li>
+                            <li><a href="/curriculum/guide" class="ttl-20">본학습</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="curriculum.php" class="ttl-20">학습</a></li>
+                            <li><a href="/curriculum/curriculum" class="ttl-20">학습</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                            <li><a href="learning.php" class="ttl-20">당뇨</a></li>
+                            <li><a href="/curriculum/learning" class="ttl-20">당뇨</a></li>
                             <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                             <li class="ttl-21">학습 1</li>
                         </ul>
                     </div>
-
                 </div>
 
                 <div class="row" style="padding: 1%;">

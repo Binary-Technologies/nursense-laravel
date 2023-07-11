@@ -27,11 +27,11 @@
                     <div class="row">
                         @foreach ($resourceExposures as $resourceExposure)
                         <div class="col-lg-4">
-                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px;">
+                            <div class="border-rad-10 mt-5 " style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE);color: #3941A2; padding: 20px; min-height:160px">
                                 <p style="font-family: pretendard-bold; font-size: 16px; color: #3941A2;">
                                     {{$resourceExposure->title}}
                                 </p>
-                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885;">
+                                <p style="font-family: pretendard-regular; font-size: 16px; color: #767885; overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
                                     {{$resourceExposure->details}}
                                 </p>
                                 <ul>

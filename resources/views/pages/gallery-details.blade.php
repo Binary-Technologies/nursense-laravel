@@ -11,7 +11,7 @@
             
             <div class="col-lg-10">
 
-                <section class="page-title text-center pt30 pb30 mt-4" style="background-image: url(images/wrappers/2.jpg); height: 190px">
+            <section class="wrapper-gallery page-title text-center pt30 pb30 mt-4">
                     <div class="auto-container">
                         <div class="content-box">
                             <div class="title" style="margin-top: -40px;">
