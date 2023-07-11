@@ -26,17 +26,17 @@
 
                     <div class="row my-3 mx-0">
                         <div class="col-lg-2 pl-0" style="padding: 20px; color: #FFFFFF;">
-                            <select class="form-select mr-sm-2 height-52 search-bar-custom">
-                                <option value="0" selected>2023년도 1학기</option>
-                                <option>2023년도 1학기</option>
-                                <option>2023년도 1학기</option>
+                            <select class="mr-sm-2 height-52 select-custom">
+                                <option class="select-custom-opt" value="0" selected>2023년도 1학기</option>
+                                <option class="select-custom-opt">2023년도 1학기</option>
+                                <option class="select-custom-opt">2023년도 1학기</option>
                             </select>
                         </div>
                         <div class="col-lg-2 pl-0" style="padding: 20px; color: #FFFFFF;">
-                            <select class="form-select mr-sm-2 height-52 search-bar-custom">
-                                <option value="0" selected>당뇨 - 간호학과</option>
-                                <option>당뇨 - 간호학과</option>
-                                <option>당뇨 - 간호학과</option>
+                            <select class="mr-sm-2 height-52 select-custom">
+                                <option class="select-custom-opt" value="0" selected>당뇨 - 간호학과</option>
+                                <option class="select-custom-opt">당뇨 - 간호학과</option>
+                                <option class="select-custom-opt">당뇨 - 간호학과</option>
                             </select>
                         </div>
                         <div class="col-lg-8">
