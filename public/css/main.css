@@ -895,7 +895,7 @@ ul {
 
 .dropdown-menu-item {
   color: #212880;
-  border-left: 2px solid #212880;
+  border-left: 4px solid #212880;
 }
 
 .sidebar .side-menu-ac.drp-menu a {
@@ -2224,6 +2224,12 @@ button:focus {
   transform: translateY(-50%);
   font-size: 20px;
   font-family: monospace;
+}
+
+.pie_progress__number {
+  color: #3941A2;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 .pie_progress__label {

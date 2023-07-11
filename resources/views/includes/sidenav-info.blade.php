@@ -46,7 +46,7 @@
                         <div class="{{ isset(explode('/', Request::url())[4]) ?
                                         explode('/', Request::url())[4] == 'quiz' ? 'active' : ''
                                         : ''}} side-menu-ac drp-menu">
-                            <a class="dropdown-item" href="/curriculum/curr" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
+                            <a class="dropdown-item" href="/curriculum/curriculum" style="font-size: 18px"><i class="fas fa-circle sub-menu-i"></i> 사전학습평가<span class="sr-only">(current)</span></a>
                         </div>
                     </div>
                 </li>
