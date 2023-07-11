@@ -29,16 +29,16 @@
 					<div class="right-nav-block">
 						<div class="item-flex-center">
 							<form class="form-inline justify-content-end mx-3 my-2 my-lg-0" method="post" action="#">
-								<div class="input-group">
+								<div class="input-group in-grp-custom">
 									<span><i class="fas fa-search home-search-i" area-hidden="true"></i></span>
 									<input type="text" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
 								</div>
 							</form>
 							<div class="item-flex-center user-dp mr-4">
 								@guest
-									<li class="nav-item">
-										<a class="nav-link" href="/userLogin">{{ __('로그인') }}</a>
-									</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/userLogin">{{ __('로그인') }}</a>
+								</li>
 								@else
 								<li class="nav-item">
 									<a class="" href="/profile/info"><img src="/images/face.png" alt="dp"></a>
