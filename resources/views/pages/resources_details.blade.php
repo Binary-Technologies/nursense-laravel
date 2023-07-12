@@ -26,9 +26,9 @@
 
                 <div class="col-lg-12">
                     <ul class="bread-crumb item-flex-left">
-                        <li><a href="#" class="ttl-20">정보마당</a></li>
+                        <li><a href="/info/notice" class="ttl-20">정보마당</a></li>
                         <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                        <li><a href="#" class="ttl-20">자료실</a></li>
+                        <li><a href="/info/resources" class="ttl-20">자료실</a></li>
                         <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                         <li class="ttl-20">자료실 상세</li>
                     </ul>
