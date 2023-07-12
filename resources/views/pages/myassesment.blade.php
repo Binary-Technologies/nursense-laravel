@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="row my-5">
-                <div class="col-lg-4">Total &nbsp;|&nbsp; 3</div>
+                <div class="col-lg-4">Total &nbsp;|&nbsp; {{$studies->count()}}</div>
             </div>
 
             @foreach($studies as $study)
@@ -88,6 +88,7 @@
                 </div>
             </div>
             <!-- card -->
+            @endforeach
             <!-- card -->
             <div class="row px-3">
                 <div class="col-lg-12 shadow border-rad-5 mb-3 px-4 py-4">
@@ -121,7 +122,7 @@
                 </div>
             </div>
             <!-- card -->
-            @endforeach
+            
         </div>
     </div>
 </section>

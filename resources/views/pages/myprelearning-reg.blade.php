@@ -34,7 +34,7 @@
                     <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">사전 학습 등록</li>
                 </ol>
             </nav>
-
+        <form action="" method="post">
             <div class="mt-4">
 
                 <div class="row mb-4 pr-4">
@@ -56,7 +56,7 @@
                     <div class="col-12">
                         <h4 class="form-lbl1 mb-3">* 내용</h4>
                         <div class="item-flex-center my-2">
-                            <textarea class="form-control val-text-area py-2" name="" id="" value="" rows="7" aria-describedby="">내용을 입력해 주세요.</textarea>
+                            <textarea class="form-control val-text-area py-2" placeholder="내용을 입력해 주세요." name="" id="" value="" rows="7" aria-describedby=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-
+        </form>
             <!-- Completion Alert Modal -->
             <div class="modal fade" id="completionModal" aria-hidden="true" aria-labelledby="completionModalContent" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">

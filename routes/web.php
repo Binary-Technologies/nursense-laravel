@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\DirectionController;
@@ -99,6 +100,8 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/reportsAllSem', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
     Route::get('/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
     Route::get('/allocation', [PageController::class, 'myallocation'])->name('allocation');
+
+    Route::post('/finalAssessment/register',[AssessmentController::class, 'registerAssessment']);
 });
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

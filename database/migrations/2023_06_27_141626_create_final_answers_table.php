@@ -17,13 +17,13 @@ class CreateFinalAnswersTable extends Migration
             $table->id();
             $table->integer('final_id');
             $table->text('question');
-            $table->text('option_1');
-            $table->text('option_2');
-            $table->text('option_3');
-            $table->text('option_4');
-            $table->text('option_5');
-            $table->text('answer');
-            $table->integer('points');
+            $table->text('option_1')->nullable();
+            $table->text('option_2')->nullable();
+            $table->text('option_3')->nullable();
+            $table->text('option_4')->nullable();
+            $table->text('option_5')->nullable();
+            $table->text('answer')->nullable();
+            $table->integer('points')->nullable();
         });
     }
 
