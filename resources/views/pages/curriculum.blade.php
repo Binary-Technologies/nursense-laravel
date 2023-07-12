@@ -29,10 +29,10 @@
                     <div class="col-md-4 pr-4">
                         <form class="form-inline justify-content-end my-2 ttl-12">
                             <span>교육 과정</span>
-                            <select class="form-select search-bar-custom ml-3" style="width: 150px;">
-                                <option>전체</option>
-                                <option>당뇨</option>
-                                <option>정신간호학</option>
+                            <select class="select-custom ml-3" style="width: 150px;">
+                                <option class="select-custom-opt">전체</option>
+                                <option class="select-custom-opt">당뇨</option>
+                                <option class="select-custom-opt">정신간호학</option>
                             </select>
                         </form>
                     </div>
@@ -76,5 +76,9 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("curriculum1");
+    element.classList.add("dropdown-menu-item");
+</script>
 
 @endsection

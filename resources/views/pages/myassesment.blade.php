@@ -25,21 +25,21 @@
             <div class="row">
                 <div class="col-2">
                     <form class="form-inline justify-content-end my-2 my-lg-0">
-                        <select class="form-select search-bar-custom" style="width: 250px;">
-                            <option>전체</option>
-                            <option>당뇨</option>
-                            <option>당뇨당뇨</option>
-                            <option>당뇨당뇨당뇨</option>
+                        <select class="select-custom" style="width: 250px;">
+                            <option class="select-custom-opt">전체</option>
+                            <option class="select-custom-opt">당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨당뇨</option>
                         </select>
                     </form>
                 </div>
                 <div class="col-2">
                     <form class="form-inline justify-content-end my-2 my-lg-0">
-                        <select class="form-select search-bar-custom" style="width: 250px;">
-                            <option>전체</option>
-                            <option>당뇨</option>
-                            <option>당뇨당뇨</option>
-                            <option>당뇨당뇨당뇨</option>
+                        <select class="select-custom" style="width: 250px;">
+                            <option class="select-custom-opt">전체</option>
+                            <option class="select-custom-opt">당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨당뇨</option>
                         </select>
                     </form>
                 </div>
@@ -125,4 +125,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("profile-m");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection

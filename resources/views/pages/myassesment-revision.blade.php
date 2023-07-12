@@ -74,17 +74,17 @@
                                             <input type="date" class="form-control val-text" name="" id="" aria-describedby="">
                                         </div>
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                            <select class="form-select form-text-d" name="" id="" aria-label="">
-                                                <option value="1" selected>18시</option>
-                                                <option value="2"></option>
-                                                <option value="3"></option>
+                                            <select class="select-custom form-text-d" name="" id="" aria-label="">
+                                                <option class="select-custom-opt" value="1" selected>18시</option>
+                                                <option class="select-custom-opt" value="2"></option>
+                                                <option class="select-custom-opt" value="3"></option>
                                             </select>
                                         </div>
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                            <select class="form-select form-text-d" name="" id="" aria-label="">
-                                                <option value="1" selected>30분</option>
-                                                <option value="2"></option>
-                                                <option value="3"></option>
+                                            <select class="select-custom form-text-d" name="" id="" aria-label="">
+                                                <option class="select-custom-opt" value="1" selected>30분</option>
+                                                <option class="select-custom-opt" value="2"></option>
+                                                <option class="select-custom-opt" value="3"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -472,4 +472,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("profile-m");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection

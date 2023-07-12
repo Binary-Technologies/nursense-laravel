@@ -29,10 +29,10 @@
                     <div class="col-md-4 pr-0">
                         <form class="form-inline justify-content-end my-2 ttl-12">
                             <span>교육 과정</span>
-                            <select class="form-select search-bar-custom ml-3" style="width: 150px;">
-                                <option style="color: #3941A2; font-size: 20px; font-family: pretendard-regular; padding: 10px 8px;">당뇨</option>
-                                <option style="color: #3941A2; font-size: 20px; font-family: pretendard-regular; padding: 10px 8px;">당뇨당뇨</option>
-                                <option style="color: #3941A2; font-size: 20px; font-family: pretendard-regular; padding: 10px 8px;">당뇨당뇨당뇨</option>
+                            <select class="select-custom ml-3" style="width: 150px;">
+                                <option class="select-custom-opt">당뇨</option>
+                                <option class="select-custom-opt">당뇨당뇨</option>
+                                <option class="select-custom-opt">당뇨당뇨당뇨</option>
                             </select>
                         </form>
                     </div>

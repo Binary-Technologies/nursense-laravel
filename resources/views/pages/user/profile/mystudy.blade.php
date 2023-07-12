@@ -23,9 +23,9 @@
                 <div class="col-md-4">
                     <form class="form-inline justify-content-end mx-3 my-2 my-lg-0">
                         <span>교육 과정</span>
-                        <select class="form-select search-bar-custom ml-2" style="width: 150px;">
+                        <select class="select-custom ml-2" style="width: 150px;">
                             @foreach ($user->curricula as $curriculum)
-                            <option value="{{ $curriculum->id }}">{{ $curriculum->name }}</option>
+                            <option class="select-custom-opt" value="{{ $curriculum->id }}">{{ $curriculum->name }}</option>
                             @endforeach
                         </select>
                     </form>
@@ -142,7 +142,8 @@
                             <th style="width: 15%">평가 완료 여부</th>
                             <th style="width: 10%">평가 점수</th>
                         </tr>
-                        <?php $totalScore = 0; $totalUserScore = 0; ?>
+                        <?php $totalScore = 0;
+                        $totalUserScore = 0; ?>
                         @foreach ($preLearnings as $preLearning)
                         <tr class="text-center" style="border-bottom: #ccc solid thin;">
                             <td style="width: 10%; padding: 10px;">{{ $preLearning->id }}</td>
@@ -152,7 +153,8 @@
                             <td style="width: 15%">{{ $preLearning->completeDate == '-' ? '' : '완료' }}</td>
                             <td style="width: 10%">{{ $preLearning->userScore }}점/{{ $preLearning->score }}점</td>
                         </tr>
-                        <?php $totalScore += $preLearning->score; $totalUserScore += $preLearning->userScore; ?>
+                        <?php $totalScore += $preLearning->score;
+                        $totalUserScore += $preLearning->userScore; ?>
                         @endforeach
                         <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
                             <td colspan="5"></td>

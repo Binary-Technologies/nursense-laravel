@@ -24,21 +24,21 @@
             <div class="row mb-3">
                 <div class="col-2">
                     <form class="form-inline justify-content-end my-2 my-lg-0">
-                        <select class="form-select search-bar-custom" style="width: 250px;">
-                            <option>전체 학기</option>
-                            <option>당뇨</option>
-                            <option>당뇨당뇨</option>
-                            <option>당뇨당뇨당뇨</option>
+                        <select class="select-custom" style="width: 250px;">
+                            <option class="select-custom-opt">전체 학기</option>
+                            <option class="select-custom-opt">당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨당뇨</option>
                         </select>
                     </form>
                 </div>
                 <div class="col-2">
                     <form class="form-inline justify-content-end my-2 my-lg-0">
-                        <select class="form-select search-bar-custom" style="width: 250px;">
-                            <option>전체 학습 과정</option>
-                            <option>당뇨</option>
-                            <option>당뇨당뇨</option>
-                            <option>당뇨당뇨당뇨</option>
+                        <select class="select-custom" style="width: 250px;">
+                            <option class="select-custom-opt">전체 학습 과정</option>
+                            <option class="select-custom-opt">당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨</option>
+                            <option class="select-custom-opt">당뇨당뇨당뇨</option>
                         </select>
                     </form>
                 </div>
@@ -170,17 +170,17 @@
 
                 <div class="col-8">Total &nbsp;|&nbsp; 70</div>
                 <div class="col-2" style="color: #FFFFFF;">
-                    <select class="form-select mr-sm-2 search-bar-custom">
-                        <option>전체</option>
-                        <option>전체</option>
-                        <option>전체</option>
+                    <select class="select-custom mr-sm-2">
+                        <option class="select-custom-opt">전체</option>
+                        <option class="select-custom-opt">전체</option>
+                        <option class="select-custom-opt">전체</option>
                     </select>
                 </div>
                 <div class="col-2" style="padding-left: 10px; color: #FFFFFF;">
-                    <select class="form-select mr-sm-2 search-bar-custom">
-                        <option>전체</option>
-                        <option>전체</option>
-                        <option>전체</option>
+                    <select class="select-custom mr-sm-2">
+                        <option class="select-custom-opt">전체</option>
+                        <option class="select-custom-opt">전체</option>
+                        <option class="select-custom-opt">전체</option>
                     </select>
                 </div>
 
@@ -590,4 +590,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("profile-m");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection

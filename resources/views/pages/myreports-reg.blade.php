@@ -48,17 +48,17 @@
                         <h4 class="form-lbl1 mb-3">* 마감일</h4>
                         <div class="item-flex-center my-2">
                             <input type="date" class="form-control val-text py-2 height-52 mr-3" name="" id="" placeholder="" value="" aria-describedby="">
-                            <select class="form-select val-text py-2 height-52 width-50 mr-3">
-                                <option value="0" selected>시</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                            <select class="val-text select-custom py-2 height-52 width-50 mr-3">
+                                <option class="select-custom-opt" value="0" selected>시</option>
+                                <option class="select-custom-opt"></option>
+                                <option class="select-custom-opt"></option>
+                                <option class="select-custom-opt"></option>
                             </select>
-                            <select class="form-select val-text py-2 height-52 width-50">
-                                <option value="0" selected>분</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                            <select class="val-text select-custom py-2 height-52 width-50">
+                                <option class="select-custom-opt" value="0" selected>분</option>
+                                <option class="select-custom-opt"></option>
+                                <option class="select-custom-opt"></option>
+                                <option class="select-custom-opt"></option>
                             </select>
                         </div>
                     </div>
@@ -216,4 +216,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("profile-m");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection
