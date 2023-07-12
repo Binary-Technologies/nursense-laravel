@@ -139,10 +139,10 @@
                                 <!-- 1 -->
                                 <div class="row border-b-cus mx-1 mb-4">
                                     <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
+                                        <div class="ml-1" id="addrow">
                                             <input class="form-check-input" type="radio" name="" id="">
 
-                                            <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" id="">
+                                            <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" >
                                             {{-- <label class="form-check-label ttl-1" for="">
                                                 답지1
                                             </label> --}}
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <!-- 2 -->
-                                <div class="row border-b-cus mx-1 mb-4">
+                                <div class="row border-b-cus mx-1 mb-4" >
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
                                             <input class="form-check-input" type="radio" name="" id="">
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row border-b-cus mx-1 mb-4">
+                                <div class="row border-b-cus mx-1 mb-4" id="row">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
                                             <input class="form-check-input" type="radio" name="" id="">
@@ -218,8 +218,8 @@
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
                                             <div class="item-flex-right my-2">
-                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="" id="" placeholder="배점 입력" value="" aria-describedby="">
-                                                <a href="#" class="asses-eval-reg-abs">점</a>
+                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[0][points]" placeholder="배점 입력" value="" aria-describedby="">
+                                                <label class="asses-eval-reg-abs">점</label>
                                             </div>
                                         </div>
                                     </div>
@@ -412,8 +412,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
                                             <div class="item-flex-right my-2">
-                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="" id="" placeholder="배점 입력" value="" aria-describedby="">
-                                                <a href="#" class="asses-eval-reg-abs">점</a>
+                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[${questionIndex}][points]" placeholder="배점 입력" value="" aria-describedby="">
+                                                <label class="asses-eval-reg-abs">점</label>
                                             </div>
                                         </div>
                                     </div>
@@ -442,48 +442,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 </script>
-
+{{-- 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var rowContainer = document.getElementById('row-container');
-      var maxRows = 4; // Maximum number of rows allowed
+document.addEventListener('DOMContentLoaded', function() {
+  var addIconBtn = document.getElementById('addrow');
 
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          addNewRow();
-        }
-      });
+  addIconBtn.addEventListener('click', function() {
+    var boxAssesment = this.parentElement.parentElement;
+    var clonedRow = boxAssesment.innerHTML;
+    var newRow = document.createElement('div');
+    newRow.innerHTML = `
+    <div class="row border-b-cus mx-1 mb-4">
+                                    <div class="form-check col-6 item-flex-left mb-4">
+                                        <div class="ml-1" id="addrow">
+                                            <input class="form-check-input" type="radio" name="" id="">
 
-      function addNewRow() {
-        var existingRows = rowContainer.getElementsByClassName('row');
-        if (existingRows.length >= maxRows) {
-          return; // Return early if the maximum number of rows has been reached
-        }
+                                            <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" >
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-check col-6 item-flex-right mb-4">
+                                        <div class="mr-1">
+                                            <input class="form-check-input" type="radio" name="" id="" checked>
+                                            <label class="form-check-label ttl-1 mr-2" for="">
+                                                정답
+                                            </label>
+                                            <a href="#" class="ttl-31">
+                                                X
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+    `;
 
-        var newRow = document.createElement('div');
-        newRow.classList.add('row');
-
-        var formCheck = document.createElement('div');
-        formCheck.classList.add('form-check');
-
-        var radioInput = document.createElement('input');
-        radioInput.classList.add('form-check-input');
-        radioInput.type = 'radio';
-        radioInput.name = 'flexRadioDefault';
-
-        var textInput = document.createElement('input');
-        textInput.classList.add('form-check-label', 'ttl-31');
-        textInput.type = 'text';
-        textInput.placeholder = '답지1';
-
-        formCheck.appendChild(radioInput);
-        formCheck.appendChild(textInput);
-
-        newRow.appendChild(formCheck);
-
-        rowContainer.appendChild(newRow);
-      }
-    });
-</script>
+    boxAssesment.parentElement.appendChild(newRow);
+  });
+});
+</script> --}}
 @endsection

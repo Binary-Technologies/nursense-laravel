@@ -42,7 +42,7 @@ class AssessmentController extends Controller
             $quizQuestion->option_4 = $questionData['option4'];
             $quizQuestion->option_5 = $questionData['option5'];
             // $quizQuestion->answer = $questionData['answer'];
-            // $quizQuestion->points = $questionData['points'];
+            $quizQuestion->points = $questionData['points'];
 
             $quiz->questions()->save($quizQuestion);
         }
