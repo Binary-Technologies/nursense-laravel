@@ -15,7 +15,7 @@
         <nav class="navbar pt-0">
 
             <a href="{{ url('/') }}" class="navbar-brand item-flex-center mb-3 pe-0 me-0">
-                <img src="{{ asset('storage/images/adminlogo/adminSiteLogo.png') }}">
+                <img src="{{ asset('storage/public/images/adminlogo/adminSiteLogo.png') }}">
             </a>
 
             <?php $current_page = basename($_SERVER['REQUEST_URI']); ?>

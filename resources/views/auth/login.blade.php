@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="left-side bg-color-3 item-flex-align-center">
                     <div class="">
-                        <img src="{{ asset('storage/images/userlogo/userSiteLogo.png') }}" class="">
+                        <img src="{{ asset('storage/public/images/adminlogo/adminSiteLogo.png') }}" class="">
                     </div>
                 </div>
                 <div class="right-side item-flex-align-center">
@@ -58,21 +58,30 @@
                         </div>
                         <div class="login-form-box">
                             <form method="post" id="loginForm" class="login-form" action="{{ route('admin.login') }}">
-                              @csrf
-                                <div class="mb-4">
+                                @csrf
+                                <div class="mb-4 position-rel">
                                     <label for="uName" class="form-label login-lbl">아이디</label>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="아이디를 입력하세요." onkeyup="checkPassword()">
+                                    <input type="text" class="form-control height-52" name="email" id="email" placeholder="아이디를 입력하세요." onkeyup="checkPassword()">
+                                    <button type="button" class="btn clear-field1" onclick="">
+                                        <!-- For clear field -->
+                                        <i class="fas fa-times-circle"></i>
+                                    </button>
                                 </div>
-                                <div class="mb-4">
+                                <div class="mb-4 position-rel">
                                     <label for="password" class="form-label login-lbl">비밀번호</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요." onkeyup="checkPassword()">
+                                    <input type="password" class="form-control height-52" name="password" id="password" placeholder="비밀번호를 입력하세요." onkeyup="checkPassword()">
+                                    <button type="button" class="btn clear-field2" onclick="">
+                                        <!-- For clear field -->
+                                        <i class="fas fa-times-circle"></i>
+                                    </button>
+                                    <button type="button" id='togglePasswordBtn' class="btn show-hide-inputs" onclick="togglePassword()">
+                                        <!-- For show -->
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </div>
-                                <div class="form-group input-group-sm">
-                                    <button type="button" id='togglePasswordBtn' class="btn" onclick="togglePassword()"> show </button>
-                                  </div>
-                                <div class="col-12 mt-4">
 
-                                  <button type="submit" id="loginBtn" class="btn login-btn mt-2" disabled>로그인</button>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" id="loginBtn" class="btn login-btn mt-2" disabled>로그인</button>
                                 </div>
 
                             </form>
@@ -112,12 +121,14 @@
         function togglePassword() {
             if (password.type === "password") {
                 password.type = "text";
-                passwordToggleBtn.innerHTML = "hide";
+                passwordToggleBtn.innerHTML = "<i class='fas fa-eye-slash'></i>";
             } else {
                 password.type = "password";
-                passwordToggleBtn.innerHTML = "show";
+                passwordToggleBtn.innerHTML = "<i class='fas fa-eye'></i>";
             }
         }
     </script>
+
 </body>
+
 </html>
