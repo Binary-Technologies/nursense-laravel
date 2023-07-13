@@ -158,4 +158,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("curriculum2");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection

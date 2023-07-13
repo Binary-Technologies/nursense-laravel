@@ -1220,6 +1220,29 @@ body {
     box-shadow: none;
 }
 
+.clear-field1,
+.clear-field2,
+.show-hide-inputs {
+    position: absolute;
+    right: 5px;
+    top: 44px;
+}
+
+.clear-field2 {
+    right: 40px;
+}
+
+.show-hide-inputs i,
+.clear-field1 i,
+.clear-field2 i {
+    color: #9495A1;
+    font-size: 20px;
+}
+
+.show-hide-inputs i {
+    font-size: 22px;
+}
+
 /* ------------------------------------------ Login page ------------------------------------------ */
 
 /* ------------------------------------------ Management Modules ------------------------------------------ */

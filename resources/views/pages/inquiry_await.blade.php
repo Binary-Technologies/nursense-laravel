@@ -98,11 +98,11 @@
 
                                 <tr>
                                     <td colspan="2" style="text-align: right; padding: 20px; ">
-                                        <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #FF625F;border-color: #FF625F; color: #ffffff; padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px; border-radius: 6px;">
+                                        <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #FF625F;border-color: #FF625F; color: #ffffff; padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px; border-radius: 6px;font-size: 16px;">
                                             삭제
                                         </a>
 
-                                        <a href="/info/inquiry" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;">
+                                        <a href="/info/inquiry" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;font-size: 16px;">
                                             목록
                                         </a>
 

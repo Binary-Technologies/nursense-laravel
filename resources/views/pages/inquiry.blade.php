@@ -53,7 +53,7 @@
                                             <input type="search" name="search" value="{{ request('search') }}" class="form-control search-bar-custom" placeholder=" 검색어를 입력하세요." aria-label="Search">
                                         </div>
 
-                                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="width: 118px; height: 40px; margin-left: 20px;">검색</button>
+                                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="width: 118px; height: 40px;font-size: 20px; margin-left: 20px;">검색</button>
                                     </form>
                                 </div>
 

@@ -26,9 +26,9 @@
 
                 <div class="col-lg-12">
                     <ul class="bread-crumb item-flex-left">
-                        <li><a href="#" class="ttl-20">정보마당</a></li>
+                        <li><a href="/info/notice" class="ttl-20">정보마당</a></li>
                         <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
-                        <li><a href="#" class="ttl-20">자료실</a></li>
+                        <li><a href="/info/resources" class="ttl-20">자료실</a></li>
                         <li class="ttl-20 text-center"><i class="fas fa-angle-right mx-2"></i></li>
                         <li class="ttl-20">자료실 상세</li>
                     </ul>
@@ -88,7 +88,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: right; padding: 20px; ">
-                                    <a href="/info/resources" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;">
+                                    <a href="/info/resources" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff;color: #212880;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;padding-right: 50px;border-color: #1B3EA8; border-radius: 6px;font-size: 16px;">
                                         목록
                                     </a>
 

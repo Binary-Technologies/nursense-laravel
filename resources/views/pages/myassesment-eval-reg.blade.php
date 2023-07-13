@@ -275,4 +275,8 @@
         </div>
     </div>
 </section>
+<script>
+    var element = document.getElementById("profile-m");
+    element.classList.add("dropdown-menu-item");
+</script>
 @endsection
