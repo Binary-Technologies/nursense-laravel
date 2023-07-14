@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="left-side bg-color-3 item-flex-align-center">
                     <div class="">
-                        <img src="{{ asset('storage/public/images/adminlogo/adminSiteLogo.png') }}" class="">
+                        <img src="{{ asset('storage/images/adminlogo/adminSiteLogo.png') }}" class="">
                     </div>
                 </div>
                 <div class="right-side item-flex-align-center">
