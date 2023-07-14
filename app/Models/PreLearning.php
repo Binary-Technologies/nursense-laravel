@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PreLearning extends Model
 {
+    
     protected $fillable = [
         'curriculum_id',
         'name',

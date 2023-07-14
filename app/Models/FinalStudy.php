@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FinalStudy extends Model
 {
+    
     protected $fillable = [
         'instructor_id',
         'name',

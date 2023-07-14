@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MainStudy extends Model
 {
+    
     protected $fillable = [
         'university_id',
         'department_id',

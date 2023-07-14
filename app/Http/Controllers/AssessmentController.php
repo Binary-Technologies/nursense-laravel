@@ -15,6 +15,7 @@ class AssessmentController extends Controller
         $validate = Validator::make($request->all(), [
             'title' => 'required',
             'content' => 'required',
+            'total' => 'required',
         ]);
 
         if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
@@ -23,6 +24,7 @@ class AssessmentController extends Controller
             'instructor_id' => Auth::id(),             
             'name' => $request->input('title'),            
             'description' => $request->input('content'),
+            'total_points' => $request->input('total'),
             'register_date' => Carbon::now(),
             $deadline_date = Carbon::createFromFormat(
                 'Y-m-d H:i',
@@ -32,7 +34,6 @@ class AssessmentController extends Controller
         ]);
 
         $questions = $request->input('questions');
-        
         foreach ($questions as $questionData) {
             $quizQuestion = new FinalStudyQuestion();
             $quizQuestion->question = $questionData['question'];

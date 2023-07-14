@@ -60,12 +60,12 @@
                                     <div class="pt-3 mb-2 item-flex-left">
                                         <div class="ttl-27 pr-3 min-width-80px">총 문제 수</div>
                                         <div class="divider1">|</div>
-                                        <div class="ttl-1 pl-3">1개</div>
+                                        <div class="ttl-1 pl-3" id="totalQuestion">1개</div>
                                     </div>
                                     <div class="item-flex-left">
                                         <div class="ttl-27 pr-3 min-width-80px">총 배점</div>
                                         <div class="divider1">|</div>
-                                        <div class="ttl-1 pl-3">0점</div>
+                                        <input class="ttl-1 pl-3" name="total" placeholder="0점"/>
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -137,20 +137,18 @@
                             </div>
 
                                 <!-- 1 -->
-                                <div class="row border-b-cus mx-1 mb-4">
+                                <div class="row border-b-cus first mx-1 mb-4" id="existingRows">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1" id="addrow">
                                             <input class="form-check-input" type="radio" name="" id="">
 
                                             <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" >
-                                            {{-- <label class="form-check-label ttl-1" for="">
-                                                답지1
-                                            </label> --}}
+                                            
                                         </div>
                                     </div>
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
-                                            <input class="form-check-input" type="radio" name="" id="" checked>
+                                            <input class="form-check-input" type="radio" name="" id="" checked >
                                             <label class="form-check-label ttl-1 mr-2" for="">
                                                 정답
                                             </label>
@@ -161,52 +159,19 @@
                                     </div>
                                 </div>
                                 <!-- 2 -->
-                                <div class="row border-b-cus mx-1 mb-4" >
+                                <div class="rowindex row border-b-cus bottomRow mx-1 mb-4">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[0][option2]" class="form-check-label ttl-31" placeholder="답지2" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
+                                            <input class="form-check-input" type="radio" name="" id="" disabled >
+                                            <label class="form-check-label ttl-31" for="" onclick="addrow()">
                                                 답지 추가
-                                            </label> --}}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[0][option3]" class="form-check-label ttl-31" placeholder="답지3" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row border-b-cus mx-1 mb-4" id="row">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[0][option4]" class="form-check-label ttl-31" placeholder="답지4" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[0][option5]" class="form-check-label ttl-31" placeholder="답지5" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <!-- 3 -->
-                                <div class="row mx-1">
+                                <div class="row mx-1 bottomRow">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
                                             <input class="form-check-input" type="checkbox" name="" id="" checked>
@@ -230,7 +195,7 @@
                     <div class="col-lg-2 position-rel">
                         <div class="add-icon-btn-abs">
                             <div class="add-icon-btn" id="add-icon-btn">
-                                <i class='fas fa-plus-circle'></i>
+                                <i class='fas fa-plus-circle' onclick="addcard()"></i>
                             </div>
                         </div>
                     </div>
@@ -307,18 +272,62 @@
 @endsection
 
 @section('scripts')
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+function addrow() {
+    var boxAssessment = document.getElementById('departments-container');
+    var existingRows = boxAssessment.querySelectorAll('.row.border-b-cus.first');
+    var rowLimit = 5;  
+    if (existingRows.length >= rowLimit) {
+         
+        return;
+    }
+    
+    let questionIndex = existingRows.length;
+
+    var newRow = document.createElement('div');
+    newRow.classList.add('row', 'border-b-cus','first', 'mx-1', 'mb-4');
+    newRow.innerHTML = `
+        <div class="form-check col-6 item-flex-left mb-4">
+            <div class="ml-1" id="addrow">
+                <input class="form-check-input" type="radio" name="" id="">
+                <input type="text" class="form-check-label ttl-1" placeholder="답지${questionIndex+1}" name="questions[0][option${questionIndex+1}]">
+            </div>
+        </div>
+        <div class="form-check col-6 item-flex-right mb-4">
+            <div class="mr-1">
+                <input class="form-check-input" type="radio" name="" id="" >
+                <label class="form-check-label ttl-1 mr-2" for="">정답</label>
+                <label class="ttl-31" onclick="removeRow(this)">X</label>
+            </div>
+        </div>
+    `;
+
+    var targetElement = boxAssessment.querySelector('.row.border-b-cus.bottomRow');
+    targetElement.parentNode.insertBefore(newRow, targetElement);
+}
+
+function removeRow(element) {
+    var row = element.closest('.row.border-b-cus');
+    row.remove();
+}
+
+let questionIndex = 0;
+function addcard(){
     var addDepartmentButton = document.getElementById('add-icon-btn');
     var departmentsContainer = document.getElementById('departments-container');
-    let questionIndex = 0;
-
-    addDepartmentButton.addEventListener('click', function() {
+    
+    
         questionIndex++;
+
+        var total_questions = document.getElementById('totalQuestion');
+        total_questions.textContent = questionIndex + 1 + "개";
+    
+
       var newCard = document.createElement('div');
       newCard.classList.add('row');
       newCard.innerHTML = `
-      <div class="row mx-1" >
+      <div class="row mx-1 " id="departments-container-generate${questionIndex + 1}" >
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 box-assesment shadow border-rad-5 mb-4 px-4">
                         <div class="py-4">
@@ -331,15 +340,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
 
                                 <!-- 1 -->
-                                <div class="row border-b-cus mx-1 mb-4">
+                                <div class="row border-b-cus generate mx-1 mb-4">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
                                             <input class="form-check-input" type="radio" name="" id="">
 
                                             <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[${questionIndex}][option1]" id="">
-                                            {{-- <label class="form-check-label ttl-1" for="">
-                                                답지1
-                                            </label> --}}
+                                            
                                         </div>
                                     </div>
                                     <div class="form-check col-6 item-flex-right mb-4">
@@ -355,52 +362,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <!-- 2 -->
-                                <div class="row border-b-cus mx-1 mb-4">
+                                <div class="rowindex row border-b-cus generate bottomRow mx-1 mb-4">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[${questionIndex}][option2]" class="form-check-label ttl-31" placeholder="답지2" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
+                                            <input class="form-check-input" type="radio" name="" id="" disabled>
+                                            <label class="form-check-label ttl-31" for="" onclick="addrow_generate(${questionIndex + 1})">
                                                 답지 추가
-                                            </label> --}}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[${questionIndex}][option3]" class="form-check-label ttl-31" placeholder="답지3" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[${questionIndex}][option4]" class="form-check-label ttl-31" placeholder="답지4" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
-                                            <input type="text" name="questions[${questionIndex}][option5]" class="form-check-label ttl-31" placeholder="답지5" id="">
-                                            {{-- <label class="form-check-label ttl-31" for="">
-                                                답지 추가
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
+                                
+
                                 <!-- 3 -->
-                                <div class="row mx-1">
+                                <div class="row mx-1 ">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
                                             <input class="form-check-input" type="checkbox" name="" id="" checked>
@@ -426,57 +401,46 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
   
       departmentsContainer.appendChild(newCard);
-  
-    //   var removeButtons = departmentsContainer.getElementsById('add-icon-btn');
-    //   for (var i = 0; i < removeButtons.length - 1; i++) {
-    //     removeButtons[i].removeEventListener('click', addNewCard);
-    //   }
-  
-    //   removeButtons[removeButtons.length - 1].addEventListener('click', addNewCard);
-    });
+    }
   
     function addNewCard() {
       var cardToClone = this.parentNode.parentNode;
       var newCard = cardToClone.cloneNode(true);
       departmentsContainer.appendChild(newCard);
     }
-  });
-</script>
-{{-- 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var addIconBtn = document.getElementById('addrow');
 
-  addIconBtn.addEventListener('click', function() {
-    var boxAssesment = this.parentElement.parentElement;
-    var clonedRow = boxAssesment.innerHTML;
+ function addrow_generate(answerNumber){
+    var boxAssessment = document.getElementById('departments-container-generate'+answerNumber);
+    var existingRows = boxAssessment.querySelectorAll('.row.border-b-cus.generate');
+    var rowLimit = 6; 
+    if (existingRows.length >= rowLimit) {
+        
+        return;
+    }
+    
+    let questionIndex = existingRows.length;
+
+    
     var newRow = document.createElement('div');
+    newRow.classList.add('row', 'border-b-cus','generate', 'mx-1', 'mb-4');
     newRow.innerHTML = `
-    <div class="row border-b-cus mx-1 mb-4">
-                                    <div class="form-check col-6 item-flex-left mb-4">
-                                        <div class="ml-1" id="addrow">
-                                            <input class="form-check-input" type="radio" name="" id="">
-
-                                            <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" >
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="form-check col-6 item-flex-right mb-4">
-                                        <div class="mr-1">
-                                            <input class="form-check-input" type="radio" name="" id="" checked>
-                                            <label class="form-check-label ttl-1 mr-2" for="">
-                                                정답
-                                            </label>
-                                            <a href="#" class="ttl-31">
-                                                X
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="form-check col-6 item-flex-left mb-4">
+            <div class="ml-1" id="addrow">
+                <input class="form-check-input" type="radio" name="" id="">
+                <input type="text" class="form-check-label ttl-1" placeholder="답지${questionIndex}" name="questions[${answerNumber - 1}][option${questionIndex}]">
+            </div>
+        </div>
+        <div class="form-check col-6 item-flex-right mb-4">
+            <div class="mr-1">
+                <input class="form-check-input" type="radio" name="" id="" >
+                <label class="form-check-label ttl-1 mr-2" for="">정답</label>
+                <label class="ttl-31" onclick="removeRow(this)">X</label>
+            </div>
+        </div>
     `;
 
-    boxAssesment.parentElement.appendChild(newRow);
-  });
-});
-</script> --}}
+    var targetElement = boxAssessment.querySelector('.row.border-b-cus.bottomRow');
+    targetElement.parentNode.insertBefore(newRow, targetElement);
+ }
+</script>
 @endsection
