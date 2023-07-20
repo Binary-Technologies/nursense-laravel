@@ -52,30 +52,33 @@
             <div class="row my-5">
                 <div class="col-lg-4">Total &nbsp;|&nbsp; 3</div>
             </div>
+            @foreach ($reports as $report)
 
             <!-- card -->
             <div class="row mb-4 px-3">
                 <div class="col-lg-12 shadow border-rad-5 mb-3 px-4 py-4">
                     <div class="row pb-4">
                         <div class="col-md-8 position-rel">
-                            <span class="ttl-1 pr-4">사전 학습 1</span>
+                            <span class="ttl-1 pr-4">{{$report->curriculum->name}}</span>
                             <br>
                             <span class="ttl-3" style="color: #9495A1; font-size: 11px;">제목 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #090909;">사전 학습 1 리포트</span>
+                            <span class="ttl-3" style="color: #090909;">{{ $report->report->title }}</span>
 
                             <br />
                             <span class="ttl-3" style="color: #9495A1;">종료일 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #FF625F;">2023.01.11</span>
+                            <span class="ttl-3" style="color: #FF625F;">
+                                {{ $report->report->deadline_date }}
+                            </span>
                             <br />
                             <div class="curr-brd-r pl20 mt-3 border-rad-5" style="background-color: #F5F7FE; width: 300px;">
-                                2023년도 1학기 . 당뇨 - 간호학과
+                                {{ $report->semester->semester }} . {{ $report->curriculum->name }} - {{ $report->department->name }}
                             </div>
                         </div>
                         <div class="col-md-4" style="text-align: right;">
 
                             <span class="ttl-3" style="color: #3941A2; font-size: 11px;">등록완료</span>
                             <br />
-                            <span class="ttl-3" style="color: #7479BD; font-size: 11px;">(2022.12.14)</span>
+                            <span class="ttl-3" style="color: #7479BD; font-size: 11px;">({{ $report->report->publish_date }})</span>
 
                             <br />
                             <br />
@@ -83,89 +86,17 @@
                                 수정하기
                             </span> -->
                             <button class="btn btn-outline-secondary btn-sm btn-curr mr-2">수정하기</button>
-                            <button class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</button>
+                            <a href="/profile/reportsAllSem/{{$report->id}}" class="btn btn-outline-secondary btn-sm btn-curr2">
+                                미리보기
+                            </a>
+                            {{-- <button class="btn btn-outline-secondary btn-sm btn-curr2" type="submit"></button> --}}
                         </div>
                     </div>
 
                 </div>
             </div>
             <!-- card -->
-            <!-- card -->
-            <div class="row mb-4 px-3">
-                <div class="col-lg-12 shadow border-rad-5 mb-3 px-4 py-4">
-                    <div class="row pb-4">
-                        <div class="col-md-8 position-rel">
-                            <span class="ttl-1 pr-4">사전 학습 1</span>
-                            <br>
-                            <span class="ttl-3" style="color: #9495A1; font-size: 11px;">제목 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #090909;">사전 학습 1 리포트</span>
-
-                            <br />
-                            <span class="ttl-3" style="color: #9495A1;">종료일 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #FF625F;">2023.01.11</span>
-                            <br />
-                            <div class="curr-brd-r pl20 mt-3 border-rad-5" style="background-color: #F5F7FE; width: 300px;">
-                                2023년도 1학기 . 당뇨 - 간호학과
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="text-align: right;">
-
-                            <span class="ttl-3" style="color: #3941A2; font-size: 11px;">등록완료</span>
-                            <br />
-                            <span class="ttl-3" style="color: #7479BD; font-size: 11px;">(2022.12.14)</span>
-
-                            <br />
-                            <br />
-                            <!-- <span class="curr-brd">
-                                수정하기
-                            </span> -->
-                            <button class="btn btn-outline-secondary btn-sm btn-curr mr-2">수정하기</button>
-                            <button class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- card -->
-            <!-- card -->
-            <div class="row mb-4 px-3">
-                <div class="col-lg-12 shadow border-rad-5 mb-3 px-4 py-4">
-                    <div class="row pb-4">
-                        <div class="col-md-8 position-rel">
-                            <span class="ttl-1 pr-4">사전 학습 1</span>
-                            <br>
-                            <span class="ttl-3" style="color: #9495A1; font-size: 11px;">제목 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #090909;"> -</span>
-
-                            <br />
-                            <span class="ttl-3" style="color: #9495A1;">종료일 &nbsp;|</span>
-                            <span class="ttl-3" style="color: #FF625F;"> -</span>
-                            <br />
-                            <div class="curr-brd-r pl20 mt-3 border-rad-5" style="background-color: #F5F7FE; width: 300px;">
-                                2023년도 1학기 . 당뇨 - 간호학과
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="text-align: right;">
-
-                            <span class="ttl-3" style="color: #3941A2; font-size: 11px;"></span>
-                            <br />
-                            <span class="ttl-3" style="color: #7479BD; font-size: 11px;"></span>
-
-                            <br />
-                            <br />
-                            <!-- <span class="curr-brd">
-                                수정하기
-                            </span> -->
-                            <button class="btn btn-outline-secondary btn-sm btn-curr mr-2">수정하기</button>
-                            <button class="btn btn-outline-secondary btn-sm btn-curr2" type="submit">미리보기</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- card -->
-
-
+            @endforeach           
             <div class="row my-5 px-3">
 
                 <div class="col-8">Total &nbsp;|&nbsp; 70</div>
@@ -199,6 +130,7 @@
                             <th style="width: 30%">제출 파일</th>
                             <th class="text-center">PASS / FAIL</th>
                         </tr>
+                        
                         <tr style="border-bottom: #ccc solid thin;">
                             <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
                             <td style="width: 8%; padding: 10px;">70</td>
@@ -225,240 +157,7 @@
 
                             </td>
                         </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">69</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px; color: #FF625F;">미제출</td>
-                            <td style="width: 12%; padding: 10px;">-</td>
-                            <td style="width: 30%; padding: 10px;">-</td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">68</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">67</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">66</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">65</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">64</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">63</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">62</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">61</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
+                        
                     </table>
                 </div>
                 <div class="col-3 item-flex-left">

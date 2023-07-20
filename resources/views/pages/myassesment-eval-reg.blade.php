@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
+
 <section class="pt100 pb100">
+
     <div class="row">
 
         <div class="col-lg-2">
@@ -18,6 +19,8 @@
                         </div>
                     </div>
                 </div>
+                
+
             </section>
 
             <nav aria-label="breadcrumb" class="">
@@ -36,6 +39,7 @@
             </nav>
 <form action="/profile/finalAssessment/register" method="post">
     @csrf
+    @include('includes.messages')
             <div class="cont-bg">
                 <div class="row mx-5">
                     <div class="col-lg-2"></div>
@@ -50,10 +54,10 @@
                     <div class="col-lg-8 box-assesment border-t-custom-assesment shadow border-rad-5 mb-4 px-4">
                         <div class="py-4">
                             <div class="item-flex-center my-2">
-                                <input type="text" class="form-control val-text py-2" name="title" id="" placeholder="제목을 입력해주세요." value="" aria-describedby="">
+                                <input type="text" class="form-control val-text py-2" name="title" id="" placeholder="제목을 입력해주세요." value="" aria-describedby="" required>
                             </div>
                             <div class="item-flex-center my-2">
-                                <textarea class="form-control val-text-area py-2" name="content" id="" value="" rows="2" placeholder="평가의 내용 설명을 입력해주세요." aria-describedby=""></textarea>
+                                <textarea class="form-control val-text-area py-2" name="content" id="" value="" rows="2" placeholder="평가의 내용 설명을 입력해주세요." aria-describedby="" required></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-4">
@@ -65,7 +69,7 @@
                                     <div class="item-flex-left">
                                         <div class="ttl-27 pr-3 min-width-80px">총 배점</div>
                                         <div class="divider1">|</div>
-                                        <input class="ttl-1 pl-3" name="total" placeholder="0점"/>
+                                        <input class="ttl-1 pl-3" name="total" placeholder="0점" required/>
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -74,7 +78,7 @@
                                             <p class="form-text-lbl my-1">종료일시</p>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                            <input type="date" class="form-control val-text" name="date" id="" aria-describedby="">
+                                            <input type="date" class="form-control val-text" name="date" id="" aria-describedby="" required>
                                         </div>
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <select class="form-select form-text-d" name="time" id="" aria-label="">
@@ -131,7 +135,7 @@
                             <div class="row mb-4">
                                 <div class="col-12">
                                     <div class="item-flex-center my-2">
-                                        <h2 class="ttl-29 py-2">1.</h2> <input type="text" class="form-control val-text py-2" name="questions[0][question]" id="" placeholder="질문을 입력해주세요." value="" aria-describedby="">
+                                        <h2 class="ttl-29 py-2">1.</h2> <input type="text" class="form-control val-text py-2" name="questions[0][question]" id="" placeholder="질문을 입력해주세요." value="" aria-describedby="" required>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +144,7 @@
                                 <div class="row border-b-cus first mx-1 mb-4" id="existingRows">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1" id="addrow">
-                                            <input class="form-check-input" type="radio" name="" id="">
+                                            <input class="form-check-input" type="radio" id="radio" disabled >
 
                                             <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[0][option1]" >
                                             
@@ -148,7 +152,7 @@
                                     </div>
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
-                                            <input class="form-check-input" type="radio" name="" id="" checked >
+                                            <input class="form-check-input" type="radio" name="questions[0][answer]" value="questions[0][option1]" id="" checked >
                                             <label class="form-check-label ttl-1 mr-2" for="">
                                                 정답
                                             </label>
@@ -174,7 +178,7 @@
                                 <div class="row mx-1 bottomRow">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
-                                            <input class="form-check-input" type="checkbox" name="" id="" checked>
+                                            <input class="form-check-input" type="checkbox" name="" id="checkBox">
                                             <label class="form-check-label ttl-31" for="">
                                                 선택지 섞기
                                             </label>
@@ -183,7 +187,7 @@
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
                                             <div class="item-flex-right my-2">
-                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[0][points]" placeholder="배점 입력" value="" aria-describedby="">
+                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[0][points]" placeholder="배점 입력" value="" aria-describedby="" required>
                                                 <label class="asses-eval-reg-abs">점</label>
                                             </div>
                                         </div>
@@ -272,6 +276,19 @@
 @endsection
 
 @section('scripts')
+<script>
+var checkBox = document.getElementById('checkBox');
+var radio = document.getElementById('radio');
+
+checkBox.addEventListener('click', function() {
+  if (checkBox.checked) {
+    radio.style.display = 'none';
+  } else {
+    radio.style.display = 'block';
+  }
+});
+</script>
+
 
 <script>
 function addrow() {
@@ -290,13 +307,13 @@ function addrow() {
     newRow.innerHTML = `
         <div class="form-check col-6 item-flex-left mb-4">
             <div class="ml-1" id="addrow">
-                <input class="form-check-input" type="radio" name="" id="">
+                <input class="form-check-input" type="radio"  id="" disabled>
                 <input type="text" class="form-check-label ttl-1" placeholder="답지${questionIndex+1}" name="questions[0][option${questionIndex+1}]">
             </div>
         </div>
         <div class="form-check col-6 item-flex-right mb-4">
             <div class="mr-1">
-                <input class="form-check-input" type="radio" name="" id="" >
+                <input class="form-check-input" type="radio" name="questions[0][answer]" value="questions[0][option${questionIndex+1}]" id="" >
                 <label class="form-check-label ttl-1 mr-2" for="">정답</label>
                 <label class="ttl-31" onclick="removeRow(this)">X</label>
             </div>
@@ -343,7 +360,7 @@ function addcard(){
                                 <div class="row border-b-cus generate mx-1 mb-4">
                                     <div class="form-check col-6 item-flex-left mb-4">
                                         <div class="ml-1">
-                                            <input class="form-check-input" type="radio" name="" id="">
+                                            <input class="form-check-input" type="radio" id="" disabled>
 
                                             <input type="text" class="form-check-label ttl-1" placeholder="답지1" name="questions[${questionIndex}][option1]" id="">
                                             
@@ -351,7 +368,7 @@ function addcard(){
                                     </div>
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
-                                            <input class="form-check-input" type="radio" name="" id="" checked>
+                                            <input class="form-check-input" type="radio" name="questions[${questionIndex}][answer]" value="questions[${questionIndex}][option1]" id="" checked>
                                             <label class="form-check-label ttl-1 mr-2" for="">
                                                 정답
                                             </label>
@@ -387,7 +404,7 @@ function addcard(){
                                     <div class="form-check col-6 item-flex-right mb-4">
                                         <div class="mr-1">
                                             <div class="item-flex-right my-2">
-                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[${questionIndex}][points]" placeholder="배점 입력" value="" aria-describedby="">
+                                                <input type="text" class="form-control val-text py-2 width-50 height-40 position-rel" name="questions[${questionIndex}][points]" placeholder="배점 입력" value="" aria-describedby="" required>
                                                 <label class="asses-eval-reg-abs">점</label>
                                             </div>
                                         </div>
@@ -426,13 +443,13 @@ function addcard(){
     newRow.innerHTML = `
         <div class="form-check col-6 item-flex-left mb-4">
             <div class="ml-1" id="addrow">
-                <input class="form-check-input" type="radio" name="" id="">
+                <input class="form-check-input" type="radio" disabled id="" >
                 <input type="text" class="form-check-label ttl-1" placeholder="답지${questionIndex}" name="questions[${answerNumber - 1}][option${questionIndex}]">
             </div>
         </div>
         <div class="form-check col-6 item-flex-right mb-4">
             <div class="mr-1">
-                <input class="form-check-input" type="radio" name="" id="" >
+                <input class="form-check-input" type="radio" name="questions[${answerNumber - 1}][answer]" value="questions[${answerNumber - 1}][option${questionIndex}]" id="" >
                 <label class="form-check-label ttl-1 mr-2" for="">정답</label>
                 <label class="ttl-31" onclick="removeRow(this)">X</label>
             </div>

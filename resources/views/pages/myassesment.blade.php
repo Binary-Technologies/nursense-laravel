@@ -90,7 +90,7 @@
             <!-- card -->
             @endforeach
             <!-- card -->
-            <div class="row px-3">
+            {{-- <div class="row px-3">
                 <div class="col-lg-12 shadow border-rad-5 mb-3 px-4 py-4">
                     <div class="row pb-4">
                         <div class="col-md-8 position-rel">
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- card -->
             
         </div>

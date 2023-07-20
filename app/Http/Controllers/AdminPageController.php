@@ -111,7 +111,12 @@ class AdminPageController extends Controller
         $existingValues = Banner::pluck('sequence')->toArray();
         $exposure = Banner::pluck('status')->toArray();
         $value = 1;
-        $count = array_count_values($exposure)[$value];
+        $count = 0;
+
+        if (!empty($exposure)) {
+            $count = array_count_values($exposure)[$value] ?? 0;
+        }
+
         return view('pages.admin.banner.banner-add', [
             'count' => $count,
             'existingValues' => $existingValues,
@@ -177,7 +182,12 @@ class AdminPageController extends Controller
         $main_exposure = Notice::pluck('main_exposure')->toArray();
         $exposure = Notice::pluck('exposure')->toArray();
         $value = 0;
-        $count = array_count_values($exposure)[$value];
+        $count = 0;
+
+        if (!empty($exposure)) {
+            $count = array_count_values($exposure)[$value] ?? 0;
+        }
+
         return view('pages.admin.notice.notice-register', [
             'main_exposure' => $main_exposure,
             'count' => $count,
@@ -223,7 +233,12 @@ class AdminPageController extends Controller
         $main_exposure = News::pluck('main_exposure')->toArray();
         $exposure = News::pluck('exposure')->toArray();
         $value = 0;
-        $count = array_count_values($exposure)[$value];
+        $count = 0;
+
+        if (!empty($exposure)) {
+            $count = array_count_values($exposure)[$value] ?? 0;
+        }
+
         return view('pages.admin.news.news-register', [
             'main_exposure' => $main_exposure,
             'count' => $count,

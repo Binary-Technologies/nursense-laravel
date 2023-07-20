@@ -20,7 +20,10 @@ use App\Models\PreLearningAnswers;
 use App\Models\UserMainStudy;
 use App\Models\UserFinalAnswer;
 use App\Models\MainStudy;
+use App\Models\Report;
+use App\Models\UserReport;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -308,15 +311,18 @@ class PageController extends Controller
 
     public function myreports()
     {
-        return view('pages.myreports');
+        $user = Auth::user()->id;
+        $reports = MainStudy::with('preLearning', 'final', 'semester', 'curriculum', 'department')->where('instructor_id' , $user)->get();
+        return view('pages.myreports',compact('reports'));
     }
     public function myreportsReg()
     {
         return view('pages.myreports-reg');
     }
-    public function myreportsAllSem()
+    public function myreportsAllSem($id)
     {
-        return view('pages.myreports-all-sem');
+        $report = Report::findOrFail($id);
+        return view('pages.myreports-all-sem',compact('report'));
     }
     public function myreportsModify()
     {

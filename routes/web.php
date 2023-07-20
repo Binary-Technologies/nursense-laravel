@@ -21,6 +21,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\PreLearningController;
 use App\Http\Controllers\MainStudyController;
+use App\Http\Controllers\ReportController;
 use App\Models\University;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Artisan;
@@ -97,11 +98,14 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/prelearningModify', [PageController::class, 'myprelearningModify'])->name('prelearningModify');
     Route::get('/reports', [PageController::class, 'myreports'])->name('reports');
     Route::get('/reportsReg', [PageController::class, 'myreportsReg'])->name('reportsReg');
-    Route::get('/reportsAllSem', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
+    Route::get('/reportsAllSem/{report:id}', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
     Route::get('/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
     Route::get('/allocation', [PageController::class, 'myallocation'])->name('allocation');
 
     Route::post('/finalAssessment/register',[AssessmentController::class, 'registerAssessment']);
+
+    Route::post('/reportRegister',[ReportController::class,'reportRegister']);
+    Route::post('/delete/{report:id}',[ReportController::class,'reportDelete']);
 });
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

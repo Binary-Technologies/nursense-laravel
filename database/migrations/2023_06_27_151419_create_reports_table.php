@@ -15,11 +15,12 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
             $table->string('title');
             $table->text('content');
             $table->dateTime('publish_date');
             $table->dateTime('deadline_date');
-            $table->string('file_path');
+            $table->string('file_path')->nullable();
         });
     }
 

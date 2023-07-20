@@ -25,6 +25,14 @@
 <div class="alert alert-danger">{{ $errors->first('contents') }}</div>
 @endif
 
+@if ($errors->has('content'))
+<div class="alert alert-danger">{{ $errors->first('content') }}</div>
+@endif
+
+@if ($errors->has('total'))
+<div class="alert alert-danger">{{ $errors->first('total') }}</div>
+@endif
+
 
 @if ($errors->has('image'))
 <div class="alert alert-danger">{{ $errors->first('image') }}</div>

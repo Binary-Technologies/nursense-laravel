@@ -34,31 +34,52 @@
                     <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">본 학습 1 리포트 등록</li>
                 </ol>
             </nav>
-
+        <form action="/profile/reportRegister" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mt-4">
 
                 <div class="row mb-4 pr-4">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                         <h4 class="form-lbl1 mb-3">* 제목</h4>
                         <div class="item-flex-center my-2">
-                            <input type="text" class="form-control val-text py-2 height-52" name="" id="" placeholder="제목을 입력하세요." value="" aria-describedby="">
+                            <input type="text" class="form-control val-text py-2 height-52" name="title" id="" placeholder="제목을 입력하세요." value="" aria-describedby="">
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pl-0">
                         <h4 class="form-lbl1 mb-3">* 마감일</h4>
                         <div class="item-flex-center my-2">
-                            <input type="date" class="form-control val-text py-2 height-52 mr-3" name="" id="" placeholder="" value="" aria-describedby="">
-                            <select class="form-select val-text py-2 height-52 width-50 mr-3">
+                            <input type="date" class="form-control val-text py-2 height-52 mr-3" name="date" id="" placeholder="" value="" aria-describedby="">
+                            <select name="hour" class="form-select val-text py-2 height-52 width-50 mr-3">
                                 <option value="0" selected>시</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                                <option value="00">00:00</option>
+                                <option value="01">01:00</option>
+                                <option value="02">02:00</option>
+                                <option value="03">03:00</option>
+                                <option value="04">04:00</option>
+                                <option value="05">05:00</option>
+                                <option value="06">06:00</option>
+                                <option value="07">07:00</option>
+                                <option value="08">08:00</option>
+                                <option value="09">09:00</option>
+                                <option value="10">10:00</option>
+                                <option value="11">11:00</option>
+                                <option value="12">12:00</option>
+                                <option value="13">13:00</option>
+                                <option value="14">14:00</option>
+                                <option value="15">15:00</option>
+                                <option value="16">16:00</option>
+                                <option value="17">17:00</option>
+                                <option value="18">18:00</option>
+                                <option value="19">19:00</option>
+                                <option value="20">20:00</option>
+                                <option value="21">21:00</option>
+                                <option value="22">22:00</option>
+                                <option value="23">23:00</option>
                             </select>
-                            <select class="form-select val-text py-2 height-52 width-50">
+                            <select name="minute" class="form-select val-text py-2 height-52 width-50">
                                 <option value="0" selected>분</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                                <option value="00">00</option>
+                                <option value="30">30</option>
                             </select>
                         </div>
                     </div>
@@ -68,7 +89,7 @@
                     <div class="col-12">
                         <h4 class="form-lbl1 mb-3">* 내용</h4>
                         <div class="item-flex-center my-2">
-                            <textarea class="form-control val-text-area py-2" name="" id="" value="" rows="7" aria-describedby="">내용을 입력하세요.</textarea>
+                            <textarea class="form-control val-text-area py-2" name="content" id="" value="" rows="7" aria-describedby="" placeholder="내용을 입력하세요."></textarea>
                         </div>
                     </div>
                 </div>
@@ -77,9 +98,18 @@
                     <div class="col-12">
                         <h4 class="form-lbl1 mb-3">첨부파일</h4>
                         <div class="item-flex-center">
+                            
                             <div class="width-100">
                                 <div class="img-up-box">
-                                    <div class="item-flex-center mx-5 mt-5">
+                                    <div class="img-up-box-inner">
+                                        <div class="mt-1">
+                                            <div class="item-flex-center">
+                                                <input type="file" class="form-control-file" name="attachments[]" id="attachment" multiple>
+                                            </div>
+                                            <p class="modal-inner-text2 text-center mb-0">또는 여기로 파일을 끌어와주세요.</p>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="item-flex-center mx-5 mt-5">
                                         <div class="width-100 bg-color-3 border-rad-10 position-rel">
                                             <p class="ttl-12 pt-3 pl-3">AdobeStock_318451253.jpeg</p>
                                             <a href="#deleteConfirmationModal" class="ttl-17 move-right3 title-border-b1" data-bs-toggle="modal">삭제</a>
@@ -92,7 +122,7 @@
                                             </div>
                                             <p class="modal-inner-text2 text-center mb-0">또는 여기로 파일을 끌어와주세요.</p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <p class="modal-inner-text3">
                                     * 500mb이하의 jpg, png, pdf, hwp, docx파일만 등록할 수 있습니다.<br>
@@ -104,7 +134,10 @@
                 <div class="row my-5">
                     <div class="col-12 item-flex-right">
                         <!-- If Completed -->
-                        <a href="#completionModal" class="btn-3 mr-4" data-bs-toggle="modal">리포트 등록</a>
+                        <button type="submit" class="btn-3 mr-4" data-bs-toggle="modal">
+                            리포트 등록
+                        </button>
+                        {{-- <a href="#completionModal" class="btn-3 mr-4" data-bs-toggle="modal">리포트 등록</a> --}}
                         <!-- If Active -->
                         <!-- <a href="#completionModal" class="btn-2 mr-4" data-bs-toggle="modal">리포트 등록</a> -->
                         <!-- If Fail -->
@@ -112,7 +145,7 @@
                     </div>
                 </div>
             </div>
-
+        </form>
             <!-- Delete Confirm Alert Modal -->
             <div class="modal fade" id="deleteConfirmationModal" aria-hidden="true" aria-labelledby="deleteConfirmationModalContent" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
