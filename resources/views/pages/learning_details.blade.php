@@ -230,10 +230,22 @@
                                         첨부 자료
                                     </td>
                                     <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                        <img src="/images/pdf.png">
-                                        <a href="{{ Storage::url($study->mainStudy->report->file_path) }}" target="_blank">
+                                        {{-- <img src="/images/pdf.png"> --}}
+                                        <ul>
+                                            @foreach(json_decode($study->mainStudy->report->file_path) as $filePath)
+                                                <li>
+                                                    <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                        <span class="ms-2">
+                                                        <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                                            {{ basename($filePath)}}
+                                                        </a>
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        {{-- <a href="{{ Storage::url($study->mainStudy->report->file_path) }}" target="_blank">
                                             {{ basename($study->mainStudy->report->file_path) }}
-                                        </a>
+                                        </a> --}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -274,7 +286,9 @@
                                         첨부파일
                                     </td>
                                     <td style="padding: 20px; font-family: pretendard-regular; font-size: 14px; color: #1B1D1F;">
-                                        {{ $study->userReport != null ? $study->userReport->file_path : '' }}
+                                        <a href="{{ Storage::url($filePath) }}" target="_blank">
+                                        {{ $study->userReport != null ? basename($study->userReport->file_path) : '' }}
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -282,18 +296,25 @@
                                         @if($study->mainStudy->report->deadline_date > now() && $study->userReport == null)
                                         <form action="/curriculum/learning/report" method="post" enctype="multipart/form-data">
                                         @csrf
-                                            <input type="hidden" name="study_id" value="{{ $study->id }}">
-                                            <label for="file" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">첨부파일 등록</label>
-                                            <input type="file" style="visibility: hidden" name="file" id="file" required>
+                                            {{-- <input type="hidden" name="study_id" value="{{ $study->id }}"> --}}
+                                            {{-- <label for="file" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">첨부파일 등록</label> --}}
+                                            <input type="file"  name="file" id="file" required>
+                                            <button type="submit" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">
+                                                첨부파일 등록
+                                            </button>
                                         </form>
+                                        
                                         @elseif($study->mainStudy->report->deadline_date > now() && $study->userReport != null)
+
                                         <form action="/curriculum/learning/report" method="post" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="file"  name="file" id="file" required>
                                             <input type="hidden" name="study_id" value="{{ $study->id }}">
                                             <input type="hidden" name="report_id" value="{{ $study->userReport->id }}">
                                             <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff; color: #FF625F; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">리포트 제출</button>
                                         </form>
                                         @endif
+                                        
                                     </td>
                                 </tr>
                         </table>

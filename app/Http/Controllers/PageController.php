@@ -22,6 +22,7 @@ use App\Models\UserFinalAnswer;
 use App\Models\MainStudy;
 use App\Models\Report;
 use App\Models\UserReport;
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
@@ -324,9 +325,16 @@ class PageController extends Controller
         $report = Report::findOrFail($id);
         return view('pages.myreports-all-sem',compact('report'));
     }
-    public function myreportsModify()
+    public function myreportsModify($id)
     {
-        return view('pages.myreports-modify');
+        $report = Report::findOrFail($id);
+
+        $deadline_date = Carbon::parse($report->deadline_date);
+        $date = $deadline_date->format('Y-m-d');
+        $hour = $deadline_date->format('H');
+        $minute = $deadline_date->format('i');
+
+        return view('pages.myreports-modify',compact('report','date','hour','minute'));
     }
 
     public function news_main_details($id)

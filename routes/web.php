@@ -56,7 +56,7 @@ Route::prefix('/curriculum')->middleware('auth:web')->group(function () {
     Route::get('/learning/final-quiz/{finalStudy:id}', [MainStudyController::class, 'quiz']);
     Route::post('/final-quiz', [MainStudyController::class, 'quizSubmit']);
     Route::get('/learning/final-quiz/CheckAns/{finalStudy:id}', [MainStudyController::class, 'quizCheckAns'])->name('quizCheckAns');
-    Route::post('/learning/report', [MainStudyController::class, 'reportUpload']);
+    Route::post('/learning/report', [MainStudyController::class, 'uploadReport']);
 
     Route::get('/quiz/{preLearning:id}', [PreLearningController::class, 'quiz']);
     Route::post('/quiz', [PreLearningController::class, 'quizSubmit']);
@@ -99,13 +99,15 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/reports', [PageController::class, 'myreports'])->name('reports');
     Route::get('/reportsReg', [PageController::class, 'myreportsReg'])->name('reportsReg');
     Route::get('/reportsAllSem/{report:id}', [PageController::class, 'myreportsAllSem'])->name('reportsAllSem');
-    Route::get('/reportsModify', [PageController::class, 'myreportsModify'])->name('reportsModify');
+    Route::get('/reportsModify/{report:id}', [PageController::class, 'myreportsModify'])->name('reportsModify');
     Route::get('/allocation', [PageController::class, 'myallocation'])->name('allocation');
 
     Route::post('/finalAssessment/register',[AssessmentController::class, 'registerAssessment']);
 
+    //report managements
     Route::post('/reportRegister',[ReportController::class,'reportRegister']);
     Route::post('/delete/{report:id}',[ReportController::class,'reportDelete']);
+    Route::post('/report/update/{report:id}', [ReportController::class,'reportUpdate']);
 });
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

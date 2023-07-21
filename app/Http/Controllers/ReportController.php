@@ -65,5 +65,42 @@ class ReportController extends Controller
 
         return redirect('/profile/reports')->with('report delete','report deleted successfully');
     }
+
+    public function reportUpdate(Request $request, $id)
+    {
+        
+        $form = Report::findOrFail($id);
+
+        $form->title = $request->input('title');
+        $form->publish_date = Carbon::now();
+        $deadline_date = Carbon::createFromFormat(
+            'Y-m-d H:i',
+            $request->input('date') . ' ' . $request->input('hour') . ':' . $request->input('minute')
+        );
+        $form->deadline_date = $deadline_date;
+        $form->content = $request->input('content');
+        $form->user_id = Auth::id();
+
+        $form->save();
+
+        $user_id = $form->user_id;
+
+        if ($request->hasFile('attachments')) {
+            $filePath = [];
+
+            foreach ($request->file('attachments') as $file) {
+                if ($file->isValid()) {
+                    $name = $file->getClientOriginalName();
+                    $path = $file->storeAs('public/files/reports/'.$user_id.'/'.$id, str_replace(' ', '-', $name));
+                    $filePath[] = $path;
+                }
+            }
+
+            $form->file_path = json_encode($filePath);
+            $form->save();
+        }
+
+        return redirect()->back()->with('success', 'Report updated successfully!');
+    }
     
 }

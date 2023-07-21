@@ -118,9 +118,9 @@
                         <!-- Delete -->
                         <a href="#deleteConfirmationModal" class="btn-4 mr-4" data-bs-toggle="modal">삭제</a>
                         <!-- Modify -->
-                        <a href="{{route('reportsModify')}}" class="btn-2 mr-4">수정</a>
+                        <a href="{{route('reportsModify', ['report' => $report->id])}}" class="btn-2 mr-4">수정</a>
                         <!-- List -->
-                        <a href="#" class="btn-5 mr-4">목록</a>
+                        <a href="/profile/reports" class="btn-5 mr-4">목록</a>
                     </div>
                 </div>
             </div>
