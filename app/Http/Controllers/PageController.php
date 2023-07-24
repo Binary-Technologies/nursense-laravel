@@ -314,8 +314,18 @@ class PageController extends Controller
     {
         $user = Auth::user()->id;
         $reports = MainStudy::with('preLearning', 'final', 'semester', 'curriculum', 'department')->where('instructor_id' , $user)->get();
+        
         return view('pages.myreports',compact('reports'));
     }
+
+    public function studentReports($id)
+    {
+        $user = Auth::user()->id;
+        $reports = MainStudy::with('preLearning', 'final', 'semester', 'curriculum', 'department')->where('instructor_id' , $user)->get();
+        $userReports = UserMainStudy::with('student','userReport')->get();
+        return view('pages.userreports',compact('reports','userReports'));
+    }
+
     public function myreportsReg()
     {
         return view('pages.myreports-reg');

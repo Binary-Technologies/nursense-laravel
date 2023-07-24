@@ -97,8 +97,8 @@
             </div>
             <!-- card -->
             @endforeach           
-{{-- 
-           <div class="row my-5 px-3">
+            <div class="row my-5 px-3">
+
                 <div class="col-8">Total &nbsp;|&nbsp; 70</div>
                 <div class="col-2" style="color: #FFFFFF;">
                     <select class="form-select mr-sm-2 search-bar-custom">
@@ -116,9 +116,9 @@
                 </div>
 
             </div>
- --}}
+
             <div class="row mb-3" style="font-size: 10px;">
-                {{-- <div class="col-lg-12 mb-3">
+                <div class="col-lg-12 mb-3">
                     <table class="p-2" style="width: 100%;">
                         <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
                             <th style="width: 5%; padding: 10px;"><input type="checkbox"></th>
@@ -130,15 +130,25 @@
                             <th style="width: 30%">제출 파일</th>
                             <th class="text-center">PASS / FAIL</th>
                         </tr>
-                        
+                        @foreach ($userReports as $userReport)
+                            
                         <tr style="border-bottom: #ccc solid thin;">
                             <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">70</td>
-                            <td style="width: 8%; padding: 10px;">오하윤</td>
-                            <td style="width: 14%; padding: 10px;">2023.01.23 17:23</td>
+                            <td style="width: 8%; padding: 10px;">{{$userReport->id}}</td>
+                            <td style="width: 8%; padding: 10px;">{{$userReport->student->name}}</td>
+                            <td style="width: 14%; padding: 10px;">{{$userReport->student->std_id}}</td>
                             <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">2023.01.23 17:23</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>오하윤_당뇨 최종리포트_2019123456</u></td>
+                            <td style="width: 12%; padding: 10px;">{{$userReport->userReport->created_at}}</td>
+                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>
+                                                        <li>
+                                                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                                <span class="ms-2">
+                                                                <a href="{{ Storage::url($userReport->userReport->file_path) }}" target="_blank">
+                                                                    {{ basename($userReport->userReport->file_path)}}
+                                                                </a>
+                                                            </span>
+                                                        </li>
+                                </u></td>
                             <td>
                                 <div class="item-flex-center">
                                     <div class="pr-3">
@@ -157,10 +167,11 @@
 
                             </td>
                         </tr>
+                        @endforeach
                         
                     </table>
-                </div> --}}
-                {{-- <div class="col-3 item-flex-left">
+                </div>
+                <div class="col-3 item-flex-left">
                     <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">다운로드</button>
                 </div>
                 <div class="col-6 item-flex-center">
@@ -185,17 +196,15 @@
                             </li>
                         </ul>
                     </nav>
-                </div> --}}
-                {{-- <div class="col-3 item-flex-right">
-                    <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #3941A2;color: #ffffff;">평가 저장</a>
-                </div> --}}
-                <a href="/profile/reports/studentReports/{{$report->id}}">
-                <div class="col-12 my-3">
-                    <div style="background-color: #D7D9EC;color: #3941A2;padding: 20px; text-align: center;">
-                            제출 현황 닫기
-                    </div>
                 </div>
-                </a>
+                <div class="col-3 item-flex-right">
+                    <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #3941A2;color: #ffffff;">평가 저장</a>
+                </div>
+
+                <div class="col-12 my-3">
+                    <div style="background-color: #D7D9EC;color: #3941A2;padding: 20px; text-align: center;">제출 현황 닫기</div>
+                </div>
+
             </div>
 
             <!-- card -->

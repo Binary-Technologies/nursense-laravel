@@ -104,6 +104,9 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/reportsModify/{report:id}', [PageController::class, 'myreportsModify'])->name('reportsModify');
     Route::get('/allocation', [PageController::class, 'myallocation'])->name('allocation');
 
+    //show student uploaded reports in new page
+    Route::get('/reports/studentReports/{report:id}', [PageController::class, 'studentReports']);
+
     Route::post('/finalAssessment/register',[AssessmentController::class, 'registerAssessment']);
 
     //report managements
