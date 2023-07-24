@@ -294,25 +294,26 @@
                                 <tr>
                                     <td colspan="2" style="text-align: right; padding: 20px; ">
                                         @if($study->mainStudy->report->deadline_date > now() && $study->userReport == null)
-                                        <form action="/curriculum/learning/report" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                            {{-- <input type="hidden" name="study_id" value="{{ $study->id }}"> --}}
-                                            {{-- <label for="file" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">첨부파일 등록</label> --}}
-                                            <input type="file"  name="file" id="file" required>
-                                            <button type="submit" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">
-                                                첨부파일 등록
-                                            </button>
-                                        </form>
+                                            <form action="/curriculum/learning/report" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                {{-- <input type="hidden" name="study_id" value="{{ $study->id }}"> --}}
+                                                {{-- <label for="file" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">첨부파일 등록</label> --}}
+                                                <input type="file"  name="file" id="file" required>
+                                                <button type="submit" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #ffffff; color: #3941A2; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">
+                                                    첨부파일 등록
+                                                </button>
+                                            </form>
                                         
                                         @elseif($study->mainStudy->report->deadline_date > now() && $study->userReport != null)
 
-                                        <form action="/curriculum/learning/report" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="file"  name="file" id="file" required>
-                                            <input type="hidden" name="study_id" value="{{ $study->id }}">
-                                            <input type="hidden" name="report_id" value="{{ $study->userReport->id }}">
-                                            <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff; color: #FF625F; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">리포트 제출</button>
-                                        </form>
+                                            <form action="/curriculum/learning/reportupdate/{{$study->id}}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="file"  name="file" id="file" required>
+                                                {{-- <input type="hidden" name="study_id" value="{{ $study->id }}">
+                                                <input type="hidden" name="report_id" value="{{ $study->userReport->id }}"> --}}
+                                                <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #ffffff; color: #FF625F; padding-bottom: 10px;padding-top: 10px;padding-left: 35px; padding-right: 35px; border: 1px solid #3941A2; border-radius: 6px;">리포트 제출</button>
+                                            </form>
+
                                         @endif
                                         
                                     </td>

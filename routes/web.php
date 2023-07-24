@@ -57,6 +57,8 @@ Route::prefix('/curriculum')->middleware('auth:web')->group(function () {
     Route::post('/final-quiz', [MainStudyController::class, 'quizSubmit']);
     Route::get('/learning/final-quiz/CheckAns/{finalStudy:id}', [MainStudyController::class, 'quizCheckAns'])->name('quizCheckAns');
     Route::post('/learning/report', [MainStudyController::class, 'uploadReport']);
+    Route::post('/learning/reportupdate/{study:id}', [MainStudyController::class, 'updateReport']);
+
 
     Route::get('/quiz/{preLearning:id}', [PreLearningController::class, 'quiz']);
     Route::post('/quiz', [PreLearningController::class, 'quizSubmit']);

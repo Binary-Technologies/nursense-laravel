@@ -10,6 +10,7 @@ use App\Models\UserFinalAnswer;
 use App\Models\UserFinal;
 use App\Models\UserReport;
 use App\Models\UserSurvey;
+use Illuminate\Support\Facades\Storage;
 
 class MainStudyController extends Controller
 {
@@ -101,5 +102,80 @@ class MainStudyController extends Controller
         $report->save();
 
         return redirect('/curriculum/learning');
+    }
+
+//     public function uploadReport(Request $request)
+// {
+//     $request->validate([
+//         'file' => 'required|mimes:pdf|max:2048',
+//     ]);
+
+//     // Get the study ID and report ID from the form
+//     $studyId = $request->input('study_id');
+//     $reportId = $request->input('report_id');
+
+//     // Get the user's ID
+//     $userId = \Auth::user()->id;
+
+//     // Get the uploaded file's original name
+//     $name = $request->file('file')->getClientOriginalName();
+
+//     $fileName = $request->file('file')->storeAs("public/files/reports/{$userId}/{$studyId}", str_replace(' ', '-', $name));
+
+//     $userReport = UserReport::create([
+//         'file_path' => $fileName,
+//     ]);
+
+//     $report = UserMainStudy::find($studyId);
+//     if ($report && $report->user_report_id === $reportId) {
+//         $report->user_report_id = $userReport->id;
+//         $report->save();
+//     } else {
+//         return redirect('/curriculum/learning')->with('error', 'Invalid Study or Report ID');
+//     }
+
+//     return redirect('/curriculum/learning')->with('success', 'Report uploaded successfully');
+// }
+
+public function updateReport(Request $request, $studyId)
+    {
+        $request->validate([
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        // Get the existing report for the given study ID
+        $report = UserMainStudy::findOrFail($studyId)->userReport;
+
+        // Delete the old file from storage if it exists
+        if ($report && Storage::exists($report->file_path)) {
+            Storage::delete($report->file_path);
+        }
+
+        // Get the user's ID
+        $userId = \Auth::user()->id;
+
+        // Get the uploaded file's original name
+        $name = $request->file('file')->getClientOriginalName();
+
+        // Store the file with a sanitized name in the storage
+        $fileName = $request->file('file')->storeAs("public/files/reports/{$userId}/{$studyId}", str_replace(' ', '-', $name));
+
+        if ($report) {
+            $report->update([
+                'file_path' => $fileName,
+            ]);
+        } else {
+            $userReport = UserReport::create([
+                'file_path' => $fileName,
+            ]);
+
+            // Link the new report to the main study
+            $report = UserMainStudy::find($studyId);
+            $report->user_report_id = $userReport->id;
+            $report->save();
+        }
+
+        // Redirect back 
+        return redirect('/curriculum/learning')->with('success', 'Report updated successfully');
     }
 }
