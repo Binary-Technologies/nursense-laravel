@@ -113,6 +113,7 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::post('/reportRegister',[ReportController::class,'reportRegister']);
     Route::post('/delete/{report:id}',[ReportController::class,'reportDelete']);
     Route::post('/report/update/{report:id}', [ReportController::class,'reportUpdate']);
+    Route::post('/reports/studentGrade', [ReportController::class,'studentGradeUpdate']);
 });
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

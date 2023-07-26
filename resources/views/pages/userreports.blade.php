@@ -117,95 +117,103 @@
 
             </div>
 
-            <div class="row mb-3" style="font-size: 10px;">
-                <div class="col-lg-12 mb-3">
-                    <table class="p-2" style="width: 100%;">
-                        <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
-                            <th style="width: 5%; padding: 10px;"><input type="checkbox"></th>
-                            <th style="width: 8%; padding: 10px;">번호</th>
-                            <th style="width: 8%; padding: 10px;">이름</th>
-                            <th style="width: 14%; padding: 10px;">학년/학번</th>
-                            <th style="width: 9%; padding: 10px;">제출 여부</th>
-                            <th style="width: 12%">제출 일시</th>
-                            <th style="width: 30%">제출 파일</th>
-                            <th class="text-center">PASS / FAIL</th>
-                        </tr>
-                        @foreach ($userReports as $userReport)
+            <form action="/profile/reports/studentGrade" method="post">
+                @csrf
+                <div class="row mb-3" style="font-size: 10px;">
+                    <div class="col-lg-12 mb-3">
+                        <table class="p-2" style="width: 100%;">
+                            <tr style="background-image: linear-gradient(to right, #F5F7FE , #F5F7FE); border-bottom: #ccc solid thin; border-top: #ccc solid thin;">
+                                <th style="width: 5%; padding: 10px;"><input type="checkbox"></th>
+                                <th style="width: 8%; padding: 10px;">번호</th>
+                                <th style="width: 8%; padding: 10px;">이름</th>
+                                <th style="width: 14%; padding: 10px;">학년/학번</th>
+                                <th style="width: 9%; padding: 10px;">제출 여부</th>
+                                <th style="width: 12%">제출 일시</th>
+                                <th style="width: 30%">제출 파일</th>
+                                <th class="text-center">PASS / FAIL</th>
+                            </tr>
+                            @foreach ($userReports as $userReport)
+                                
+                            <tr style="border-bottom: #ccc solid thin;">
+                                <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
+                                <td style="width: 8%; padding: 10px;">{{$userReport->id}}
+                                    <input type="hidden" name="user_report_id[]" value="{{ $userReport->id }}">
+                                </td>
+                                <td style="width: 8%; padding: 10px;">{{$userReport->student->name}}</td>
+                                <td style="width: 14%; padding: 10px;">{{$userReport->student->std_id}}</td>
+                                <td style="width: 9%; padding: 10px;">제출</td>
+                                <td style="width: 12%; padding: 10px;">{{$userReport->userReport->created_at}}</td>
+                                <td style="width: 30%; padding: 10px;color: #3941A2;"><u>
+                                                            <li>
+                                                                <span class="i-color-1"><i class='far fa-file-alt'></i></span>
+                                                                    <span class="ms-2">
+                                                                    <a href="{{ Storage::url($userReport->userReport->file_path) }}" target="_blank">
+                                                                        {{ basename($userReport->userReport->file_path)}}
+                                                                    </a>
+                                                                </span>
+                                                            </li>
+                                    </u></td>
+                                <td>
+                                    <div class="item-flex-center">
+                                        <div class="pr-3">
+                                            <div class="item-flex-center">
+                                                <input name="grade" type="radio" value="1" class="mr-2" style="width: 18px; height: 18px;" {{ old('grade', $userReport->userReport->grade) == 1 ? 'checked' : '' }}>
+                                                <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
+                                            </div>
+                                        </div>
+                                        <div class="pr-3">
+                                            <div class="item-flex-left">
+                                                <input name="grade" type="radio" value="0" class="mr-2" style="width: 18px; height: 18px;" {{ old('grade', $userReport->userReport->grade) == 0 ? 'checked' : '' }}>
+                                                <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            @endforeach
                             
-                        <tr style="border-bottom: #ccc solid thin;">
-                            <td style="width: 5%; padding: 10px;"><input type="checkbox"></td>
-                            <td style="width: 8%; padding: 10px;">{{$userReport->id}}</td>
-                            <td style="width: 8%; padding: 10px;">{{$userReport->student->name}}</td>
-                            <td style="width: 14%; padding: 10px;">{{$userReport->student->std_id}}</td>
-                            <td style="width: 9%; padding: 10px;">제출</td>
-                            <td style="width: 12%; padding: 10px;">{{$userReport->userReport->created_at}}</td>
-                            <td style="width: 30%; padding: 10px;color: #3941A2;"><u>
-                                                        <li>
-                                                            <span class="i-color-1"><i class='far fa-file-alt'></i></span>
-                                                                <span class="ms-2">
-                                                                <a href="{{ Storage::url($userReport->userReport->file_path) }}" target="_blank">
-                                                                    {{ basename($userReport->userReport->file_path)}}
-                                                                </a>
-                                                            </span>
-                                                        </li>
-                                </u></td>
-                            <td>
-                                <div class="item-flex-center">
-                                    <div class="pr-3">
-                                        <div class="item-flex-center">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">PASS</p>
-                                        </div>
-                                    </div>
-                                    <div class="pr-3">
-                                        <div class="item-flex-left">
-                                            <input type="radio" class="mr-2" style="width: 18px; height: 18px;">
-                                            <p class="pt-3 pb-0" style="color: #1B1D1F;">FAIL</p>
-                                        </div>
-                                    </div>
-                                </div>
+                        </table>
+                    </div>
+                    <div class="col-3 item-flex-left">
+                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" style="background-color: #F3F4F8;color: #9495A1;">다운로드</button>
+                    </div>
+                    <div class="col-6 item-flex-center">
+                        <nav aria-label="Page navigation muve gallery">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&lt;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
+                                <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
+                                <li class="page-item">
+                                    <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&gt;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-3 item-flex-right">
+                        {{-- <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #3941A2;color: #ffffff;">평가 저장</a> --}}
+                        <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #3941A2;color: #ffffff;">
+                            평가 저장
+                        </button>
+                    </div>
 
-                            </td>
-                        </tr>
-                        @endforeach
-                        
-                    </table>
-                </div>
-                <div class="col-3 item-flex-left">
-                    <button class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #F3F4F8;color: #9495A1;">다운로드</button>
-                </div>
-                <div class="col-6 item-flex-center">
-                    <nav aria-label="Page navigation muve gallery">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link pagination_link_arrows pagination_link_arrows_disabled" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&lt;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link pagination_link pagination_link_active" href="">1</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">6</a></li>
-                            <li class="page-item"><a class="page-link pagination_link" href="#">7</a></li>
-                            <li class="page-item">
-                                <a class="page-link pagination_link_arrows" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&gt;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-3 item-flex-right">
-                    <a href="#confirmationModal" data-bs-toggle="modal" class="btn btn-outline-secondary btn-sm btn-search my-2 my-sm-0" type="submit" style="background-color: #3941A2;color: #ffffff;">평가 저장</a>
-                </div>
+                    <div class="col-12 my-3">
+                        <div style="background-color: #D7D9EC;color: #3941A2;padding: 20px; text-align: center;">제출 현황 닫기</div>
+                    </div>
 
-                <div class="col-12 my-3">
-                    <div style="background-color: #D7D9EC;color: #3941A2;padding: 20px; text-align: center;">제출 현황 닫기</div>
                 </div>
-
-            </div>
+        </form>
 
             <!-- card -->
             <div class="row mb-4 px-3">

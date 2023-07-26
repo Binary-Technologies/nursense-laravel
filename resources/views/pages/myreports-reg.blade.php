@@ -37,7 +37,7 @@
         <form action="/profile/reportRegister" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mt-4">
-
+            @include('includes.messages')
                 <div class="row mb-4 pr-4">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                         <h4 class="form-lbl1 mb-3">* 제목</h4>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\UserReport;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -102,5 +103,25 @@ class ReportController extends Controller
 
         return redirect()->back()->with('success', 'Report updated successfully!');
     }
+
+    public function studentGradeUpdate(Request $request)
+    {
+        // Get the data from the form submission
+        $grades = $request->input('grade');
+        $userReportIds = $request->input('user_report_id');
+
+        foreach ($userReportIds as $index => $userReportId) {
+            $grade = $grades[$index];
+            $userReport = UserReport::find($userReportId);
+    
+            // Update the grade for the user report
+            $userReport->grade = $grade;
+            $userReport->save();
+        }
+
+        return redirect()->back()->with('success', 'Grades have been saved successfully!');
+    }
+
+
     
 }
