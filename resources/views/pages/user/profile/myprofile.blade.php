@@ -28,9 +28,13 @@
                         <div class="pt-4">
 
                             <div class="item-flex-center relative-block profile-img-outer">
-                                <img src="/images/face.png" alt="dp">
+                                @if ($user->thumbnail != null)
+                                    <img src="{{ Storage::url($user->thumbnail) }}" alt="dp">
+                                @else
+                                    <img src="/images/face.png" alt="dp"> 
+                                @endif
                                 <div class="edit_dp_i">
-                                    <a href="/profile/info/dp"><img src="/images/dp_icon.png" class=""></a>
+                                    <a href="/profile/info/dp/{{$user->id}}"><img src="/images/dp_icon.png" class=""></a>
                                 </div>
                             </div>
                             <div class="pt15 pb10 text-center">

@@ -21,9 +21,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\PreLearningController;
 use App\Http\Controllers\MainStudyController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Models\University;
 use App\Models\Gallery;
+use App\Models\PreLearning;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -81,7 +83,7 @@ Route::get('/info/location', [PageController::class, 'location']);
 
 Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/info', [PageController::class, 'myprofile']);
-    Route::get('/info/dp', [PageController::class, 'dpUpload']);
+    Route::get('/info/dp/{user:id}', [PageController::class, 'dpUpload']);
     Route::get('/info/contact', [PageController::class, 'contactUpload']);
     Route::get('/info/email', [PageController::class, 'emailUpload']);
     Route::get('/info/password', [PageController::class, 'passwordUpload']);
@@ -108,12 +110,18 @@ Route::prefix('/profile')->middleware('auth:web')->group(function () {
     Route::get('/reports/studentReports/{report:id}', [PageController::class, 'studentReports']);
 
     Route::post('/finalAssessment/register',[AssessmentController::class, 'registerAssessment']);
+    //pre learning management
+    Route::post('/preLearning/register',[PreLearningController::class,'preLearningRegister']);
 
     //report managements
     Route::post('/reportRegister',[ReportController::class,'reportRegister']);
     Route::post('/delete/{report:id}',[ReportController::class,'reportDelete']);
     Route::post('/report/update/{report:id}', [ReportController::class,'reportUpdate']);
     Route::post('/reports/studentGrade', [ReportController::class,'studentGradeUpdate']);
+
+    //user profile management
+    Route::post('/dpUpload/{userDp:id}', [ProfileController::class,'DpUpdate']);
+
 });
 
 Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');

@@ -41,7 +41,13 @@
                                 <span class="ttl-18">프로필 이미지 변경</span>
                             </div>
                             <div class="item-flex-center relative-block profile-img-outer">
-                                <img src="/images/face.png" alt="dp">
+                                {{-- {{$userDp->thumbnail}} --}}
+                                @if ($user->thumbnail != null)
+                                    <img src="{{ Storage::url($user->thumbnail) }}" alt="dp">
+                                @else
+                                    <img src="/images/face.png" alt="dp"> 
+                                @endif
+                                
                             </div>
                             <div class="ttl-19 item-flex-center">
                                 <span>미리보기</span>
@@ -50,11 +56,15 @@
                             <div class="row pt-4">
                                 <div class="col-lg-12 item-flex-center">
                                     <div class="bg-color-2 border-dashed border-rad-10 comp-width-544 comp-height-160">
-                                        <form class="form-inline justify-content-start" method="post" action="#">
+                                        <form class="form-inline justify-content-start" method="post" action="/profile/dpUpload/{{$user->id}}" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="input-group dp-upload-form-grp">
-                                                <input type="text" class="form-control dp-upload-input" placeholder="AdobeStock_318451253.jpeg" aria-label="DP">
-                                                <a href="" class="ttl-17 p5 relative-block title-border-b2" onclick="">삭제</a>
+
+                                                <input type="file" name="thumbnail" class="form-control dp-upload-input" placeholder="" aria-label="DP">
+                                                {{-- <a href="" class="ttl-17 p5 relative-block title-border-b2" onclick="">삭제</a> --}}
+                                                <button type="submit" class="btn btn9">Change</button>
                                             </div>
+                                            
                                         </form>
                                     </div>
                                 </div>

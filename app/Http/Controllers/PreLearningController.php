@@ -7,6 +7,7 @@ use App\Models\PreLearning;
 use App\Models\PreLearningAnswers;
 use App\Models\PreLearningQuestion;
 use App\Models\UserPreLearning;
+use Illuminate\Support\Facades\Validator;
 
 class PreLearningController extends Controller
 {
@@ -57,5 +58,24 @@ class PreLearningController extends Controller
             $question['given_answer'] = $userAnswer->given_answer;
         }
         return view('pages.quiz-check-ans', compact ('quiz'));
+    }
+
+    public function preLearningRegister(Request $request){
+
+        return $request;
+        $validate = Validator::make($request->all(), [
+            'title' => 'required',
+            'content' => 'required',
+            'attachments' => 'required',
+        ]);
+
+        if ($validate->fails())return redirect()->back()->withErrors($validate)->withInput();
+        
+        // $preLearning = PreLearning::create([  
+        //     'curriculum_id' => $request->input('course'),             
+        //     'name' => $request->input('title'),            
+            
+        // ]);
+        return redirect('/profile/assesment')->with('Assessment added', 'Assessment has been added.');
     }
 }

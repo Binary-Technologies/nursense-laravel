@@ -41,7 +41,14 @@
 									</li>
 								@else
 								<li class="nav-item">
-									<a class="" href="/profile/info"><img src="/images/face.png" alt="dp"></a>
+									<a class="" href="/profile/info">
+										{{-- @if ($user->thumbnail != null)
+											<img src="{{ Storage::url($user->thumbnail) }}" alt="dp">
+										@else
+											<img src="/images/face.png" alt="dp"> 
+										@endif --}}
+										<img src="/images/face.png" alt="dp"> 
+									</a>
 									<a class="" href="/profile/info">
 										<span class="user-name">{{ Auth::user()->name }}</span>
 									</a>

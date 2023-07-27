@@ -205,7 +205,8 @@ class PageController extends Controller
 
     public function myprelearningReg()
     {
-        return view('pages.myprelearning-reg');
+        $curriculums = Curriculum::all();
+        return view('pages.myprelearning-reg',compact('curriculums'));
     }
 
     public function myprelearningModify()
@@ -221,9 +222,11 @@ class PageController extends Controller
         return view('pages.user.profile.myprofile', compact('user'));
     }
 
-    public function dpUpload()
+    public function dpUpload($id)
     {
-        return view('pages.user.profile.myprofile-dp-upload');
+        $user = User::findOrFail($id);
+        return view('pages.user.profile.myprofile-dp-upload',compact('user'));
+        
     }
 
     public function contactUpload()

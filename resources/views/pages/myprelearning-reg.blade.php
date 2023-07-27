@@ -34,20 +34,27 @@
                     <li class="breadcrumb-item breadcrumb-text2 active" aria-current="page">사전 학습 등록</li>
                 </ol>
             </nav>
-        <form action="" method="post">
+        <form action="/profile/preLearning/register" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mt-4">
 
                 <div class="row mb-4 pr-4">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <h4 class="form-lbl1 mb-3">* 학습 과정</h4>
                         <div class="item-flex-center my-2">
-                            <input type="text" class="form-control val-text py-2 height-52" name="" id="" placeholder="학습 과정" value="" aria-describedby="">
+                            {{-- <input type="text" class="form-control val-text py-2 height-52" name="" id="" placeholder="학습 과정" value="" aria-describedby=""> --}}
+                            <select name="course" class="form-control val-text py-2 height-52">
+                                @foreach ($curriculums as $curriculum)
+                                <option value="{{$curriculum->id}}"> {{$curriculum->name}} </option>
+                                @endforeach
+                                
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 pl-0">
                         <h4 class="form-lbl1 mb-3">* 제목</h4>
                         <div class="item-flex-center my-2">
-                            <input type="text" class="form-control val-text py-2 height-52" name="" id="" placeholder="제목을 입력해 주세요." value="" aria-describedby="">
+                            <input type="text" class="form-control val-text py-2 height-52" name="title" id="" placeholder="제목을 입력해 주세요." value="" aria-describedby="">
                         </div>
                     </div>
                 </div>
@@ -56,7 +63,7 @@
                     <div class="col-12">
                         <h4 class="form-lbl1 mb-3">* 내용</h4>
                         <div class="item-flex-center my-2">
-                            <textarea class="form-control val-text-area py-2" placeholder="내용을 입력해 주세요." name="" id="" value="" rows="7" aria-describedby=""></textarea>
+                            <textarea class="form-control val-text-area py-2" placeholder="내용을 입력해 주세요." name="content" id="" value="" rows="7" aria-describedby=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -70,7 +77,9 @@
                                     <div class="img-up-box-inner">
                                         <div class="mt-1">
                                             <div class="item-flex-center">
-                                                <button class="btn btn9 mt-2">파일 선택</button>
+
+                                                <input class="btn btn9 mt-2" type="file" name="attachments" placeholder="파일 선택">
+                                                {{-- <button class="btn btn9 mt-2">파일 선택</button> --}}
                                             </div>
                                             <p class="modal-inner-text2 text-center mb-0">또는 여기로 파일을 끌어와주세요.</p>
                                         </div>
@@ -86,7 +95,10 @@
                 <div class="row my-5">
                     <div class="col-12 item-flex-right">
                         <!-- If Completed -->
-                        <a href="#completionModal" class="btn-3 mr-4" data-bs-toggle="modal">사전학습 등록</a>
+                        <button type="submit" class="btn-3 mr-4" data-bs-toggle="modal">
+                            사전학습 등록
+                        </button>
+                        {{-- <a href="#completionModal" class="btn-3 mr-4" data-bs-toggle="modal">사전학습 등록</a> --}}
                         <!-- If Active -->
                         <!-- <a href="#completionModal" class="btn-2 mr-4" data-bs-toggle="modal">사전학습 등록</a> -->
                         <!-- If Fail -->
